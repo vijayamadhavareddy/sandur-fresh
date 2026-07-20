@@ -1,0 +1,24 @@
+id: 'sf_consumer'
+language: 'dart'
+
+fileGroups:
+  sources:
+    - 'lib/**/*'
+    - 'pubspec.yaml'
+
+tasks:
+  run:
+    command: 'flutter run'
+  get:
+    command: 'flutter pub get'
+    inputs: ['pubspec.yaml']
+  analyze:
+    command: 'flutter analyze'
+    inputs: ['@globs(sources)']
+  test:
+    command: 'flutter test'
+    inputs: ['@globs(sources)', 'test/**/*']
+  build-apk:
+    command: 'flutter build apk --release'
+    inputs: ['@globs(sources)']
+    outputs: ['build/app/outputs']
