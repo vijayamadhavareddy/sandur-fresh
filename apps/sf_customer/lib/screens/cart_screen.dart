@@ -6,17 +6,16 @@ import '../theme/app_colors.dart';
 import '../utils/format.dart';
 import '../widgets/quantity_stepper.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends GetView<CartController> {
   const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cart = Get.find<CartController>();
     final textTheme = Theme.of(context).textTheme;
 
     return SafeArea(
       child: Obx(() {
-        if (cart.items.isEmpty) {
+        if (controller.items.isEmpty) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +32,7 @@ class CartScreen extends StatelessWidget {
           );
         }
 
-        final lineItems = cart.items.values.toList();
+        final lineItems = controller.items.values.toList();
         return Column(
           children: [
             Expanded(
@@ -42,7 +41,7 @@ class CartScreen extends StatelessWidget {
                 children: [
                   Text('Your Cart', style: textTheme.headlineLarge),
                   const SizedBox(height: AppSpacing.lg),
-                  if (cart.amountToFreeDelivery > 0)
+                  if (controller.amountToFreeDelivery > 0)
                     Container(
                       margin: const EdgeInsets.only(
                           bottom: AppSpacing.md),
@@ -53,7 +52,7 @@ class CartScreen extends StatelessWidget {
                             BorderRadius.circular(AppRadius.md),
                       ),
                       child: Text(
-                        'Add ${formatPrice(cart.amountToFreeDelivery)} more for FREE delivery',
+                        'Add ${formatPrice(controller.amountToFreeDelivery)} more for FREE delivery',
                         style: textTheme.bodyMedium?.copyWith(
                           color: AppColors.primaryDark,
                           fontWeight: FontWeight.w700,
@@ -142,26 +141,26 @@ class CartScreen extends StatelessWidget {
                           const SizedBox(height: AppSpacing.md),
                           _BillRow(
                             label: 'Subtotal',
-                            value: formatPrice(cart.subtotal),
+                            value: formatPrice(controller.subtotal),
                           ),
                           _BillRow(
                             label: 'Savings',
-                            value: '- ${formatPrice(cart.savings)}',
+                            value: '- ${formatPrice(controller.savings)}',
                             valueColor: AppColors.discount,
                           ),
                           _BillRow(
                             label: 'Delivery fee',
-                            value: cart.deliveryFee == 0
+                            value: controller.deliveryFee == 0
                                 ? 'FREE'
-                                : formatPrice(cart.deliveryFee),
-                            valueColor: cart.deliveryFee == 0
+                                : formatPrice(controller.deliveryFee),
+                            valueColor: controller.deliveryFee == 0
                                 ? AppColors.success
                                 : null,
                           ),
                           const Divider(),
                           _BillRow(
                             label: 'Total',
-                            value: formatPrice(cart.total),
+                            value: formatPrice(controller.total),
                             bold: true,
                           ),
                         ],
@@ -178,7 +177,7 @@ class CartScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Get.toNamed('/checkout'),
                   child: Text(
-                      'Checkout • ${formatPrice(cart.total)}'),
+                      'Checkout • ${formatPrice(controller.total)}'),
                 ),
               ),
             ),

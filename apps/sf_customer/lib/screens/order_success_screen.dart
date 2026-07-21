@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import '../controllers/checkout_controller.dart';
 import '../theme/app_colors.dart';
 
-class OrderSuccessScreen extends StatelessWidget {
+class OrderSuccessScreen extends GetView<CheckoutController> {
   const OrderSuccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final checkout = Get.find<CheckoutController>();
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -34,7 +33,7 @@ class OrderSuccessScreen extends StatelessWidget {
                   style: textTheme.displayMedium),
               const SizedBox(height: AppSpacing.sm),
               Obx(() => Text(
-                    'Order ID: ${checkout.lastOrderId.value ?? '-'}',
+                    'Order ID: ${controller.lastOrderId.value ?? '-'}',
                     style: textTheme.bodyMedium,
                   )),
               const SizedBox(height: AppSpacing.sm),

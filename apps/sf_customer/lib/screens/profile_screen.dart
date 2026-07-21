@@ -4,16 +4,15 @@ import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../theme/app_colors.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends GetView<AuthController> {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final auth = Get.find<AuthController>();
     final textTheme = Theme.of(context).textTheme;
 
     String maskedPhone() {
-      final phone = auth.phone.value;
+      final phone = controller.phone.value;
       if (phone.length < 10) return phone.isEmpty ? 'Not signed in' : phone;
       return '+91 ${phone.substring(0, 2)}****${phone.substring(6)}';
     }
@@ -37,9 +36,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Obx(() => Text(
-                          auth.name.value.isEmpty
+                          controller.name.value.isEmpty
                               ? 'S'
-                              : auth.name.value[0].toUpperCase(),
+                              : controller.name.value[0].toUpperCase(),
                           style: textTheme.headlineLarge
                               ?.copyWith(color: AppColors.primaryDark),
                         )),
@@ -47,9 +46,9 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Obx(() {
-                      if (auth.editingName.value) {
+                      if (controller.editingName.value) {
                         return TextField(
-                          controller: auth.nameController,
+                          controller: controller.nameController,
                           autofocus: true,
                           textCapitalization: TextCapitalization.words,
                           style: textTheme.titleLarge,
@@ -61,20 +60,20 @@ class ProfileScreen extends StatelessWidget {
                               vertical: AppSpacing.sm,
                             ),
                           ),
-                          onSubmitted: (_) => auth.saveName(),
+                          onSubmitted: (_) => controller.saveName(),
                         );
                       }
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(auth.name.value, style: textTheme.titleLarge),
+                          Text(controller.name.value, style: textTheme.titleLarge),
                           const SizedBox(height: AppSpacing.xs),
                           Text(maskedPhone(), style: textTheme.bodySmall),
                         ],
                       );
                     }),
                   ),
-                  Obx(() => auth.editingName.value
+                  Obx(() => controller.editingName.value
                       ? Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -82,13 +81,13 @@ class ProfileScreen extends StatelessWidget {
                               icon: const Icon(Icons.check,
                                   color: AppColors.success),
                               tooltip: 'Save name',
-                              onPressed: auth.saveName,
+                              onPressed: controller.saveName,
                             ),
                             IconButton(
                               icon: const Icon(Icons.close,
                                   color: AppColors.textSecondary),
                               tooltip: 'Cancel',
-                              onPressed: auth.cancelEditName,
+                              onPressed: controller.cancelEditName,
                             ),
                           ],
                         )
@@ -96,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                           icon: const Icon(Icons.edit_outlined,
                               color: AppColors.textSecondary),
                           tooltip: 'Edit name',
-                          onPressed: auth.beginEditName,
+                          onPressed: controller.beginEditName,
                         )),
                 ],
               ),
@@ -127,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
                 textCancel: 'Cancel',
                 confirmTextColor: AppColors.surface,
                 buttonColor: AppColors.error,
-                onConfirm: auth.logout,
+                onConfirm: controller.logout,
               );
             },
           ),

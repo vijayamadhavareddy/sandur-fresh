@@ -1,0 +1,23 @@
+{
+  "name": "db",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "bun run scripts/seed.ts"
+  },
+  "devDependencies": {
+    "@libsql/client": "^0.17.4",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2"
+  }
+}

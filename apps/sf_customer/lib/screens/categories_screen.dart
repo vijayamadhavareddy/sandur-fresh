@@ -5,12 +5,11 @@ import '../controllers/catalog_controller.dart';
 import '../theme/app_colors.dart';
 import '../widgets/product_card.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends GetView<CatalogController> {
   const CategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final catalog = Get.find<CatalogController>();
 
     return SafeArea(
       child: Column(
@@ -24,8 +23,8 @@ class CategoriesScreen extends StatelessWidget {
           SizedBox(
             height: 40,
             child: Obx(() {
-              final selected = catalog.selectedCategory.value;
-              final labels = [null, ...catalog.categories];
+              final selected = controller.selectedCategory.value;
+              final labels = [null, ...controller.categories];
               return ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding:
@@ -37,7 +36,7 @@ class CategoriesScreen extends StatelessWidget {
                   final cat = labels[i];
                   final isSelected = selected == cat;
                   return InkWell(
-                    onTap: () => catalog.setCategory(cat),
+                    onTap: () => controller.setCategory(cat),
                     borderRadius: BorderRadius.circular(AppRadius.pill),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -79,7 +78,7 @@ class CategoriesScreen extends StatelessWidget {
           const SizedBox(height: AppSpacing.lg),
           Expanded(
             child: Obx(() {
-              final products = catalog.filteredProducts;
+              final products = controller.filteredProducts;
               if (products.isEmpty) {
                 return Center(
                   child: Text('No products found',

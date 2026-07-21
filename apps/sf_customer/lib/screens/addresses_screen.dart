@@ -4,18 +4,17 @@ import 'package:get/get.dart';
 import '../controllers/address_controller.dart';
 import '../theme/app_colors.dart';
 
-class AddressesScreen extends StatelessWidget {
+class AddressesScreen extends GetView<AddressController> {
   const AddressesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final addresses = Get.find<AddressController>();
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(title: const Text('My Addresses')),
       body: Obx(() {
-        if (addresses.addresses.isEmpty) {
+        if (controller.addresses.isEmpty) {
           return Center(
             child: Text('No saved addresses yet',
                 style: textTheme.bodyMedium),
@@ -23,15 +22,15 @@ class AddressesScreen extends StatelessWidget {
         }
         return ListView.separated(
           padding: const EdgeInsets.all(AppSpacing.lg),
-          itemCount: addresses.addresses.length,
+          itemCount: controller.addresses.length,
           separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
           itemBuilder: (context, index) {
-            final address = addresses.addresses[index];
-            final isSelected = addresses.selectedId.value == address.id;
+            final address = controller.addresses[index];
+            final isSelected = controller.selectedId.value == address.id;
             return Card(
               child: InkWell(
                 borderRadius: BorderRadius.circular(AppRadius.lg),
-                onTap: () => addresses.select(address.id),
+                onTap: () => controller.select(address.id),
                 child: Padding(
                   padding: const EdgeInsets.all(AppSpacing.lg),
                   child: Row(
@@ -80,7 +79,7 @@ class AddressesScreen extends StatelessWidget {
                         icon: const Icon(Icons.edit_outlined,
                             color: AppColors.textSecondary, size: 20),
                         onPressed: () {
-                          addresses.beginEdit(address);
+                          controller.beginEdit(address);
                           Get.toNamed('/addresses/new',
                               arguments: address);
                         },
@@ -89,7 +88,7 @@ class AddressesScreen extends StatelessWidget {
                         icon: const Icon(Icons.delete_outline,
                             color: AppColors.error, size: 20),
                         onPressed: () =>
-                            addresses.delete(address.id),
+                            controller.delete(address.id),
                       ),
                     ],
                   ),
@@ -104,7 +103,7 @@ class AddressesScreen extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: ElevatedButton.icon(
             onPressed: () {
-              addresses.beginAdd();
+              controller.beginAdd();
               Get.toNamed('/addresses/new');
             },
             icon: const Icon(Icons.add),

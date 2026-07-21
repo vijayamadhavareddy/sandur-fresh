@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../theme/app_colors.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetView<AuthController> {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final auth = Get.find<AuthController>();
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -58,15 +57,15 @@ class LoginScreen extends StatelessWidget {
                       Text('Login with OTP', style: textTheme.headlineMedium),
                       const SizedBox(height: AppSpacing.xs),
                       Text(
-                        auth.otpSent.value
-                            ? 'Enter the 4-digit code sent to ${auth.phone.value}'
+                        controller.otpSent.value
+                            ? 'Enter the 4-digit code sent to ${controller.phone.value}'
                             : 'We\'ll send a one-time password to your number',
                         style: textTheme.bodySmall,
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      if (!auth.otpSent.value) ...[
+                      if (!controller.otpSent.value) ...[
                         TextField(
-                          controller: auth.phoneController,
+                          controller: controller.phoneController,
                           keyboardType: TextInputType.phone,
                           maxLength: 10,
                           decoration: const InputDecoration(
@@ -78,12 +77,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         ElevatedButton(
-                          onPressed: auth.sendOtp,
+                          onPressed: controller.sendOtp,
                           child: const Text('Send OTP'),
                         ),
                       ] else ...[
                         TextField(
-                          controller: auth.otpController,
+                          controller: controller.otpController,
                           keyboardType: TextInputType.number,
                           maxLength: 4,
                           decoration: const InputDecoration(
@@ -94,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         ElevatedButton(
-                          onPressed: auth.verifyOtp,
+                          onPressed: controller.verifyOtp,
                           child: const Text('Verify & Continue'),
                         ),
                         const SizedBox(height: AppSpacing.sm),
@@ -102,11 +101,11 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             TextButton(
-                              onPressed: auth.sendOtp,
+                              onPressed: controller.sendOtp,
                               child: const Text('Resend OTP'),
                             ),
                             TextButton(
-                              onPressed: auth.resetOtpFlow,
+                              onPressed: controller.resetOtpFlow,
                               child: const Text('Change number'),
                             ),
                           ],

@@ -1,2 +1,12 @@
-# deps
 node_modules/
+.env
+.DS_Store
+dist/
+coverage/
+*.log
+.drizzle/
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm

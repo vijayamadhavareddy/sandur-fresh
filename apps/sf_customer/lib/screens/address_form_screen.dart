@@ -4,12 +4,11 @@ import 'package:get/get.dart';
 import '../controllers/address_controller.dart';
 import '../theme/app_colors.dart';
 
-class AddressFormScreen extends StatelessWidget {
+class AddressFormScreen extends GetView<AddressController> {
   const AddressFormScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final addresses = Get.find<AddressController>();
     final textTheme = Theme.of(context).textTheme;
     final isEditing = Get.arguments != null;
 
@@ -26,15 +25,15 @@ class AddressFormScreen extends StatelessWidget {
                 children: AddressController.labels.map((label) {
                   return ChoiceChip(
                     label: Text(label),
-                    selected: addresses.formLabel.value == label,
+                    selected: controller.formLabel.value == label,
                     onSelected: (_) =>
-                        addresses.formLabel.value = label,
+                    controller.formLabel.value = label,
                   );
                 }).toList(),
               )),
           const SizedBox(height: AppSpacing.xl),
           TextField(
-            controller: addresses.lineController,
+            controller: controller.lineController,
             maxLines: 2,
             decoration: const InputDecoration(
               labelText: 'Address',
@@ -44,7 +43,7 @@ class AddressFormScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           TextField(
-            controller: addresses.cityController,
+            controller: controller.cityController,
             decoration: const InputDecoration(
               labelText: 'City',
               prefixIcon: Icon(Icons.location_city_outlined),
@@ -52,7 +51,7 @@ class AddressFormScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           TextField(
-            controller: addresses.pincodeController,
+            controller: controller.pincodeController,
             keyboardType: TextInputType.number,
             maxLength: 6,
             decoration: const InputDecoration(
@@ -63,7 +62,7 @@ class AddressFormScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           TextField(
-            controller: addresses.phoneController,
+            controller: controller.phoneController,
             keyboardType: TextInputType.phone,
             maxLength: 10,
             decoration: const InputDecoration(
@@ -79,7 +78,7 @@ class AddressFormScreen extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: ElevatedButton(
             onPressed: () {
-              if (addresses.saveForm()) Get.back();
+              if (controller.saveForm()) Get.back();
             },
             child: const Text('Save address'),
           ),

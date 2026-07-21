@@ -7,18 +7,17 @@ import '../models/order.dart';
 import '../theme/app_colors.dart';
 import '../utils/format.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends GetView<OrdersController> {
   const OrdersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final orders = Get.find<OrdersController>();
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(title: const Text('My Orders')),
       body: Obx(() {
-        if (orders.orders.isEmpty) {
+        if (controller.orders.isEmpty) {
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.xl),
@@ -50,10 +49,10 @@ class OrdersScreen extends StatelessWidget {
 
         return ListView.separated(
           padding: const EdgeInsets.all(AppSpacing.lg),
-          itemCount: orders.orders.length,
+          itemCount: controller.orders.length,
           separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
           itemBuilder: (context, index) {
-            final order = orders.orders[index];
+            final order = controller.orders[index];
             return _OrderCard(order: order);
           },
         );

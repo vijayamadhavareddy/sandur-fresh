@@ -1,8 +1,19 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
-    "types": ["bun"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  }
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["bun"]
+  },
+  "include": ["src/**/*", "tests/**/*", "../../packages/db/scripts/**/*", "drizzle.config.ts", "../../packages/db/seed.ts"],
+  "exclude": ["node_modules"]
 }

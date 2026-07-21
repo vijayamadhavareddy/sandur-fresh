@@ -23,14 +23,14 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
-          child: Column(
+          child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image
               Stack(
                 children: [
                   Container(
-                    height: 88,
+                    height: 110,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: AppColors.surfaceVariant,
@@ -101,7 +101,7 @@ class ProductCard extends StatelessWidget {
               const Spacer(),
               // ADD / stepper
               SizedBox(
-                height: 36,
+                height: 40,
                 child: !product.inStock
                     ? Center(
                         child: Text(

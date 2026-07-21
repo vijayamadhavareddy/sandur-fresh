@@ -8,12 +8,11 @@ import '../widgets/delivery_badge.dart';
 import '../widgets/product_card.dart';
 import '../widgets/section_header.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<CatalogController> {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final catalog = Get.find<CatalogController>();
 
     return SafeArea(
       child: CustomScrollView(
@@ -48,8 +47,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   TextField(
-                    controller: catalog.searchController,
-                    onChanged: (v) => catalog.searchQuery.value = v,
+                    controller: controller.searchController,
+                    onChanged: (v) => controller.searchQuery.value = v,
                     decoration: const InputDecoration(
                       hintText: 'Search groceries, snacks, pharmacy…',
                       prefixIcon: Icon(Icons.search),
@@ -79,7 +78,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Obx(() {
-            final products = catalog.filteredProducts;
+            final products = controller.filteredProducts;
             if (products.isEmpty) {
               return SliverToBoxAdapter(
                 child: Padding(
@@ -118,7 +117,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _CategoryPills extends StatelessWidget {
+class _CategoryPills extends GetView<CatalogController> {
   const _CategoryPills();
 
   @override
@@ -127,7 +126,7 @@ class _CategoryPills extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: Obx(() {
-        final selected = catalog.selectedCategory.value;
+        final selected = controller.selectedCategory.value;
         return ListView(
           scrollDirection: Axis.horizontal,
           children: [
@@ -135,7 +134,7 @@ class _CategoryPills extends StatelessWidget {
               label: 'All',
               selected: selected == null,
               onTap: () {
-                catalog.setCategory(null);
+                controller.setCategory(null);
               },
             ),
             ...catalog.categories.map((c) => _Pill(
