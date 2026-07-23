@@ -1,64 +1,35 @@
-# Nuxt Starter Template
+# Sandur Fresh Admin
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
-
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
-
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
-
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
-
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+Vue admin PWA for catalog, inventory, orders, stores, and daily operations.
 
 ## Setup
 
-Make sure to install the dependencies:
+Install workspace dependencies once from the repository root with `bun install`.
 
-```bash
-pnpm install
+Set `VITE_GRAPHQL_URL` to override the default `/graphql` browser endpoint. Set `VITE_API_URL` to the same API origin for image uploads when deploying cross-origin. The API uses `DATABASE_PATH`, `ADMIN_SESSION_COOKIE`, `UPLOAD_DIR`, and `UPLOAD_MAX_BYTES`; see `apps/api/.env.example`.
+
+Create the development administrator while seeding:
+
+```sh
+DATABASE_PATH=/absolute/path/to.db ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD='change-me' bun run --cwd packages/db db:seed
 ```
 
-## Development Server
+## Codegen
 
-Start the development server on `http://localhost:3000`:
+Export the API schema, then generate the client whenever the backend schema or operations change:
 
-```bash
-pnpm dev
+```sh
+DATABASE_PATH=/absolute/path/to.db bun run --cwd apps/api graphql:schema
+bun run --cwd apps/admin codegen
 ```
 
-## Production
+`VITE_GRAPHQL_SCHEMA` can override the default `apps/api/schema.graphql` input.
 
-Build the application for production:
+## Run
 
-```bash
-pnpm build
-```
+- Development: `moon run admin:dev`
+- Typecheck: `moon run admin:typecheck`
+- Production build: `moon run admin:build`
+- Lint: `bun run --cwd apps/admin lint`
 
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+The Vite server proxies `/api` and `/graphql` to `http://localhost:3000`. Authentication uses HTTP-only cookies, so the API must permit credentialed requests when hosted cross-origin.

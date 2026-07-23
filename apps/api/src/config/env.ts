@@ -10,7 +10,14 @@ const envSchema = z.object({
     .enum(["true", "false"])
     .default("false")
     .transform((v) => v === "true"),
-  DEV_OTP: z.string().min(4).max(8).default("000000"),
+  DEV_OTP: z.string().min(4).max(8).default("0000"),
+  ADMIN_SESSION_COOKIE: z.string().min(1).default("sf_admin_session"),
+  UPLOAD_DIR: z.string().min(1).default("./data/uploads"),
+  UPLOAD_MAX_BYTES: z.coerce
+    .number()
+    .int()
+    .positive()
+    .default(5 * 1024 * 1024),
 });
 
 export type Env = z.infer<typeof envSchema>;

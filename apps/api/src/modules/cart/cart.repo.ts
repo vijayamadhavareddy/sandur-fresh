@@ -1,6 +1,6 @@
+import type { DbOrTx } from "@sf/db";
+import { cartItems, carts, products } from "@sf/db";
 import { and, eq } from "drizzle-orm";
-import type { DbOrTx } from "../../db/client";
-import { cartItems, carts, products } from "../../db/schema";
 
 export type CartRow = typeof carts.$inferSelect;
 export type CartItemRow = typeof cartItems.$inferSelect;

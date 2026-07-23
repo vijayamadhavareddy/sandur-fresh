@@ -1,4 +1,5 @@
 import { createMiddleware } from "hono/factory";
+import { env } from "../../config/env";
 import type { AppEnv, AuthUser } from "../../types/hono";
 import { unauthorized } from "../errors";
 import { jsonError } from "../http";
@@ -6,6 +7,14 @@ import { jsonError } from "../http";
 export type ResolveUser = (token: string) => Promise<AuthUser | null>;
 
 let resolveUser: ResolveUser = async () => null;
+
+const decodeCookieValue = (value: string) => {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return null;
+  }
+};
 
 export const setAuthResolver = (fn: ResolveUser) => {
   resolveUser = fn;
@@ -20,6 +29,15 @@ export const optionalAuth = createMiddleware<AppEnv>(async (c, next) => {
       const user = await resolveUser(token);
       c.set("user", user);
     }
+  }
+  if (!c.get("user")) {
+    const cookie = c.req.header("cookie");
+    const token = cookie
+      ?.split(";")
+      .map((part) => part.trim().split("="))
+      .find(([name]) => name === env.ADMIN_SESSION_COOKIE)?.[1];
+    const decodedToken = token ? decodeCookieValue(token) : null;
+    if (decodedToken) c.set("user", await resolveUser(decodedToken));
   }
   await next();
 });

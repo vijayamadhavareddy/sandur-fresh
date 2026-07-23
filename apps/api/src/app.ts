@@ -1,5 +1,6 @@
+import { db } from "@sf/db";
 import { Hono } from "hono";
-import { db } from "../../../packages/db";
+import { cors } from "hono/cors";
 import {
   cartHandlers,
   deliveryHandlers,
@@ -9,6 +10,7 @@ import {
   usersService,
 } from "./container";
 import { createAppYoga } from "./graphql/yoga";
+import { createAdminRouter, createUploadsRouter } from "./modules/admin/admin.router";
 import { createCartRouter } from "./modules/cart/cart.router";
 import { createDeliveryRouter } from "./modules/delivery/delivery.router";
 import { createOrdersRouter } from "./modules/orders/orders.router";
@@ -25,6 +27,15 @@ export const createApp = () => {
 
   const app = new Hono<AppEnv>();
   app.onError(globalErrorHandler);
+  app.use(
+    "*",
+    cors({
+      origin: "http://localhost:5173", // or your frontend's actual origin
+      credentials: true,
+      allowMethods: ["POST", "GET", "OPTIONS"],
+      allowHeaders: ["Content-Type", "Authorization"],
+    }),
+  );
   app.use("*", requestIdMiddleware);
   app.use("*", loggerMiddleware);
   app.use("*", optionalAuth);
@@ -52,6 +63,7 @@ export const createApp = () => {
   const cartRouter = createCartRouter(cartHandlers);
   const ordersRouter = createOrdersRouter(ordersHandlers);
   const deliveryRouter = createDeliveryRouter(deliveryHandlers);
+  const adminRouter = createAdminRouter();
 
   const v1 = new Hono<AppEnv>();
   v1.route("/auth", authRouter);
@@ -60,11 +72,22 @@ export const createApp = () => {
   v1.route("/cart", cartRouter);
   v1.route("/orders", ordersRouter);
   v1.route("/delivery", deliveryRouter);
+  v1.route("/admin", adminRouter);
 
   app.route("/api/v1", v1);
+  app.route("/uploads", createUploadsRouter());
 
   const yoga = createAppYoga((token) => usersService.resolveUserFromToken(token));
-  app.on(["GET", "POST"], "/graphql", (c) => yoga.fetch(c.req.raw));
-
+  app.on(["GET", "POST"], "/graphql", async (c) => {
+    const responseHeaders = new Headers();
+    const response = await yoga.fetch(c.req.raw, { responseHeaders });
+    const headers = new Headers(response.headers);
+    for (const [key, value] of responseHeaders) headers.append(key, value);
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  });
   return app;
 };

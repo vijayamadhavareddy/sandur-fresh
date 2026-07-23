@@ -1,0 +1,308 @@
+query AdminSession {
+  adminSession {
+    user {
+      id
+      email
+      name
+      phone
+      role
+    }
+    expiresAt
+  }
+}
+mutation AdminLogin($email: String!, $password: String!) {
+  adminLogin(email: $email, password: $password) {
+    user {
+      id
+      email
+      name
+      phone
+      role
+    }
+    expiresAt
+  }
+}
+mutation AdminLogout {
+  adminLogout
+}
+query AdminDashboard {
+  adminDashboard {
+    todaysOrders
+    placedOrders
+    processingOrders
+    lowStockItems
+  }
+}
+query AdminProducts($page: Int!, $limit: Int!, $query: String) {
+  adminProducts(page: $page, limit: $limit, query: $query) {
+    page
+    total
+    items {
+      id
+      name
+      description
+      unit
+      mrp
+      price
+      imageUrl
+      isActive
+      category {
+        id
+        name
+      }
+    }
+  }
+}
+query AdminProduct($id: String!) {
+  adminProduct(id: $id) {
+    id
+    name
+    description
+    unit
+    mrp
+    price
+    imageUrl
+    isActive
+    categoryId
+    category {
+      id
+      name
+    }
+  }
+}
+query AdminCategories {
+  adminCategories {
+    id
+    name
+    slug
+    sortOrder
+  }
+}
+mutation CreateAdminProduct(
+  $categoryId: String!
+  $name: String!
+  $description: String
+  $unit: String!
+  $mrp: Int!
+  $price: Int!
+  $imageUrl: String
+  $isActive: Boolean
+) {
+  createAdminProduct(
+    categoryId: $categoryId
+    name: $name
+    description: $description
+    unit: $unit
+    mrp: $mrp
+    price: $price
+    imageUrl: $imageUrl
+    isActive: $isActive
+  ) {
+    id
+  }
+}
+mutation UpdateAdminProduct(
+  $id: String!
+  $categoryId: String
+  $name: String
+  $description: String
+  $unit: String
+  $mrp: Int
+  $price: Int
+  $imageUrl: String
+  $isActive: Boolean
+) {
+  updateAdminProduct(
+    id: $id
+    categoryId: $categoryId
+    name: $name
+    description: $description
+    unit: $unit
+    mrp: $mrp
+    price: $price
+    imageUrl: $imageUrl
+    isActive: $isActive
+  ) {
+    id
+  }
+}
+mutation CreateAdminCategory($name: String!, $slug: String!, $sortOrder: Int) {
+  createAdminCategory(name: $name, slug: $slug, sortOrder: $sortOrder) {
+    id
+  }
+}
+mutation UpdateAdminCategory($id: String!, $name: String, $slug: String, $sortOrder: Int) {
+  updateAdminCategory(id: $id, name: $name, slug: $slug, sortOrder: $sortOrder) {
+    id
+  }
+}
+query AdminStores {
+  adminStores {
+    id
+    name
+    address
+    lat
+    lng
+    serviceRadiusM
+    isActive
+  }
+}
+query AdminStore($id: String!) {
+  adminStore(id: $id) {
+    id
+    name
+    address
+    lat
+    lng
+    serviceRadiusM
+    isActive
+  }
+}
+mutation CreateAdminStore(
+  $name: String!
+  $address: String!
+  $lat: Float!
+  $lng: Float!
+  $serviceRadiusM: Int
+  $isActive: Boolean
+) {
+  createAdminStore(
+    name: $name
+    address: $address
+    lat: $lat
+    lng: $lng
+    serviceRadiusM: $serviceRadiusM
+    isActive: $isActive
+  ) {
+    id
+  }
+}
+mutation UpdateAdminStore(
+  $id: String!
+  $name: String
+  $address: String
+  $lat: Float
+  $lng: Float
+  $serviceRadiusM: Int
+  $isActive: Boolean
+) {
+  updateAdminStore(
+    id: $id
+    name: $name
+    address: $address
+    lat: $lat
+    lng: $lng
+    serviceRadiusM: $serviceRadiusM
+    isActive: $isActive
+  ) {
+    id
+  }
+}
+query AdminInventory(
+  $storeId: String!
+  $page: Int!
+  $limit: Int!
+  $query: String
+  $lowStockOnly: Boolean!
+) {
+  adminInventory(
+    storeId: $storeId
+    page: $page
+    limit: $limit
+    query: $query
+    lowStockOnly: $lowStockOnly
+  ) {
+    page
+    limit
+    total
+    items {
+      id
+      stockQty
+      lowStockThreshold
+      updatedAt
+      product {
+        id
+        name
+        imageUrl
+      }
+    }
+  }
+}
+mutation AdjustAdminInventory($inventoryId: String!, $delta: Int!, $reason: String!) {
+  adjustAdminInventory(inventoryId: $inventoryId, delta: $delta, reason: $reason) {
+    id
+    stockQty
+  }
+}
+query AdminOrders($page: Int!, $limit: Int!, $status: AdminOrderStatus) {
+  adminOrders(page: $page, limit: $limit, status: $status) {
+    page
+    limit
+    total
+    items {
+      id
+      status
+      total
+      placedAt
+      customer {
+        id
+        name
+        email
+        phone
+      }
+      store {
+        id
+        name
+      }
+    }
+  }
+}
+query AdminOrder($id: String!) {
+  adminOrder(id: $id) {
+    id
+    status
+    subtotal
+    deliveryFee
+    discount
+    total
+    paymentMethod
+    placedAt
+    customer {
+      id
+      name
+      email
+      phone
+    }
+    store {
+      id
+      name
+    }
+    address {
+      line1
+      line2
+      city
+      pincode
+    }
+    items {
+      id
+      name
+      unit
+      unitPrice
+      mrp
+      quantity
+    }
+    history {
+      fromStatus
+      toStatus
+      reason
+      createdAt
+    }
+    allowedNextStatuses
+  }
+}
+mutation TransitionAdminOrder($orderId: String!, $status: AdminOrderStatus!, $reason: String) {
+  transitionAdminOrder(orderId: $orderId, status: $status, reason: $reason) {
+    id
+    status
+  }
+}

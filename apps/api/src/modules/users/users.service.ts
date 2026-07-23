@@ -1,5 +1,5 @@
+import type { Db } from "@sf/db";
 import { env, isProduction } from "../../config/env";
-import type { Db } from "../../db/client";
 import {
   type DomainError,
   forbidden,
@@ -72,6 +72,9 @@ export const createUsersService = (deps: UsersServiceDeps) => {
     let user = await deps.usersRepo.findUserByPhone(deps.db, input.phone);
     if (!user) {
       user = await deps.usersRepo.createUser(deps.db, { phone: input.phone });
+    }
+    if (user.role === "admin") {
+      return err(unauthorized("Administrators must use the admin login"));
     }
 
     const token = crypto.randomUUID() + crypto.randomUUID().replaceAll("-", "");

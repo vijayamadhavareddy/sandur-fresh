@@ -1,0 +1,10574 @@
+type AddressesSelectItem {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): AddressesUserRelation
+}
+
+type AddressesUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [AddressesUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [AddressesUserRelationAddressesRelation!]!
+}
+
+enum UsersRoleEnum {
+  """Value: customer"""
+  customer
+
+  """Value: admin"""
+  admin
+}
+
+type AddressesUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): AddressesUserRelationSessionsRelationUserRelation
+}
+
+type AddressesUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type AddressesUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type AddressesItem {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type AdminCredentialsSelectItem {
+  id: String!
+  userId: String!
+  email: String!
+  passwordHash: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): AdminCredentialsUserRelation
+}
+
+type AdminCredentialsUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [AdminCredentialsUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [AdminCredentialsUserRelationAddressesRelation!]!
+}
+
+type AdminCredentialsUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): AdminCredentialsUserRelationSessionsRelationUserRelation
+}
+
+type AdminCredentialsUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type AdminCredentialsUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): AdminCredentialsUserRelationAddressesRelationUserRelation
+}
+
+type AdminCredentialsUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type AdminCredentialsItem {
+  id: String!
+  userId: String!
+  email: String!
+  passwordHash: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsSelectItem {
+  id: String!
+  cartId: String!
+  productId: String!
+  quantity: Int!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  cart(where: CartsFilters): CartItemsCartRelation
+  product(where: ProductsFilters): CartItemsProductRelation
+}
+
+type CartItemsCartRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): CartItemsCartRelationUserRelation
+  store(where: StoresFilters): CartItemsCartRelationStoreRelation
+  items(where: CartItemsFilters, orderBy: CartItemsOrderBy, offset: Int, limit: Int): [CartItemsCartRelationItemsRelation!]!
+}
+
+type CartItemsCartRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [CartItemsCartRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [CartItemsCartRelationUserRelationAddressesRelation!]!
+}
+
+type CartItemsCartRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): CartItemsCartRelationUserRelationSessionsRelationUserRelation
+}
+
+type CartItemsCartRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): CartItemsCartRelationUserRelationAddressesRelationUserRelation
+}
+
+type CartItemsCartRelationUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelation!]!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartItemsCartRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartItemsCartRelationStoreRelationInventoryRelationProductRelation
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationItemsRelation {
+  id: String!
+  cartId: String!
+  productId: String!
+  quantity: Int!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartItemsProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsProductRelationInventoryRelation!]!
+}
+
+type CartItemsProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsProductRelationCategoryRelationProductsRelation!]!
+}
+
+type CartItemsProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartItemsProductRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartItemsProductRelationInventoryRelationProductRelation
+}
+
+type CartItemsProductRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsItem {
+  id: String!
+  cartId: String!
+  productId: String!
+  quantity: Int!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsSelectItem {
+  id: String!
+  userId: String!
+  storeId: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): CartsUserRelation
+  store(where: StoresFilters): CartsStoreRelation
+  items(where: CartItemsFilters, orderBy: CartItemsOrderBy, offset: Int, limit: Int): [CartsItemsRelation!]!
+}
+
+type CartsUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [CartsUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [CartsUserRelationAddressesRelation!]!
+}
+
+type CartsUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): CartsUserRelationSessionsRelationUserRelation
+}
+
+type CartsUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): CartsUserRelationAddressesRelationUserRelation
+}
+
+type CartsUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsStoreRelationInventoryRelation!]!
+}
+
+type CartsStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartsStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartsStoreRelationInventoryRelationProductRelation
+}
+
+type CartsStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartsStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type CartsStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type CartsStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelation {
+  id: String!
+  cartId: String!
+  productId: String!
+  quantity: Int!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  cart(where: CartsFilters): CartsItemsRelationCartRelation
+  product(where: ProductsFilters): CartsItemsRelationProductRelation
+}
+
+type CartsItemsRelationCartRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartsItemsRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationInventoryRelation!]!
+}
+
+type CartsItemsRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type CartsItemsRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartsItemsRelationProductRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartsItemsRelationProductRelationInventoryRelationProductRelation
+}
+
+type CartsItemsRelationProductRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItem {
+  id: String!
+  userId: String!
+  storeId: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesSelectItem {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CategoriesProductsRelation!]!
+}
+
+type CategoriesProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CategoriesProductsRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationInventoryRelation!]!
+}
+
+type CategoriesProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+}
+
+type CategoriesProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CategoriesProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CategoriesProductsRelationInventoryRelationProductRelation
+}
+
+type CategoriesProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesItem {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+}
+
+type InventorySelectItem {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): InventoryStoreRelation
+  product(where: ProductsFilters): InventoryProductRelation
+}
+
+type InventoryStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryStoreRelationInventoryRelation!]!
+}
+
+type InventoryStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): InventoryProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryProductRelationInventoryRelation!]!
+}
+
+type InventoryProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryProductRelationCategoryRelationProductsRelation!]!
+}
+
+type InventoryProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryItem {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsSelectItem {
+  id: String!
+  inventoryId: String!
+  delta: Int!
+  reason: String!
+  adjustedBy: String!
+
+  """Date"""
+  createdAt: String!
+  inventory(where: InventoryFilters): InventoryAdjustmentsInventoryRelation
+  user(where: UsersFilters): InventoryAdjustmentsUserRelation
+}
+
+type InventoryAdjustmentsInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): InventoryAdjustmentsInventoryRelationStoreRelation
+  product(where: ProductsFilters): InventoryAdjustmentsInventoryRelationProductRelation
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsUserRelationAddressesRelation!]!
+}
+
+type InventoryAdjustmentsUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): InventoryAdjustmentsUserRelationSessionsRelationUserRelation
+}
+
+type InventoryAdjustmentsUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): InventoryAdjustmentsUserRelationAddressesRelationUserRelation
+}
+
+type InventoryAdjustmentsUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsItem {
+  id: String!
+  inventoryId: String!
+  delta: Int!
+  reason: String!
+  adjustedBy: String!
+
+  """Date"""
+  createdAt: String!
+}
+
+type OrderItemsSelectItem {
+  id: String!
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+  order(where: OrdersFilters): OrderItemsOrderRelation
+  product(where: ProductsFilters): OrderItemsProductRelation
+}
+
+type OrderItemsOrderRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderItemsOrderRelationUserRelation
+  store(where: StoresFilters): OrderItemsOrderRelationStoreRelation
+  address(where: AddressesFilters): OrderItemsOrderRelationAddressRelation
+  items(where: OrderItemsFilters, orderBy: OrderItemsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationItemsRelation!]!
+}
+
+enum OrdersStatusEnum {
+  """Value: PLACED"""
+  PLACED
+
+  """Value: PACKED"""
+  PACKED
+
+  """Value: OUT_FOR_DELIVERY"""
+  OUT_FOR_DELIVERY
+
+  """Value: DELIVERED"""
+  DELIVERED
+
+  """Value: CANCELLED"""
+  CANCELLED
+}
+
+type OrderItemsOrderRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationUserRelationAddressesRelation!]!
+}
+
+type OrderItemsOrderRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrderItemsOrderRelationUserRelationSessionsRelationUserRelation
+}
+
+type OrderItemsOrderRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderItemsOrderRelationUserRelationAddressesRelationUserRelation
+}
+
+type OrderItemsOrderRelationUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationInventoryRelation!]!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationAddressRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderItemsOrderRelationAddressRelationUserRelation
+}
+
+type OrderItemsOrderRelationAddressRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationAddressRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationAddressRelationUserRelationAddressesRelation!]!
+}
+
+type OrderItemsOrderRelationAddressRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrderItemsOrderRelationAddressRelationUserRelationSessionsRelationUserRelation
+}
+
+type OrderItemsOrderRelationAddressRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationAddressRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationItemsRelation {
+  id: String!
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+}
+
+type OrderItemsProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderItemsProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationInventoryRelation!]!
+}
+
+type OrderItemsProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderItemsProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderItemsProductRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderItemsProductRelationInventoryRelationProductRelation
+}
+
+type OrderItemsProductRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsItem {
+  id: String!
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+}
+
+type OrderStatusHistorySelectItem {
+  id: String!
+  orderId: String!
+  fromStatus: OrderStatusHistoryFromStatusEnum
+  toStatus: OrderStatusHistoryToStatusEnum!
+  changedBy: String
+  reason: String
+
+  """Date"""
+  createdAt: String!
+  order(where: OrdersFilters): OrderStatusHistoryOrderRelation
+  user(where: UsersFilters): OrderStatusHistoryUserRelation
+}
+
+enum OrderStatusHistoryFromStatusEnum {
+  """Value: PLACED"""
+  PLACED
+
+  """Value: PACKED"""
+  PACKED
+
+  """Value: OUT_FOR_DELIVERY"""
+  OUT_FOR_DELIVERY
+
+  """Value: DELIVERED"""
+  DELIVERED
+
+  """Value: CANCELLED"""
+  CANCELLED
+}
+
+enum OrderStatusHistoryToStatusEnum {
+  """Value: PLACED"""
+  PLACED
+
+  """Value: PACKED"""
+  PACKED
+
+  """Value: OUT_FOR_DELIVERY"""
+  OUT_FOR_DELIVERY
+
+  """Value: DELIVERED"""
+  DELIVERED
+
+  """Value: CANCELLED"""
+  CANCELLED
+}
+
+type OrderStatusHistoryOrderRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderStatusHistoryOrderRelationUserRelation
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationStoreRelation
+  address(where: AddressesFilters): OrderStatusHistoryOrderRelationAddressRelation
+  items(where: OrderItemsFilters, orderBy: OrderItemsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationUserRelationAddressesRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrderStatusHistoryOrderRelationUserRelationSessionsRelationUserRelation
+}
+
+type OrderStatusHistoryOrderRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderStatusHistoryOrderRelationUserRelationAddressesRelationUserRelation
+}
+
+type OrderStatusHistoryOrderRelationUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationInventoryRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelation
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationAddressRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderStatusHistoryOrderRelationAddressRelationUserRelation
+}
+
+type OrderStatusHistoryOrderRelationAddressRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationAddressRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationAddressRelationUserRelationAddressesRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationAddressRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrderStatusHistoryOrderRelationAddressRelationUserRelationSessionsRelationUserRelation
+}
+
+type OrderStatusHistoryOrderRelationAddressRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationAddressRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelation {
+  id: String!
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+  order(where: OrdersFilters): OrderStatusHistoryOrderRelationItemsRelationOrderRelation
+  product(where: ProductsFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelation
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationOrderRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationProductRelation
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrderStatusHistoryUserRelationAddressesRelation!]!
+}
+
+type OrderStatusHistoryUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrderStatusHistoryUserRelationSessionsRelationUserRelation
+}
+
+type OrderStatusHistoryUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrderStatusHistoryUserRelationAddressesRelationUserRelation
+}
+
+type OrderStatusHistoryUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryItem {
+  id: String!
+  orderId: String!
+  fromStatus: OrderStatusHistoryFromStatusEnum
+  toStatus: OrderStatusHistoryToStatusEnum!
+  changedBy: String
+  reason: String
+
+  """Date"""
+  createdAt: String!
+}
+
+type OrdersSelectItem {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrdersUserRelation
+  store(where: StoresFilters): OrdersStoreRelation
+  address(where: AddressesFilters): OrdersAddressRelation
+  items(where: OrderItemsFilters, orderBy: OrderItemsOrderBy, offset: Int, limit: Int): [OrdersItemsRelation!]!
+}
+
+type OrdersUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrdersUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrdersUserRelationAddressesRelation!]!
+}
+
+type OrdersUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrdersUserRelationSessionsRelationUserRelation
+}
+
+type OrdersUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrdersUserRelationAddressesRelationUserRelation
+}
+
+type OrdersUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersStoreRelationInventoryRelation!]!
+}
+
+type OrdersStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrdersStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrdersStoreRelationInventoryRelationProductRelation
+}
+
+type OrdersStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrdersStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type OrdersStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersAddressRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): OrdersAddressRelationUserRelation
+}
+
+type OrdersAddressRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [OrdersAddressRelationUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [OrdersAddressRelationUserRelationAddressesRelation!]!
+}
+
+type OrdersAddressRelationUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): OrdersAddressRelationUserRelationSessionsRelationUserRelation
+}
+
+type OrdersAddressRelationUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersAddressRelationUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelation {
+  id: String!
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+  order(where: OrdersFilters): OrdersItemsRelationOrderRelation
+  product(where: ProductsFilters): OrdersItemsRelationProductRelation
+}
+
+type OrdersItemsRelationOrderRelation {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrdersItemsRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationInventoryRelation!]!
+}
+
+type OrdersItemsRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type OrdersItemsRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrdersItemsRelationProductRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrdersItemsRelationProductRelationInventoryRelationProductRelation
+}
+
+type OrdersItemsRelationProductRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItem {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OtpChallengesSelectItem {
+  id: String!
+  phone: String!
+  code: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  consumedAt: String
+
+  """Date"""
+  createdAt: String!
+}
+
+type OtpChallengesItem {
+  id: String!
+  phone: String!
+  code: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  consumedAt: String
+
+  """Date"""
+  createdAt: String!
+}
+
+type ProductsSelectItem {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): ProductsCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [ProductsInventoryRelation!]!
+}
+
+type ProductsCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [ProductsCategoryRelationProductsRelation!]!
+}
+
+type ProductsCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): ProductsInventoryRelationStoreRelation
+  product(where: ProductsFilters): ProductsInventoryRelationProductRelation
+}
+
+type ProductsInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [ProductsInventoryRelationStoreRelationInventoryRelation!]!
+}
+
+type ProductsInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsItem {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type SessionsSelectItem {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): SessionsUserRelation
+}
+
+type SessionsUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [SessionsUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [SessionsUserRelationAddressesRelation!]!
+}
+
+type SessionsUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+}
+
+type SessionsUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): SessionsUserRelationAddressesRelationUserRelation
+}
+
+type SessionsUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type SessionsItem {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+}
+
+type StoreSlotConfigSelectItem {
+  id: String!
+  storeId: String!
+  slotDurationMinutes: Int!
+  dayStartMinutes: Int!
+  dayEndMinutes: Int!
+  capacityPerSlot: Int!
+
+  """Date"""
+  createdAt: String!
+  store(where: StoresFilters): StoreSlotConfigStoreRelation
+}
+
+type StoreSlotConfigStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationInventoryRelation!]!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): StoreSlotConfigStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): StoreSlotConfigStoreRelationInventoryRelationProductRelation
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigItem {
+  id: String!
+  storeId: String!
+  slotDurationMinutes: Int!
+  dayStartMinutes: Int!
+  dayEndMinutes: Int!
+  capacityPerSlot: Int!
+
+  """Date"""
+  createdAt: String!
+}
+
+type StoresSelectItem {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoresInventoryRelation!]!
+}
+
+type StoresInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): StoresInventoryRelationStoreRelation
+  product(where: ProductsFilters): StoresInventoryRelationProductRelation
+}
+
+type StoresInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): StoresInventoryRelationProductRelationCategoryRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoresInventoryRelationProductRelationInventoryRelation!]!
+}
+
+type StoresInventoryRelationProductRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoresInventoryRelationProductRelationCategoryRelationProductsRelation!]!
+}
+
+type StoresInventoryRelationProductRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresInventoryRelationProductRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresItem {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type UsersSelectItem {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [UsersSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [UsersAddressesRelation!]!
+}
+
+type UsersSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): UsersSessionsRelationUserRelation
+}
+
+type UsersSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type UsersAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): UsersAddressesRelationUserRelation
+}
+
+type UsersAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type UsersItem {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+input AddressesInsertInput {
+  id: String
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input AddressesUpdateInput {
+  id: String
+  userId: String
+  label: String
+  line1: String
+  line2: String
+  city: String
+  pincode: String
+  phone: String
+  lat: Float
+  lng: Float
+  isDefault: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input AddressesFilters {
+  id: AddressesIdFilters
+  userId: AddressesUserIdFilters
+  label: AddressesLabelFilters
+  line1: AddressesLine1Filters
+  line2: AddressesLine2Filters
+  city: AddressesCityFilters
+  pincode: AddressesPincodeFilters
+  phone: AddressesPhoneFilters
+  lat: AddressesLatFilters
+  lng: AddressesLngFilters
+  isDefault: AddressesIsDefaultFilters
+  createdAt: AddressesCreatedAtFilters
+  updatedAt: AddressesUpdatedAtFilters
+  OR: [AddressesFiltersOr!]
+}
+
+input AddressesIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesIdfiltersOr!]
+}
+
+input AddressesIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesUserIdfiltersOr!]
+}
+
+input AddressesUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesLabelFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesLabelfiltersOr!]
+}
+
+input AddressesLabelfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesLine1Filters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesLine1filtersOr!]
+}
+
+input AddressesLine1filtersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesLine2Filters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesLine2filtersOr!]
+}
+
+input AddressesLine2filtersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesCityFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesCityfiltersOr!]
+}
+
+input AddressesCityfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesPincodeFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesPincodefiltersOr!]
+}
+
+input AddressesPincodefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesPhoneFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesPhonefiltersOr!]
+}
+
+input AddressesPhonefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesLatFilters {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesLatfiltersOr!]
+}
+
+input AddressesLatfiltersOr {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesLngFilters {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesLngfiltersOr!]
+}
+
+input AddressesLngfiltersOr {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesIsDefaultFilters {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesIsDefaultfiltersOr!]
+}
+
+input AddressesIsDefaultfiltersOr {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesCreatedAtfiltersOr!]
+}
+
+input AddressesCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AddressesUpdatedAtfiltersOr!]
+}
+
+input AddressesUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AddressesFiltersOr {
+  id: AddressesIdFilters
+  userId: AddressesUserIdFilters
+  label: AddressesLabelFilters
+  line1: AddressesLine1Filters
+  line2: AddressesLine2Filters
+  city: AddressesCityFilters
+  pincode: AddressesPincodeFilters
+  phone: AddressesPhoneFilters
+  lat: AddressesLatFilters
+  lng: AddressesLngFilters
+  isDefault: AddressesIsDefaultFilters
+  createdAt: AddressesCreatedAtFilters
+  updatedAt: AddressesUpdatedAtFilters
+}
+
+input AddressesOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  label: InnerOrder
+  line1: InnerOrder
+  line2: InnerOrder
+  city: InnerOrder
+  pincode: InnerOrder
+  phone: InnerOrder
+  lat: InnerOrder
+  lng: InnerOrder
+  isDefault: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input InnerOrder {
+  direction: OrderDirection!
+
+  """Priority of current field"""
+  priority: Int!
+}
+
+"""Order by direction"""
+enum OrderDirection {
+  """Ascending order"""
+  asc
+
+  """Descending order"""
+  desc
+}
+
+input AdminCredentialsInsertInput {
+  id: String
+  userId: String!
+  email: String!
+  passwordHash: String!
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input AdminCredentialsUpdateInput {
+  id: String
+  userId: String
+  email: String
+  passwordHash: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input AdminCredentialsFilters {
+  id: AdminCredentialsIdFilters
+  userId: AdminCredentialsUserIdFilters
+  email: AdminCredentialsEmailFilters
+  passwordHash: AdminCredentialsPasswordHashFilters
+  createdAt: AdminCredentialsCreatedAtFilters
+  updatedAt: AdminCredentialsUpdatedAtFilters
+  OR: [AdminCredentialsFiltersOr!]
+}
+
+input AdminCredentialsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsIdfiltersOr!]
+}
+
+input AdminCredentialsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsUserIdfiltersOr!]
+}
+
+input AdminCredentialsUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsEmailFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsEmailfiltersOr!]
+}
+
+input AdminCredentialsEmailfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsPasswordHashFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsPasswordHashfiltersOr!]
+}
+
+input AdminCredentialsPasswordHashfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsCreatedAtfiltersOr!]
+}
+
+input AdminCredentialsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [AdminCredentialsUpdatedAtfiltersOr!]
+}
+
+input AdminCredentialsUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input AdminCredentialsFiltersOr {
+  id: AdminCredentialsIdFilters
+  userId: AdminCredentialsUserIdFilters
+  email: AdminCredentialsEmailFilters
+  passwordHash: AdminCredentialsPasswordHashFilters
+  createdAt: AdminCredentialsCreatedAtFilters
+  updatedAt: AdminCredentialsUpdatedAtFilters
+}
+
+input AdminCredentialsOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  email: InnerOrder
+  passwordHash: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input CartItemsInsertInput {
+  id: String
+  cartId: String!
+  productId: String!
+  quantity: Int
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input CartItemsUpdateInput {
+  id: String
+  cartId: String
+  productId: String
+  quantity: Int
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input CartItemsFilters {
+  id: CartItemsIdFilters
+  cartId: CartItemsCartIdFilters
+  productId: CartItemsProductIdFilters
+  quantity: CartItemsQuantityFilters
+  createdAt: CartItemsCreatedAtFilters
+  updatedAt: CartItemsUpdatedAtFilters
+  OR: [CartItemsFiltersOr!]
+}
+
+input CartItemsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsIdfiltersOr!]
+}
+
+input CartItemsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsCartIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsCartIdfiltersOr!]
+}
+
+input CartItemsCartIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsProductIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsProductIdfiltersOr!]
+}
+
+input CartItemsProductIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsQuantityFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsQuantityfiltersOr!]
+}
+
+input CartItemsQuantityfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsCreatedAtfiltersOr!]
+}
+
+input CartItemsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartItemsUpdatedAtfiltersOr!]
+}
+
+input CartItemsUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartItemsFiltersOr {
+  id: CartItemsIdFilters
+  cartId: CartItemsCartIdFilters
+  productId: CartItemsProductIdFilters
+  quantity: CartItemsQuantityFilters
+  createdAt: CartItemsCreatedAtFilters
+  updatedAt: CartItemsUpdatedAtFilters
+}
+
+input CartItemsOrderBy {
+  id: InnerOrder
+  cartId: InnerOrder
+  productId: InnerOrder
+  quantity: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input CartsInsertInput {
+  id: String
+  userId: String!
+  storeId: String!
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input CartsUpdateInput {
+  id: String
+  userId: String
+  storeId: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input CartsFilters {
+  id: CartsIdFilters
+  userId: CartsUserIdFilters
+  storeId: CartsStoreIdFilters
+  createdAt: CartsCreatedAtFilters
+  updatedAt: CartsUpdatedAtFilters
+  OR: [CartsFiltersOr!]
+}
+
+input CartsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartsIdfiltersOr!]
+}
+
+input CartsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartsUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartsUserIdfiltersOr!]
+}
+
+input CartsUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartsStoreIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartsStoreIdfiltersOr!]
+}
+
+input CartsStoreIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartsCreatedAtfiltersOr!]
+}
+
+input CartsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartsUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CartsUpdatedAtfiltersOr!]
+}
+
+input CartsUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CartsFiltersOr {
+  id: CartsIdFilters
+  userId: CartsUserIdFilters
+  storeId: CartsStoreIdFilters
+  createdAt: CartsCreatedAtFilters
+  updatedAt: CartsUpdatedAtFilters
+}
+
+input CartsOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  storeId: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input CategoriesInsertInput {
+  id: String
+  name: String!
+  slug: String!
+  sortOrder: Int
+
+  """Date"""
+  createdAt: String
+}
+
+input CategoriesUpdateInput {
+  id: String
+  name: String
+  slug: String
+  sortOrder: Int
+
+  """Date"""
+  createdAt: String
+}
+
+input CategoriesFilters {
+  id: CategoriesIdFilters
+  name: CategoriesNameFilters
+  slug: CategoriesSlugFilters
+  sortOrder: CategoriesSortOrderFilters
+  createdAt: CategoriesCreatedAtFilters
+  OR: [CategoriesFiltersOr!]
+}
+
+input CategoriesIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CategoriesIdfiltersOr!]
+}
+
+input CategoriesIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CategoriesNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CategoriesNamefiltersOr!]
+}
+
+input CategoriesNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CategoriesSlugFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CategoriesSlugfiltersOr!]
+}
+
+input CategoriesSlugfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CategoriesSortOrderFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CategoriesSortOrderfiltersOr!]
+}
+
+input CategoriesSortOrderfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CategoriesCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [CategoriesCreatedAtfiltersOr!]
+}
+
+input CategoriesCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input CategoriesFiltersOr {
+  id: CategoriesIdFilters
+  name: CategoriesNameFilters
+  slug: CategoriesSlugFilters
+  sortOrder: CategoriesSortOrderFilters
+  createdAt: CategoriesCreatedAtFilters
+}
+
+input CategoriesOrderBy {
+  id: InnerOrder
+  name: InnerOrder
+  slug: InnerOrder
+  sortOrder: InnerOrder
+  createdAt: InnerOrder
+}
+
+input InventoryInsertInput {
+  id: String
+  storeId: String!
+  productId: String!
+  stockQty: Int
+  lowStockThreshold: Int
+
+  """Date"""
+  updatedAt: String
+}
+
+input InventoryUpdateInput {
+  id: String
+  storeId: String
+  productId: String
+  stockQty: Int
+  lowStockThreshold: Int
+
+  """Date"""
+  updatedAt: String
+}
+
+input InventoryFilters {
+  id: InventoryIdFilters
+  storeId: InventoryStoreIdFilters
+  productId: InventoryProductIdFilters
+  stockQty: InventoryStockQtyFilters
+  lowStockThreshold: InventoryLowStockThresholdFilters
+  updatedAt: InventoryUpdatedAtFilters
+  OR: [InventoryFiltersOr!]
+}
+
+input InventoryIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryIdfiltersOr!]
+}
+
+input InventoryIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryStoreIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryStoreIdfiltersOr!]
+}
+
+input InventoryStoreIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryProductIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryProductIdfiltersOr!]
+}
+
+input InventoryProductIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryStockQtyFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryStockQtyfiltersOr!]
+}
+
+input InventoryStockQtyfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryLowStockThresholdFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryLowStockThresholdfiltersOr!]
+}
+
+input InventoryLowStockThresholdfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryUpdatedAtfiltersOr!]
+}
+
+input InventoryUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryFiltersOr {
+  id: InventoryIdFilters
+  storeId: InventoryStoreIdFilters
+  productId: InventoryProductIdFilters
+  stockQty: InventoryStockQtyFilters
+  lowStockThreshold: InventoryLowStockThresholdFilters
+  updatedAt: InventoryUpdatedAtFilters
+}
+
+input InventoryOrderBy {
+  id: InnerOrder
+  storeId: InnerOrder
+  productId: InnerOrder
+  stockQty: InnerOrder
+  lowStockThreshold: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input InventoryAdjustmentsInsertInput {
+  id: String
+  inventoryId: String!
+  delta: Int!
+  reason: String!
+  adjustedBy: String!
+
+  """Date"""
+  createdAt: String
+}
+
+input InventoryAdjustmentsUpdateInput {
+  id: String
+  inventoryId: String
+  delta: Int
+  reason: String
+  adjustedBy: String
+
+  """Date"""
+  createdAt: String
+}
+
+input InventoryAdjustmentsFilters {
+  id: InventoryAdjustmentsIdFilters
+  inventoryId: InventoryAdjustmentsInventoryIdFilters
+  delta: InventoryAdjustmentsDeltaFilters
+  reason: InventoryAdjustmentsReasonFilters
+  adjustedBy: InventoryAdjustmentsAdjustedByFilters
+  createdAt: InventoryAdjustmentsCreatedAtFilters
+  OR: [InventoryAdjustmentsFiltersOr!]
+}
+
+input InventoryAdjustmentsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsIdfiltersOr!]
+}
+
+input InventoryAdjustmentsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsInventoryIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsInventoryIdfiltersOr!]
+}
+
+input InventoryAdjustmentsInventoryIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsDeltaFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsDeltafiltersOr!]
+}
+
+input InventoryAdjustmentsDeltafiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsReasonFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsReasonfiltersOr!]
+}
+
+input InventoryAdjustmentsReasonfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsAdjustedByFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsAdjustedByfiltersOr!]
+}
+
+input InventoryAdjustmentsAdjustedByfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [InventoryAdjustmentsCreatedAtfiltersOr!]
+}
+
+input InventoryAdjustmentsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input InventoryAdjustmentsFiltersOr {
+  id: InventoryAdjustmentsIdFilters
+  inventoryId: InventoryAdjustmentsInventoryIdFilters
+  delta: InventoryAdjustmentsDeltaFilters
+  reason: InventoryAdjustmentsReasonFilters
+  adjustedBy: InventoryAdjustmentsAdjustedByFilters
+  createdAt: InventoryAdjustmentsCreatedAtFilters
+}
+
+input InventoryAdjustmentsOrderBy {
+  id: InnerOrder
+  inventoryId: InnerOrder
+  delta: InnerOrder
+  reason: InnerOrder
+  adjustedBy: InnerOrder
+  createdAt: InnerOrder
+}
+
+input OrderItemsInsertInput {
+  id: String
+  orderId: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+}
+
+input OrderItemsUpdateInput {
+  id: String
+  orderId: String
+  productId: String
+  name: String
+  unit: String
+  unitPrice: Int
+  mrp: Int
+  quantity: Int
+}
+
+input OrderItemsFilters {
+  id: OrderItemsIdFilters
+  orderId: OrderItemsOrderIdFilters
+  productId: OrderItemsProductIdFilters
+  name: OrderItemsNameFilters
+  unit: OrderItemsUnitFilters
+  unitPrice: OrderItemsUnitPriceFilters
+  mrp: OrderItemsMrpFilters
+  quantity: OrderItemsQuantityFilters
+  OR: [OrderItemsFiltersOr!]
+}
+
+input OrderItemsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsIdfiltersOr!]
+}
+
+input OrderItemsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsOrderIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsOrderIdfiltersOr!]
+}
+
+input OrderItemsOrderIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsProductIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsProductIdfiltersOr!]
+}
+
+input OrderItemsProductIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsNamefiltersOr!]
+}
+
+input OrderItemsNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsUnitFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsUnitfiltersOr!]
+}
+
+input OrderItemsUnitfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsUnitPriceFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsUnitPricefiltersOr!]
+}
+
+input OrderItemsUnitPricefiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsMrpFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsMrpfiltersOr!]
+}
+
+input OrderItemsMrpfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsQuantityFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderItemsQuantityfiltersOr!]
+}
+
+input OrderItemsQuantityfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderItemsFiltersOr {
+  id: OrderItemsIdFilters
+  orderId: OrderItemsOrderIdFilters
+  productId: OrderItemsProductIdFilters
+  name: OrderItemsNameFilters
+  unit: OrderItemsUnitFilters
+  unitPrice: OrderItemsUnitPriceFilters
+  mrp: OrderItemsMrpFilters
+  quantity: OrderItemsQuantityFilters
+}
+
+input OrderItemsOrderBy {
+  id: InnerOrder
+  orderId: InnerOrder
+  productId: InnerOrder
+  name: InnerOrder
+  unit: InnerOrder
+  unitPrice: InnerOrder
+  mrp: InnerOrder
+  quantity: InnerOrder
+}
+
+input OrderStatusHistoryInsertInput {
+  id: String
+  orderId: String!
+  fromStatus: OrderStatusHistoryFromStatusEnum
+  toStatus: OrderStatusHistoryToStatusEnum!
+  changedBy: String
+  reason: String
+
+  """Date"""
+  createdAt: String
+}
+
+input OrderStatusHistoryUpdateInput {
+  id: String
+  orderId: String
+  fromStatus: OrderStatusHistoryFromStatusEnum
+  toStatus: OrderStatusHistoryToStatusEnum
+  changedBy: String
+  reason: String
+
+  """Date"""
+  createdAt: String
+}
+
+input OrderStatusHistoryFilters {
+  id: OrderStatusHistoryIdFilters
+  orderId: OrderStatusHistoryOrderIdFilters
+  fromStatus: OrderStatusHistoryFromStatusFilters
+  toStatus: OrderStatusHistoryToStatusFilters
+  changedBy: OrderStatusHistoryChangedByFilters
+  reason: OrderStatusHistoryReasonFilters
+  createdAt: OrderStatusHistoryCreatedAtFilters
+  OR: [OrderStatusHistoryFiltersOr!]
+}
+
+input OrderStatusHistoryIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryIdfiltersOr!]
+}
+
+input OrderStatusHistoryIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryOrderIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryOrderIdfiltersOr!]
+}
+
+input OrderStatusHistoryOrderIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryFromStatusFilters {
+  eq: OrderStatusHistoryFromStatusEnum
+  ne: OrderStatusHistoryFromStatusEnum
+  lt: OrderStatusHistoryFromStatusEnum
+  lte: OrderStatusHistoryFromStatusEnum
+  gt: OrderStatusHistoryFromStatusEnum
+  gte: OrderStatusHistoryFromStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrderStatusHistoryFromStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrderStatusHistoryFromStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryFromStatusfiltersOr!]
+}
+
+input OrderStatusHistoryFromStatusfiltersOr {
+  eq: OrderStatusHistoryFromStatusEnum
+  ne: OrderStatusHistoryFromStatusEnum
+  lt: OrderStatusHistoryFromStatusEnum
+  lte: OrderStatusHistoryFromStatusEnum
+  gt: OrderStatusHistoryFromStatusEnum
+  gte: OrderStatusHistoryFromStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrderStatusHistoryFromStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrderStatusHistoryFromStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryToStatusFilters {
+  eq: OrderStatusHistoryToStatusEnum
+  ne: OrderStatusHistoryToStatusEnum
+  lt: OrderStatusHistoryToStatusEnum
+  lte: OrderStatusHistoryToStatusEnum
+  gt: OrderStatusHistoryToStatusEnum
+  gte: OrderStatusHistoryToStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrderStatusHistoryToStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrderStatusHistoryToStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryToStatusfiltersOr!]
+}
+
+input OrderStatusHistoryToStatusfiltersOr {
+  eq: OrderStatusHistoryToStatusEnum
+  ne: OrderStatusHistoryToStatusEnum
+  lt: OrderStatusHistoryToStatusEnum
+  lte: OrderStatusHistoryToStatusEnum
+  gt: OrderStatusHistoryToStatusEnum
+  gte: OrderStatusHistoryToStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrderStatusHistoryToStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrderStatusHistoryToStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryChangedByFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryChangedByfiltersOr!]
+}
+
+input OrderStatusHistoryChangedByfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryReasonFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryReasonfiltersOr!]
+}
+
+input OrderStatusHistoryReasonfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrderStatusHistoryCreatedAtfiltersOr!]
+}
+
+input OrderStatusHistoryCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrderStatusHistoryFiltersOr {
+  id: OrderStatusHistoryIdFilters
+  orderId: OrderStatusHistoryOrderIdFilters
+  fromStatus: OrderStatusHistoryFromStatusFilters
+  toStatus: OrderStatusHistoryToStatusFilters
+  changedBy: OrderStatusHistoryChangedByFilters
+  reason: OrderStatusHistoryReasonFilters
+  createdAt: OrderStatusHistoryCreatedAtFilters
+}
+
+input OrderStatusHistoryOrderBy {
+  id: InnerOrder
+  orderId: InnerOrder
+  fromStatus: InnerOrder
+  toStatus: InnerOrder
+  changedBy: InnerOrder
+  reason: InnerOrder
+  createdAt: InnerOrder
+}
+
+input OrdersInsertInput {
+  id: String
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: OrdersStatusEnum
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+
+  """Date"""
+  placedAt: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input OrdersUpdateInput {
+  id: String
+  userId: String
+  storeId: String
+  addressId: String
+  status: OrdersStatusEnum
+  subtotal: Int
+  deliveryFee: Int
+  discount: Int
+  total: Int
+  paymentMethod: String
+  idempotencyKey: String
+
+  """Date"""
+  placedAt: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input OrdersFilters {
+  id: OrdersIdFilters
+  userId: OrdersUserIdFilters
+  storeId: OrdersStoreIdFilters
+  addressId: OrdersAddressIdFilters
+  status: OrdersStatusFilters
+  subtotal: OrdersSubtotalFilters
+  deliveryFee: OrdersDeliveryFeeFilters
+  discount: OrdersDiscountFilters
+  total: OrdersTotalFilters
+  paymentMethod: OrdersPaymentMethodFilters
+  idempotencyKey: OrdersIdempotencyKeyFilters
+  placedAt: OrdersPlacedAtFilters
+  createdAt: OrdersCreatedAtFilters
+  updatedAt: OrdersUpdatedAtFilters
+  OR: [OrdersFiltersOr!]
+}
+
+input OrdersIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersIdfiltersOr!]
+}
+
+input OrdersIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersUserIdfiltersOr!]
+}
+
+input OrdersUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersStoreIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersStoreIdfiltersOr!]
+}
+
+input OrdersStoreIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersAddressIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersAddressIdfiltersOr!]
+}
+
+input OrdersAddressIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersStatusFilters {
+  eq: OrdersStatusEnum
+  ne: OrdersStatusEnum
+  lt: OrdersStatusEnum
+  lte: OrdersStatusEnum
+  gt: OrdersStatusEnum
+  gte: OrdersStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrdersStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrdersStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersStatusfiltersOr!]
+}
+
+input OrdersStatusfiltersOr {
+  eq: OrdersStatusEnum
+  ne: OrdersStatusEnum
+  lt: OrdersStatusEnum
+  lte: OrdersStatusEnum
+  gt: OrdersStatusEnum
+  gte: OrdersStatusEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [OrdersStatusEnum!]
+
+  """Array<undefined>"""
+  notInArray: [OrdersStatusEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersSubtotalFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersSubtotalfiltersOr!]
+}
+
+input OrdersSubtotalfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersDeliveryFeeFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersDeliveryFeefiltersOr!]
+}
+
+input OrdersDeliveryFeefiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersDiscountFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersDiscountfiltersOr!]
+}
+
+input OrdersDiscountfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersTotalFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersTotalfiltersOr!]
+}
+
+input OrdersTotalfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersPaymentMethodFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersPaymentMethodfiltersOr!]
+}
+
+input OrdersPaymentMethodfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersIdempotencyKeyFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersIdempotencyKeyfiltersOr!]
+}
+
+input OrdersIdempotencyKeyfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersPlacedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersPlacedAtfiltersOr!]
+}
+
+input OrdersPlacedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersCreatedAtfiltersOr!]
+}
+
+input OrdersCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OrdersUpdatedAtfiltersOr!]
+}
+
+input OrdersUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OrdersFiltersOr {
+  id: OrdersIdFilters
+  userId: OrdersUserIdFilters
+  storeId: OrdersStoreIdFilters
+  addressId: OrdersAddressIdFilters
+  status: OrdersStatusFilters
+  subtotal: OrdersSubtotalFilters
+  deliveryFee: OrdersDeliveryFeeFilters
+  discount: OrdersDiscountFilters
+  total: OrdersTotalFilters
+  paymentMethod: OrdersPaymentMethodFilters
+  idempotencyKey: OrdersIdempotencyKeyFilters
+  placedAt: OrdersPlacedAtFilters
+  createdAt: OrdersCreatedAtFilters
+  updatedAt: OrdersUpdatedAtFilters
+}
+
+input OrdersOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  storeId: InnerOrder
+  addressId: InnerOrder
+  status: InnerOrder
+  subtotal: InnerOrder
+  deliveryFee: InnerOrder
+  discount: InnerOrder
+  total: InnerOrder
+  paymentMethod: InnerOrder
+  idempotencyKey: InnerOrder
+  placedAt: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input OtpChallengesInsertInput {
+  id: String
+  phone: String!
+  code: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  consumedAt: String
+
+  """Date"""
+  createdAt: String
+}
+
+input OtpChallengesUpdateInput {
+  id: String
+  phone: String
+  code: String
+
+  """Date"""
+  expiresAt: String
+
+  """Date"""
+  consumedAt: String
+
+  """Date"""
+  createdAt: String
+}
+
+input OtpChallengesFilters {
+  id: OtpChallengesIdFilters
+  phone: OtpChallengesPhoneFilters
+  code: OtpChallengesCodeFilters
+  expiresAt: OtpChallengesExpiresAtFilters
+  consumedAt: OtpChallengesConsumedAtFilters
+  createdAt: OtpChallengesCreatedAtFilters
+  OR: [OtpChallengesFiltersOr!]
+}
+
+input OtpChallengesIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesIdfiltersOr!]
+}
+
+input OtpChallengesIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesPhoneFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesPhonefiltersOr!]
+}
+
+input OtpChallengesPhonefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesCodeFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesCodefiltersOr!]
+}
+
+input OtpChallengesCodefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesExpiresAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesExpiresAtfiltersOr!]
+}
+
+input OtpChallengesExpiresAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesConsumedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesConsumedAtfiltersOr!]
+}
+
+input OtpChallengesConsumedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesCreatedAtfiltersOr!]
+}
+
+input OtpChallengesCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesFiltersOr {
+  id: OtpChallengesIdFilters
+  phone: OtpChallengesPhoneFilters
+  code: OtpChallengesCodeFilters
+  expiresAt: OtpChallengesExpiresAtFilters
+  consumedAt: OtpChallengesConsumedAtFilters
+  createdAt: OtpChallengesCreatedAtFilters
+}
+
+input OtpChallengesOrderBy {
+  id: InnerOrder
+  phone: InnerOrder
+  code: InnerOrder
+  expiresAt: InnerOrder
+  consumedAt: InnerOrder
+  createdAt: InnerOrder
+}
+
+input ProductsInsertInput {
+  id: String
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input ProductsUpdateInput {
+  id: String
+  categoryId: String
+  name: String
+  description: String
+  unit: String
+  mrp: Int
+  price: Int
+  emoji: String
+  imageUrl: String
+  isActive: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input ProductsFilters {
+  id: ProductsIdFilters
+  categoryId: ProductsCategoryIdFilters
+  name: ProductsNameFilters
+  description: ProductsDescriptionFilters
+  unit: ProductsUnitFilters
+  mrp: ProductsMrpFilters
+  price: ProductsPriceFilters
+  emoji: ProductsEmojiFilters
+  imageUrl: ProductsImageUrlFilters
+  isActive: ProductsIsActiveFilters
+  createdAt: ProductsCreatedAtFilters
+  updatedAt: ProductsUpdatedAtFilters
+  OR: [ProductsFiltersOr!]
+}
+
+input ProductsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsIdfiltersOr!]
+}
+
+input ProductsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsCategoryIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsCategoryIdfiltersOr!]
+}
+
+input ProductsCategoryIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsNamefiltersOr!]
+}
+
+input ProductsNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsDescriptionFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsDescriptionfiltersOr!]
+}
+
+input ProductsDescriptionfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsUnitFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsUnitfiltersOr!]
+}
+
+input ProductsUnitfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsMrpFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsMrpfiltersOr!]
+}
+
+input ProductsMrpfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsPriceFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsPricefiltersOr!]
+}
+
+input ProductsPricefiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsEmojiFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsEmojifiltersOr!]
+}
+
+input ProductsEmojifiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsImageUrlFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsImageUrlfiltersOr!]
+}
+
+input ProductsImageUrlfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsIsActiveFilters {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsIsActivefiltersOr!]
+}
+
+input ProductsIsActivefiltersOr {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsCreatedAtfiltersOr!]
+}
+
+input ProductsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsUpdatedAtfiltersOr!]
+}
+
+input ProductsUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsFiltersOr {
+  id: ProductsIdFilters
+  categoryId: ProductsCategoryIdFilters
+  name: ProductsNameFilters
+  description: ProductsDescriptionFilters
+  unit: ProductsUnitFilters
+  mrp: ProductsMrpFilters
+  price: ProductsPriceFilters
+  emoji: ProductsEmojiFilters
+  imageUrl: ProductsImageUrlFilters
+  isActive: ProductsIsActiveFilters
+  createdAt: ProductsCreatedAtFilters
+  updatedAt: ProductsUpdatedAtFilters
+}
+
+input ProductsOrderBy {
+  id: InnerOrder
+  categoryId: InnerOrder
+  name: InnerOrder
+  description: InnerOrder
+  unit: InnerOrder
+  mrp: InnerOrder
+  price: InnerOrder
+  emoji: InnerOrder
+  imageUrl: InnerOrder
+  isActive: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input SessionsInsertInput {
+  id: String
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String
+}
+
+input SessionsUpdateInput {
+  id: String
+  userId: String
+  token: String
+
+  """Date"""
+  expiresAt: String
+
+  """Date"""
+  createdAt: String
+}
+
+input SessionsFilters {
+  id: SessionsIdFilters
+  userId: SessionsUserIdFilters
+  token: SessionsTokenFilters
+  expiresAt: SessionsExpiresAtFilters
+  createdAt: SessionsCreatedAtFilters
+  OR: [SessionsFiltersOr!]
+}
+
+input SessionsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [SessionsIdfiltersOr!]
+}
+
+input SessionsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input SessionsUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [SessionsUserIdfiltersOr!]
+}
+
+input SessionsUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input SessionsTokenFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [SessionsTokenfiltersOr!]
+}
+
+input SessionsTokenfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input SessionsExpiresAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [SessionsExpiresAtfiltersOr!]
+}
+
+input SessionsExpiresAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input SessionsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [SessionsCreatedAtfiltersOr!]
+}
+
+input SessionsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input SessionsFiltersOr {
+  id: SessionsIdFilters
+  userId: SessionsUserIdFilters
+  token: SessionsTokenFilters
+  expiresAt: SessionsExpiresAtFilters
+  createdAt: SessionsCreatedAtFilters
+}
+
+input SessionsOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  token: InnerOrder
+  expiresAt: InnerOrder
+  createdAt: InnerOrder
+}
+
+input StoreSlotConfigInsertInput {
+  id: String
+  storeId: String!
+  slotDurationMinutes: Int
+  dayStartMinutes: Int
+  dayEndMinutes: Int
+  capacityPerSlot: Int
+
+  """Date"""
+  createdAt: String
+}
+
+input StoreSlotConfigUpdateInput {
+  id: String
+  storeId: String
+  slotDurationMinutes: Int
+  dayStartMinutes: Int
+  dayEndMinutes: Int
+  capacityPerSlot: Int
+
+  """Date"""
+  createdAt: String
+}
+
+input StoreSlotConfigFilters {
+  id: StoreSlotConfigIdFilters
+  storeId: StoreSlotConfigStoreIdFilters
+  slotDurationMinutes: StoreSlotConfigSlotDurationMinutesFilters
+  dayStartMinutes: StoreSlotConfigDayStartMinutesFilters
+  dayEndMinutes: StoreSlotConfigDayEndMinutesFilters
+  capacityPerSlot: StoreSlotConfigCapacityPerSlotFilters
+  createdAt: StoreSlotConfigCreatedAtFilters
+  OR: [StoreSlotConfigFiltersOr!]
+}
+
+input StoreSlotConfigIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigIdfiltersOr!]
+}
+
+input StoreSlotConfigIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigStoreIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigStoreIdfiltersOr!]
+}
+
+input StoreSlotConfigStoreIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigSlotDurationMinutesFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigSlotDurationMinutesfiltersOr!]
+}
+
+input StoreSlotConfigSlotDurationMinutesfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigDayStartMinutesFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigDayStartMinutesfiltersOr!]
+}
+
+input StoreSlotConfigDayStartMinutesfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigDayEndMinutesFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigDayEndMinutesfiltersOr!]
+}
+
+input StoreSlotConfigDayEndMinutesfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigCapacityPerSlotFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigCapacityPerSlotfiltersOr!]
+}
+
+input StoreSlotConfigCapacityPerSlotfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoreSlotConfigCreatedAtfiltersOr!]
+}
+
+input StoreSlotConfigCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoreSlotConfigFiltersOr {
+  id: StoreSlotConfigIdFilters
+  storeId: StoreSlotConfigStoreIdFilters
+  slotDurationMinutes: StoreSlotConfigSlotDurationMinutesFilters
+  dayStartMinutes: StoreSlotConfigDayStartMinutesFilters
+  dayEndMinutes: StoreSlotConfigDayEndMinutesFilters
+  capacityPerSlot: StoreSlotConfigCapacityPerSlotFilters
+  createdAt: StoreSlotConfigCreatedAtFilters
+}
+
+input StoreSlotConfigOrderBy {
+  id: InnerOrder
+  storeId: InnerOrder
+  slotDurationMinutes: InnerOrder
+  dayStartMinutes: InnerOrder
+  dayEndMinutes: InnerOrder
+  capacityPerSlot: InnerOrder
+  createdAt: InnerOrder
+}
+
+input StoresInsertInput {
+  id: String
+  name: String!
+  address: String
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int
+  isActive: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input StoresUpdateInput {
+  id: String
+  name: String
+  address: String
+  lat: Float
+  lng: Float
+  serviceRadiusM: Int
+  isActive: Boolean
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input StoresFilters {
+  id: StoresIdFilters
+  name: StoresNameFilters
+  address: StoresAddressFilters
+  lat: StoresLatFilters
+  lng: StoresLngFilters
+  serviceRadiusM: StoresServiceRadiusMFilters
+  isActive: StoresIsActiveFilters
+  createdAt: StoresCreatedAtFilters
+  updatedAt: StoresUpdatedAtFilters
+  OR: [StoresFiltersOr!]
+}
+
+input StoresIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresIdfiltersOr!]
+}
+
+input StoresIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresNamefiltersOr!]
+}
+
+input StoresNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresAddressFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresAddressfiltersOr!]
+}
+
+input StoresAddressfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresLatFilters {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresLatfiltersOr!]
+}
+
+input StoresLatfiltersOr {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresLngFilters {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresLngfiltersOr!]
+}
+
+input StoresLngfiltersOr {
+  eq: Float
+  ne: Float
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Float!]
+
+  """Array<undefined>"""
+  notInArray: [Float!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresServiceRadiusMFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresServiceRadiusMfiltersOr!]
+}
+
+input StoresServiceRadiusMfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresIsActiveFilters {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresIsActivefiltersOr!]
+}
+
+input StoresIsActivefiltersOr {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresCreatedAtfiltersOr!]
+}
+
+input StoresCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresUpdatedAtfiltersOr!]
+}
+
+input StoresUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresFiltersOr {
+  id: StoresIdFilters
+  name: StoresNameFilters
+  address: StoresAddressFilters
+  lat: StoresLatFilters
+  lng: StoresLngFilters
+  serviceRadiusM: StoresServiceRadiusMFilters
+  isActive: StoresIsActiveFilters
+  createdAt: StoresCreatedAtFilters
+  updatedAt: StoresUpdatedAtFilters
+}
+
+input StoresOrderBy {
+  id: InnerOrder
+  name: InnerOrder
+  address: InnerOrder
+  lat: InnerOrder
+  lng: InnerOrder
+  serviceRadiusM: InnerOrder
+  isActive: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+input UsersInsertInput {
+  id: String
+  phone: String!
+  name: String
+  email: String
+  role: UsersRoleEnum
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input UsersUpdateInput {
+  id: String
+  phone: String
+  name: String
+  email: String
+  role: UsersRoleEnum
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input UsersFilters {
+  id: UsersIdFilters
+  phone: UsersPhoneFilters
+  name: UsersNameFilters
+  email: UsersEmailFilters
+  role: UsersRoleFilters
+  createdAt: UsersCreatedAtFilters
+  updatedAt: UsersUpdatedAtFilters
+  OR: [UsersFiltersOr!]
+}
+
+input UsersIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersIdfiltersOr!]
+}
+
+input UsersIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersPhoneFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersPhonefiltersOr!]
+}
+
+input UsersPhonefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersNamefiltersOr!]
+}
+
+input UsersNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersEmailFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersEmailfiltersOr!]
+}
+
+input UsersEmailfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersRoleFilters {
+  eq: UsersRoleEnum
+  ne: UsersRoleEnum
+  lt: UsersRoleEnum
+  lte: UsersRoleEnum
+  gt: UsersRoleEnum
+  gte: UsersRoleEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [UsersRoleEnum!]
+
+  """Array<undefined>"""
+  notInArray: [UsersRoleEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersRolefiltersOr!]
+}
+
+input UsersRolefiltersOr {
+  eq: UsersRoleEnum
+  ne: UsersRoleEnum
+  lt: UsersRoleEnum
+  lte: UsersRoleEnum
+  gt: UsersRoleEnum
+  gte: UsersRoleEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [UsersRoleEnum!]
+
+  """Array<undefined>"""
+  notInArray: [UsersRoleEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersCreatedAtfiltersOr!]
+}
+
+input UsersCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [UsersUpdatedAtfiltersOr!]
+}
+
+input UsersUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input UsersFiltersOr {
+  id: UsersIdFilters
+  phone: UsersPhoneFilters
+  name: UsersNameFilters
+  email: UsersEmailFilters
+  role: UsersRoleFilters
+  createdAt: UsersCreatedAtFilters
+  updatedAt: UsersUpdatedAtFilters
+}
+
+input UsersOrderBy {
+  id: InnerOrder
+  phone: InnerOrder
+  name: InnerOrder
+  email: InnerOrder
+  role: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
+}
+
+type Query {
+  products(offset: Int, limit: Int, orderBy: ProductsOrderBy, where: ProductsFilters): [ProductsSelectItem!]!
+  productsSingle(offset: Int, orderBy: ProductsOrderBy, where: ProductsFilters): ProductsSelectItem
+  categories(offset: Int, limit: Int, orderBy: CategoriesOrderBy, where: CategoriesFilters): [CategoriesSelectItem!]!
+  categoriesSingle(offset: Int, orderBy: CategoriesOrderBy, where: CategoriesFilters): CategoriesSelectItem
+  stores(offset: Int, limit: Int, orderBy: StoresOrderBy, where: StoresFilters): [StoresSelectItem!]!
+  storesSingle(offset: Int, orderBy: StoresOrderBy, where: StoresFilters): StoresSelectItem
+  adminSession: AdminSession
+  adminDashboard: AdminDashboard!
+  adminProducts(page: Int, limit: Int, query: String): AdminProductsPage!
+  adminProduct(id: String!): AdminProduct
+  adminCategories: [AdminCategory!]!
+  adminStores: [AdminStore!]!
+  adminStore(id: String!): AdminStore
+  adminInventory(storeId: String!, page: Int, limit: Int, query: String, lowStockOnly: Boolean): AdminInventoryPage!
+  adminOrders(page: Int, limit: Int, status: AdminOrderStatus): AdminOrdersPage!
+  adminOrder(id: String!): AdminOrder
+  myCart: AppCart!
+  myOrders(page: Int, limit: Int): AppOrdersPage!
+  checkServiceability(lat: Float, lng: Float, addressId: String): AppServiceability!
+  availableDeliverySlots(addressId: String!): AppDeliverySlots!
+}
+
+type AdminSession {
+  user: AdminUser!
+  expiresAt: String
+}
+
+type AdminUser {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: String!
+}
+
+type AdminDashboard {
+  todaysOrders: Int!
+  placedOrders: Int!
+  processingOrders: Int!
+  lowStockItems: Int!
+}
+
+type AdminProductsPage {
+  items: [AdminProduct!]!
+  page: Int!
+  limit: Int!
+  total: Int!
+}
+
+type AdminProduct {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  emoji: String
+  imageUrl: String
+  isActive: Boolean!
+  category: AdminCategory!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type AdminCategory {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+  createdAt: String!
+}
+
+type AdminStore {
+  id: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type AdminInventoryPage {
+  items: [AdminInventoryItem!]!
+  page: Int!
+  limit: Int!
+  total: Int!
+}
+
+type AdminInventoryItem {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+  updatedAt: String!
+  product: AdminProduct!
+}
+
+type AdminOrdersPage {
+  items: [AdminOrder!]!
+  page: Int!
+  limit: Int!
+  total: Int!
+}
+
+type AdminOrder {
+  id: String!
+  status: AdminOrderStatus!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  placedAt: String!
+  customer: AdminUser!
+  store: AdminStore!
+  address: AdminOrderAddress!
+  items: [AdminOrderItem!]!
+  history: [AdminOrderStatusHistory!]!
+  allowedNextStatuses: [AdminOrderStatus!]!
+}
+
+enum AdminOrderStatus {
+  PLACED
+  PACKED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+type AdminOrderAddress {
+  id: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+}
+
+type AdminOrderItem {
+  id: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+}
+
+type AdminOrderStatusHistory {
+  id: String!
+  fromStatus: AdminOrderStatus
+  toStatus: AdminOrderStatus!
+  changedBy: String
+  reason: String
+  createdAt: String!
+}
+
+type AppCart {
+  id: String
+  storeId: String
+  items: [AppCartItem!]!
+  subtotal: Int!
+  savings: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+}
+
+type AppCartItem {
+  id: String!
+  productId: String!
+  name: String!
+  unit: String!
+  emoji: String
+  price: Int!
+  mrp: Int!
+  quantity: Int!
+  lineTotal: Int!
+  lineSavings: Int!
+  stockQty: Int!
+}
+
+type AppOrdersPage {
+  items: [AppOrder!]!
+  page: Int!
+  limit: Int!
+  total: Int!
+}
+
+type AppOrder {
+  id: String!
+  userId: String!
+  storeId: String!
+  addressId: String!
+  status: String!
+  subtotal: Int!
+  deliveryFee: Int!
+  discount: Int!
+  total: Int!
+  paymentMethod: String!
+  idempotencyKey: String!
+  placedAt: String!
+  items: [AppOrderItem!]!
+}
+
+type AppOrderItem {
+  id: String!
+  productId: String!
+  name: String!
+  unit: String!
+  unitPrice: Int!
+  mrp: Int!
+  quantity: Int!
+}
+
+type AppServiceability {
+  serviceable: Boolean!
+  storeId: String
+  storeName: String
+  distanceM: Int
+  etaMinutes: Int
+}
+
+type AppDeliverySlots {
+  storeId: String!
+  slots: [AppDeliverySlot!]!
+}
+
+type AppDeliverySlot {
+  id: String!
+  startAt: String!
+  endAt: String!
+  capacity: Int!
+  remaining: Int!
+}
+
+type Mutation {
+  addToCart(productId: String!, quantity: Int!, storeId: String): AppCart!
+  updateCartItem(itemId: String!, quantity: Int!): AppCart!
+  removeCartItem(itemId: String!): AppCart!
+  adminLogin(email: String!, password: String!): AdminSession!
+  adminLogout: Boolean!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
+  createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
+  updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
+  createAdminStore(name: String!, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  updateAdminStore(id: String!, name: String, address: String, lat: Float, lng: Float, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  adjustAdminInventory(inventoryId: String!, delta: Int!, reason: String!): AdminInventoryItem!
+  transitionAdminOrder(orderId: String!, status: AdminOrderStatus!, reason: String): AdminOrder!
+  checkout(addressId: String!, paymentMethod: String, idempotencyKey: String!): AppOrder!
+  cancelOrder(orderId: String!): AppOrder!
+  updateOrderStatus(orderId: String!, status: String!): AppOrder!
+  updateProfile(name: String, email: String): AppUser!
+  addAddress(label: String!, line1: String!, line2: String, city: String!, pincode: String!, phone: String!, lat: Float!, lng: Float!, isDefault: Boolean): AppAddress!
+}
+
+type AppUser {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: String!
+}
+
+type AppAddress {
+  id: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+}

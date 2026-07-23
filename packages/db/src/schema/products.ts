@@ -1,4 +1,4 @@
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { integer, real, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 const id = () =>
@@ -42,11 +42,15 @@ export const products = sqliteTable("products", {
 export const stores = sqliteTable("stores", {
   id: id(),
   name: text("name").notNull(),
+  address: text("address").notNull().default(""),
   lat: real("lat").notNull(),
   lng: real("lng").notNull(),
   serviceRadiusM: integer("service_radius_m").notNull().default(5000),
   isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
   createdAt: createdAt(),
+  updatedAt: integer("updated_at", { mode: "timestamp_ms" })
+    .notNull()
+    .default(sql`(unixepoch() * 1000)`),
 });
 
 export const inventory = sqliteTable(
@@ -60,6 +64,7 @@ export const inventory = sqliteTable(
       .notNull()
       .references(() => products.id, { onDelete: "cascade" }),
     stockQty: integer("stock_qty").notNull().default(0),
+    lowStockThreshold: integer("low_stock_threshold").notNull().default(10),
     updatedAt: updatedAt(),
   },
   (table) => [uniqueIndex("inventory_store_product_uidx").on(table.storeId, table.productId)],

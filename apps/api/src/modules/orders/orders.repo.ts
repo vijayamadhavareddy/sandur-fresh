@@ -1,6 +1,6 @@
-import { count, desc, eq } from "drizzle-orm";
-import type { DbOrTx } from "../../db/client";
-import { orderItems, orders } from "../../db/schema";
+import type { DbOrTx } from "@sf/db";
+import { orderItems, orderStatusHistory, orders } from "@sf/db";
+import { and, count, desc, eq } from "drizzle-orm";
 import type { OrderStatus } from "./order-status";
 
 export type OrderRow = typeof orders.$inferSelect;
@@ -68,14 +68,30 @@ export const createOrderItems = async (
   return db.insert(orderItems).values(items).returning();
 };
 
-export const updateOrderStatus = async (db: DbOrTx, id: string, status: OrderStatus) => {
+export const updateOrderStatus = async (
+  db: DbOrTx,
+  id: string,
+  fromStatus: OrderStatus,
+  status: OrderStatus,
+) => {
   const rows = await db
     .update(orders)
     .set({ status, updatedAt: new Date() })
-    .where(eq(orders.id, id))
+    .where(and(eq(orders.id, id), eq(orders.status, fromStatus)))
     .returning();
   return rows[0] ?? null;
 };
+
+export const createOrderStatusHistory = async (
+  db: DbOrTx,
+  input: {
+    orderId: string;
+    fromStatus: OrderStatus | null;
+    toStatus: OrderStatus;
+    changedBy?: string | null;
+    reason?: string | null;
+  },
+) => (await db.insert(orderStatusHistory).values(input).returning())[0]!;
 
 export const ordersRepo = {
   findOrderByIdempotencyKey,
@@ -85,6 +101,7 @@ export const ordersRepo = {
   createOrder,
   createOrderItems,
   updateOrderStatus,
+  createOrderStatusHistory,
 };
 
 export type OrdersRepo = typeof ordersRepo;

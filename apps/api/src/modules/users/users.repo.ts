@@ -1,6 +1,6 @@
+import type { DbOrTx } from "@sf/db";
+import { addresses, otpChallenges, sessions, users } from "@sf/db";
 import { and, eq, gt, isNull } from "drizzle-orm";
-import type { DbOrTx } from "../../db/client";
-import { addresses, otpChallenges, sessions, users } from "../../db/schema";
 
 export type UserRow = typeof users.$inferSelect;
 export type AddressRow = typeof addresses.$inferSelect;

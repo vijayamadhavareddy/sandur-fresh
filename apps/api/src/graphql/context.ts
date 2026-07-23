@@ -5,8 +5,11 @@ export type GraphQLContext = {
   user: AuthUser | null;
   requestId: string;
   services: typeof services;
+  sessionToken: string | null;
+  responseHeaders: Headers;
 };
 
 export type YogaInitialContext = {
   request: Request;
+  responseHeaders: Headers;
 };

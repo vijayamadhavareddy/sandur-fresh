@@ -58,7 +58,7 @@ class LoginScreen extends GetView<AuthController> {
                       const SizedBox(height: AppSpacing.xs),
                       Text(
                         controller.otpSent.value
-                            ? 'Enter the 4-digit code sent to ${controller.phone.value}'
+                            ? 'Enter the 6-digit code sent to ${controller.phone.value}'
                             : 'We\'ll send a one-time password to your number',
                         style: textTheme.bodySmall,
                       ),
@@ -84,9 +84,9 @@ class LoginScreen extends GetView<AuthController> {
                         TextField(
                           controller: controller.otpController,
                           keyboardType: TextInputType.number,
-                          maxLength: 4,
+                          maxLength: 6,
                           decoration: const InputDecoration(
-                            labelText: '4-digit OTP',
+                            labelText: '6-digit OTP',
                             prefixIcon: Icon(Icons.lock_outline),
                             counterText: '',
                           ),

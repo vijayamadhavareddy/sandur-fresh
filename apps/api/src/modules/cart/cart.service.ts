@@ -1,4 +1,4 @@
-import type { Db } from "../../db/client";
+import type { Db } from "@sf/db";
 import { conflict, type DomainError, notFound, outOfStock } from "../../shared/errors";
 import { summarizeCart } from "../../shared/pricing";
 import { err, ok, type Result } from "../../shared/result";

@@ -1,4 +1,4 @@
-import type { Db } from "../../db/client";
+import type { Db } from "@sf/db";
 import {
   conflict,
   type DomainError,
@@ -124,6 +124,13 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
           idempotencyKey,
         });
 
+        await deps.ordersRepo.createOrderStatusHistory(tx, {
+          orderId: created.id,
+          fromStatus: null,
+          toStatus: "PLACED",
+          changedBy: userId,
+        });
+
         await deps.ordersRepo.createOrderItems(
           tx,
           lines.map((l) => ({
@@ -198,6 +205,7 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
     userId: string,
     orderId: string,
     isAdmin: boolean,
+    reason?: string | null,
   ): Promise<Result<OrderView, DomainError>> => {
     const order = await deps.ordersRepo.findOrderById(deps.db, orderId);
     if (!order) return err(notFound("Order not found"));
@@ -208,20 +216,36 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
     }
 
     const updated = await deps.db.transaction(async (tx) => {
+      const result = await deps.ordersRepo.updateOrderStatus(
+        tx,
+        order.id,
+        order.status,
+        "CANCELLED",
+      );
+      if (!result) return null;
       const items = await deps.ordersRepo.listOrderItems(tx, order.id);
       for (const item of items) {
         await deps.productsRepo.incrementStock(tx, order.storeId, item.productId, item.quantity);
       }
-      return deps.ordersRepo.updateOrderStatus(tx, order.id, "CANCELLED");
+      await deps.ordersRepo.createOrderStatusHistory(tx, {
+        orderId: order.id,
+        fromStatus: order.status,
+        toStatus: "CANCELLED",
+        changedBy: userId,
+        reason,
+      });
+      return result;
     });
 
-    if (!updated) return err(notFound("Order not found"));
+    if (!updated) return err(conflict("Order status changed; refresh and try again"));
     return ok(await toOrderView(deps, updated));
   };
 
   const updateStatus = async (
     orderId: string,
     status: OrderStatus,
+    changedBy?: string | null,
+    reason?: string | null,
   ): Promise<Result<OrderView, DomainError>> => {
     const order = await deps.ordersRepo.findOrderById(deps.db, orderId);
     if (!order) return err(notFound("Order not found"));
@@ -236,11 +260,23 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
     }
 
     if (status === "CANCELLED") {
-      return cancelOrder(order.userId, orderId, true);
+      return cancelOrder(changedBy ?? order.userId, orderId, true, reason);
     }
 
-    const updated = await deps.ordersRepo.updateOrderStatus(deps.db, orderId, status);
-    if (!updated) return err(notFound("Order not found"));
+    const updated = await deps.db.transaction(async (tx) => {
+      const result = await deps.ordersRepo.updateOrderStatus(tx, orderId, order.status, status);
+      if (result) {
+        await deps.ordersRepo.createOrderStatusHistory(tx, {
+          orderId,
+          fromStatus: order.status,
+          toStatus: status,
+          changedBy,
+          reason,
+        });
+      }
+      return result;
+    });
+    if (!updated) return err(conflict("Order status changed; refresh and try again"));
     return ok(await toOrderView(deps, updated));
   };
 

@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import {
   addresses,
+  adminCredentials,
   categories,
   db,
   inventory,
@@ -9,6 +10,8 @@ import {
   stores,
   users,
 } from "../src";
+
+console.log("env", process.env.DATABASE_PATH, process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
 
 const rupeesToPaise = (n: number) => Math.round(n * 100);
 
@@ -393,12 +396,34 @@ const main = async () => {
       .where(eq(users.phone, "+919999999999"))
       .limit(1)
   )[0];
-  if (!existingAdmin) {
-    await db.insert(users).values({
-      phone: "+919999999999",
-      name: "Ops Admin",
-      role: "admin",
-    });
+  const adminUser =
+    existingAdmin ??
+    (
+      await db
+        .insert(users)
+        .values({
+          phone: "+919999999999",
+          name: "Ops Admin",
+          role: "admin",
+        })
+        .returning()
+    )[0]!;
+
+  if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+    const email = process.env.ADMIN_EMAIL.trim().toLowerCase();
+    const passwordHash = await Bun.password.hash(process.env.ADMIN_PASSWORD);
+    await db
+      .update(users)
+      .set({ email, role: "admin", updatedAt: new Date() })
+      .where(eq(users.id, adminUser.id));
+    await db
+      .insert(adminCredentials)
+      .values({ userId: adminUser.id, email, passwordHash })
+      .onConflictDoUpdate({
+        target: adminCredentials.userId,
+        set: { email, passwordHash, updatedAt: new Date() },
+      });
+    console.log(`Admin credential configured for ${email}`);
   }
 
   const existingAddr = await db

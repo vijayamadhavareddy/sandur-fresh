@@ -1,0 +1,14 @@
+layer: application
+language: typescript
+project:
+  name: 'admin'
+tasks:
+  dev:
+    command: bun run dev
+  build:
+    command: bun run build
+    inputs: ['src/**/*', 'public/**/*', 'index.html', 'vite.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']
+    outputs: ['dist/**/*']
+  typecheck:
+    command: bun x vue-tsc --noEmit
+    inputs: ['src/**/*', 'env.d.ts', 'vite.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']

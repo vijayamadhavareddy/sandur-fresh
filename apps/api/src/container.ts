@@ -1,4 +1,6 @@
-import { db } from "./db/client";
+import { db } from "@sf/db";
+import { adminRepo } from "./modules/admin/admin.repo";
+import { createAdminService } from "./modules/admin/admin.service";
 import { createCartHandlers } from "./modules/cart/cart.handlers";
 import { cartRepo } from "./modules/cart/cart.repo";
 import { createCartService } from "./modules/cart/cart.service";
@@ -31,6 +33,7 @@ export const deliveryService = createDeliveryService({
   productsRepo,
   usersRepo,
 });
+export const adminService = createAdminService({ db, adminRepo, ordersService });
 
 export const usersHandlers = createUsersHandlers(usersService);
 export const productsHandlers = createProductsHandlers(productsService);
@@ -44,4 +47,5 @@ export const services = {
   cart: cartService,
   orders: ordersService,
   delivery: deliveryService,
+  admin: adminService,
 };

@@ -1,0 +1,3 @@
+typescript:
+  syncProjectReferences: true
+  syncProjectReferencesToPaths: true

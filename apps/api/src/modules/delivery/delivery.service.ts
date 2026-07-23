@@ -1,4 +1,4 @@
-import type { Db } from "../../db/client";
+import type { Db } from "@sf/db";
 import { type DomainError, notFound, validationError } from "../../shared/errors";
 import { etaMinutesFromDistance, haversineMeters, isWithinRadius } from "../../shared/geo";
 import { err, ok, type Result } from "../../shared/result";

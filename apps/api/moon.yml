@@ -1,0 +1,8 @@
+layer: application
+language: typescript
+project:
+  name: 'api'
+
+tasks:
+  run:
+    command: bun run dev

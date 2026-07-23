@@ -51,7 +51,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
     const body = valid<UpdateOrderStatusInput>(c, "json");
-    const result = await ordersService.updateStatus(id, body.status);
+    const result = await ordersService.updateStatus(id, body.status, user.id);
     return fromResult(c, result);
   };
 

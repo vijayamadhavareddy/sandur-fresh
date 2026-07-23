@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.options.json",
+  "include": [
+    "*.ts"
+  ],
+  "references": [
+    {
+      "path": "./apps/admin"
+    },
+    {
+      "path": "./apps/api"
+    },
+    {
+      "path": "./packages/db"
+    }
+  ]
+}

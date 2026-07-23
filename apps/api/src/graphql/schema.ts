@@ -1,3 +1,4 @@
+import { db } from "@sf/db";
 import { buildSchema } from "drizzle-graphql";
 import {
   type GraphQLFieldConfigMap,
@@ -5,11 +6,11 @@ import {
   GraphQLObjectType,
   GraphQLSchema,
 } from "graphql";
-import { db } from "../../../../packages/db";
+import { adminMutations, adminQueries } from "./resolvers/admin";
 import { cartMutations, cartQueries } from "./resolvers/cart";
 import { deliveryQueries } from "./resolvers/delivery";
 import { orderMutations, orderQueries } from "./resolvers/orders";
-import { userMutations } from "./resolvers/users";
+import { userMutations, userQueries } from "./resolvers/users";
 
 // biome-ignore lint/suspicious/noExplicitAny: no other way
 const { entities } = buildSchema(db as any);
@@ -69,9 +70,11 @@ export const graphqlSchema = new GraphQLSchema({
     name: "Query",
     fields: {
       ...safeCatalogQueries,
+      ...adminQueries,
       ...cartQueries,
       ...orderQueries,
       ...deliveryQueries,
+      ...userQueries,
     },
   }),
   mutation: new GraphQLObjectType({
@@ -79,6 +82,7 @@ export const graphqlSchema = new GraphQLSchema({
     fields: {
       // Intentionally omit auto-generated mutations for orders, cart, inventory, etc.
       ...cartMutations,
+      ...adminMutations,
       ...orderMutations,
       ...userMutations,
     },

@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import * as schema from "./schema";
 
+console.log("path", process.env.DATABASE_PATH);
 const sqlite = new Database(process.env.DATABASE_PATH);
 sqlite.run("PRAGMA foreign_keys = ON;")
 

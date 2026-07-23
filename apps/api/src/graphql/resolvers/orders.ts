@@ -135,7 +135,7 @@ export const orderMutations = {
       }
       const input = parseInput(updateOrderStatusBodySchema, { status: args.status });
       const order = fromServiceResult(
-        await ctx.services.orders.updateStatus(args.orderId, input.status),
+        await ctx.services.orders.updateStatus(args.orderId, input.status, user.id),
       );
       return { ...order, placedAt: order.placedAt.toISOString() };
     },
