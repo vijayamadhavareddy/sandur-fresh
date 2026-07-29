@@ -1,0 +1,52 @@
+fragment OrderItemFields on AppOrderItem {
+  id
+  productId
+  name
+  unit
+  unitPrice
+  mrp
+  quantity
+}
+
+fragment OrderFields on AppOrder {
+  id
+  userId
+  storeId
+  addressId
+  status
+  subtotal
+  deliveryFee
+  discount
+  total
+  paymentMethod
+  idempotencyKey
+  placedAt
+  items {
+    ...OrderItemFields
+  }
+}
+
+query MyOrders($page: Int, $limit: Int) {
+  myOrders(page: $page, limit: $limit) {
+    items {
+      ...OrderFields
+    }
+    page
+    limit
+    total
+  }
+}
+
+mutation Checkout(
+  $addressId: String!
+  $paymentMethod: String
+  $idempotencyKey: String!
+) {
+  checkout(
+    addressId: $addressId
+    paymentMethod: $paymentMethod
+    idempotencyKey: $idempotencyKey
+  ) {
+    ...OrderFields
+  }
+}

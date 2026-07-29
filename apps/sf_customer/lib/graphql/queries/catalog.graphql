@@ -1,0 +1,28 @@
+fragment ProductFields on ProductsSelectItem {
+  id
+  categoryId
+  name
+  description
+  unit
+  mrp
+  price
+  emoji
+  imageUrl
+  isActive
+}
+
+fragment CategoryFields on CategoriesSelectItem {
+  id
+  name
+  slug
+  sortOrder
+}
+
+query GetCatalog {
+  products(limit: 100) {
+    ...ProductFields
+  }
+  categories(limit: 100) {
+    ...CategoryFields
+  }
+}

@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:get/get.dart';
+import 'package:gql/ast.dart' show DocumentNode;
+import 'package:gql/language.dart' show printNode;
 
 class GraphQLException implements Exception {
   final String message;
@@ -53,12 +55,23 @@ class GraphQLProvider extends GetConnect {
     super.onInit();
   }
 
-  Future<Map<String, dynamic>> sendQuery(
-    String queryDoc, {
+  Future<T> execute<T>({
+    required dynamic document,
+    required T Function(Map<String, dynamic> json) fromJson,
     Map<String, dynamic>? variables,
   }) async {
+    final data = await sendQuery(document, variables: variables);
+    return fromJson(data);
+  }
+
+  Future<Map<String, dynamic>> sendQuery(
+    dynamic queryDoc, {
+    Map<String, dynamic>? variables,
+  }) async {
+    final docString = queryDoc is DocumentNode ? printNode(queryDoc) : queryDoc.toString();
+
     if (mockHandler != null) {
-      return mockHandler!(queryDoc, variables);
+      return mockHandler!(docString, variables);
     }
 
     final reqHeaders = <String, String>{
@@ -72,7 +85,7 @@ class GraphQLProvider extends GetConnect {
       response = await post(
         '',
         {
-          'query': queryDoc,
+          'query': docString,
           ...?variables != null ? {'variables': variables} : null,
         },
         headers: reqHeaders,

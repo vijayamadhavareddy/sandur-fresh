@@ -94,10 +94,12 @@ export const orderMutations = {
       ctx: GraphQLContext,
     ) => {
       const user = requireUser(ctx);
+      console.log("orderMutations - checkout - args", JSON.stringify(args));
       const input = parseInput(checkoutBodySchema, {
         addressId: args.addressId,
         paymentMethod: args.paymentMethod ?? "COD",
       });
+      console.log("orderMutations - checkout - post parse");
       const order = fromServiceResult(
         await ctx.services.orders.checkout(user.id, input, args.idempotencyKey),
       );

@@ -58,6 +58,7 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
     input: CheckoutInput,
     idempotencyKey: string,
   ): Promise<Result<OrderView, DomainError>> => {
+    console.log("createOrdersService - checkout");
     if (!idempotencyKey || idempotencyKey.trim().length === 0) {
       return err(validationError("Idempotency-Key header is required"));
     }

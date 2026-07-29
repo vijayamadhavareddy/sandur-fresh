@@ -83,7 +83,7 @@ class _OrderCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(order.id, style: textTheme.titleLarge),
+                  Text(order.items[0].product.name, style: textTheme.titleMedium),
                   Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.md,

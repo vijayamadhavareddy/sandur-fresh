@@ -1,0 +1,76 @@
+fragment AddressFields on AppAddress {
+  id
+  label
+  line1
+  line2
+  city
+  pincode
+  phone
+  lat
+  lng
+  isDefault
+}
+
+query MyAddresses {
+  myAddresses {
+    ...AddressFields
+  }
+}
+
+mutation AddAddress(
+  $label: String!
+  $line1: String!
+  $line2: String
+  $city: String!
+  $pincode: String!
+  $phone: String!
+  $lat: Float!
+  $lng: Float!
+  $isDefault: Boolean
+) {
+  addAddress(
+    label: $label
+    line1: $line1
+    line2: $line2
+    city: $city
+    pincode: $pincode
+    phone: $phone
+    lat: $lat
+    lng: $lng
+    isDefault: $isDefault
+  ) {
+    ...AddressFields
+  }
+}
+
+mutation UpdateAddress(
+  $id: String!
+  $label: String
+  $line1: String
+  $line2: String
+  $city: String
+  $pincode: String
+  $phone: String
+  $lat: Float
+  $lng: Float
+  $isDefault: Boolean
+) {
+  updateAddress(
+    id: $id
+    label: $label
+    line1: $line1
+    line2: $line2
+    city: $city
+    pincode: $pincode
+    phone: $phone
+    lat: $lat
+    lng: $lng
+    isDefault: $isDefault
+  ) {
+    ...AddressFields
+  }
+}
+
+mutation DeleteAddress($id: String!) {
+  deleteAddress(id: $id)
+}

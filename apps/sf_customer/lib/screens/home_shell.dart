@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/cart_controller.dart';
 import '../controllers/home_controller.dart';
 import '../theme/app_colors.dart';
+import '../widgets/cart_summary_bar.dart';
 import 'cart_screen.dart';
 import 'categories_screen.dart';
 import 'home_screen.dart';
@@ -27,7 +28,27 @@ class HomeShell extends StatelessWidget {
               ProfileScreen(),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
+          bottomNavigationBar: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (home.tabIndex.value != 2)
+                CartSummaryBar(onViewCart: () => home.setTab(2)),
+              _BottomNav(home: home, cart: cart),
+            ],
+          ),
+        ));
+  }
+}
+
+class _BottomNav extends StatelessWidget {
+  final HomeController home;
+  final CartController cart;
+
+  const _BottomNav({required this.home, required this.cart});
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
             currentIndex: home.tabIndex.value,
             onTap: home.setTab,
             items: [
@@ -64,7 +85,6 @@ class HomeShell extends StatelessWidget {
                 label: 'Profile',
               ),
             ],
-          ),
-        ));
+          );
   }
 }

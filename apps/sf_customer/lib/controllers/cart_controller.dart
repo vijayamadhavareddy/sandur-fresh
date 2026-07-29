@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../graphql/generated/cart.graphql.dart';
 import '../models/product.dart';
 import '../providers/graphql_provider.dart';
 
@@ -20,35 +21,11 @@ class CartController extends GetxController {
     if (gqlProvider.authToken == null) return;
     isLoading.value = true;
     try {
-      const doc = '''
-        query MyCart {
-          myCart {
-            id
-            storeId
-            items {
-              id
-              productId
-              name
-              unit
-              emoji
-              price
-              mrp
-              quantity
-              lineTotal
-              lineSavings
-            }
-            subtotal
-            savings
-            deliveryFee
-            total
-          }
-        }
-      ''';
-      final res = await gqlProvider.sendQuery(doc);
-      final cartData = res['myCart'] as Map<String, dynamic>?;
-      if (cartData != null) {
-        _updateCartFromResponse(cartData);
-      }
+      final res = await gqlProvider.execute(
+        document: documentNodeQueryMyCart,
+        fromJson: Query$MyCart.fromJson,
+      );
+      _updateCartFromTypedData(res.myCart);
     } catch (_) {
       // Ignore if offline
     } finally {
@@ -56,31 +33,28 @@ class CartController extends GetxController {
     }
   }
 
-  void _updateCartFromResponse(Map<String, dynamic> cartData) {
-    serverSubtotal.value = ((cartData['subtotal'] as num?) ?? 0) / 100.0;
-    serverSavings.value = ((cartData['savings'] as num?) ?? 0) / 100.0;
-    serverDeliveryFee.value = ((cartData['deliveryFee'] as num?) ?? 0) / 100.0;
-    serverTotal.value = ((cartData['total'] as num?) ?? 0) / 100.0;
+  void _updateCartFromTypedData(Fragment$CartFields cartData) {
+    serverSubtotal.value = cartData.subtotal / 100.0;
+    serverSavings.value = cartData.savings / 100.0;
+    serverDeliveryFee.value = cartData.deliveryFee / 100.0;
+    serverTotal.value = cartData.total / 100.0;
 
-    final rawItems = cartData['items'] as List<dynamic>? ?? [];
     final map = <String, CartItem>{};
-    for (final item in rawItems) {
-      final m = item as Map<String, dynamic>;
-      final pid = m['productId'] as String;
-      final priceVal = ((m['price'] as num?) ?? 0) / 100.0;
-      final mrpVal = ((m['mrp'] as num?) ?? 0) / 100.0;
+    for (final item in cartData.items) {
+      final pid = item.productId;
+      final priceVal = item.price / 100.0;
+      final mrpVal = item.mrp / 100.0;
 
       final prod = Product(
         id: pid,
-        name: m['name'] as String? ?? '',
+        name: item.name,
         category: 'General',
         price: priceVal,
         mrp: mrpVal,
-        unit: m['unit'] as String? ?? '1 unit',
-        emoji: m['emoji'] as String? ?? '🛒',
+        unit: item.unit,
+        emoji: item.emoji ?? '🛒',
       );
-      final qty = (m['quantity'] as num?)?.toInt() ?? 1;
-      map[pid] = CartItem(id: m['id'] as String?, product: prod, qty: qty);
+      map[pid] = CartItem(id: item.id, product: prod, qty: item.quantity);
     }
     items.assignAll(map);
   }
@@ -95,45 +69,83 @@ class CartController extends GetxController {
 
     if (gqlProvider.authToken != null) {
       try {
-        const doc = '''
-          mutation AddToCart(\$productId: String!, \$quantity: Int!) {
-            addToCart(productId: \$productId, quantity: \$quantity) {
-              id
-              items { id productId name unit emoji price mrp quantity lineTotal lineSavings }
-              subtotal savings deliveryFee total
-            }
-          }
-        ''';
-        final res = await gqlProvider.sendQuery(doc, variables: {
-          'productId': product.id,
-          'quantity': existing != null ? existing.qty.value : 1,
-        });
-        if (res['addToCart'] != null) {
-          _updateCartFromResponse(res['addToCart'] as Map<String, dynamic>);
-        }
+        final res = await gqlProvider.execute(
+          document: documentNodeMutationAddToCart,
+          fromJson: Mutation$AddToCart.fromJson,
+          variables: Variables$Mutation$AddToCart(
+            productId: product.id,
+            quantity: existing != null ? existing.qty.value : 1,
+          ).toJson(),
+        );
+        _updateCartFromAddToCart(res.addToCart);
       } catch (_) {}
     }
+  }
+
+  void _updateCartFromAddToCart(Fragment$CartFields cartData) {
+    serverSubtotal.value = cartData.subtotal / 100.0;
+    serverSavings.value = cartData.savings / 100.0;
+    serverDeliveryFee.value = cartData.deliveryFee / 100.0;
+    serverTotal.value = cartData.total / 100.0;
+
+    final map = <String, CartItem>{};
+    for (final item in cartData.items) {
+      final pid = item.productId;
+      final priceVal = item.price / 100.0;
+      final mrpVal = item.mrp / 100.0;
+
+      final prod = Product(
+        id: pid,
+        name: item.name,
+        category: 'General',
+        price: priceVal,
+        mrp: mrpVal,
+        unit: item.unit,
+        emoji: item.emoji ?? '🛒',
+      );
+      map[pid] = CartItem(id: item.id, product: prod, qty: item.quantity);
+    }
+    items.assignAll(map);
   }
 
   Future<void> remove(String productId) async {
     final item = items.remove(productId);
     if (item?.id != null && gqlProvider.authToken != null) {
       try {
-        const doc = '''
-          mutation RemoveCartItem(\$itemId: String!) {
-            removeCartItem(itemId: \$itemId) {
-              id
-              items { id productId name unit emoji price mrp quantity lineTotal lineSavings }
-              subtotal savings deliveryFee total
-            }
-          }
-        ''';
-        final res = await gqlProvider.sendQuery(doc, variables: {'itemId': item!.id});
-        if (res['removeCartItem'] != null) {
-          _updateCartFromResponse(res['removeCartItem'] as Map<String, dynamic>);
-        }
+        final res = await gqlProvider.execute(
+          document: documentNodeMutationRemoveCartItem,
+          fromJson: Mutation$RemoveCartItem.fromJson,
+          variables: Variables$Mutation$RemoveCartItem(itemId: item!.id!).toJson(),
+        );
+        _updateCartFromRemoveCartItem(res.removeCartItem);
       } catch (_) {}
     }
+  }
+
+  void _updateCartFromRemoveCartItem(Fragment$CartFields cartData) {
+    serverSubtotal.value = cartData.subtotal / 100.0;
+    serverSavings.value = cartData.savings / 100.0;
+    serverDeliveryFee.value = cartData.deliveryFee / 100.0;
+    serverTotal.value = cartData.total / 100.0;
+
+    final map = <String, CartItem>{};
+    for (final item in cartData.items) {
+      final pid = item.productId;
+      final priceVal = item.price / 100.0;
+      final mrpVal = item.mrp / 100.0;
+
+      final prod = Product(
+        id: pid,
+        name: item.name,
+        category: 'General',
+        price: priceVal,
+        mrp: mrpVal,
+        unit: item.unit,
+        emoji: item.emoji ?? '🛒',
+      );
+      map[pid] = CartItem(id: item.id, product: prod, qty: item.quantity);
+    }
+    items.assignAll(map);
   }
 
   Future<void> increment(String productId) async {
@@ -143,22 +155,15 @@ class CartController extends GetxController {
       if (gqlProvider.authToken != null) {
         if (item.id != null) {
           try {
-            const doc = '''
-              mutation UpdateCartItem(\$itemId: String!, \$quantity: Int!) {
-                updateCartItem(itemId: \$itemId, quantity: \$quantity) {
-                  id
-                  items { id productId name unit emoji price mrp quantity lineTotal lineSavings }
-                  subtotal savings deliveryFee total
-                }
-              }
-            ''';
-            final res = await gqlProvider.sendQuery(doc, variables: {
-              'itemId': item.id,
-              'quantity': item.qty.value,
-            });
-            if (res['updateCartItem'] != null) {
-              _updateCartFromResponse(res['updateCartItem'] as Map<String, dynamic>);
-            }
+            final res = await gqlProvider.execute(
+              document: documentNodeMutationUpdateCartItem,
+              fromJson: Mutation$UpdateCartItem.fromJson,
+              variables: Variables$Mutation$UpdateCartItem(
+                itemId: item.id!,
+                quantity: item.qty.value,
+              ).toJson(),
+            );
+            _updateCartFromUpdateCartItem(res.updateCartItem);
           } catch (_) {}
         } else {
           add(item.product);
@@ -176,25 +181,44 @@ class CartController extends GetxController {
       item.qty.value--;
       if (gqlProvider.authToken != null && item.id != null) {
         try {
-          const doc = '''
-            mutation UpdateCartItem(\$itemId: String!, \$quantity: Int!) {
-              updateCartItem(itemId: \$itemId, quantity: \$quantity) {
-                id
-                items { id productId name unit emoji price mrp quantity lineTotal lineSavings }
-                subtotal savings deliveryFee total
-              }
-            }
-          ''';
-          final res = await gqlProvider.sendQuery(doc, variables: {
-            'itemId': item.id,
-            'quantity': item.qty.value,
-          });
-          if (res['updateCartItem'] != null) {
-            _updateCartFromResponse(res['updateCartItem'] as Map<String, dynamic>);
-          }
+          final res = await gqlProvider.execute(
+            document: documentNodeMutationUpdateCartItem,
+            fromJson: Mutation$UpdateCartItem.fromJson,
+            variables: Variables$Mutation$UpdateCartItem(
+              itemId: item.id!,
+              quantity: item.qty.value,
+            ).toJson(),
+          );
+          _updateCartFromUpdateCartItem(res.updateCartItem);
         } catch (_) {}
       }
     }
+  }
+
+  void _updateCartFromUpdateCartItem(Fragment$CartFields cartData) {
+    serverSubtotal.value = cartData.subtotal / 100.0;
+    serverSavings.value = cartData.savings / 100.0;
+    serverDeliveryFee.value = cartData.deliveryFee / 100.0;
+    serverTotal.value = cartData.total / 100.0;
+
+    final map = <String, CartItem>{};
+    for (final item in cartData.items) {
+      final pid = item.productId;
+      final priceVal = item.price / 100.0;
+      final mrpVal = item.mrp / 100.0;
+
+      final prod = Product(
+        id: pid,
+        name: item.name,
+        category: 'General',
+        price: priceVal,
+        mrp: mrpVal,
+        unit: item.unit,
+        emoji: item.emoji ?? '🛒',
+      );
+      map[pid] = CartItem(id: item.id, product: prod, qty: item.quantity);
+    }
+    items.assignAll(map);
   }
 
   int quantityOf(String productId) => items[productId]?.qty.value ?? 0;

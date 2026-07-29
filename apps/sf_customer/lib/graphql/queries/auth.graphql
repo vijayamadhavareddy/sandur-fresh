@@ -1,0 +1,34 @@
+fragment UserFields on AppUser {
+  id
+  phone
+  name
+  email
+  role
+}
+
+mutation RequestOtp($phone: String!) {
+  requestOtp(phone: $phone) {
+    message
+  }
+}
+
+mutation VerifyOtp($phone: String!, $code: String!) {
+  verifyOtp(phone: $phone, code: $code) {
+    token
+    user {
+      ...UserFields
+    }
+  }
+}
+
+mutation UpdateProfile($name: String, $email: String) {
+  updateProfile(name: $name, email: $email) {
+    ...UserFields
+  }
+}
+
+query Me {
+  me {
+    ...UserFields
+  }
+}

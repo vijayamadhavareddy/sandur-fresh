@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../graphql/generated/auth.graphql.dart';
 import '../providers/graphql_provider.dart';
 import '../theme/app_colors.dart';
 
@@ -12,7 +13,7 @@ class AuthController extends GetxController {
   final TextEditingController nameController = TextEditingController();
 
   final RxBool isLoggedIn = false.obs;
-  final RxString name = 'Sandur Customer'.obs;
+  final RxString name = ''.obs;
   final RxString phone = ''.obs;
   final RxnString generatedOtp = RxnString();
   final RxBool otpSent = false.obs;
@@ -34,14 +35,11 @@ class AuthController extends GetxController {
 
     isLoading.value = true;
     try {
-      const doc = '''
-        mutation RequestOtp(\$phone: String!) {
-          requestOtp(phone: \$phone) {
-            message
-          }
-        }
-      ''';
-      await gqlProvider.sendQuery(doc, variables: {'phone': number});
+      await gqlProvider.execute(
+        document: documentNodeMutationRequestOtp,
+        fromJson: Mutation$RequestOtp.fromJson,
+        variables: Variables$Mutation$RequestOtp(phone: number).toJson(),
+      );
       phone.value = number;
       otpController.clear();
       otpSent.value = true;
@@ -78,32 +76,21 @@ class AuthController extends GetxController {
     isLoading.value = true;
 
     try {
-      const doc = '''
-        mutation VerifyOtp(\$phone: String!, \$code: String!) {
-          verifyOtp(phone: \$phone, code: \$code) {
-            token
-            user {
-              id
-              phone
-              name
-              email
-              role
-            }
-          }
-        }
-      ''';
-      final res = await gqlProvider.sendQuery(doc, variables: {
-        'phone': phone.value.isNotEmpty ? phone.value : phoneController.text.trim(),
-        'code': code,
-      });
+      final res = await gqlProvider.execute(
+        document: documentNodeMutationVerifyOtp,
+        fromJson: Mutation$VerifyOtp.fromJson,
+        variables: Variables$Mutation$VerifyOtp(
+          phone: phone.value.isNotEmpty ? phone.value : phoneController.text.trim(),
+          code: code,
+        ).toJson(),
+      );
 
-      final authPayload = res['verifyOtp'] as Map<String, dynamic>;
-      final token = authPayload['token'] as String;
-      final user = authPayload['user'] as Map<String, dynamic>;
+      final token = res.verifyOtp.token;
+      final user = res.verifyOtp.user;
 
       gqlProvider.authToken = token;
-      if ((user['name'] as String?)?.isNotEmpty == true) {
-        name.value = user['name'] as String;
+      if (user.name.isNotEmpty) {
+        name.value = user.name;
       }
       isLoggedIn.value = true;
       isLoading.value = false;
@@ -148,15 +135,11 @@ class AuthController extends GetxController {
     }
 
     try {
-      const doc = '''
-        mutation UpdateProfile(\$name: String!) {
-          updateProfile(name: \$name) {
-            id
-            name
-          }
-        }
-      ''';
-      await gqlProvider.sendQuery(doc, variables: {'name': trimmed});
+      await gqlProvider.execute(
+        document: documentNodeMutationUpdateProfile,
+        fromJson: Mutation$UpdateProfile.fromJson,
+        variables: Variables$Mutation$UpdateProfile(name: trimmed).toJson(),
+      );
       name.value = trimmed;
     } catch (e) {
       name.value = trimmed;

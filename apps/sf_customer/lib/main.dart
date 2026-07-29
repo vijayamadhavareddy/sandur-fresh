@@ -23,7 +23,7 @@ class SandurFreshApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Sandur Fresh',
+      title: 'Sandur Delivery',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       initialRoute: '/',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../graphql/generated/orders.graphql.dart';
 import '../models/order.dart';
 import '../models/product.dart';
 import '../providers/graphql_provider.dart';
@@ -57,78 +58,71 @@ class CheckoutController extends GetxController {
     isLoading.value = true;
     final idempotencyKey = 'sf-idemp-${DateTime.now().millisecondsSinceEpoch}';
 
-    if (gqlProvider.authToken != null) {
-      try {
-        const doc = '''
-          mutation Checkout(\$addressId: String!, \$paymentMethod: String, \$idempotencyKey: String!) {
-            checkout(addressId: \$addressId, paymentMethod: \$paymentMethod, idempotencyKey: \$idempotencyKey) {
-              id
-              userId
-              storeId
-              addressId
-              status
-              subtotal
-              deliveryFee
-              discount
-              total
-              paymentMethod
-              idempotencyKey
-              placedAt
-              items {
-                id
-                productId
-                name
-                unit
-                unitPrice
-                mrp
-                quantity
-              }
-            }
-          }
-        ''';
+    try {
+      final res = await gqlProvider.execute(
+        document: documentNodeMutationCheckout,
+        fromJson: Mutation$Checkout.fromJson,
+        variables: Variables$Mutation$Checkout(
+          addressId: address.id,
+          paymentMethod: paymentMethod.value,
+          idempotencyKey: idempotencyKey,
+        ).toJson(),
+      );
 
-        final res = await gqlProvider.sendQuery(doc, variables: {
-          'addressId': address.id,
-          'paymentMethod': paymentMethod.value,
-          'idempotencyKey': idempotencyKey,
-        });
+      final rawOrder = res.checkout;
+      final subtotalVal = rawOrder.subtotal / 100.0;
+      final deliveryFeeVal = rawOrder.deliveryFee / 100.0;
+      final totalVal = rawOrder.total / 100.0;
+      final discountVal = rawOrder.discount / 100.0;
 
-        final rawOrder = res['checkout'] as Map<String, dynamic>?;
-        if (rawOrder != null) {
-          final createdOrder = Order.fromGraphQL(rawOrder);
-          Get.find<OrdersController>().addOrder(createdOrder);
-          lastOrderId.value = createdOrder.id;
-          cart.clear();
-          isLoading.value = false;
-          Get.offNamed('/order-success');
-          return;
-        }
-      } catch (e) {
-        // Fallback below if server request fails
-      }
+      final itemsList = rawOrder.items.map((itemJson) {
+        final unitPriceVal = itemJson.unitPrice / 100.0;
+        final mrpVal = itemJson.mrp / 100.0;
+        final qty = itemJson.quantity;
+
+        final prod = Product(
+          id: itemJson.productId,
+          name: itemJson.name,
+          category: 'General',
+          price: unitPriceVal,
+          mrp: mrpVal > 0 ? mrpVal : unitPriceVal,
+          unit: itemJson.unit,
+          emoji: '📦',
+        );
+
+        return CartItem(id: itemJson.id, product: prod, qty: qty);
+      }).toList();
+
+      final parsedDate = DateTime.tryParse(rawOrder.placedAt) ?? DateTime.now();
+
+      final createdOrder = Order(
+        id: rawOrder.id,
+        items: itemsList,
+        subtotal: subtotalVal,
+        savings: discountVal,
+        deliveryFee: deliveryFeeVal,
+        total: totalVal,
+        paymentMethod: rawOrder.paymentMethod,
+        addressLine: rawOrder.addressId,
+        placedAt: parsedDate,
+        rawStatus: rawOrder.status,
+      );
+
+      Get.find<OrdersController>().addOrder(createdOrder);
+      lastOrderId.value = createdOrder.id;
+      cart.clear();
+      isLoading.value = false;
+      Get.offNamed('/order-success');
+    } catch (e) {
+      isLoading.value = false;
+      Get.snackbar(
+        'Checkout failed',
+        e.toString().replaceAll('GraphQLException: ', ''),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.error,
+        colorText: AppColors.surface,
+      );
     }
-
-    // Local / Offline fallback order creation
-    final id = 'SF${DateTime.now().millisecondsSinceEpoch % 1000000}';
-    final order = Order(
-      id: id,
-      items: cart.items.values
-          .map((item) =>
-              CartItem(product: item.product, qty: item.qty.value))
-          .toList(),
-      subtotal: cart.subtotal,
-      savings: cart.savings,
-      deliveryFee: cart.deliveryFee,
-      total: cart.total,
-      paymentMethod: paymentMethod.value,
-      addressLine: '${address.label} — ${address.summary}',
-      placedAt: DateTime.now(),
-    );
-    Get.find<OrdersController>().addOrder(order);
-    lastOrderId.value = id;
-    cart.clear();
-    isLoading.value = false;
-    Get.offNamed('/order-success');
   }
 
   @override

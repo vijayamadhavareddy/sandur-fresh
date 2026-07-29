@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          assets:
+            - lib/graphql/queries/**.graphql
+          schema: lib/graphql/schema.graphql
+          outputDirectory: ../generated

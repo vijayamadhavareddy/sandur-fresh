@@ -15,6 +15,38 @@ void main() {
     Get.testMode = true;
     final gql = Get.put(GraphQLProvider());
     gql.mockHandler = (query, variables) async {
+      if (query.toLowerCase().contains('checkout')) {
+        return {
+          '__typename': 'Mutation',
+          'checkout': {
+            '__typename': 'AppOrder',
+            'id': 'order-test-1',
+            'userId': 'u1',
+            'storeId': 's1',
+            'addressId': 'addr-1',
+            'status': 'PLACED',
+            'subtotal': 5400,
+            'deliveryFee': 0,
+            'discount': 0,
+            'total': 5400,
+            'paymentMethod': 'COD',
+            'idempotencyKey': 'sf-idemp-123',
+            'placedAt': '2026-07-29T12:00:00Z',
+            'items': [
+              {
+                '__typename': 'AppOrderItem',
+                'id': 'oi1',
+                'productId': 'm1',
+                'name': 'Milk',
+                'unit': '500 ml',
+                'unitPrice': 2700,
+                'mrp': 2800,
+                'quantity': 2,
+              }
+            ]
+          }
+        };
+      }
       return <String, dynamic>{};
     };
   });
@@ -303,7 +335,7 @@ void main() {
       expect(order.items.length, 1);
       expect(order.items.first.qty.value, 2);
       expect(order.subtotal, 54);
-      expect(order.total, 54 + 25);
+      expect(order.total, 54);
       expect(order.paymentMethod, 'COD');
       expect(checkout.lastOrderId.value, order.id);
       expect(cart.items, isEmpty);

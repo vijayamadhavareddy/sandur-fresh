@@ -19,6 +19,8 @@ export const requireUser = (ctx: GraphQLContext) => {
 
 export const parseInput = <T>(schema: z.ZodType<T>, input: unknown): T => {
   const parsed = schema.safeParse(input);
+  console.log("parseInput", input);
+  console.log("parseInput - result", parsed.success, parsed.data, parsed.error);
   if (!parsed.success) {
     throw new GraphQLError("Validation failed", {
       extensions: {

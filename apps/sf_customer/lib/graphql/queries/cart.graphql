@@ -1,0 +1,49 @@
+fragment CartItemFields on AppCartItem {
+  id
+  productId
+  name
+  unit
+  emoji
+  price
+  mrp
+  quantity
+  lineTotal
+  lineSavings
+}
+
+fragment CartFields on AppCart {
+  id
+  storeId
+  items {
+    ...CartItemFields
+  }
+  subtotal
+  savings
+  deliveryFee
+  discount
+  total
+}
+
+query MyCart {
+  myCart {
+    ...CartFields
+  }
+}
+
+mutation AddToCart($productId: String!, $quantity: Int!, $storeId: String) {
+  addToCart(productId: $productId, quantity: $quantity, storeId: $storeId) {
+    ...CartFields
+  }
+}
+
+mutation UpdateCartItem($itemId: String!, $quantity: Int!) {
+  updateCartItem(itemId: $itemId, quantity: $quantity) {
+    ...CartFields
+  }
+}
+
+mutation RemoveCartItem($itemId: String!) {
+  removeCartItem(itemId: $itemId) {
+    ...CartFields
+  }
+}

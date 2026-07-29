@@ -1,4 +1,4 @@
-package com.example.sf_customer
+package com.binyoga.smart
 
 import io.flutter.embedding.android.FlutterActivity
 

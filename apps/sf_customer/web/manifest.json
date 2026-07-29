@@ -1,6 +1,6 @@
 {
-    "name": "sf_customer",
-    "short_name": "sf_customer",
+    "name": "Sandur Delivery",
+    "short_name": "Sandur Delivery",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

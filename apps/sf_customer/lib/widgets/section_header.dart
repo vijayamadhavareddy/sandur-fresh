@@ -21,7 +21,12 @@ class SectionHeader extends StatelessWidget {
         if (actionLabel != null)
           TextButton(
             onPressed: onAction,
-            child: Text(actionLabel!),
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: Text(actionLabel!,),
           ),
       ],
     );

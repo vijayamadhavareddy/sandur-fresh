@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../graphql/generated/address.graphql.dart';
 import '../models/address.dart';
 import '../providers/graphql_provider.dart';
 import '../theme/app_colors.dart';
@@ -42,28 +43,29 @@ class AddressController extends GetxController {
     if (gqlProvider.authToken == null) return;
     isLoading.value = true;
     try {
-      const doc = '''
-        query MyAddresses {
-          myAddresses {
-            id
-            label
-            line1
-            line2
-            city
-            pincode
-            phone
-            lat
-            lng
-            isDefault
-          }
-        }
-      ''';
-      final res = await gqlProvider.sendQuery(doc);
-      final rawList = res['myAddresses'] as List<dynamic>? ?? [];
+      final res = await gqlProvider.execute(
+        document: documentNodeQueryMyAddresses,
+        fromJson: Query$MyAddresses.fromJson,
+      );
+      final rawList = res.myAddresses;
       if (rawList.isNotEmpty) {
-        final list = rawList
-            .map((item) => Address.fromGraphQL(item as Map<String, dynamic>))
-            .toList();
+        final list = rawList.map((item) {
+          final line2 = item.line2;
+          final fullLine = (line2 != null && line2.isNotEmpty)
+              ? '${item.line1}, $line2'
+              : item.line1;
+          return Address(
+            id: item.id,
+            label: item.label,
+            line: fullLine,
+            city: item.city,
+            pincode: item.pincode,
+            phone: item.phone,
+            lat: item.lat,
+            lng: item.lng,
+            isDefault: item.isDefault,
+          );
+        }).toList();
         addresses.assignAll(list);
         if (selectedId.value == null || !addresses.any((a) => a.id == selectedId.value)) {
           selectedId.value = addresses.first.id;
@@ -156,65 +158,62 @@ class AddressController extends GetxController {
   Future<void> _saveAddGraphQL(Address address) async {
     if (gqlProvider.authToken == null) return;
     try {
-      const doc = '''
-        mutation AddAddress(
-          \$label: String!, \$line1: String!, \$city: String!,
-          \$pincode: String!, \$phone: String!, \$lat: Float!, \$lng: Float!
-        ) {
-          addAddress(
-            label: \$label, line1: \$line1, city: \$city,
-            pincode: \$pincode, phone: \$phone, lat: \$lat, lng: \$lng
-          ) {
-            id label line1 line2 city pincode phone lat lng isDefault
-          }
-        }
-      ''';
-      final res = await gqlProvider.sendQuery(doc, variables: {
-        'label': address.label,
-        'line1': address.line,
-        'city': address.city,
-        'pincode': address.pincode,
-        'phone': address.phone,
-        'lat': address.lat,
-        'lng': address.lng,
-      });
-      if (res['addAddress'] != null) {
-        final created = Address.fromGraphQL(res['addAddress'] as Map<String, dynamic>);
-        final idx = addresses.indexWhere((a) => a.id == address.id);
-        if (idx != -1) {
-          addresses[idx] = created;
-        } else {
-          addresses.add(created);
-        }
-        selectedId.value = created.id;
+      final res = await gqlProvider.execute(
+        document: documentNodeMutationAddAddress,
+        fromJson: Mutation$AddAddress.fromJson,
+        variables: Variables$Mutation$AddAddress(
+          label: address.label,
+          line1: address.line,
+          city: address.city,
+          pincode: address.pincode,
+          phone: address.phone,
+          lat: address.lat,
+          lng: address.lng,
+        ).toJson(),
+      );
+      final item = res.addAddress;
+      final line2 = item.line2;
+      final fullLine = (line2 != null && line2.isNotEmpty)
+          ? '${item.line1}, $line2'
+          : item.line1;
+
+      final created = Address(
+        id: item.id,
+        label: item.label,
+        line: fullLine,
+        city: item.city,
+        pincode: item.pincode,
+        phone: item.phone,
+        lat: item.lat,
+        lng: item.lng,
+        isDefault: item.isDefault,
+      );
+
+      final idx = addresses.indexWhere((a) => a.id == address.id);
+      if (idx != -1) {
+        addresses[idx] = created;
+      } else {
+        addresses.add(created);
       }
+      selectedId.value = created.id;
     } catch (_) {}
   }
 
   Future<void> _saveUpdateGraphQL(Address address) async {
     if (gqlProvider.authToken == null) return;
     try {
-      const doc = '''
-        mutation UpdateAddress(
-          \$id: String!, \$label: String, \$line1: String,
-          \$city: String, \$pincode: String, \$phone: String
-        ) {
-          updateAddress(
-            id: \$id, label: \$label, line1: \$line1,
-            city: \$city, pincode: \$pincode, phone: \$phone
-          ) {
-            id label line1 line2 city pincode phone lat lng isDefault
-          }
-        }
-      ''';
-      await gqlProvider.sendQuery(doc, variables: {
-        'id': address.id,
-        'label': address.label,
-        'line1': address.line,
-        'city': address.city,
-        'pincode': address.pincode,
-        'phone': address.phone,
-      });
+      await gqlProvider.execute(
+        document: documentNodeMutationUpdateAddress,
+        fromJson: Mutation$UpdateAddress.fromJson,
+        variables: Variables$Mutation$UpdateAddress(
+          id: address.id,
+          label: address.label,
+          line1: address.line,
+          city: address.city,
+          pincode: address.pincode,
+          phone: address.phone,
+        ).toJson(),
+      );
     } catch (_) {}
   }
 
@@ -226,12 +225,11 @@ class AddressController extends GetxController {
 
     if (gqlProvider.authToken != null) {
       try {
-        const doc = '''
-          mutation DeleteAddress(\$id: String!) {
-            deleteAddress(id: \$id)
-          }
-        ''';
-        await gqlProvider.sendQuery(doc, variables: {'id': id});
+        await gqlProvider.execute(
+          document: documentNodeMutationDeleteAddress,
+          fromJson: Mutation$DeleteAddress.fromJson,
+          variables: Variables$Mutation$DeleteAddress(id: id).toJson(),
+        );
       } catch (_) {}
     }
   }

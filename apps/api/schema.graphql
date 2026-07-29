@@ -10307,6 +10307,8 @@ type Query {
   myOrders(page: Int, limit: Int): AppOrdersPage!
   checkServiceability(lat: Float, lng: Float, addressId: String): AppServiceability!
   availableDeliverySlots(addressId: String!): AppDeliverySlots!
+  me: AppUser!
+  myAddresses: [AppAddress!]!
 }
 
 type AdminSession {
@@ -10531,27 +10533,6 @@ type AppDeliverySlot {
   remaining: Int!
 }
 
-type Mutation {
-  addToCart(productId: String!, quantity: Int!, storeId: String): AppCart!
-  updateCartItem(itemId: String!, quantity: Int!): AppCart!
-  removeCartItem(itemId: String!): AppCart!
-  adminLogin(email: String!, password: String!): AdminSession!
-  adminLogout: Boolean!
-  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
-  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
-  createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
-  updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
-  createAdminStore(name: String!, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
-  updateAdminStore(id: String!, name: String, address: String, lat: Float, lng: Float, serviceRadiusM: Int, isActive: Boolean): AdminStore!
-  adjustAdminInventory(inventoryId: String!, delta: Int!, reason: String!): AdminInventoryItem!
-  transitionAdminOrder(orderId: String!, status: AdminOrderStatus!, reason: String): AdminOrder!
-  checkout(addressId: String!, paymentMethod: String, idempotencyKey: String!): AppOrder!
-  cancelOrder(orderId: String!): AppOrder!
-  updateOrderStatus(orderId: String!, status: String!): AppOrder!
-  updateProfile(name: String, email: String): AppUser!
-  addAddress(label: String!, line1: String!, line2: String, city: String!, pincode: String!, phone: String!, lat: Float!, lng: Float!, isDefault: Boolean): AppAddress!
-}
-
 type AppUser {
   id: String!
   phone: String!
@@ -10571,4 +10552,38 @@ type AppAddress {
   lat: Float!
   lng: Float!
   isDefault: Boolean!
+}
+
+type Mutation {
+  addToCart(productId: String!, quantity: Int!, storeId: String): AppCart!
+  updateCartItem(itemId: String!, quantity: Int!): AppCart!
+  removeCartItem(itemId: String!): AppCart!
+  adminLogin(email: String!, password: String!): AdminSession!
+  adminLogout: Boolean!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
+  createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
+  updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
+  createAdminStore(name: String!, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  updateAdminStore(id: String!, name: String, address: String, lat: Float, lng: Float, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  adjustAdminInventory(inventoryId: String!, delta: Int!, reason: String!): AdminInventoryItem!
+  transitionAdminOrder(orderId: String!, status: AdminOrderStatus!, reason: String): AdminOrder!
+  checkout(addressId: String!, paymentMethod: String, idempotencyKey: String!): AppOrder!
+  cancelOrder(orderId: String!): AppOrder!
+  updateOrderStatus(orderId: String!, status: String!): AppOrder!
+  requestOtp(phone: String!): AppRequestOtpPayload!
+  verifyOtp(phone: String!, code: String!): AppAuthPayload!
+  updateProfile(name: String, email: String): AppUser!
+  addAddress(label: String!, line1: String!, line2: String, city: String!, pincode: String!, phone: String!, lat: Float!, lng: Float!, isDefault: Boolean): AppAddress!
+  updateAddress(id: String!, label: String, line1: String, line2: String, city: String, pincode: String, phone: String, lat: Float, lng: Float, isDefault: Boolean): AppAddress!
+  deleteAddress(id: String!): Boolean!
+}
+
+type AppRequestOtpPayload {
+  message: String!
+}
+
+type AppAuthPayload {
+  token: String!
+  user: AppUser!
 }
