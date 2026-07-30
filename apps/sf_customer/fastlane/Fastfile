@@ -1,0 +1,117 @@
+# Fastfile
+# Fastlane lanes for Sandur Fresh Customer App (Flutter)
+
+default_platform(:android)
+
+before_all do
+  # Ensure we are in sf_customer root when executing flutter commands
+  ENV["FLUTTER_ROOT_DIR"] ||= File.expand_path("..", __dir__)
+end
+
+platform :android do
+  desc "Run Flutter tests"
+  lane :test do
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter test")
+  end
+
+  desc "Build Android release APK"
+  lane :build_apk do
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build apk --release")
+  end
+
+  desc "Build Android release App Bundle (.aab)"
+  lane :build_bundle do
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build appbundle --release")
+  end
+
+  desc "Build and upload App Bundle to Google Play Internal / Closed Track"
+  lane :beta do |options|
+    track = options[:track] || ENV.fetch("ANDROID_RELEASE_TRACK", "internal")
+    build_bundle
+
+    upload_to_play_store(
+      track: track,
+      aab: File.join(ENV["FLUTTER_ROOT_DIR"], "build/app/outputs/bundle/release/app-release.aab"),
+      skip_upload_metadata: options[:skip_metadata] || true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+
+  desc "Build and deploy to Google Play Production"
+  lane :release do |options|
+    build_bundle
+
+    upload_to_play_store(
+      track: "production",
+      aab: File.join(ENV["FLUTTER_ROOT_DIR"], "build/app/outputs/bundle/release/app-release.aab"),
+      skip_upload_metadata: options[:skip_metadata] || false,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end
+
+platform :ios do
+  desc "Run Flutter tests"
+  lane :test do
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter test")
+  end
+
+  desc "Build iOS IPA"
+  lane :build_ipa do
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release --export-options-plist=ios/ExportOptions.plist")
+  end
+
+  desc "Build and upload to TestFlight"
+  lane :beta do |options|
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release")
+
+    ipa_path = Dir.glob(File.join(ENV["FLUTTER_ROOT_DIR"], "build/ios/ipa/*.ipa")).first
+
+    if ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"]
+      api_key = app_store_connect_api_key(
+        key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+        issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+        key_content: ENV["APP_STORE_CONNECT_API_KEY_KEY"],
+        is_key_content_base64: true
+      )
+      upload_to_testflight(
+        api_key: api_key,
+        ipa: ipa_path,
+        skip_waiting_for_build_processing: true
+      )
+    else
+      upload_to_testflight(
+        ipa: ipa_path,
+        skip_waiting_for_build_processing: true
+      )
+    end
+  end
+
+  desc "Build and submit to App Store"
+  lane :release do |options|
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release")
+
+    ipa_path = Dir.glob(File.join(ENV["FLUTTER_ROOT_DIR"], "build/ios/ipa/*.ipa")).first
+
+    if ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"]
+      api_key = app_store_connect_api_key(
+        key_id: ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"],
+        issuer_id: ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"],
+        key_content: ENV["APP_STORE_CONNECT_API_KEY_KEY"],
+        is_key_content_base64: true
+      )
+      upload_to_app_store(
+        api_key: api_key,
+        ipa: ipa_path,
+        force: true
+      )
+    else
+      upload_to_app_store(
+        ipa: ipa_path,
+        force: true
+      )
+    end
+  end
+end

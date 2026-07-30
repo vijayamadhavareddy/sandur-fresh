@@ -1,4 +1,5 @@
 import { request } from "@/api/client";
-import { AdminSessionDocument } from "@/api/generated/graphql";
+import { AdminSessionDocument, AdminSetupStatusDocument } from "@/api/generated/graphql";
 
 export const fetchSession = () => request(AdminSessionDocument);
+export const fetchSetupStatus = () => request(AdminSetupStatusDocument);

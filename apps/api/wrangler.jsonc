@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sandur-fresh-api",
+  "account_id": "6949c559d9d7b5a7a223cb101d7110fa",
+  "workers_dev": true,
+  "main": "src/index.ts",
+  "compatibility_date": "2025-02-24",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "alias": {
+    "bun:sqlite": "./src/shims/bun-sqlite.ts"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sandur-fresh-db",
+      "database_id": "9cd4fa6f-faf6-49a6-b6d7-2ae78f5e37ad",
+      "migrations_dir": "../../packages/db/migrations"
+    }
+  ],
+  "vars": {
+    "RUNTIME": "cloudflare",
+    "GRAPHQL_INTROSPECTION": "true",
+    "ADMIN_SESSION_COOKIE": "sf_admin_session",
+    "ADMIN_SETUP_SECRET": "sandur-admin-setup-secret",
+    "DEV_OTP": "0000",
+    "CORS_ORIGIN": "https://aloha.binyoga.com"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,30 @@
+.git
+.gitignore
+.DS_Store
+.moon/cache
+.moon/docker
+.idea
+.vscode
+.claude
+
+# Dependencies
+node_modules
+apps/*/node_modules
+packages/*/node_modules
+
+# Build outputs & artifacts
+dist
+apps/admin/dist
+apps/sf_customer
+build/
+.dart_tool/
+
+# Databases & local data
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+sandur_fresh.db
+apps/api/data/
+apps/api/secrets/
+*-firebase-adminsdk-*.json

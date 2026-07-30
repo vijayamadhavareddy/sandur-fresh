@@ -10,6 +10,10 @@ class Product {
   final String emoji;
   final bool inStock;
 
+  /// Time-bound shelf tag set in admin (BREAKFAST | LUNCH | DINNER), or null
+  /// when the product isn't tagged to any shelf.
+  final String? timeBoundSection;
+
   const Product({
     required this.id,
     required this.name,
@@ -19,6 +23,7 @@ class Product {
     required this.unit,
     required this.emoji,
     this.inStock = true,
+    this.timeBoundSection,
   });
 
   factory Product.fromGraphQL(Map<String, dynamic> json, {String? categoryName}) {
@@ -36,6 +41,7 @@ class Product {
       unit: json['unit'] as String? ?? '1 unit',
       emoji: json['emoji'] as String? ?? '🛒',
       inStock: json['isActive'] as bool? ?? json['inStock'] as bool? ?? true,
+      timeBoundSection: json['timeBoundSection'] as String?,
     );
   }
 

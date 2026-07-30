@@ -20,10 +20,47 @@ import type {
   AdminCategoryInput,
   AdminStoreInput,
   CreateAdminProductInput,
+  StoreType,
   UpdateAdminCategoryInput,
+  UpdateAdminCustomerInput,
   UpdateAdminProductInput,
   UpdateAdminStoreInput,
 } from "./admin.schemas";
+
+export const hasAdmin = async (db: DbOrTx): Promise<boolean> => {
+  const rows = await db.select({ val: count() }).from(adminCredentials).limit(1);
+  return (rows[0]?.val ?? 0) > 0;
+};
+
+export const createAdminWithCredential = async (
+  db: DbOrTx,
+  input: { phone: string; name: string; email: string; passwordHash: string },
+) => {
+  const user = (
+    await db
+      .insert(users)
+      .values({
+        phone: input.phone,
+        name: input.name,
+        email: input.email,
+        role: "admin",
+      })
+      .returning()
+  )[0]!;
+
+  const credential = (
+    await db
+      .insert(adminCredentials)
+      .values({
+        userId: user.id,
+        email: input.email,
+        passwordHash: input.passwordHash,
+      })
+      .returning()
+  )[0]!;
+
+  return { user, credential };
+};
 
 export const findCredentialByEmail = async (db: DbOrTx, email: string) => {
   const rows = await db
@@ -98,7 +135,10 @@ export const findProduct = async (db: DbOrTx, id: string) => {
 
 export const listCategories = (db: DbOrTx) =>
   db.select().from(categories).orderBy(categories.sortOrder, categories.name);
-export const listStores = (db: DbOrTx) => db.select().from(stores).orderBy(stores.name);
+export const listStores = (db: DbOrTx, filter?: { type?: StoreType }) => {
+  const where = filter?.type ? eq(stores.type, filter.type) : undefined;
+  return db.select().from(stores).where(where).orderBy(stores.name);
+};
 export const findStore = async (db: DbOrTx, id: string) =>
   (await db.select().from(stores).where(eq(stores.id, id)).limit(1))[0] ?? null;
 
@@ -169,6 +209,24 @@ export const createStore = async (db: DbOrTx, input: AdminStoreInput) => {
   await db.insert(storeSlotConfig).values({ storeId: store.id });
   return store;
 };
+
+export const createStoresBulk = async (db: DbOrTx, inputs: AdminStoreInput[]) => {
+  const createdStores = [];
+  const productRows = await db.select({ id: products.id }).from(products);
+
+  for (const input of inputs) {
+    const store = (await db.insert(stores).values(input).returning())[0]!;
+    if (productRows.length > 0) {
+      await db
+        .insert(inventory)
+        .values(productRows.map((product) => ({ storeId: store.id, productId: product.id })));
+    }
+    await db.insert(storeSlotConfig).values({ storeId: store.id });
+    createdStores.push(store);
+  }
+  return createdStores;
+};
+
 export const updateStore = async (db: DbOrTx, id: string, patch: UpdateAdminStoreInput) =>
   (
     await db
@@ -248,7 +306,53 @@ export const findOrder = async (db: DbOrTx, id: string) => {
   return order ? hydrateOrder(db, order) : null;
 };
 
+export const listCustomers = async (
+  db: DbOrTx,
+  input: { page: number; limit: number; query?: string },
+) => {
+  const baseFilter = eq(users.role, "customer");
+  const where = input.query
+    ? and(
+        baseFilter,
+        or(
+          like(users.name, `%${input.query}%`),
+          like(users.phone, `%${input.query}%`),
+          like(users.email, `%${input.query}%`),
+        ),
+      )
+    : baseFilter;
+  const total = (await db.select({ value: count() }).from(users).where(where))[0]?.value ?? 0;
+  const items = await db
+    .select()
+    .from(users)
+    .where(where)
+    .orderBy(desc(users.createdAt))
+    .limit(input.limit)
+    .offset((input.page - 1) * input.limit);
+  return { items, total };
+};
+
+export const findCustomer = async (db: DbOrTx, id: string) =>
+  (
+    await db
+      .select()
+      .from(users)
+      .where(and(eq(users.id, id), eq(users.role, "customer")))
+      .limit(1)
+  )[0] ?? null;
+
+export const updateCustomer = async (db: DbOrTx, id: string, patch: UpdateAdminCustomerInput) =>
+  (
+    await db
+      .update(users)
+      .set({ ...patch, updatedAt: new Date() })
+      .where(and(eq(users.id, id), eq(users.role, "customer")))
+      .returning()
+  )[0] ?? null;
+
 export const adminRepo = {
+  hasAdmin,
+  createAdminWithCredential,
   findCredentialByEmail,
   createSession,
   revokeSession,
@@ -264,11 +368,15 @@ export const adminRepo = {
   createCategory,
   updateCategory,
   createStore,
+  createStoresBulk,
   updateStore,
   adjustInventory,
   findInventory,
   listOrders,
   findOrder,
+  listCustomers,
+  findCustomer,
+  updateCustomer,
 };
 
 export type AdminRepo = typeof adminRepo;

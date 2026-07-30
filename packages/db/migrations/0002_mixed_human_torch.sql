@@ -1,0 +1,1 @@
+ALTER TABLE `products` ADD `time_bound_section` text;

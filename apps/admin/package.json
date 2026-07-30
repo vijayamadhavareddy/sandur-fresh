@@ -12,20 +12,25 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "bun test",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "pages:dev": "wrangler pages dev dist",
+    "pages:deploy": "bun run build && wrangler pages deploy dist",
+    "deploy": "bun run pages:deploy"
   },
   "dependencies": {
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/vue": "^1.7.23",
     "@tanstack/vue-query": "^5.90.0",
-    "@graphql-typed-document-node/core": "^3.2.0",
     "@vee-validate/zod": "^4.15.1",
+    "firebase": "^12.17.0",
     "graphql": "^16.11.0",
     "graphql-request": "^7.3.0",
+    "hono": "^4.12.31",
     "pinia": "^4.0.2",
     "vee-validate": "^4.15.1",
     "vue": "rc",
     "vue-router": "^5.2.0",
-    "hono": "^4.12.31",
+    "vuefire": "^3.2.3",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -43,7 +48,8 @@
     "vite": "^8.1.5",
     "vite-plugin-pwa": "^1.3.0",
     "vite-plugin-vue-devtools": "^8.1.5",
-    "vue-tsc": "^3.3.7"
+    "vue-tsc": "^3.3.7",
+    "wrangler": "^3.114.0"
   },
   "engines": {
     "node": "^22.18.0 || >=24.12.0"

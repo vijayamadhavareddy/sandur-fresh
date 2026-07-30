@@ -7,6 +7,7 @@ import '../controllers/catalog_controller.dart';
 import '../controllers/checkout_controller.dart';
 import '../controllers/home_controller.dart';
 import '../controllers/orders_controller.dart';
+import '../services/push_service.dart';
 
 class AppBinding extends Bindings {
   @override
@@ -18,5 +19,6 @@ class AppBinding extends Bindings {
     Get.put(CheckoutController());
     Get.put(OrdersController());
     Get.put(AddressController());
+    Get.put(PushService());
   }
 }

@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../graphql/generated/auth.graphql.dart';
 import '../providers/graphql_provider.dart';
+import '../services/push_service.dart';
 import '../theme/app_colors.dart';
 
 class AuthController extends GetxController {
@@ -94,6 +96,10 @@ class AuthController extends GetxController {
       }
       isLoggedIn.value = true;
       isLoading.value = false;
+      // Register for order-status pushes now that we have an auth token.
+      if (Get.isRegistered<PushService>()) {
+        unawaited(Get.find<PushService>().start());
+      }
       Get.offAllNamed('/');
       return true;
     } catch (e) {
@@ -151,6 +157,9 @@ class AuthController extends GetxController {
   void cancelEditName() => editingName.value = false;
 
   void logout() {
+    if (Get.isRegistered<PushService>()) {
+      unawaited(Get.find<PushService>().stop());
+    }
     isLoggedIn.value = false;
     gqlProvider.authToken = null;
     phone.value = '';

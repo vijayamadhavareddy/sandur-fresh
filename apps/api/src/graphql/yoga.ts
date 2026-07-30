@@ -1,20 +1,32 @@
 import { createYoga } from "graphql-yoga";
 import { env, isProduction } from "../config/env";
-import { services } from "../container";
-import type { AuthUser } from "../types/hono";
+import { services as defaultServices, type Services } from "../container";
+import type { AuthUser, CloudflareBindings } from "../types/hono";
 import type { GraphQLContext, YogaInitialContext } from "./context";
 import { graphqlSchema } from "./schema";
 
 const introspectionEnabled = env.GRAPHQL_INTROSPECTION || !isProduction;
 
-export const createAppYoga = (getUser: (token: string) => Promise<AuthUser | null>) =>
-  createYoga<Pick<YogaInitialContext, "responseHeaders">, GraphQLContext>({
+export type YogaServerContext = Pick<YogaInitialContext, "responseHeaders"> & {
+  services?: Services;
+  env?: CloudflareBindings;
+};
+
+export const createAppYoga = (
+  getUser: (token: string, services?: Services) => Promise<AuthUser | null>,
+) =>
+  createYoga<YogaServerContext, GraphQLContext>({
     schema: graphqlSchema,
     graphqlEndpoint: "/graphql",
     graphiql: introspectionEnabled,
     landingPage: false,
     maskedErrors: isProduction,
-    context: async ({ request, responseHeaders }) => {
+    context: async (initialContext) => {
+      const { request, responseHeaders } = initialContext;
+      const extra = initialContext as unknown as YogaServerContext;
+      const activeServices = extra.services ?? defaultServices;
+      const cookieName = extra.env?.ADMIN_SESSION_COOKIE ?? env.ADMIN_SESSION_COOKIE;
+
       let user: AuthUser | null = null;
       let sessionToken: string | null = null;
       const header = request.headers.get("authorization");
@@ -22,7 +34,7 @@ export const createAppYoga = (getUser: (token: string) => Promise<AuthUser | nul
         const token = header.slice("Bearer ".length).trim();
         if (token) {
           sessionToken = token;
-          user = await getUser(token);
+          user = await getUser(token, activeServices);
         }
       }
       if (!user) {
@@ -30,11 +42,11 @@ export const createAppYoga = (getUser: (token: string) => Promise<AuthUser | nul
         const token = cookie
           ?.split(";")
           .map((part) => part.trim().split("="))
-          .find(([name]) => name === env.ADMIN_SESSION_COOKIE)?.[1];
+          .find(([name]) => name === cookieName)?.[1];
         if (token) {
           try {
             sessionToken = decodeURIComponent(token);
-            user = await getUser(sessionToken);
+            user = await getUser(sessionToken, activeServices);
           } catch {
             sessionToken = null;
           }
@@ -45,7 +57,7 @@ export const createAppYoga = (getUser: (token: string) => Promise<AuthUser | nul
         sessionToken,
         responseHeaders,
         requestId: request.headers.get("x-request-id") ?? crypto.randomUUID(),
-        services,
+        services: activeServices,
       };
     },
   });

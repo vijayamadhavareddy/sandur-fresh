@@ -1,14 +1,23 @@
 <script setup lang="ts">
 import { ErrorMessage, Field, useForm } from "vee-validate";
 import { ref } from "vue";
-import type { AdminCategoriesQuery, AdminProductQuery } from "@/api/generated/graphql";
+import type {
+  AdminCategoriesQuery,
+  AdminProductQuery,
+  TimeBoundSectionsQuery,
+} from "@/api/generated/graphql";
 import AppButton from "@/components/AppButton.vue";
 import { createProduct, updateProduct, uploadProductImage } from "./mutations";
 import { type ProductFormValues, productSchema } from "./validation";
 
 type Product = NonNullable<AdminProductQuery["adminProduct"]>;
 type Category = NonNullable<AdminCategoriesQuery["adminCategories"]>[number];
-const props = defineProps<{ product?: Product; categories: Category[] }>();
+type TimeBoundSection = TimeBoundSectionsQuery["timeBoundSections"][number];
+const props = defineProps<{
+  product?: Product;
+  categories: Category[];
+  sections: TimeBoundSection[];
+}>();
 const emit = defineEmits<{ saved: [id: string]; cancel: [] }>();
 const busy = ref(false);
 const serverError = ref("");
@@ -22,6 +31,7 @@ const { handleSubmit, setFieldValue, values } = useForm({
         mrp: props.product.mrp,
         price: props.product.price,
         imageUrl: props.product.imageUrl ?? "",
+        timeBoundSection: props.product.timeBoundSection ?? "",
         isActive: props.product.isActive,
         categoryId: props.product.categoryId,
       }
@@ -32,6 +42,7 @@ const { handleSubmit, setFieldValue, values } = useForm({
         mrp: 0,
         price: 0,
         imageUrl: "",
+        timeBoundSection: "",
         isActive: true,
         categoryId: "",
       },
@@ -135,6 +146,27 @@ async function upload(event: Event) {
           </option>
         </Field>
         <ErrorMessage name="categoryId" class="text-xs text-red-400 font-medium" />
+      </div>
+
+      <!-- Time-bound section -->
+      <div class="md:col-span-2 flex flex-col gap-1.5">
+        <label for="product-section" class="text-xs font-semibold text-slate-300">Time-bound section</label>
+        <Field
+          id="product-section"
+          name="timeBoundSection"
+          as="select"
+          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
+        >
+          <option value="">No section (always in catalog only)</option>
+          <option v-for="item in sections" :key="item.id" :value="item.id">
+            {{ item.title }} — {{ item.window }}
+          </option>
+        </Field>
+        <p class="text-xs text-slate-500">
+          Tagged products get their own shelf in the customer app during this window. Leave unset to
+          keep the product out of every time-bound shelf.
+        </p>
+        <ErrorMessage name="timeBoundSection" class="text-xs text-red-400 font-medium" />
       </div>
 
       <!-- MRP -->

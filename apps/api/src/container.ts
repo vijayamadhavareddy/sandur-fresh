@@ -1,3 +1,4 @@
+import type { DbOrTx } from "@sf/db";
 import { db } from "@sf/db";
 import { adminRepo } from "./modules/admin/admin.repo";
 import { createAdminService } from "./modules/admin/admin.service";
@@ -7,6 +8,10 @@ import { createCartService } from "./modules/cart/cart.service";
 import { createDeliveryHandlers } from "./modules/delivery/delivery.handlers";
 import { deliveryRepo } from "./modules/delivery/delivery.repo";
 import { createDeliveryService } from "./modules/delivery/delivery.service";
+import { createEventsRouter } from "./modules/notifications/events.router";
+import { notificationsRepo } from "./modules/notifications/notifications.repo";
+import { createNotificationsRouter } from "./modules/notifications/notifications.router";
+import { createNotificationsService } from "./modules/notifications/notifications.service";
 import { createOrdersHandlers } from "./modules/orders/orders.handlers";
 import { ordersRepo } from "./modules/orders/orders.repo";
 import { createOrdersService } from "./modules/orders/orders.service";
@@ -16,36 +21,90 @@ import { createProductsService } from "./modules/products/products.service";
 import { createUsersHandlers } from "./modules/users/users.handlers";
 import { usersRepo } from "./modules/users/users.repo";
 import { createUsersService } from "./modules/users/users.service";
+import { type PushSender, sendPush } from "./shared/push";
 
-export const usersService = createUsersService({ db, usersRepo });
-export const productsService = createProductsService({ db, productsRepo });
-export const cartService = createCartService({ db, cartRepo, productsRepo });
-export const ordersService = createOrdersService({
-  db,
-  ordersRepo,
-  cartRepo,
-  productsRepo,
-  usersRepo,
-});
-export const deliveryService = createDeliveryService({
-  db,
-  deliveryRepo,
-  productsRepo,
-  usersRepo,
-});
-export const adminService = createAdminService({ db, adminRepo, ordersService });
+export const createContainer = (targetDb: DbOrTx = db, options?: { sendPush?: PushSender }) => {
+  const push = options?.sendPush ?? sendPush;
+  const notificationsService = createNotificationsService({
+    db: targetDb,
+    notificationsRepo,
+    sendPush: push,
+  });
+  const usersService = createUsersService({ db: targetDb, usersRepo });
+  const productsService = createProductsService({ db: targetDb, productsRepo });
+  const cartService = createCartService({ db: targetDb, cartRepo, productsRepo });
+  const ordersService = createOrdersService({
+    db: targetDb,
+    ordersRepo,
+    cartRepo,
+    productsRepo,
+    usersRepo,
+    notifications: notificationsService,
+  });
+  const deliveryService = createDeliveryService({
+    db: targetDb,
+    deliveryRepo,
+    productsRepo,
+    usersRepo,
+  });
+  const adminService = createAdminService({ db: targetDb, adminRepo, ordersService });
 
-export const usersHandlers = createUsersHandlers(usersService);
-export const productsHandlers = createProductsHandlers(productsService);
-export const cartHandlers = createCartHandlers(cartService);
-export const ordersHandlers = createOrdersHandlers(ordersService);
-export const deliveryHandlers = createDeliveryHandlers(deliveryService);
+  const notificationsRouter = createNotificationsRouter(notificationsService);
+  const eventsRouter = createEventsRouter();
+  const usersHandlers = createUsersHandlers(usersService);
+  const productsHandlers = createProductsHandlers(productsService);
+  const cartHandlers = createCartHandlers(cartService);
+  const ordersHandlers = createOrdersHandlers(ordersService);
+  const deliveryHandlers = createDeliveryHandlers(deliveryService);
 
-export const services = {
-  users: usersService,
-  products: productsService,
-  cart: cartService,
-  orders: ordersService,
-  delivery: deliveryService,
-  admin: adminService,
+  const services = {
+    users: usersService,
+    products: productsService,
+    cart: cartService,
+    orders: ordersService,
+    delivery: deliveryService,
+    admin: adminService,
+    notifications: notificationsService,
+  };
+
+  return {
+    services,
+    usersService,
+    productsService,
+    cartService,
+    ordersService,
+    deliveryService,
+    adminService,
+    notificationsService,
+    usersHandlers,
+    productsHandlers,
+    cartHandlers,
+    ordersHandlers,
+    deliveryHandlers,
+    notificationsRouter,
+    eventsRouter,
+  };
 };
+
+export type Container = ReturnType<typeof createContainer>;
+export type Services = Container["services"];
+
+export const defaultContainer = createContainer(db);
+
+export const {
+  services,
+  usersService,
+  productsService,
+  cartService,
+  ordersService,
+  deliveryService,
+  adminService,
+  notificationsService,
+  usersHandlers,
+  productsHandlers,
+  cartHandlers,
+  ordersHandlers,
+  deliveryHandlers,
+  notificationsRouter,
+  eventsRouter,
+} = defaultContainer;

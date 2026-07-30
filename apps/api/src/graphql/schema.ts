@@ -1,4 +1,4 @@
-import { db } from "@sf/db";
+import { db, schemaDb } from "@sf/db";
 import { buildSchema } from "drizzle-graphql";
 import {
   type GraphQLFieldConfigMap,
@@ -8,12 +8,13 @@ import {
 } from "graphql";
 import { adminMutations, adminQueries } from "./resolvers/admin";
 import { cartMutations, cartQueries } from "./resolvers/cart";
+import { catalogQueries } from "./resolvers/catalog";
 import { deliveryQueries } from "./resolvers/delivery";
 import { orderMutations, orderQueries } from "./resolvers/orders";
 import { userMutations, userQueries } from "./resolvers/users";
 
 // biome-ignore lint/suspicious/noExplicitAny: no other way
-const { entities } = buildSchema(db as any);
+const { entities } = buildSchema((db ?? schemaDb) as any);
 
 /** Cap unbounded catalog list queries at 100. */
 const withLimitCap = <TSource, TContext>(
@@ -70,6 +71,7 @@ export const graphqlSchema = new GraphQLSchema({
     name: "Query",
     fields: {
       ...safeCatalogQueries,
+      ...catalogQueries,
       ...adminQueries,
       ...cartQueries,
       ...orderQueries,

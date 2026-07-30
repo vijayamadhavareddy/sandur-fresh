@@ -15,6 +15,34 @@
       "when": 1784811083350,
       "tag": "0001_even_smasher",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785362869795,
+      "tag": "0002_mixed_human_torch",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785490574325,
+      "tag": "0003_brainy_rage",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785495083572,
+      "tag": "0004_public_magma",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1787415982025,
+      "tag": "0005_amazing_wendell_rand",
+      "breakpoints": true
     }
   ]
 }

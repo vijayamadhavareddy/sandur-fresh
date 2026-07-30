@@ -8,3 +8,7 @@ node_modules/
 .env
 *.db
 apps/api/data/
+
+# Firebase service account keys (never commit)
+apps/api/secrets/
+*-firebase-adminsdk-*.json

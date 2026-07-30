@@ -1,3 +1,4 @@
+import '../../generated/schema.graphql.dart';
 import 'package:gql/ast.dart';
 
 class Fragment$ProductFields {
@@ -11,6 +12,7 @@ class Fragment$ProductFields {
     required this.price,
     this.emoji,
     this.imageUrl,
+    this.timeBoundSection,
     required this.isActive,
     this.$__typename = 'ProductsSelectItem',
   });
@@ -25,6 +27,7 @@ class Fragment$ProductFields {
     final l$price = json['price'];
     final l$emoji = json['emoji'];
     final l$imageUrl = json['imageUrl'];
+    final l$timeBoundSection = json['timeBoundSection'];
     final l$isActive = json['isActive'];
     final l$$__typename = json['__typename'];
     return Fragment$ProductFields(
@@ -37,6 +40,7 @@ class Fragment$ProductFields {
       price: (l$price as int),
       emoji: (l$emoji as String?),
       imageUrl: (l$imageUrl as String?),
+      timeBoundSection: (l$timeBoundSection as String?),
       isActive: (l$isActive as bool),
       $__typename: (l$$__typename as String),
     );
@@ -59,6 +63,8 @@ class Fragment$ProductFields {
   final String? emoji;
 
   final String? imageUrl;
+
+  final String? timeBoundSection;
 
   final bool isActive;
 
@@ -84,6 +90,8 @@ class Fragment$ProductFields {
     _resultData['emoji'] = l$emoji;
     final l$imageUrl = imageUrl;
     _resultData['imageUrl'] = l$imageUrl;
+    final l$timeBoundSection = timeBoundSection;
+    _resultData['timeBoundSection'] = l$timeBoundSection;
     final l$isActive = isActive;
     _resultData['isActive'] = l$isActive;
     final l$$__typename = $__typename;
@@ -102,6 +110,7 @@ class Fragment$ProductFields {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$$__typename = $__typename;
     return Object.hashAll([
@@ -114,6 +123,7 @@ class Fragment$ProductFields {
       l$price,
       l$emoji,
       l$imageUrl,
+      l$timeBoundSection,
       l$isActive,
       l$$__typename,
     ]);
@@ -172,6 +182,11 @@ class Fragment$ProductFields {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (l$isActive != lOther$isActive) {
@@ -210,6 +225,7 @@ abstract class CopyWith$Fragment$ProductFields<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? $__typename,
   });
@@ -235,6 +251,7 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? $__typename = _undefined,
   }) => _then(
@@ -260,6 +277,9 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
       imageUrl: imageUrl == _undefined
           ? _instance.imageUrl
           : (imageUrl as String?),
+      timeBoundSection: timeBoundSection == _undefined
+          ? _instance.timeBoundSection
+          : (timeBoundSection as String?),
       isActive: isActive == _undefined || isActive == null
           ? _instance.isActive
           : (isActive as bool),
@@ -286,6 +306,7 @@ class _CopyWithStubImpl$Fragment$ProductFields<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? $__typename,
   }) => _res;
@@ -360,6 +381,13 @@ const fragmentDefinitionProductFields = FragmentDefinitionNode(
       ),
       FieldNode(
         name: NameNode(value: 'imageUrl'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'timeBoundSection'),
         alias: null,
         arguments: [],
         directives: [],
@@ -608,16 +636,304 @@ const documentNodeFragmentCategoryFields = DocumentNode(
   definitions: [fragmentDefinitionCategoryFields],
 );
 
+class Fragment$TimeBoundSectionFields {
+  Fragment$TimeBoundSectionFields({
+    required this.id,
+    required this.title,
+    required this.window,
+    required this.startHour,
+    required this.endHour,
+    required this.isNow,
+    this.$__typename = 'TimeBoundSection',
+  });
+
+  factory Fragment$TimeBoundSectionFields.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$window = json['window'];
+    final l$startHour = json['startHour'];
+    final l$endHour = json['endHour'];
+    final l$isNow = json['isNow'];
+    final l$$__typename = json['__typename'];
+    return Fragment$TimeBoundSectionFields(
+      id: fromJson$Enum$TimeBoundSectionId((l$id as String)),
+      title: (l$title as String),
+      window: (l$window as String),
+      startHour: (l$startHour as int),
+      endHour: (l$endHour as int),
+      isNow: (l$isNow as bool),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Enum$TimeBoundSectionId id;
+
+  final String title;
+
+  final String window;
+
+  final int startHour;
+
+  final int endHour;
+
+  final bool isNow;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = toJson$Enum$TimeBoundSectionId(l$id);
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$window = window;
+    _resultData['window'] = l$window;
+    final l$startHour = startHour;
+    _resultData['startHour'] = l$startHour;
+    final l$endHour = endHour;
+    _resultData['endHour'] = l$endHour;
+    final l$isNow = isNow;
+    _resultData['isNow'] = l$isNow;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$window = window;
+    final l$startHour = startHour;
+    final l$endHour = endHour;
+    final l$isNow = isNow;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$title,
+      l$window,
+      l$startHour,
+      l$endHour,
+      l$isNow,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$TimeBoundSectionFields ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$window = window;
+    final lOther$window = other.window;
+    if (l$window != lOther$window) {
+      return false;
+    }
+    final l$startHour = startHour;
+    final lOther$startHour = other.startHour;
+    if (l$startHour != lOther$startHour) {
+      return false;
+    }
+    final l$endHour = endHour;
+    final lOther$endHour = other.endHour;
+    if (l$endHour != lOther$endHour) {
+      return false;
+    }
+    final l$isNow = isNow;
+    final lOther$isNow = other.isNow;
+    if (l$isNow != lOther$isNow) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$TimeBoundSectionFields
+    on Fragment$TimeBoundSectionFields {
+  CopyWith$Fragment$TimeBoundSectionFields<Fragment$TimeBoundSectionFields>
+  get copyWith => CopyWith$Fragment$TimeBoundSectionFields(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$TimeBoundSectionFields<TRes> {
+  factory CopyWith$Fragment$TimeBoundSectionFields(
+    Fragment$TimeBoundSectionFields instance,
+    TRes Function(Fragment$TimeBoundSectionFields) then,
+  ) = _CopyWithImpl$Fragment$TimeBoundSectionFields;
+
+  factory CopyWith$Fragment$TimeBoundSectionFields.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$TimeBoundSectionFields;
+
+  TRes call({
+    Enum$TimeBoundSectionId? id,
+    String? title,
+    String? window,
+    int? startHour,
+    int? endHour,
+    bool? isNow,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$TimeBoundSectionFields<TRes>
+    implements CopyWith$Fragment$TimeBoundSectionFields<TRes> {
+  _CopyWithImpl$Fragment$TimeBoundSectionFields(this._instance, this._then);
+
+  final Fragment$TimeBoundSectionFields _instance;
+
+  final TRes Function(Fragment$TimeBoundSectionFields) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? window = _undefined,
+    Object? startHour = _undefined,
+    Object? endHour = _undefined,
+    Object? isNow = _undefined,
+    Object? $__typename = _undefined,
+  }) => _then(
+    Fragment$TimeBoundSectionFields(
+      id: id == _undefined || id == null
+          ? _instance.id
+          : (id as Enum$TimeBoundSectionId),
+      title: title == _undefined || title == null
+          ? _instance.title
+          : (title as String),
+      window: window == _undefined || window == null
+          ? _instance.window
+          : (window as String),
+      startHour: startHour == _undefined || startHour == null
+          ? _instance.startHour
+          : (startHour as int),
+      endHour: endHour == _undefined || endHour == null
+          ? _instance.endHour
+          : (endHour as int),
+      isNow: isNow == _undefined || isNow == null
+          ? _instance.isNow
+          : (isNow as bool),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
+}
+
+class _CopyWithStubImpl$Fragment$TimeBoundSectionFields<TRes>
+    implements CopyWith$Fragment$TimeBoundSectionFields<TRes> {
+  _CopyWithStubImpl$Fragment$TimeBoundSectionFields(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$TimeBoundSectionId? id,
+    String? title,
+    String? window,
+    int? startHour,
+    int? endHour,
+    bool? isNow,
+    String? $__typename,
+  }) => _res;
+}
+
+const fragmentDefinitionTimeBoundSectionFields = FragmentDefinitionNode(
+  name: NameNode(value: 'TimeBoundSectionFields'),
+  typeCondition: TypeConditionNode(
+    on: NamedTypeNode(
+      name: NameNode(value: 'TimeBoundSection'),
+      isNonNull: false,
+    ),
+  ),
+  directives: [],
+  selectionSet: SelectionSetNode(
+    selections: [
+      FieldNode(
+        name: NameNode(value: 'id'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'title'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'window'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'startHour'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'endHour'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'isNow'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ],
+  ),
+);
+const documentNodeFragmentTimeBoundSectionFields = DocumentNode(
+  definitions: [fragmentDefinitionTimeBoundSectionFields],
+);
+
 class Query$GetCatalog {
   Query$GetCatalog({
     required this.products,
     required this.categories,
+    required this.timeBoundSections,
     this.$__typename = 'Query',
   });
 
   factory Query$GetCatalog.fromJson(Map<String, dynamic> json) {
     final l$products = json['products'];
     final l$categories = json['categories'];
+    final l$timeBoundSections = json['timeBoundSections'];
     final l$$__typename = json['__typename'];
     return Query$GetCatalog(
       products: (l$products as List<dynamic>)
@@ -631,6 +947,13 @@ class Query$GetCatalog {
                 Fragment$CategoryFields.fromJson((e as Map<String, dynamic>)),
           )
           .toList(),
+      timeBoundSections: (l$timeBoundSections as List<dynamic>)
+          .map(
+            (e) => Fragment$TimeBoundSectionFields.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -638,6 +961,8 @@ class Query$GetCatalog {
   final List<Fragment$ProductFields> products;
 
   final List<Fragment$CategoryFields> categories;
+
+  final List<Fragment$TimeBoundSectionFields> timeBoundSections;
 
   final String $__typename;
 
@@ -647,6 +972,10 @@ class Query$GetCatalog {
     _resultData['products'] = l$products.map((e) => e.toJson()).toList();
     final l$categories = categories;
     _resultData['categories'] = l$categories.map((e) => e.toJson()).toList();
+    final l$timeBoundSections = timeBoundSections;
+    _resultData['timeBoundSections'] = l$timeBoundSections
+        .map((e) => e.toJson())
+        .toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -656,10 +985,12 @@ class Query$GetCatalog {
   int get hashCode {
     final l$products = products;
     final l$categories = categories;
+    final l$timeBoundSections = timeBoundSections;
     final l$$__typename = $__typename;
     return Object.hashAll([
       Object.hashAll(l$products.map((v) => v)),
       Object.hashAll(l$categories.map((v) => v)),
+      Object.hashAll(l$timeBoundSections.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -696,6 +1027,18 @@ class Query$GetCatalog {
         return false;
       }
     }
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (l$timeBoundSections.length != lOther$timeBoundSections.length) {
+      return false;
+    }
+    for (int i = 0; i < l$timeBoundSections.length; i++) {
+      final l$timeBoundSections$entry = l$timeBoundSections[i];
+      final lOther$timeBoundSections$entry = lOther$timeBoundSections[i];
+      if (l$timeBoundSections$entry != lOther$timeBoundSections$entry) {
+        return false;
+      }
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -722,6 +1065,7 @@ abstract class CopyWith$Query$GetCatalog<TRes> {
   TRes call({
     List<Fragment$ProductFields>? products,
     List<Fragment$CategoryFields>? categories,
+    List<Fragment$TimeBoundSectionFields>? timeBoundSections,
     String? $__typename,
   });
   TRes products(
@@ -733,6 +1077,16 @@ abstract class CopyWith$Query$GetCatalog<TRes> {
   TRes categories(
     Iterable<Fragment$CategoryFields> Function(
       Iterable<CopyWith$Fragment$CategoryFields<Fragment$CategoryFields>>,
+    )
+    _fn,
+  );
+  TRes timeBoundSections(
+    Iterable<Fragment$TimeBoundSectionFields> Function(
+      Iterable<
+        CopyWith$Fragment$TimeBoundSectionFields<
+          Fragment$TimeBoundSectionFields
+        >
+      >,
     )
     _fn,
   );
@@ -751,6 +1105,7 @@ class _CopyWithImpl$Query$GetCatalog<TRes>
   TRes call({
     Object? products = _undefined,
     Object? categories = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? $__typename = _undefined,
   }) => _then(
     Query$GetCatalog(
@@ -760,6 +1115,10 @@ class _CopyWithImpl$Query$GetCatalog<TRes>
       categories: categories == _undefined || categories == null
           ? _instance.categories
           : (categories as List<Fragment$CategoryFields>),
+      timeBoundSections:
+          timeBoundSections == _undefined || timeBoundSections == null
+          ? _instance.timeBoundSections
+          : (timeBoundSections as List<Fragment$TimeBoundSectionFields>),
       $__typename: $__typename == _undefined || $__typename == null
           ? _instance.$__typename
           : ($__typename as String),
@@ -791,6 +1150,23 @@ class _CopyWithImpl$Query$GetCatalog<TRes>
       ),
     ).toList(),
   );
+
+  TRes timeBoundSections(
+    Iterable<Fragment$TimeBoundSectionFields> Function(
+      Iterable<
+        CopyWith$Fragment$TimeBoundSectionFields<
+          Fragment$TimeBoundSectionFields
+        >
+      >,
+    )
+    _fn,
+  ) => call(
+    timeBoundSections: _fn(
+      _instance.timeBoundSections.map(
+        (e) => CopyWith$Fragment$TimeBoundSectionFields(e, (i) => i),
+      ),
+    ).toList(),
+  );
 }
 
 class _CopyWithStubImpl$Query$GetCatalog<TRes>
@@ -802,12 +1178,15 @@ class _CopyWithStubImpl$Query$GetCatalog<TRes>
   call({
     List<Fragment$ProductFields>? products,
     List<Fragment$CategoryFields>? categories,
+    List<Fragment$TimeBoundSectionFields>? timeBoundSections,
     String? $__typename,
   }) => _res;
 
   products(_fn) => _res;
 
   categories(_fn) => _res;
+
+  timeBoundSections(_fn) => _res;
 }
 
 const documentNodeQueryGetCatalog = DocumentNode(
@@ -872,6 +1251,27 @@ const documentNodeQueryGetCatalog = DocumentNode(
             ),
           ),
           FieldNode(
+            name: NameNode(value: 'timeBoundSections'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(
+              selections: [
+                FragmentSpreadNode(
+                  name: NameNode(value: 'TimeBoundSectionFields'),
+                  directives: [],
+                ),
+                FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null,
+                ),
+              ],
+            ),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -883,5 +1283,6 @@ const documentNodeQueryGetCatalog = DocumentNode(
     ),
     fragmentDefinitionProductFields,
     fragmentDefinitionCategoryFields,
+    fragmentDefinitionTimeBoundSectionFields,
   ],
 );

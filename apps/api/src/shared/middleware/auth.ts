@@ -22,22 +22,27 @@ export const setAuthResolver = (fn: ResolveUser) => {
 
 export const optionalAuth = createMiddleware<AppEnv>(async (c, next) => {
   c.set("user", null);
+  const usersService = c.get("services")?.users;
+  const resolver = (t: string) =>
+    usersService ? usersService.resolveUserFromToken(t) : resolveUser(t);
+
   const header = c.req.header("authorization");
   if (header?.startsWith("Bearer ")) {
     const token = header.slice("Bearer ".length).trim();
     if (token.length > 0) {
-      const user = await resolveUser(token);
+      const user = await resolver(token);
       c.set("user", user);
     }
   }
   if (!c.get("user")) {
     const cookie = c.req.header("cookie");
+    const cookieName = c.env?.ADMIN_SESSION_COOKIE ?? env.ADMIN_SESSION_COOKIE;
     const token = cookie
       ?.split(";")
       .map((part) => part.trim().split("="))
-      .find(([name]) => name === env.ADMIN_SESSION_COOKIE)?.[1];
+      .find(([name]) => name === cookieName)?.[1];
     const decodedToken = token ? decodeCookieValue(token) : null;
-    if (decodedToken) c.set("user", await resolveUser(decodedToken));
+    if (decodedToken) c.set("user", await resolver(decodedToken));
   }
   await next();
 });
@@ -51,7 +56,10 @@ export const requireAuth = createMiddleware<AppEnv>(async (c, next) => {
   if (!token) {
     return jsonError(c, unauthorized("Missing or invalid Authorization header"));
   }
-  const user = await resolveUser(token);
+  const usersService = c.get("services")?.users;
+  const resolver = (t: string) =>
+    usersService ? usersService.resolveUserFromToken(t) : resolveUser(t);
+  const user = await resolver(token);
   if (!user) {
     return jsonError(c, unauthorized("Invalid or expired session"));
   }

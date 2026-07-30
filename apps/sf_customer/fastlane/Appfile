@@ -1,0 +1,12 @@
+# Appfile
+# Configuration for sf_customer (Android & iOS)
+
+# Android Configuration
+package_name(ENV.fetch("ANDROID_PACKAGE_NAME", "com.binyoga.smart"))
+json_key_file(ENV.fetch("SUPPLY_JSON_KEY", "./fastlane/play-store-key.json"))
+
+# iOS Configuration
+app_identifier(ENV.fetch("IOS_APP_IDENTIFIER", "com.binyoga.smart"))
+apple_id(ENV.fetch("APPLE_ID", ""))
+team_id(ENV.fetch("APPLE_TEAM_ID", ""))
+itc_team_id(ENV.fetch("APPLE_ITC_TEAM_ID", ""))

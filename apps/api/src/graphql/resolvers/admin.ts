@@ -2,6 +2,7 @@ import {
   GraphQLBoolean,
   GraphQLEnumType,
   GraphQLFloat,
+  GraphQLInputObjectType,
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
@@ -9,10 +10,12 @@ import {
   GraphQLString,
 } from "graphql";
 import { env, isProduction } from "../../config/env";
+import type { StoreType as AdminStoreSchemaType } from "../../modules/admin/admin.schemas";
 import type { OrderStatus } from "../../modules/orders/order-status";
 import { toGraphQLError } from "../../shared/errors";
 import type { GraphQLContext } from "../context";
 import { fromServiceResult, requireUser } from "../helpers";
+import { TimeBoundSectionIdType } from "./catalog";
 
 const requireAdmin = (ctx: GraphQLContext) => {
   const user = requireUser(ctx);
@@ -41,6 +44,15 @@ const AdminUserType = new GraphQLObjectType({
     name: { type: new GraphQLNonNull(GraphQLString) },
     email: { type: GraphQLString },
     role: { type: new GraphQLNonNull(GraphQLString) },
+    createdAt: { type: GraphQLString },
+    updatedAt: { type: GraphQLString },
+  },
+});
+
+const AdminSetupStatusType = new GraphQLObjectType({
+  name: "AdminSetupStatus",
+  fields: {
+    isRequired: { type: new GraphQLNonNull(GraphQLBoolean) },
   },
 });
 
@@ -75,10 +87,19 @@ const ProductType = new GraphQLObjectType({
     price: { type: new GraphQLNonNull(GraphQLInt) },
     emoji: { type: GraphQLString },
     imageUrl: { type: GraphQLString },
+    timeBoundSection: { type: TimeBoundSectionIdType },
     isActive: { type: new GraphQLNonNull(GraphQLBoolean) },
     category: { type: new GraphQLNonNull(CategoryType) },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
+  },
+});
+
+const AdminStoreTypeEnum = new GraphQLEnumType({
+  name: "AdminStoreType",
+  values: {
+    DARK_STORE: { value: "DARK_STORE" },
+    THIRD_PARTY: { value: "THIRD_PARTY" },
   },
 });
 
@@ -87,6 +108,11 @@ const StoreType = new GraphQLObjectType({
   fields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: new GraphQLNonNull(GraphQLString) },
+    type: { type: new GraphQLNonNull(AdminStoreTypeEnum) },
+    partnerName: { type: GraphQLString },
+    contactPhone: { type: GraphQLString },
+    contactEmail: { type: GraphQLString },
+    commissionPct: { type: GraphQLInt },
     address: { type: new GraphQLNonNull(GraphQLString) },
     lat: { type: new GraphQLNonNull(GraphQLFloat) },
     lng: { type: new GraphQLNonNull(GraphQLFloat) },
@@ -94,6 +120,23 @@ const StoreType = new GraphQLObjectType({
     isActive: { type: new GraphQLNonNull(GraphQLBoolean) },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
+  },
+});
+
+const AdminStoreInputType = new GraphQLInputObjectType({
+  name: "AdminStoreInput",
+  fields: {
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    type: { type: AdminStoreTypeEnum },
+    partnerName: { type: GraphQLString },
+    contactPhone: { type: GraphQLString },
+    contactEmail: { type: GraphQLString },
+    commissionPct: { type: GraphQLInt },
+    address: { type: new GraphQLNonNull(GraphQLString) },
+    lat: { type: new GraphQLNonNull(GraphQLFloat) },
+    lng: { type: new GraphQLNonNull(GraphQLFloat) },
+    serviceRadiusM: { type: GraphQLInt },
+    isActive: { type: GraphQLBoolean },
   },
 });
 
@@ -212,6 +255,16 @@ const OrdersPageType = new GraphQLObjectType({
   },
 });
 
+const CustomersPageType = new GraphQLObjectType({
+  name: "AdminCustomersPage",
+  fields: {
+    items: { type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(AdminUserType))) },
+    page: { type: new GraphQLNonNull(GraphQLInt) },
+    limit: { type: new GraphQLNonNull(GraphQLInt) },
+    total: { type: new GraphQLNonNull(GraphQLInt) },
+  },
+});
+
 const iso = (value: Date) => value.toISOString();
 const serializeProduct = <
   T extends { createdAt: Date; updatedAt: Date; category: { createdAt: Date } },
@@ -242,8 +295,21 @@ const serializeOrder = <
   store: serializeStore(value.store),
   history: value.history.map((entry) => ({ ...entry, createdAt: iso(entry.createdAt) })),
 });
+const serializeUser = <T extends { createdAt?: Date | string; updatedAt?: Date | string }>(
+  value: T,
+) => ({
+  ...value,
+  createdAt: value.createdAt instanceof Date ? iso(value.createdAt) : value.createdAt,
+  updatedAt: value.updatedAt instanceof Date ? iso(value.updatedAt) : value.updatedAt,
+});
 
 export const adminQueries = {
+  adminSetupStatus: {
+    type: new GraphQLNonNull(AdminSetupStatusType),
+    resolve: async (_src: unknown, _args: unknown, ctx: GraphQLContext) => {
+      return fromServiceResult(await ctx.services.admin.isSetupRequired());
+    },
+  },
   adminSession: {
     type: AdminSessionType,
     resolve: (_src: unknown, _args: unknown, ctx: GraphQLContext) => {
@@ -291,9 +357,12 @@ export const adminQueries = {
   },
   adminStores: {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(StoreType))),
-    resolve: async (_src: unknown, _args: unknown, ctx: GraphQLContext) => {
+    args: {
+      type: { type: AdminStoreTypeEnum },
+    },
+    resolve: async (_src: unknown, args: { type?: AdminStoreSchemaType }, ctx: GraphQLContext) => {
       requireAdmin(ctx);
-      return fromServiceResult(await ctx.services.admin.listStores()).map(serializeStore);
+      return fromServiceResult(await ctx.services.admin.listStores(args)).map(serializeStore);
     },
   },
   adminStore: {
@@ -347,6 +416,27 @@ export const adminQueries = {
       return serializeOrder(fromServiceResult(await ctx.services.admin.getOrder(args.id)));
     },
   },
+  adminCustomers: {
+    type: new GraphQLNonNull(CustomersPageType),
+    args: {
+      page: { type: GraphQLInt },
+      limit: { type: GraphQLInt },
+      query: { type: GraphQLString },
+    },
+    resolve: async (_src: unknown, args: object, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      const page = fromServiceResult(await ctx.services.admin.listCustomers(args));
+      return { ...page, items: page.items.map(serializeUser) };
+    },
+  },
+  adminCustomer: {
+    type: AdminUserType,
+    args: { id: { type: new GraphQLNonNull(GraphQLString) } },
+    resolve: async (_src: unknown, args: { id: string }, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      return serializeUser(fromServiceResult(await ctx.services.admin.getCustomer(args.id)));
+    },
+  },
 };
 
 const productArgs = {
@@ -358,10 +448,32 @@ const productArgs = {
   price: { type: GraphQLInt },
   emoji: { type: GraphQLString },
   imageUrl: { type: GraphQLString },
+  timeBoundSection: { type: TimeBoundSectionIdType },
   isActive: { type: GraphQLBoolean },
 };
 
 export const adminMutations = {
+  adminSetup: {
+    type: new GraphQLNonNull(AdminSessionType),
+    args: {
+      secret: { type: new GraphQLNonNull(GraphQLString) },
+      name: { type: new GraphQLNonNull(GraphQLString) },
+      phone: { type: new GraphQLNonNull(GraphQLString) },
+      email: { type: new GraphQLNonNull(GraphQLString) },
+      password: { type: new GraphQLNonNull(GraphQLString) },
+    },
+    resolve: async (_src: unknown, args: object, ctx: GraphQLContext) => {
+      // biome-ignore lint/suspicious/noExplicitAny: access env bindings from GraphQL context
+      const secret = (ctx as any).env?.ADMIN_SETUP_SECRET ?? env.ADMIN_SETUP_SECRET;
+      const session = fromServiceResult(await ctx.services.admin.setup(args, secret));
+      const secure = isProduction ? "; Secure" : "";
+      ctx.responseHeaders.append(
+        "Set-Cookie",
+        `${env.ADMIN_SESSION_COOKIE}=${encodeURIComponent(session.token)}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${30 * 24 * 60 * 60}${secure}`,
+      );
+      return { user: session.user, expiresAt: iso(session.expiresAt) };
+    },
+  },
   adminLogin: {
     type: new GraphQLNonNull(AdminSessionType),
     args: {
@@ -389,6 +501,35 @@ export const adminMutations = {
         `${env.ADMIN_SESSION_COOKIE}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0${secure}`,
       );
       return true;
+    },
+  },
+  registerAdminDevice: {
+    type: new GraphQLNonNull(GraphQLBoolean),
+    args: {
+      fid: { type: new GraphQLNonNull(GraphQLString) },
+      userAgent: { type: GraphQLString },
+    },
+    resolve: async (_src: unknown, args: object, ctx: GraphQLContext) => {
+      const user = requireAdmin(ctx);
+      // The admin console is a web client, so its identifier is always an FID.
+      return fromServiceResult(
+        await ctx.services.notifications.registerDevice(user.id, {
+          ...args,
+          target: (args as { fid: string }).fid,
+          kind: "FID",
+          platform: "web",
+        }),
+      );
+    },
+  },
+  unregisterAdminDevice: {
+    type: new GraphQLNonNull(GraphQLBoolean),
+    args: { fid: { type: new GraphQLNonNull(GraphQLString) } },
+    resolve: async (_src: unknown, args: object, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      return fromServiceResult(
+        await ctx.services.notifications.unregisterDevice((args as { fid: string }).fid),
+      );
     },
   },
   createAdminProduct: {
@@ -447,6 +588,11 @@ export const adminMutations = {
     type: new GraphQLNonNull(StoreType),
     args: {
       name: { type: new GraphQLNonNull(GraphQLString) },
+      type: { type: AdminStoreTypeEnum },
+      partnerName: { type: GraphQLString },
+      contactPhone: { type: GraphQLString },
+      contactEmail: { type: GraphQLString },
+      commissionPct: { type: GraphQLInt },
       address: { type: new GraphQLNonNull(GraphQLString) },
       lat: { type: new GraphQLNonNull(GraphQLFloat) },
       lng: { type: new GraphQLNonNull(GraphQLFloat) },
@@ -458,11 +604,29 @@ export const adminMutations = {
       return serializeStore(fromServiceResult(await ctx.services.admin.createStore(args)));
     },
   },
+  bulkCreateAdminStores: {
+    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(StoreType))),
+    args: {
+      stores: {
+        type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(AdminStoreInputType))),
+      },
+    },
+    resolve: async (_src: unknown, args: { stores: object[] }, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      const created = fromServiceResult(await ctx.services.admin.createStoresBulk(args.stores));
+      return created.map(serializeStore);
+    },
+  },
   updateAdminStore: {
     type: new GraphQLNonNull(StoreType),
     args: {
       id: { type: new GraphQLNonNull(GraphQLString) },
       name: { type: GraphQLString },
+      type: { type: AdminStoreTypeEnum },
+      partnerName: { type: GraphQLString },
+      contactPhone: { type: GraphQLString },
+      contactEmail: { type: GraphQLString },
+      commissionPct: { type: GraphQLInt },
       address: { type: GraphQLString },
       lat: { type: GraphQLFloat },
       lng: { type: GraphQLFloat },
@@ -508,6 +672,20 @@ export const adminMutations = {
       return serializeOrder(
         fromServiceResult(await ctx.services.admin.transitionOrder(admin.id, args)),
       );
+    },
+  },
+  updateAdminCustomer: {
+    type: new GraphQLNonNull(AdminUserType),
+    args: {
+      id: { type: new GraphQLNonNull(GraphQLString) },
+      name: { type: GraphQLString },
+      phone: { type: GraphQLString },
+      email: { type: GraphQLString },
+    },
+    resolve: async (_src: unknown, args: { id: string }, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      const { id, ...input } = args;
+      return serializeUser(fromServiceResult(await ctx.services.admin.updateCustomer(id, input)));
     },
   },
 };

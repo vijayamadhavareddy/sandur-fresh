@@ -1,9 +1,14 @@
-import { db } from "@sf/db";
+import { createD1Db, type Db, type DbOrTx, db } from "@sf/db";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { env, parseCorsOrigins } from "./config/env";
 import {
   cartHandlers,
+  createContainer,
+  defaultContainer,
   deliveryHandlers,
+  eventsRouter,
+  notificationsRouter,
   ordersHandlers,
   productsHandlers,
   usersHandlers,
@@ -20,6 +25,7 @@ import { optionalAuth, setAuthResolver } from "./shared/middleware/auth";
 import { globalErrorHandler } from "./shared/middleware/error-handler";
 import { loggerMiddleware } from "./shared/middleware/logger";
 import { requestIdMiddleware } from "./shared/middleware/request-id";
+import { LocalStorageService, R2StorageService, type StorageService } from "./shared/storage";
 import type { AppEnv } from "./types/hono";
 
 export const createApp = () => {
@@ -30,19 +36,58 @@ export const createApp = () => {
   app.use(
     "*",
     cors({
-      origin: "http://localhost:5173", // or your frontend's actual origin
+      origin: (incomingOrigin, c) => {
+        const raw = typeof c.env?.CORS_ORIGIN === "string" ? c.env.CORS_ORIGIN : env.CORS_ORIGIN;
+        const allowed = parseCorsOrigins(raw);
+
+        if (!incomingOrigin) return undefined;
+        if (allowed.includes("*") || allowed.includes(incomingOrigin)) {
+          return incomingOrigin;
+        }
+        return allowed[0] ?? undefined;
+      },
       credentials: true,
-      allowMethods: ["POST", "GET", "OPTIONS"],
-      allowHeaders: ["Content-Type", "Authorization"],
+      allowMethods: ["POST", "GET", "OPTIONS", "PUT", "PATCH", "DELETE"],
+      allowHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     }),
   );
   app.use("*", requestIdMiddleware);
   app.use("*", loggerMiddleware);
+
+  // Runtime context middleware: detects Cloudflare D1/R2 bindings or falls back to local Bun
+  app.use("*", async (c, next) => {
+    let currentDb: Db = db;
+    let storage: StorageService;
+    let container = defaultContainer;
+
+    if (c.env?.DB) {
+      currentDb = createD1Db(c.env.DB) as unknown as Db;
+      storage = c.env.BUCKET
+        ? new R2StorageService(c.env.BUCKET)
+        : new LocalStorageService(
+            typeof c.env.UPLOAD_DIR === "string" ? c.env.UPLOAD_DIR : env.UPLOAD_DIR,
+          );
+      container = createContainer(currentDb as DbOrTx);
+    } else {
+      storage = new LocalStorageService(env.UPLOAD_DIR);
+    }
+
+    c.set("db", currentDb);
+    c.set("storage", storage);
+    c.set("services", container.services);
+    await next();
+  });
+
   app.use("*", optionalAuth);
 
   app.get("/health", async (c) => {
     try {
-      db.$client.query("select 1").get();
+      if (c.env?.DB) {
+        await c.env.DB.prepare("SELECT 1").run();
+      } else {
+        // biome-ignore lint/suspicious/noExplicitAny: fallback for bun:sqlite client reflection
+        (db as any).$client?.query?.("select 1")?.get?.();
+      }
       return c.json({ data: { status: "ok" } });
     } catch {
       return c.json(
@@ -70,6 +115,8 @@ export const createApp = () => {
   v1.route("/me", meRouter);
   v1.route("/", productsRouter);
   v1.route("/cart", cartRouter);
+  v1.route("/me/devices", notificationsRouter);
+  v1.route("/admin/events", eventsRouter);
   v1.route("/orders", ordersRouter);
   v1.route("/delivery", deliveryRouter);
   v1.route("/admin", adminRouter);
@@ -77,10 +124,14 @@ export const createApp = () => {
   app.route("/api/v1", v1);
   app.route("/uploads", createUploadsRouter());
 
-  const yoga = createAppYoga((token) => usersService.resolveUserFromToken(token));
+  const yoga = createAppYoga((token, s) => (s?.users ?? usersService).resolveUserFromToken(token));
   app.on(["GET", "POST"], "/graphql", async (c) => {
     const responseHeaders = new Headers();
-    const response = await yoga.fetch(c.req.raw, { responseHeaders });
+    const response = await yoga.fetch(c.req.raw, {
+      responseHeaders,
+      services: c.get("services"),
+      env: c.env,
+    });
     const headers = new Headers(response.headers);
     for (const [key, value] of responseHeaders) headers.append(key, value);
     return new Response(response.body, {

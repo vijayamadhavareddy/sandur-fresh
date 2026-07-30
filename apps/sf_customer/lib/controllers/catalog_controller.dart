@@ -5,13 +5,18 @@ import '../models/product.dart';
 import '../providers/graphql_provider.dart';
 import 'orders_controller.dart';
 
-class MealSection {
+/// A curated shelf that surfaces at a given time of day. The definitions
+/// (title, window, whether it is live now) come from the API; membership is
+/// driven by each product's `timeBoundSection` tag set in admin.
+class TimeBoundSection {
+  final String id;
   final String title;
   final String window;
   final bool isNow;
   final List<Product> items;
 
-  const MealSection({
+  const TimeBoundSection({
+    required this.id,
     required this.title,
     required this.window,
     required this.isNow,
@@ -28,6 +33,7 @@ class CatalogController extends GetxController {
 
   final RxList<Product> fetchedProducts = <Product>[].obs;
   final RxList<String> fetchedCategories = <String>[].obs;
+  final RxList<TimeBoundSection> fetchedSections = <TimeBoundSection>[].obs;
   final RxBool isLoading = false.obs;
 
   @override
@@ -68,11 +74,23 @@ class CatalogController extends GetxController {
           unit: p.unit,
           emoji: p.emoji ?? '🛒',
           inStock: p.isActive,
+          timeBoundSection: p.timeBoundSection,
         );
       }).toList();
 
+      final sectionDefs = res.timeBoundSections
+          .map((s) => TimeBoundSection(
+                id: s.id.name,
+                title: s.title,
+                window: s.window,
+                isNow: s.isNow,
+                items: const [],
+              ))
+          .toList();
+
       fetchedProducts.assignAll(prodList);
       fetchedCategories.assignAll(catNames);
+      fetchedSections.assignAll(sectionDefs);
     } catch (e) {
       // Offline / error
     } finally {
@@ -146,44 +164,20 @@ class CatalogController extends GetxController {
   List<Product> get snackPicks =>
       products.where((p) => p.category.toLowerCase().contains('snack')).take(4).toList();
 
-  /// Time-of-day meal shelves; a section only shows if the catalog actually
-  /// has matching categories.
-  List<MealSection> get mealSections {
-    final hour = DateTime.now().hour;
-    final defs = [
-      (
-        title: 'Breakfast essentials',
-        from: 5,
-        to: 11,
-        window: '5 – 11 AM',
-        keywords: ['dairy', 'bakery'],
-      ),
-      (
-        title: 'Lunch thali picks',
-        from: 11,
-        to: 16,
-        window: '11 AM – 4 PM',
-        keywords: ['staples'],
-      ),
-      (
-        title: 'Dinner staples',
-        from: 16,
-        to: 23,
-        window: '4 – 11 PM',
-        keywords: ['staples', 'dairy'],
-      ),
-    ];
-    return defs
-        .map((d) {
+  /// Time-bound shelves, built from each product's admin-assigned tag.
+  /// A section only renders when at least one product is tagged to it.
+  List<TimeBoundSection> get timeBoundSections {
+    return fetchedSections
+        .map((section) {
           final items = products
-              .where((p) => d.keywords
-                  .any((k) => p.category.toLowerCase().contains(k)))
-              .take(4)
+              .where((p) => p.inStock && p.timeBoundSection == section.id)
+              .take(6)
               .toList();
-          return MealSection(
-            title: d.title,
-            window: d.window,
-            isNow: hour >= d.from && hour < d.to,
+          return TimeBoundSection(
+            id: section.id,
+            title: section.title,
+            window: section.window,
+            isNow: section.isNow,
             items: items,
           );
         })

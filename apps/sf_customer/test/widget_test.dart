@@ -58,9 +58,10 @@ void main() {
       await tester.pumpWidget(const SandurFreshApp());
       await tester.pumpAndSettle();
 
-      expect(find.text('Sandur Fresh'), findsOneWidget);
-      expect(find.text('Login with OTP'), findsOneWidget);
-      expect(find.text('Send OTP'), findsOneWidget);
+      expect(find.text('Login'), findsOneWidget);
+      expect(
+          find.text('Sandur Delivery — fresh from Sandur, Karnataka'),
+          findsOneWidget);
     });
 
     testWidgets('logged-in user lands on home', (tester) async {
@@ -73,7 +74,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Delivery in 12 mins'), findsOneWidget);
-      expect(find.text('Bestsellers'), findsOneWidget);
+      expect(
+          find.text('Search groceries, snacks, pharmacy…'), findsOneWidget);
     });
   });
 

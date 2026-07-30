@@ -132,8 +132,10 @@ function getStatusBadgeClass(orderStatus: AdminOrderStatus): string {
                   </td>
 
                   <td class="py-3.5 px-4">
-                    <strong class="text-slate-100 font-semibold block">{{ order.customer.name }}</strong>
-                    <span class="text-[11px] text-slate-400 block font-mono">{{ order.customer.phone }}</span>
+                    <RouterLink :to="`/customers/${order.customer.id}/edit`" class="group/cust block">
+                      <strong class="text-slate-100 font-semibold group-hover/cust:text-emerald-400 transition-colors block">{{ order.customer.name || 'Unnamed Customer' }}</strong>
+                      <span class="text-[11px] text-slate-400 block font-mono">{{ order.customer.phone }}</span>
+                    </RouterLink>
                   </td>
 
                   <td class="py-3.5 px-4 text-slate-300 font-medium">{{ order.store.name }}</td>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402733687545",
+    "project_id": "sandur-fresh",
+    "storage_bucket": "sandur-fresh.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402733687545:android:8a89f34a8be8cbf3be3828",
+        "android_client_info": {
+          "package_name": "com.binyoga.smart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RR73nIN-N7bm7AIB5eCXOiR3kYaeOz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

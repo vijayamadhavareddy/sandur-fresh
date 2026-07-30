@@ -1,4 +1,4 @@
-id: 'sf_consumer'
+id: 'sf_customer'
 language: 'dart'
 
 fileGroups:
@@ -22,3 +22,14 @@ tasks:
     command: 'flutter build apk --release'
     inputs: ['@globs(sources)']
     outputs: ['build/app/outputs']
+  fastlane-android-bundle:
+    command: 'bundle exec fastlane android build_bundle'
+    inputs: ['@globs(sources)', 'android/**/*', 'fastlane/**/*']
+    outputs: ['build/app/outputs/bundle']
+  fastlane-android-beta:
+    command: 'bundle exec fastlane android beta'
+    inputs: ['@globs(sources)', 'android/**/*', 'fastlane/**/*']
+  fastlane-ios-beta:
+    command: 'bundle exec fastlane ios beta'
+    inputs: ['@globs(sources)', 'ios/**/*', 'fastlane/**/*']
+

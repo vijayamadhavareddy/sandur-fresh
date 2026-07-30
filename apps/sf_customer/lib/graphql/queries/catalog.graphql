@@ -8,6 +8,7 @@ fragment ProductFields on ProductsSelectItem {
   price
   emoji
   imageUrl
+  timeBoundSection
   isActive
 }
 
@@ -18,11 +19,23 @@ fragment CategoryFields on CategoriesSelectItem {
   sortOrder
 }
 
+fragment TimeBoundSectionFields on TimeBoundSection {
+  id
+  title
+  window
+  startHour
+  endHour
+  isNow
+}
+
 query GetCatalog {
   products(limit: 100) {
     ...ProductFields
   }
   categories(limit: 100) {
     ...CategoryFields
+  }
+  timeBoundSections {
+    ...TimeBoundSectionFields
   }
 }

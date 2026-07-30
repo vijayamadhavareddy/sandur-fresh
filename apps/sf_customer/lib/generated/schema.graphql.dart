@@ -106369,6 +106369,7 @@ class Input$ProductsInsertInput {
     required int price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106382,6 +106383,7 @@ class Input$ProductsInsertInput {
     r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
+    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -106416,6 +106418,10 @@ class Input$ProductsInsertInput {
     if (data.containsKey('imageUrl')) {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
+    }
+    if (data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = data['timeBoundSection'];
+      result$data['timeBoundSection'] = (l$timeBoundSection as String?);
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -106452,6 +106458,8 @@ class Input$ProductsInsertInput {
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
+  String? get timeBoundSection => (_$data['timeBoundSection'] as String?);
+
   bool? get isActive => (_$data['isActive'] as bool?);
 
   String? get createdAt => (_$data['createdAt'] as String?);
@@ -106485,6 +106493,10 @@ class Input$ProductsInsertInput {
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
+    }
+    if (_$data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = timeBoundSection;
+      result$data['timeBoundSection'] = l$timeBoundSection;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -106572,6 +106584,15 @@ class Input$ProductsInsertInput {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (_$data.containsKey('timeBoundSection') !=
+        other._$data.containsKey('timeBoundSection')) {
+      return false;
+    }
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (_$data.containsKey('isActive') !=
@@ -106613,6 +106634,7 @@ class Input$ProductsInsertInput {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -106626,6 +106648,7 @@ class Input$ProductsInsertInput {
       l$price,
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
+      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -106652,6 +106675,7 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106678,6 +106702,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -106694,6 +106719,8 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
       if (price != _undefined && price != null) 'price': (price as int),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
+      if (timeBoundSection != _undefined)
+        'timeBoundSection': (timeBoundSection as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -106717,6 +106744,7 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106734,6 +106762,7 @@ class Input$ProductsUpdateInput {
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106747,6 +106776,7 @@ class Input$ProductsUpdateInput {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
+    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -106792,6 +106822,10 @@ class Input$ProductsUpdateInput {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
     }
+    if (data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = data['timeBoundSection'];
+      result$data['timeBoundSection'] = (l$timeBoundSection as String?);
+    }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
       result$data['isActive'] = (l$isActive as bool?);
@@ -106826,6 +106860,8 @@ class Input$ProductsUpdateInput {
   String? get emoji => (_$data['emoji'] as String?);
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
+
+  String? get timeBoundSection => (_$data['timeBoundSection'] as String?);
 
   bool? get isActive => (_$data['isActive'] as bool?);
 
@@ -106870,6 +106906,10 @@ class Input$ProductsUpdateInput {
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
+    }
+    if (_$data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = timeBoundSection;
+      result$data['timeBoundSection'] = l$timeBoundSection;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -106973,6 +107013,15 @@ class Input$ProductsUpdateInput {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (_$data.containsKey('timeBoundSection') !=
+        other._$data.containsKey('timeBoundSection')) {
+      return false;
+    }
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (_$data.containsKey('isActive') !=
@@ -107014,6 +107063,7 @@ class Input$ProductsUpdateInput {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -107027,6 +107077,7 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
+      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -107053,6 +107104,7 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -107079,6 +107131,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -107094,6 +107147,8 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
       if (price != _undefined) 'price': (price as int?),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
+      if (timeBoundSection != _undefined)
+        'timeBoundSection': (timeBoundSection as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -107117,6 +107172,7 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
+    String? timeBoundSection,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -107134,6 +107190,7 @@ class Input$ProductsFilters {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107148,6 +107205,7 @@ class Input$ProductsFilters {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
+    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -107226,6 +107284,14 @@ class Input$ProductsFilters {
               (l$imageUrl as Map<String, dynamic>),
             );
     }
+    if (data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = data['timeBoundSection'];
+      result$data['timeBoundSection'] = l$timeBoundSection == null
+          ? null
+          : Input$ProductsTimeBoundSectionFilters.fromJson(
+              (l$timeBoundSection as Map<String, dynamic>),
+            );
+    }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
       result$data['isActive'] = l$isActive == null
@@ -107290,6 +107356,9 @@ class Input$ProductsFilters {
   Input$ProductsImageUrlFilters? get imageUrl =>
       (_$data['imageUrl'] as Input$ProductsImageUrlFilters?);
 
+  Input$ProductsTimeBoundSectionFilters? get timeBoundSection =>
+      (_$data['timeBoundSection'] as Input$ProductsTimeBoundSectionFilters?);
+
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
 
@@ -107339,6 +107408,10 @@ class Input$ProductsFilters {
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
+    }
+    if (_$data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = timeBoundSection;
+      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -107445,6 +107518,15 @@ class Input$ProductsFilters {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (_$data.containsKey('timeBoundSection') !=
+        other._$data.containsKey('timeBoundSection')) {
+      return false;
+    }
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (_$data.containsKey('isActive') !=
@@ -107505,6 +107587,7 @@ class Input$ProductsFilters {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -107519,6 +107602,7 @@ class Input$ProductsFilters {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
+      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -107550,6 +107634,7 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107564,6 +107649,7 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -107595,6 +107681,7 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -107614,6 +107701,9 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
+      if (timeBoundSection != _undefined)
+        'timeBoundSection':
+            (timeBoundSection as Input$ProductsTimeBoundSectionFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -107702,6 +107792,16 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
           );
   }
 
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection {
+    final local$timeBoundSection = _instance.timeBoundSection;
+    return local$timeBoundSection == null
+        ? CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTimeBoundSectionFilters(
+            local$timeBoundSection,
+            (e) => call(timeBoundSection: e),
+          );
+  }
+
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive {
     final local$isActive = _instance.isActive;
     return local$isActive == null
@@ -107760,6 +107860,7 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107792,6 +107893,9 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
 
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl =>
       CopyWith$Input$ProductsImageUrlFilters.stub(_res);
+
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection =>
+      CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_res);
 
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
@@ -117169,6 +117273,1066 @@ class _CopyWithStubImpl$Input$ProductsImageUrlfiltersOr<TRes>
   }) => _res;
 }
 
+class Input$ProductsTimeBoundSectionFilters {
+  factory Input$ProductsTimeBoundSectionFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
+  }) => Input$ProductsTimeBoundSectionFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsTimeBoundSectionFilters._(this._$data);
+
+  factory Input$ProductsTimeBoundSectionFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsTimeBoundSectionfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsTimeBoundSectionFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsTimeBoundSectionfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsTimeBoundSectionfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsTimeBoundSectionFilters<
+    Input$ProductsTimeBoundSectionFilters
+  >
+  get copyWith =>
+      CopyWith$Input$ProductsTimeBoundSectionFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsTimeBoundSectionFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
+  factory CopyWith$Input$ProductsTimeBoundSectionFilters(
+    Input$ProductsTimeBoundSectionFilters instance,
+    TRes Function(Input$ProductsTimeBoundSectionFilters) then,
+  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionFilters;
+
+  factory CopyWith$Input$ProductsTimeBoundSectionFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsTimeBoundSectionfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
+          Input$ProductsTimeBoundSectionfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsTimeBoundSectionFilters<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
+  _CopyWithImpl$Input$ProductsTimeBoundSectionFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductsTimeBoundSectionFilters _instance;
+
+  final TRes Function(Input$ProductsTimeBoundSectionFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsTimeBoundSectionFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$ProductsTimeBoundSectionfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsTimeBoundSectionfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
+          Input$ProductsTimeBoundSectionfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsTimeBoundSectionfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsTimeBoundSectionfiltersOr {
+  factory Input$ProductsTimeBoundSectionfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsTimeBoundSectionfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsTimeBoundSectionfiltersOr._(this._$data);
+
+  factory Input$ProductsTimeBoundSectionfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsTimeBoundSectionfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
+    Input$ProductsTimeBoundSectionfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$ProductsTimeBoundSectionfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsTimeBoundSectionfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
+  factory CopyWith$Input$ProductsTimeBoundSectionfiltersOr(
+    Input$ProductsTimeBoundSectionfiltersOr instance,
+    TRes Function(Input$ProductsTimeBoundSectionfiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr;
+
+  factory CopyWith$Input$ProductsTimeBoundSectionfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductsTimeBoundSectionfiltersOr _instance;
+
+  final TRes Function(Input$ProductsTimeBoundSectionfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsTimeBoundSectionfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
 class Input$ProductsIsActiveFilters {
   factory Input$ProductsIsActiveFilters({
     bool? eq,
@@ -120312,6 +121476,7 @@ class Input$ProductsFiltersOr {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -120325,6 +121490,7 @@ class Input$ProductsFiltersOr {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
+    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -120402,6 +121568,14 @@ class Input$ProductsFiltersOr {
               (l$imageUrl as Map<String, dynamic>),
             );
     }
+    if (data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = data['timeBoundSection'];
+      result$data['timeBoundSection'] = l$timeBoundSection == null
+          ? null
+          : Input$ProductsTimeBoundSectionFilters.fromJson(
+              (l$timeBoundSection as Map<String, dynamic>),
+            );
+    }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
       result$data['isActive'] = l$isActive == null
@@ -120457,6 +121631,9 @@ class Input$ProductsFiltersOr {
   Input$ProductsImageUrlFilters? get imageUrl =>
       (_$data['imageUrl'] as Input$ProductsImageUrlFilters?);
 
+  Input$ProductsTimeBoundSectionFilters? get timeBoundSection =>
+      (_$data['timeBoundSection'] as Input$ProductsTimeBoundSectionFilters?);
+
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
 
@@ -120503,6 +121680,10 @@ class Input$ProductsFiltersOr {
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
+    }
+    if (_$data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = timeBoundSection;
+      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -120605,6 +121786,15 @@ class Input$ProductsFiltersOr {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (_$data.containsKey('timeBoundSection') !=
+        other._$data.containsKey('timeBoundSection')) {
+      return false;
+    }
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (_$data.containsKey('isActive') !=
@@ -120646,6 +121836,7 @@ class Input$ProductsFiltersOr {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -120659,6 +121850,7 @@ class Input$ProductsFiltersOr {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
+      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -120685,6 +121877,7 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -120698,6 +121891,7 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -120723,6 +121917,7 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -120741,6 +121936,9 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
+      if (timeBoundSection != _undefined)
+        'timeBoundSection':
+            (timeBoundSection as Input$ProductsTimeBoundSectionFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -120828,6 +122026,16 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
           );
   }
 
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection {
+    final local$timeBoundSection = _instance.timeBoundSection;
+    return local$timeBoundSection == null
+        ? CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTimeBoundSectionFilters(
+            local$timeBoundSection,
+            (e) => call(timeBoundSection: e),
+          );
+  }
+
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive {
     final local$isActive = _instance.isActive;
     return local$isActive == null
@@ -120875,6 +122083,7 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
+    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -120907,6 +122116,9 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl =>
       CopyWith$Input$ProductsImageUrlFilters.stub(_res);
 
+  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection =>
+      CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_res);
+
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
 
@@ -120928,6 +122140,7 @@ class Input$ProductsOrderBy {
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
+    Input$InnerOrder? timeBoundSection,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -120941,6 +122154,7 @@ class Input$ProductsOrderBy {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
+    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -121004,6 +122218,14 @@ class Input$ProductsOrderBy {
           ? null
           : Input$InnerOrder.fromJson((l$imageUrl as Map<String, dynamic>));
     }
+    if (data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = data['timeBoundSection'];
+      result$data['timeBoundSection'] = l$timeBoundSection == null
+          ? null
+          : Input$InnerOrder.fromJson(
+              (l$timeBoundSection as Map<String, dynamic>),
+            );
+    }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
       result$data['isActive'] = l$isActive == null
@@ -121046,6 +122268,9 @@ class Input$ProductsOrderBy {
   Input$InnerOrder? get emoji => (_$data['emoji'] as Input$InnerOrder?);
 
   Input$InnerOrder? get imageUrl => (_$data['imageUrl'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get timeBoundSection =>
+      (_$data['timeBoundSection'] as Input$InnerOrder?);
 
   Input$InnerOrder? get isActive => (_$data['isActive'] as Input$InnerOrder?);
 
@@ -121090,6 +122315,10 @@ class Input$ProductsOrderBy {
     if (_$data.containsKey('imageUrl')) {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
+    }
+    if (_$data.containsKey('timeBoundSection')) {
+      final l$timeBoundSection = timeBoundSection;
+      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -121192,6 +122421,15 @@ class Input$ProductsOrderBy {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
+    final l$timeBoundSection = timeBoundSection;
+    final lOther$timeBoundSection = other.timeBoundSection;
+    if (_$data.containsKey('timeBoundSection') !=
+        other._$data.containsKey('timeBoundSection')) {
+      return false;
+    }
+    if (l$timeBoundSection != lOther$timeBoundSection) {
+      return false;
+    }
     final l$isActive = isActive;
     final lOther$isActive = other.isActive;
     if (_$data.containsKey('isActive') !=
@@ -121233,6 +122471,7 @@ class Input$ProductsOrderBy {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
+    final l$timeBoundSection = timeBoundSection;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -121246,6 +122485,7 @@ class Input$ProductsOrderBy {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
+      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -121272,6 +122512,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
+    Input$InnerOrder? timeBoundSection,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -121285,6 +122526,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
   CopyWith$Input$InnerOrder<TRes> get price;
   CopyWith$Input$InnerOrder<TRes> get emoji;
   CopyWith$Input$InnerOrder<TRes> get imageUrl;
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSection;
   CopyWith$Input$InnerOrder<TRes> get isActive;
   CopyWith$Input$InnerOrder<TRes> get createdAt;
   CopyWith$Input$InnerOrder<TRes> get updatedAt;
@@ -121310,6 +122552,7 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
+    Object? timeBoundSection = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -121327,6 +122570,8 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
       if (price != _undefined) 'price': (price as Input$InnerOrder?),
       if (emoji != _undefined) 'emoji': (emoji as Input$InnerOrder?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as Input$InnerOrder?),
+      if (timeBoundSection != _undefined)
+        'timeBoundSection': (timeBoundSection as Input$InnerOrder?),
       if (isActive != _undefined) 'isActive': (isActive as Input$InnerOrder?),
       if (createdAt != _undefined)
         'createdAt': (createdAt as Input$InnerOrder?),
@@ -121404,6 +122649,16 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
         : CopyWith$Input$InnerOrder(local$imageUrl, (e) => call(imageUrl: e));
   }
 
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSection {
+    final local$timeBoundSection = _instance.timeBoundSection;
+    return local$timeBoundSection == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$timeBoundSection,
+            (e) => call(timeBoundSection: e),
+          );
+  }
+
   CopyWith$Input$InnerOrder<TRes> get isActive {
     final local$isActive = _instance.isActive;
     return local$isActive == null
@@ -121442,6 +122697,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
+    Input$InnerOrder? timeBoundSection,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -121472,6 +122728,9 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get imageUrl =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSection =>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get isActive =>
@@ -157936,6 +159195,44 @@ Enum$OrderDirection fromJson$Enum$OrderDirection(String value) {
       return Enum$OrderDirection.desc;
     default:
       return Enum$OrderDirection.$unknown;
+  }
+}
+
+enum Enum$TimeBoundSectionId {
+  BREAKFAST,
+  LUNCH,
+  DINNER,
+  $unknown;
+
+  factory Enum$TimeBoundSectionId.fromJson(String value) =>
+      fromJson$Enum$TimeBoundSectionId(value);
+
+  String toJson() => toJson$Enum$TimeBoundSectionId(this);
+}
+
+String toJson$Enum$TimeBoundSectionId(Enum$TimeBoundSectionId e) {
+  switch (e) {
+    case Enum$TimeBoundSectionId.BREAKFAST:
+      return r'BREAKFAST';
+    case Enum$TimeBoundSectionId.LUNCH:
+      return r'LUNCH';
+    case Enum$TimeBoundSectionId.DINNER:
+      return r'DINNER';
+    case Enum$TimeBoundSectionId.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$TimeBoundSectionId fromJson$Enum$TimeBoundSectionId(String value) {
+  switch (value) {
+    case r'BREAKFAST':
+      return Enum$TimeBoundSectionId.BREAKFAST;
+    case r'LUNCH':
+      return Enum$TimeBoundSectionId.LUNCH;
+    case r'DINNER':
+      return Enum$TimeBoundSectionId.DINNER;
+    default:
+      return Enum$TimeBoundSectionId.$unknown;
   }
 }
 

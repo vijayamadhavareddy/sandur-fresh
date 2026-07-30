@@ -2,14 +2,157 @@ import { describe, expect, test } from "bun:test";
 import {
   adjustInventorySchema,
   adminLoginSchema,
+  adminSetupSchema,
+  adminStoreSchema,
+  bulkAdminStoresSchema,
   createAdminProductSchema,
   transitionOrderSchema,
+  updateAdminCustomerSchema,
 } from "../src/modules/admin/admin.schemas";
 
 describe("admin validation", () => {
+  test("validates bulk admin store inputs", () => {
+    const validBatch = bulkAdminStoresSchema.safeParse([
+      {
+        name: "Hub 1",
+        type: "DARK_STORE",
+        address: "Address 1",
+        lat: 12.1,
+        lng: 77.1,
+        serviceRadiusM: 3000,
+        isActive: true,
+      },
+      {
+        name: "Partner Mart",
+        type: "THIRD_PARTY",
+        partnerName: "Partner Co",
+        address: "Address 2",
+        lat: 12.2,
+        lng: 77.2,
+        serviceRadiusM: 4000,
+        isActive: true,
+      },
+    ]);
+    expect(validBatch.success).toBe(true);
+    if (validBatch.success) {
+      expect(validBatch.data.length).toBe(2);
+    }
+
+    const emptyBatch = bulkAdminStoresSchema.safeParse([]);
+    expect(emptyBatch.success).toBe(false);
+  });
+  test("validates admin store inputs for dark stores and third-party stores", () => {
+    const darkStore = adminStoreSchema.safeParse({
+      name: "Indiranagar Hub #1",
+      address: "100ft Road, Indiranagar, Bengaluru",
+      lat: 12.9716,
+      lng: 77.5946,
+      serviceRadiusM: 4000,
+      isActive: true,
+    });
+    expect(darkStore.success).toBe(true);
+    if (darkStore.success) {
+      expect(darkStore.data.type).toBe("DARK_STORE");
+    }
+
+    const thirdPartyStore = adminStoreSchema.safeParse({
+      name: "Daily Fresh Supermarket",
+      type: "THIRD_PARTY",
+      partnerName: "Daily Fresh Retail Pvt Ltd",
+      contactPhone: "+919876543210",
+      contactEmail: "manager@dailyfresh.in",
+      commissionPct: 12,
+      address: "Koramangala 4th Block, Bengaluru",
+      lat: 12.9352,
+      lng: 77.6245,
+      serviceRadiusM: 3000,
+      isActive: true,
+    });
+    expect(thirdPartyStore.success).toBe(true);
+    if (thirdPartyStore.success) {
+      expect(thirdPartyStore.data.type).toBe("THIRD_PARTY");
+      expect(thirdPartyStore.data.commissionPct).toBe(12);
+      expect(thirdPartyStore.data.partnerName).toBe("Daily Fresh Retail Pvt Ltd");
+    }
+
+    const thirdPartyStoreWithEmptyEmail = adminStoreSchema.safeParse({
+      name: "Skanda Mart",
+      type: "THIRD_PARTY",
+      partnerName: "Skanda Mart",
+      contactPhone: "",
+      contactEmail: "",
+      commissionPct: 0,
+      address: "Sandur",
+      lat: 0,
+      lng: 0,
+      serviceRadiusM: 5000,
+      isActive: true,
+    });
+    expect(thirdPartyStoreWithEmptyEmail.success).toBe(true);
+    if (thirdPartyStoreWithEmptyEmail.success) {
+      expect(thirdPartyStoreWithEmptyEmail.data.contactEmail).toBe(null);
+      expect(thirdPartyStoreWithEmptyEmail.data.contactPhone).toBe(null);
+    }
+
+    const invalidType = adminStoreSchema.safeParse({
+      name: "Bad Store",
+      type: "INVALID_TYPE",
+      address: "Address",
+      lat: 12.0,
+      lng: 77.0,
+    });
+    expect(invalidType.success).toBe(false);
+  });
+  test("validates admin setup input", () => {
+    const valid = adminSetupSchema.safeParse({
+      secret: "my-secret-123",
+      name: "Admin User",
+      phone: "+919999999999",
+      email: "Admin@SandurFresh.com",
+      password: "password123",
+    });
+    expect(valid.success).toBe(true);
+    if (valid.success) {
+      expect(valid.data.email).toBe("admin@sandurfresh.com");
+    }
+
+    const missingSecret = adminSetupSchema.safeParse({
+      secret: "",
+      name: "Admin",
+      phone: "+919999999999",
+      email: "admin@sandurfresh.com",
+      password: "password123",
+    });
+    expect(missingSecret.success).toBe(false);
+
+    const shortPassword = adminSetupSchema.safeParse({
+      secret: "secret",
+      name: "Admin",
+      phone: "+919999999999",
+      email: "admin@sandurfresh.com",
+      password: "short",
+    });
+    expect(shortPassword.success).toBe(false);
+  });
+
   test("normalizes login email", () => {
     const result = adminLoginSchema.parse({ email: " Ops@Example.COM ", password: "password123" });
     expect(result.email).toBe("ops@example.com");
+  });
+
+  test("validates update customer inputs", () => {
+    const valid = updateAdminCustomerSchema.safeParse({
+      name: "John",
+      phone: "9876543210",
+      email: "john@example.com",
+    });
+    expect(valid.success).toBe(true);
+
+    const invalidPhone = updateAdminCustomerSchema.safeParse({ phone: "123" });
+    expect(invalidPhone.success).toBe(false);
+
+    const empty = updateAdminCustomerSchema.safeParse({});
+    expect(empty.success).toBe(false);
   });
 
   test("requires integer paise and price not above MRP", () => {

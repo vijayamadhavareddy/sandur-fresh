@@ -7,19 +7,24 @@ import {
   unauthorized,
   validationError,
 } from "../../shared/errors";
+import { hashPassword, verifyPassword } from "../../shared/password";
 import { err, ok, type Result } from "../../shared/result";
 import { ALLOWED_TRANSITIONS } from "../orders/order-status";
 import type { OrdersService } from "../orders/orders.service";
 import type { AdminRepo } from "./admin.repo";
+import type { StoreType } from "./admin.schemas";
 import {
   adjustInventorySchema,
   adminCategorySchema,
   adminLoginSchema,
   adminPageSchema,
+  adminSetupSchema,
   adminStoreSchema,
+  bulkAdminStoresSchema,
   createAdminProductSchema,
   transitionOrderSchema,
   updateAdminCategorySchema,
+  updateAdminCustomerSchema,
   updateAdminProductSchema,
   updateAdminStoreSchema,
 } from "./admin.schemas";
@@ -40,14 +45,64 @@ export type AdminServiceDeps = {
 };
 
 export const createAdminService = (deps: AdminServiceDeps) => {
+  const isSetupRequired = async () => {
+    const exists = await deps.adminRepo.hasAdmin(deps.db);
+    return ok({ isRequired: !exists });
+  };
+
+  const setup = async (input: unknown, configuredSecret?: string) => {
+    const parsed = parse(adminSetupSchema, input);
+    if (!parsed.ok) return parsed;
+
+    const secretToMatch =
+      configuredSecret ||
+      (typeof process !== "undefined" ? process.env.ADMIN_SETUP_SECRET : undefined) ||
+      "sandur-admin-setup-secret";
+    if (parsed.value.secret !== secretToMatch) {
+      return err(unauthorized("Invalid setup secret"));
+    }
+
+    const alreadyExists = await deps.adminRepo.hasAdmin(deps.db);
+    if (alreadyExists) {
+      return err(conflict("Admin account is already configured"));
+    }
+
+    const passwordHash = await hashPassword(parsed.value.password);
+    const { user, credential } = await deps.db.transaction((tx) =>
+      deps.adminRepo.createAdminWithCredential(tx, {
+        phone: parsed.value.phone,
+        name: parsed.value.name,
+        email: parsed.value.email,
+        passwordHash,
+      }),
+    );
+
+    const token = crypto.randomUUID() + crypto.randomUUID().replaceAll("-", "");
+    const expiresAt = new Date(Date.now() + SESSION_TTL_MS);
+    await deps.adminRepo.createSession(deps.db, { userId: user.id, token, expiresAt });
+
+    return ok({
+      token,
+      expiresAt,
+      user: {
+        id: user.id,
+        phone: user.phone,
+        name: user.name,
+        email: credential.email,
+        role: user.role,
+      },
+    });
+  };
+
   const login = async (input: unknown) => {
     const parsed = parse(adminLoginSchema, input);
     if (!parsed.ok) return parsed;
     const row = await deps.adminRepo.findCredentialByEmail(deps.db, parsed.value.email);
+    console.log("data", row);
     if (row?.user.role !== "admin") {
       return err(unauthorized("Invalid email or password"));
     }
-    if (!(await Bun.password.verify(parsed.value.password, row.credential.passwordHash))) {
+    if (!(await verifyPassword(parsed.value.password, row.credential.passwordHash))) {
       return err(unauthorized("Invalid email or password"));
     }
     const token = crypto.randomUUID() + crypto.randomUUID().replaceAll("-", "");
@@ -124,6 +179,12 @@ export const createAdminService = (deps: AdminServiceDeps) => {
     return ok(await deps.db.transaction((tx) => deps.adminRepo.createStore(tx, parsed.value)));
   };
 
+  const createStoresBulk = async (input: unknown) => {
+    const parsed = parse(bulkAdminStoresSchema, input);
+    if (!parsed.ok) return parsed;
+    return ok(await deps.db.transaction((tx) => deps.adminRepo.createStoresBulk(tx, parsed.value)));
+  };
+
   const updateStore = async (id: string, input: unknown) => {
     const parsed = parse(updateAdminStoreSchema, input);
     if (!parsed.ok) return parsed;
@@ -193,14 +254,38 @@ export const createAdminService = (deps: AdminServiceDeps) => {
     return getOrder(parsed.value.orderId);
   };
 
+  const listCustomers = async (input: unknown) => {
+    const parsed = parse(adminPageSchema, input);
+    if (!parsed.ok) return parsed;
+    const result = await deps.adminRepo.listCustomers(deps.db, parsed.value);
+    return ok({ ...result, page: parsed.value.page, limit: parsed.value.limit });
+  };
+
+  const getCustomer = async (id: string) => {
+    const customer = await deps.adminRepo.findCustomer(deps.db, id);
+    return customer ? ok(customer) : err(notFound("Customer not found"));
+  };
+
+  const updateCustomer = async (id: string, input: unknown) => {
+    const parsed = parse(updateAdminCustomerSchema, input);
+    if (!parsed.ok) return parsed;
+    const existing = await deps.adminRepo.findCustomer(deps.db, id);
+    if (!existing) return err(notFound("Customer not found"));
+    const updated = await deps.adminRepo.updateCustomer(deps.db, id, parsed.value);
+    return updated ? ok(updated) : err(notFound("Customer not found"));
+  };
+
   return {
+    isSetupRequired,
+    setup,
     login,
     logout,
     dashboard,
     listProducts,
     getProduct,
     listCategories: async () => ok(await deps.adminRepo.listCategories(deps.db)),
-    listStores: async () => ok(await deps.adminRepo.listStores(deps.db)),
+    listStores: async (filter?: { type?: StoreType }) =>
+      ok(await deps.adminRepo.listStores(deps.db, filter)),
     getStore: async (id: string) => {
       const store = await deps.adminRepo.findStore(deps.db, id);
       return store ? ok(store) : err(notFound("Store not found"));
@@ -208,11 +293,15 @@ export const createAdminService = (deps: AdminServiceDeps) => {
     listInventory,
     listOrders,
     getOrder,
+    listCustomers,
+    getCustomer,
+    updateCustomer,
     createProduct,
     updateProduct,
     createCategory,
     updateCategory,
     createStore,
+    createStoresBulk,
     updateStore,
     adjustInventory,
     transitionOrder,

@@ -1202,6 +1202,14 @@ export type AdminCredentialsUserRelationSessionsRelationUserRelation = {
   updatedAt: Scalars['String']['output'];
 };
 
+export type AdminCustomersPage = {
+  __typename?: 'AdminCustomersPage';
+  items: Array<AdminUser>;
+  limit: Scalars['Int']['output'];
+  page: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
 export type AdminDashboard = {
   __typename?: 'AdminDashboard';
   lowStockItems: Scalars['Int']['output'];
@@ -1309,6 +1317,7 @@ export type AdminProduct = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<TimeBoundSectionId>;
   unit: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
 };
@@ -1327,26 +1336,56 @@ export type AdminSession = {
   user: AdminUser;
 };
 
+export type AdminSetupStatus = {
+  __typename?: 'AdminSetupStatus';
+  isRequired: Scalars['Boolean']['output'];
+};
+
 export type AdminStore = {
   __typename?: 'AdminStore';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
   isActive: Scalars['Boolean']['output'];
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: AdminStoreType;
   updatedAt: Scalars['String']['output'];
 };
 
+export type AdminStoreInput = {
+  address: Scalars['String']['input'];
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  lat: Scalars['Float']['input'];
+  lng: Scalars['Float']['input'];
+  name: Scalars['String']['input'];
+  partnerName?: InputMaybe<Scalars['String']['input']>;
+  serviceRadiusM?: InputMaybe<Scalars['Int']['input']>;
+  type?: InputMaybe<AdminStoreType>;
+};
+
+export type AdminStoreType =
+  | 'DARK_STORE'
+  | 'THIRD_PARTY';
+
 export type AdminUser = {
   __typename?: 'AdminUser';
+  createdAt?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
   phone: Scalars['String']['output'];
   role: Scalars['String']['output'];
+  updatedAt?: Maybe<Scalars['String']['output']>;
 };
 
 export type AppAddress = {
@@ -1361,6 +1400,12 @@ export type AppAddress = {
   lng: Scalars['Float']['output'];
   phone: Scalars['String']['output'];
   pincode: Scalars['String']['output'];
+};
+
+export type AppAuthPayload = {
+  __typename?: 'AppAuthPayload';
+  token: Scalars['String']['output'];
+  user: AppUser;
 };
 
 export type AppCart = {
@@ -1439,6 +1484,11 @@ export type AppOrdersPage = {
   limit: Scalars['Int']['output'];
   page: Scalars['Int']['output'];
   total: Scalars['Int']['output'];
+};
+
+export type AppRequestOtpPayload = {
+  __typename?: 'AppRequestOtpPayload';
+  message: Scalars['String']['output'];
 };
 
 export type AppServiceability = {
@@ -1545,6 +1595,9 @@ export type CartItemsCartRelationItemsRelation = {
 export type CartItemsCartRelationStoreRelation = {
   __typename?: 'CartItemsCartRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -1553,7 +1606,9 @@ export type CartItemsCartRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -1604,6 +1659,7 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelation =
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -1654,6 +1710,7 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCa
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -1673,6 +1730,9 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationIn
 export type CartItemsCartRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'CartItemsCartRelationStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -1680,7 +1740,9 @@ export type CartItemsCartRelationStoreRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -1979,6 +2041,7 @@ export type CartItemsProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2029,6 +2092,7 @@ export type CartItemsProductRelationCategoryRelationProductsRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2070,6 +2134,7 @@ export type CartItemsProductRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2078,6 +2143,9 @@ export type CartItemsProductRelationInventoryRelationProductRelation = {
 export type CartItemsProductRelationInventoryRelationStoreRelation = {
   __typename?: 'CartItemsProductRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -2086,7 +2154,9 @@ export type CartItemsProductRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -2413,6 +2483,7 @@ export type CartsItemsRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2463,6 +2534,7 @@ export type CartsItemsRelationProductRelationCategoryRelationProductsRelation = 
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2504,6 +2576,7 @@ export type CartsItemsRelationProductRelationInventoryRelationProductRelation = 
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2512,6 +2585,9 @@ export type CartsItemsRelationProductRelationInventoryRelationProductRelation = 
 export type CartsItemsRelationProductRelationInventoryRelationStoreRelation = {
   __typename?: 'CartsItemsRelationProductRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -2520,7 +2596,9 @@ export type CartsItemsRelationProductRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -2626,6 +2704,9 @@ export type CartsStoreIdfiltersOr = {
 export type CartsStoreRelation = {
   __typename?: 'CartsStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -2634,7 +2715,9 @@ export type CartsStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -2685,6 +2768,7 @@ export type CartsStoreRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2735,6 +2819,7 @@ export type CartsStoreRelationInventoryRelationProductRelationCategoryRelationPr
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2754,6 +2839,9 @@ export type CartsStoreRelationInventoryRelationProductRelationInventoryRelation 
 export type CartsStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'CartsStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -2761,7 +2849,9 @@ export type CartsStoreRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -3153,6 +3243,7 @@ export type CategoriesProductsRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3217,6 +3308,7 @@ export type CategoriesProductsRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3225,6 +3317,9 @@ export type CategoriesProductsRelationInventoryRelationProductRelation = {
 export type CategoriesProductsRelationInventoryRelationStoreRelation = {
   __typename?: 'CategoriesProductsRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -3233,7 +3328,9 @@ export type CategoriesProductsRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -3361,6 +3458,549 @@ export type CategoriesUpdateInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   sortOrder?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DeviceRegistrationsCreatedAtFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsCreatedAtfiltersOr>>;
+  /** Date */
+  eq?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lte?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsCreatedAtfiltersOr = {
+  /** Date */
+  eq?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lte?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsFiltersOr>>;
+  createdAt?: InputMaybe<DeviceRegistrationsCreatedAtFilters>;
+  id?: InputMaybe<DeviceRegistrationsIdFilters>;
+  kind?: InputMaybe<DeviceRegistrationsKindFilters>;
+  platform?: InputMaybe<DeviceRegistrationsPlatformFilters>;
+  target?: InputMaybe<DeviceRegistrationsTargetFilters>;
+  updatedAt?: InputMaybe<DeviceRegistrationsUpdatedAtFilters>;
+  userAgent?: InputMaybe<DeviceRegistrationsUserAgentFilters>;
+  userId?: InputMaybe<DeviceRegistrationsUserIdFilters>;
+};
+
+export type DeviceRegistrationsFiltersOr = {
+  createdAt?: InputMaybe<DeviceRegistrationsCreatedAtFilters>;
+  id?: InputMaybe<DeviceRegistrationsIdFilters>;
+  kind?: InputMaybe<DeviceRegistrationsKindFilters>;
+  platform?: InputMaybe<DeviceRegistrationsPlatformFilters>;
+  target?: InputMaybe<DeviceRegistrationsTargetFilters>;
+  updatedAt?: InputMaybe<DeviceRegistrationsUpdatedAtFilters>;
+  userAgent?: InputMaybe<DeviceRegistrationsUserAgentFilters>;
+  userId?: InputMaybe<DeviceRegistrationsUserIdFilters>;
+};
+
+export type DeviceRegistrationsIdFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsIdfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsIdfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsInsertInput = {
+  /** Date */
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  kind: DeviceRegistrationsKindEnum;
+  platform: DeviceRegistrationsPlatformEnum;
+  target: Scalars['String']['input'];
+  /** Date */
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+  userId: Scalars['String']['input'];
+};
+
+export type DeviceRegistrationsItem = {
+  __typename?: 'DeviceRegistrationsItem';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  kind: DeviceRegistrationsKindEnum;
+  platform: DeviceRegistrationsPlatformEnum;
+  target: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+  userAgent?: Maybe<Scalars['String']['output']>;
+  userId: Scalars['String']['output'];
+};
+
+export type DeviceRegistrationsKindEnum =
+  /** Value: FID */
+  | 'FID'
+  /** Value: TOKEN */
+  | 'TOKEN';
+
+export type DeviceRegistrationsKindFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsKindfiltersOr>>;
+  eq?: InputMaybe<DeviceRegistrationsKindEnum>;
+  gt?: InputMaybe<DeviceRegistrationsKindEnum>;
+  gte?: InputMaybe<DeviceRegistrationsKindEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<DeviceRegistrationsKindEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<DeviceRegistrationsKindEnum>;
+  lte?: InputMaybe<DeviceRegistrationsKindEnum>;
+  ne?: InputMaybe<DeviceRegistrationsKindEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<DeviceRegistrationsKindEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsKindfiltersOr = {
+  eq?: InputMaybe<DeviceRegistrationsKindEnum>;
+  gt?: InputMaybe<DeviceRegistrationsKindEnum>;
+  gte?: InputMaybe<DeviceRegistrationsKindEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<DeviceRegistrationsKindEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<DeviceRegistrationsKindEnum>;
+  lte?: InputMaybe<DeviceRegistrationsKindEnum>;
+  ne?: InputMaybe<DeviceRegistrationsKindEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<DeviceRegistrationsKindEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsOrderBy = {
+  createdAt?: InputMaybe<InnerOrder>;
+  id?: InputMaybe<InnerOrder>;
+  kind?: InputMaybe<InnerOrder>;
+  platform?: InputMaybe<InnerOrder>;
+  target?: InputMaybe<InnerOrder>;
+  updatedAt?: InputMaybe<InnerOrder>;
+  userAgent?: InputMaybe<InnerOrder>;
+  userId?: InputMaybe<InnerOrder>;
+};
+
+export type DeviceRegistrationsPlatformEnum =
+  /** Value: android */
+  | 'android'
+  /** Value: ios */
+  | 'ios'
+  /** Value: web */
+  | 'web';
+
+export type DeviceRegistrationsPlatformFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsPlatformfiltersOr>>;
+  eq?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  gt?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  gte?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<DeviceRegistrationsPlatformEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  lte?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  ne?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<DeviceRegistrationsPlatformEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsPlatformfiltersOr = {
+  eq?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  gt?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  gte?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<DeviceRegistrationsPlatformEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  lte?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  ne?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<DeviceRegistrationsPlatformEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsSelectItem = {
+  __typename?: 'DeviceRegistrationsSelectItem';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  kind: DeviceRegistrationsKindEnum;
+  platform: DeviceRegistrationsPlatformEnum;
+  target: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+  user?: Maybe<DeviceRegistrationsUserRelation>;
+  userAgent?: Maybe<Scalars['String']['output']>;
+  userId: Scalars['String']['output'];
+};
+
+
+export type DeviceRegistrationsSelectItemUserArgs = {
+  where?: InputMaybe<UsersFilters>;
+};
+
+export type DeviceRegistrationsTargetFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsTargetfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsTargetfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUpdateInput = {
+  /** Date */
+  createdAt?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  kind?: InputMaybe<DeviceRegistrationsKindEnum>;
+  platform?: InputMaybe<DeviceRegistrationsPlatformEnum>;
+  target?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  updatedAt?: InputMaybe<Scalars['String']['input']>;
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUpdatedAtFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsUpdatedAtfiltersOr>>;
+  /** Date */
+  eq?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lte?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUpdatedAtfiltersOr = {
+  /** Date */
+  eq?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lt?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  lte?: InputMaybe<Scalars['String']['input']>;
+  /** Date */
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<Date> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUserAgentFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsUserAgentfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUserAgentfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUserIdFilters = {
+  OR?: InputMaybe<Array<DeviceRegistrationsUserIdfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUserIdfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DeviceRegistrationsUserRelation = {
+  __typename?: 'DeviceRegistrationsUserRelation';
+  addresses: Array<DeviceRegistrationsUserRelationAddressesRelation>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  phone: Scalars['String']['output'];
+  role: UsersRoleEnum;
+  sessions: Array<DeviceRegistrationsUserRelationSessionsRelation>;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type DeviceRegistrationsUserRelationAddressesArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<AddressesOrderBy>;
+  where?: InputMaybe<AddressesFilters>;
+};
+
+
+export type DeviceRegistrationsUserRelationSessionsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<SessionsOrderBy>;
+  where?: InputMaybe<SessionsFilters>;
+};
+
+export type DeviceRegistrationsUserRelationAddressesRelation = {
+  __typename?: 'DeviceRegistrationsUserRelationAddressesRelation';
+  city: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isDefault: Scalars['Boolean']['output'];
+  label: Scalars['String']['output'];
+  lat: Scalars['Float']['output'];
+  line1: Scalars['String']['output'];
+  line2?: Maybe<Scalars['String']['output']>;
+  lng: Scalars['Float']['output'];
+  phone: Scalars['String']['output'];
+  pincode: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+  user?: Maybe<DeviceRegistrationsUserRelationAddressesRelationUserRelation>;
+  userId: Scalars['String']['output'];
+};
+
+
+export type DeviceRegistrationsUserRelationAddressesRelationUserArgs = {
+  where?: InputMaybe<UsersFilters>;
+};
+
+export type DeviceRegistrationsUserRelationAddressesRelationUserRelation = {
+  __typename?: 'DeviceRegistrationsUserRelationAddressesRelationUserRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  phone: Scalars['String']['output'];
+  role: UsersRoleEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type DeviceRegistrationsUserRelationSessionsRelation = {
+  __typename?: 'DeviceRegistrationsUserRelationSessionsRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  /** Date */
+  expiresAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  token: Scalars['String']['output'];
+  user?: Maybe<DeviceRegistrationsUserRelationSessionsRelationUserRelation>;
+  userId: Scalars['String']['output'];
+};
+
+
+export type DeviceRegistrationsUserRelationSessionsRelationUserArgs = {
+  where?: InputMaybe<UsersFilters>;
+};
+
+export type DeviceRegistrationsUserRelationSessionsRelationUserRelation = {
+  __typename?: 'DeviceRegistrationsUserRelationSessionsRelationUserRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  phone: Scalars['String']['output'];
+  role: UsersRoleEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
 };
 
 export type InnerOrder = {
@@ -3643,6 +4283,7 @@ export type InventoryAdjustmentsInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3693,6 +4334,7 @@ export type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3712,6 +4354,9 @@ export type InventoryAdjustmentsInventoryRelationProductRelationInventoryRelatio
 export type InventoryAdjustmentsInventoryRelationStoreRelation = {
   __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -3720,7 +4365,9 @@ export type InventoryAdjustmentsInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4116,6 +4763,7 @@ export type InventoryProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4166,6 +4814,7 @@ export type InventoryProductRelationCategoryRelationProductsRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4286,6 +4935,9 @@ export type InventoryStoreIdfiltersOr = {
 export type InventoryStoreRelation = {
   __typename?: 'InventoryStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -4294,7 +4946,9 @@ export type InventoryStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4386,19 +5040,28 @@ export type Mutation = {
   adjustAdminInventory: AdminInventoryItem;
   adminLogin: AdminSession;
   adminLogout: Scalars['Boolean']['output'];
+  adminSetup: AdminSession;
+  bulkCreateAdminStores: Array<AdminStore>;
   cancelOrder: AppOrder;
   checkout: AppOrder;
   createAdminCategory: AdminCategory;
   createAdminProduct: AdminProduct;
   createAdminStore: AdminStore;
+  deleteAddress: Scalars['Boolean']['output'];
+  registerAdminDevice: Scalars['Boolean']['output'];
   removeCartItem: AppCart;
+  requestOtp: AppRequestOtpPayload;
   transitionAdminOrder: AdminOrder;
+  unregisterAdminDevice: Scalars['Boolean']['output'];
+  updateAddress: AppAddress;
   updateAdminCategory: AdminCategory;
+  updateAdminCustomer: AdminUser;
   updateAdminProduct: AdminProduct;
   updateAdminStore: AdminStore;
   updateCartItem: AppCart;
   updateOrderStatus: AppOrder;
   updateProfile: AppUser;
+  verifyOtp: AppAuthPayload;
 };
 
 
@@ -4435,6 +5098,20 @@ export type MutationAdminLoginArgs = {
 };
 
 
+export type MutationAdminSetupArgs = {
+  email: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
+  secret: Scalars['String']['input'];
+};
+
+
+export type MutationBulkCreateAdminStoresArgs = {
+  stores: Array<AdminStoreInput>;
+};
+
+
 export type MutationCancelOrderArgs = {
   orderId: Scalars['String']['input'];
 };
@@ -4463,22 +5140,44 @@ export type MutationCreateAdminProductArgs = {
   mrp: Scalars['Int']['input'];
   name: Scalars['String']['input'];
   price: Scalars['Int']['input'];
+  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
   unit: Scalars['String']['input'];
 };
 
 
 export type MutationCreateAdminStoreArgs = {
   address: Scalars['String']['input'];
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   lat: Scalars['Float']['input'];
   lng: Scalars['Float']['input'];
   name: Scalars['String']['input'];
+  partnerName?: InputMaybe<Scalars['String']['input']>;
   serviceRadiusM?: InputMaybe<Scalars['Int']['input']>;
+  type?: InputMaybe<AdminStoreType>;
+};
+
+
+export type MutationDeleteAddressArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationRegisterAdminDeviceArgs = {
+  fid: Scalars['String']['input'];
+  userAgent?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 export type MutationRemoveCartItemArgs = {
   itemId: Scalars['String']['input'];
+};
+
+
+export type MutationRequestOtpArgs = {
+  phone: Scalars['String']['input'];
 };
 
 
@@ -4489,11 +5188,38 @@ export type MutationTransitionAdminOrderArgs = {
 };
 
 
+export type MutationUnregisterAdminDeviceArgs = {
+  fid: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateAddressArgs = {
+  city?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['String']['input'];
+  isDefault?: InputMaybe<Scalars['Boolean']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  lat?: InputMaybe<Scalars['Float']['input']>;
+  line1?: InputMaybe<Scalars['String']['input']>;
+  line2?: InputMaybe<Scalars['String']['input']>;
+  lng?: InputMaybe<Scalars['Float']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  pincode?: InputMaybe<Scalars['String']['input']>;
+};
+
+
 export type MutationUpdateAdminCategoryArgs = {
   id: Scalars['String']['input'];
   name?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   sortOrder?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type MutationUpdateAdminCustomerArgs = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  id: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -4507,18 +5233,24 @@ export type MutationUpdateAdminProductArgs = {
   mrp?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
+  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
   unit?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 export type MutationUpdateAdminStoreArgs = {
   address?: InputMaybe<Scalars['String']['input']>;
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['String']['input'];
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   lat?: InputMaybe<Scalars['Float']['input']>;
   lng?: InputMaybe<Scalars['Float']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  partnerName?: InputMaybe<Scalars['String']['input']>;
   serviceRadiusM?: InputMaybe<Scalars['Int']['input']>;
+  type?: InputMaybe<AdminStoreType>;
 };
 
 
@@ -4537,6 +5269,12 @@ export type MutationUpdateOrderStatusArgs = {
 export type MutationUpdateProfileArgs = {
   email?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationVerifyOtpArgs = {
+  code: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
 };
 
 /** Order by direction */
@@ -4927,6 +5665,9 @@ export type OrderItemsOrderRelationItemsRelation = {
 export type OrderItemsOrderRelationStoreRelation = {
   __typename?: 'OrderItemsOrderRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -4935,7 +5676,9 @@ export type OrderItemsOrderRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4986,6 +5729,7 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5036,6 +5780,7 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5055,6 +5800,9 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
 export type OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -5062,7 +5810,9 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation =
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -5220,6 +5970,7 @@ export type OrderItemsProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5270,6 +6021,7 @@ export type OrderItemsProductRelationCategoryRelationProductsRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5311,6 +6063,7 @@ export type OrderItemsProductRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5319,6 +6072,9 @@ export type OrderItemsProductRelationInventoryRelationProductRelation = {
 export type OrderItemsProductRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderItemsProductRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -5327,7 +6083,9 @@ export type OrderItemsProductRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -5989,6 +6747,7 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6039,6 +6798,7 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryR
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6080,6 +6840,7 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6088,6 +6849,9 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
 export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -6096,7 +6860,9 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -6123,6 +6889,9 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
 export type OrderStatusHistoryOrderRelationStoreRelation = {
   __typename?: 'OrderStatusHistoryOrderRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -6131,7 +6900,9 @@ export type OrderStatusHistoryOrderRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -6182,6 +6953,7 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6232,6 +7004,7 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6251,6 +7024,9 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
 export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -6258,7 +7034,9 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRe
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -7073,6 +7851,7 @@ export type OrdersItemsRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7123,6 +7902,7 @@ export type OrdersItemsRelationProductRelationCategoryRelationProductsRelation =
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7164,6 +7944,7 @@ export type OrdersItemsRelationProductRelationInventoryRelationProductRelation =
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7172,6 +7953,9 @@ export type OrdersItemsRelationProductRelationInventoryRelationProductRelation =
 export type OrdersItemsRelationProductRelationInventoryRelationStoreRelation = {
   __typename?: 'OrdersItemsRelationProductRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -7180,7 +7964,9 @@ export type OrdersItemsRelationProductRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -7452,6 +8238,9 @@ export type OrdersStoreIdfiltersOr = {
 export type OrdersStoreRelation = {
   __typename?: 'OrdersStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -7460,7 +8249,9 @@ export type OrdersStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -7511,6 +8302,7 @@ export type OrdersStoreRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7561,6 +8353,7 @@ export type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationP
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7580,6 +8373,9 @@ export type OrdersStoreRelationInventoryRelationProductRelationInventoryRelation
 export type OrdersStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrdersStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -7587,7 +8383,9 @@ export type OrdersStoreRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -8298,6 +9096,7 @@ export type ProductsCategoryRelationProductsRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8444,6 +9243,7 @@ export type ProductsFilters = {
   mrp?: InputMaybe<ProductsMrpFilters>;
   name?: InputMaybe<ProductsNameFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
+  timeBoundSection?: InputMaybe<ProductsTimeBoundSectionFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -8459,6 +9259,7 @@ export type ProductsFiltersOr = {
   mrp?: InputMaybe<ProductsMrpFilters>;
   name?: InputMaybe<ProductsNameFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
+  timeBoundSection?: InputMaybe<ProductsTimeBoundSectionFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -8553,6 +9354,7 @@ export type ProductsInsertInput = {
   mrp: Scalars['Int']['input'];
   name: Scalars['String']['input'];
   price: Scalars['Int']['input'];
+  timeBoundSection?: InputMaybe<Scalars['String']['input']>;
   unit: Scalars['String']['input'];
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -8594,6 +9396,7 @@ export type ProductsInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8602,6 +9405,9 @@ export type ProductsInventoryRelationProductRelation = {
 export type ProductsInventoryRelationStoreRelation = {
   __typename?: 'ProductsInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -8610,7 +9416,9 @@ export type ProductsInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -8686,6 +9494,7 @@ export type ProductsItem = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8780,6 +9589,7 @@ export type ProductsOrderBy = {
   mrp?: InputMaybe<InnerOrder>;
   name?: InputMaybe<InnerOrder>;
   price?: InputMaybe<InnerOrder>;
+  timeBoundSection?: InputMaybe<InnerOrder>;
   unit?: InputMaybe<InnerOrder>;
   updatedAt?: InputMaybe<InnerOrder>;
 };
@@ -8838,6 +9648,7 @@ export type ProductsSelectItem = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8854,6 +9665,45 @@ export type ProductsSelectItemInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+export type ProductsTimeBoundSectionFilters = {
+  OR?: InputMaybe<Array<ProductsTimeBoundSectionfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsTimeBoundSectionfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductsUnitFilters = {
@@ -8907,6 +9757,7 @@ export type ProductsUpdateInput = {
   mrp?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
+  timeBoundSection?: InputMaybe<Scalars['String']['input']>;
   unit?: InputMaybe<Scalars['String']['input']>;
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -8966,6 +9817,8 @@ export type ProductsUpdatedAtfiltersOr = {
 export type Query = {
   __typename?: 'Query';
   adminCategories: Array<AdminCategory>;
+  adminCustomer?: Maybe<AdminUser>;
+  adminCustomers: AdminCustomersPage;
   adminDashboard: AdminDashboard;
   adminInventory: AdminInventoryPage;
   adminOrder?: Maybe<AdminOrder>;
@@ -8973,18 +9826,34 @@ export type Query = {
   adminProduct?: Maybe<AdminProduct>;
   adminProducts: AdminProductsPage;
   adminSession?: Maybe<AdminSession>;
+  adminSetupStatus: AdminSetupStatus;
   adminStore?: Maybe<AdminStore>;
   adminStores: Array<AdminStore>;
   availableDeliverySlots: AppDeliverySlots;
   categories: Array<CategoriesSelectItem>;
   categoriesSingle?: Maybe<CategoriesSelectItem>;
   checkServiceability: AppServiceability;
+  me: AppUser;
+  myAddresses: Array<AppAddress>;
   myCart: AppCart;
   myOrders: AppOrdersPage;
   products: Array<ProductsSelectItem>;
   productsSingle?: Maybe<ProductsSelectItem>;
   stores: Array<StoresSelectItem>;
   storesSingle?: Maybe<StoresSelectItem>;
+  timeBoundSections: Array<TimeBoundSection>;
+};
+
+
+export type QueryAdminCustomerArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryAdminCustomersArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  page?: InputMaybe<Scalars['Int']['input']>;
+  query?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -9023,6 +9892,11 @@ export type QueryAdminProductsArgs = {
 
 export type QueryAdminStoreArgs = {
   id: Scalars['String']['input'];
+};
+
+
+export type QueryAdminStoresArgs = {
+  type?: InputMaybe<AdminStoreType>;
 };
 
 
@@ -9820,6 +10694,9 @@ export type StoreSlotConfigStoreIdfiltersOr = {
 export type StoreSlotConfigStoreRelation = {
   __typename?: 'StoreSlotConfigStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -9828,7 +10705,9 @@ export type StoreSlotConfigStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -9879,6 +10758,7 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9929,6 +10809,7 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategory
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9948,6 +10829,9 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationInventor
 export type StoreSlotConfigStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'StoreSlotConfigStoreRelationInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -9955,7 +10839,9 @@ export type StoreSlotConfigStoreRelationInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -9992,6 +10878,123 @@ export type StoresAddressFilters = {
 };
 
 export type StoresAddressfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresCommissionPctFilters = {
+  OR?: InputMaybe<Array<StoresCommissionPctfiltersOr>>;
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresCommissionPctfiltersOr = {
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresContactEmailFilters = {
+  OR?: InputMaybe<Array<StoresContactEmailfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresContactEmailfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresContactPhoneFilters = {
+  OR?: InputMaybe<Array<StoresContactPhonefiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresContactPhonefiltersOr = {
   eq?: InputMaybe<Scalars['String']['input']>;
   gt?: InputMaybe<Scalars['String']['input']>;
   gte?: InputMaybe<Scalars['String']['input']>;
@@ -10064,25 +11067,35 @@ export type StoresCreatedAtfiltersOr = {
 export type StoresFilters = {
   OR?: InputMaybe<Array<StoresFiltersOr>>;
   address?: InputMaybe<StoresAddressFilters>;
+  commissionPct?: InputMaybe<StoresCommissionPctFilters>;
+  contactEmail?: InputMaybe<StoresContactEmailFilters>;
+  contactPhone?: InputMaybe<StoresContactPhoneFilters>;
   createdAt?: InputMaybe<StoresCreatedAtFilters>;
   id?: InputMaybe<StoresIdFilters>;
   isActive?: InputMaybe<StoresIsActiveFilters>;
   lat?: InputMaybe<StoresLatFilters>;
   lng?: InputMaybe<StoresLngFilters>;
   name?: InputMaybe<StoresNameFilters>;
+  partnerName?: InputMaybe<StoresPartnerNameFilters>;
   serviceRadiusM?: InputMaybe<StoresServiceRadiusMFilters>;
+  type?: InputMaybe<StoresTypeFilters>;
   updatedAt?: InputMaybe<StoresUpdatedAtFilters>;
 };
 
 export type StoresFiltersOr = {
   address?: InputMaybe<StoresAddressFilters>;
+  commissionPct?: InputMaybe<StoresCommissionPctFilters>;
+  contactEmail?: InputMaybe<StoresContactEmailFilters>;
+  contactPhone?: InputMaybe<StoresContactPhoneFilters>;
   createdAt?: InputMaybe<StoresCreatedAtFilters>;
   id?: InputMaybe<StoresIdFilters>;
   isActive?: InputMaybe<StoresIsActiveFilters>;
   lat?: InputMaybe<StoresLatFilters>;
   lng?: InputMaybe<StoresLngFilters>;
   name?: InputMaybe<StoresNameFilters>;
+  partnerName?: InputMaybe<StoresPartnerNameFilters>;
   serviceRadiusM?: InputMaybe<StoresServiceRadiusMFilters>;
+  type?: InputMaybe<StoresTypeFilters>;
   updatedAt?: InputMaybe<StoresUpdatedAtFilters>;
 };
 
@@ -10127,6 +11140,9 @@ export type StoresIdfiltersOr = {
 
 export type StoresInsertInput = {
   address?: InputMaybe<Scalars['String']['input']>;
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
   /** Date */
   createdAt?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
@@ -10134,7 +11150,9 @@ export type StoresInsertInput = {
   lat: Scalars['Float']['input'];
   lng: Scalars['Float']['input'];
   name: Scalars['String']['input'];
+  partnerName?: InputMaybe<Scalars['String']['input']>;
   serviceRadiusM?: InputMaybe<Scalars['Int']['input']>;
+  type?: InputMaybe<StoresTypeEnum>;
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
 };
@@ -10177,6 +11195,7 @@ export type StoresInventoryRelationProductRelation = {
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -10227,6 +11246,7 @@ export type StoresInventoryRelationProductRelationCategoryRelationProductsRelati
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Int']['output'];
+  timeBoundSection?: Maybe<Scalars['String']['output']>;
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -10246,6 +11266,9 @@ export type StoresInventoryRelationProductRelationInventoryRelation = {
 export type StoresInventoryRelationStoreRelation = {
   __typename?: 'StoresInventoryRelationStoreRelation';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -10253,7 +11276,9 @@ export type StoresInventoryRelationStoreRelation = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -10300,6 +11325,9 @@ export type StoresIsActivefiltersOr = {
 export type StoresItem = {
   __typename?: 'StoresItem';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -10307,7 +11335,9 @@ export type StoresItem = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -10431,19 +11461,66 @@ export type StoresNamefiltersOr = {
 
 export type StoresOrderBy = {
   address?: InputMaybe<InnerOrder>;
+  commissionPct?: InputMaybe<InnerOrder>;
+  contactEmail?: InputMaybe<InnerOrder>;
+  contactPhone?: InputMaybe<InnerOrder>;
   createdAt?: InputMaybe<InnerOrder>;
   id?: InputMaybe<InnerOrder>;
   isActive?: InputMaybe<InnerOrder>;
   lat?: InputMaybe<InnerOrder>;
   lng?: InputMaybe<InnerOrder>;
   name?: InputMaybe<InnerOrder>;
+  partnerName?: InputMaybe<InnerOrder>;
   serviceRadiusM?: InputMaybe<InnerOrder>;
+  type?: InputMaybe<InnerOrder>;
   updatedAt?: InputMaybe<InnerOrder>;
+};
+
+export type StoresPartnerNameFilters = {
+  OR?: InputMaybe<Array<StoresPartnerNamefiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresPartnerNamefiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type StoresSelectItem = {
   __typename?: 'StoresSelectItem';
   address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
   /** Date */
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
@@ -10452,7 +11529,9 @@ export type StoresSelectItem = {
   lat: Scalars['Float']['output'];
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
   serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -10504,8 +11583,56 @@ export type StoresServiceRadiusMfiltersOr = {
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type StoresTypeEnum =
+  /** Value: DARK_STORE */
+  | 'DARK_STORE'
+  /** Value: THIRD_PARTY */
+  | 'THIRD_PARTY';
+
+export type StoresTypeFilters = {
+  OR?: InputMaybe<Array<StoresTypefiltersOr>>;
+  eq?: InputMaybe<StoresTypeEnum>;
+  gt?: InputMaybe<StoresTypeEnum>;
+  gte?: InputMaybe<StoresTypeEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<StoresTypeEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<StoresTypeEnum>;
+  lte?: InputMaybe<StoresTypeEnum>;
+  ne?: InputMaybe<StoresTypeEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<StoresTypeEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type StoresTypefiltersOr = {
+  eq?: InputMaybe<StoresTypeEnum>;
+  gt?: InputMaybe<StoresTypeEnum>;
+  gte?: InputMaybe<StoresTypeEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<StoresTypeEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<StoresTypeEnum>;
+  lte?: InputMaybe<StoresTypeEnum>;
+  ne?: InputMaybe<StoresTypeEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<StoresTypeEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type StoresUpdateInput = {
   address?: InputMaybe<Scalars['String']['input']>;
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
   /** Date */
   createdAt?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
@@ -10513,7 +11640,9 @@ export type StoresUpdateInput = {
   lat?: InputMaybe<Scalars['Float']['input']>;
   lng?: InputMaybe<Scalars['Float']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  partnerName?: InputMaybe<Scalars['String']['input']>;
   serviceRadiusM?: InputMaybe<Scalars['Int']['input']>;
+  type?: InputMaybe<StoresTypeEnum>;
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
 };
@@ -10568,6 +11697,21 @@ export type StoresUpdatedAtfiltersOr = {
   notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type TimeBoundSection = {
+  __typename?: 'TimeBoundSection';
+  endHour: Scalars['Int']['output'];
+  id: TimeBoundSectionId;
+  isNow: Scalars['Boolean']['output'];
+  startHour: Scalars['Int']['output'];
+  title: Scalars['String']['output'];
+  window: Scalars['String']['output'];
+};
+
+export type TimeBoundSectionId =
+  | 'BREAKFAST'
+  | 'DINNER'
+  | 'LUNCH';
 
 export type UsersAddressesRelation = {
   __typename?: 'UsersAddressesRelation';
@@ -11039,10 +12183,26 @@ export type UsersUpdatedAtfiltersOr = {
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type AdminSetupStatusQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AdminSetupStatusQuery = { __typename?: 'Query', adminSetupStatus: { __typename?: 'AdminSetupStatus', isRequired: boolean } };
+
 export type AdminSessionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AdminSessionQuery = { __typename?: 'Query', adminSession?: { __typename?: 'AdminSession', expiresAt?: string | null, user: { __typename?: 'AdminUser', id: string, email?: string | null, name: string, phone: string, role: string } } | null };
+
+export type AdminSetupMutationVariables = Exact<{
+  secret: Scalars['String']['input'];
+  name: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+}>;
+
+
+export type AdminSetupMutation = { __typename?: 'Mutation', adminSetup: { __typename?: 'AdminSession', expiresAt?: string | null, user: { __typename?: 'AdminUser', id: string, email?: string | null, name: string, phone: string, role: string } } };
 
 export type AdminLoginMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -11069,14 +12229,19 @@ export type AdminProductsQueryVariables = Exact<{
 }>;
 
 
-export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, isActive: boolean, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
+export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, timeBoundSection?: TimeBoundSectionId | null, isActive: boolean, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
 
 export type AdminProductQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
 
-export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, isActive: boolean, categoryId: string, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
+export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, timeBoundSection?: TimeBoundSectionId | null, isActive: boolean, categoryId: string, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
+
+export type TimeBoundSectionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TimeBoundSectionsQuery = { __typename?: 'Query', timeBoundSections: Array<{ __typename?: 'TimeBoundSection', id: TimeBoundSectionId, title: string, window: string, startHour: number, endHour: number, isNow: boolean }> };
 
 export type AdminCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -11091,6 +12256,7 @@ export type CreateAdminProductMutationVariables = Exact<{
   mrp: Scalars['Int']['input'];
   price: Scalars['Int']['input'];
   imageUrl?: InputMaybe<Scalars['String']['input']>;
+  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
@@ -11106,11 +12272,27 @@ export type UpdateAdminProductMutationVariables = Exact<{
   mrp?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
+  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
 export type UpdateAdminProductMutation = { __typename?: 'Mutation', updateAdminProduct: { __typename?: 'AdminProduct', id: string } };
+
+export type RegisterAdminDeviceMutationVariables = Exact<{
+  fid: Scalars['String']['input'];
+  userAgent?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type RegisterAdminDeviceMutation = { __typename?: 'Mutation', registerAdminDevice: boolean };
+
+export type UnregisterAdminDeviceMutationVariables = Exact<{
+  fid: Scalars['String']['input'];
+}>;
+
+
+export type UnregisterAdminDeviceMutation = { __typename?: 'Mutation', unregisterAdminDevice: boolean };
 
 export type CreateAdminCategoryMutationVariables = Exact<{
   name: Scalars['String']['input'];
@@ -11131,20 +12313,27 @@ export type UpdateAdminCategoryMutationVariables = Exact<{
 
 export type UpdateAdminCategoryMutation = { __typename?: 'Mutation', updateAdminCategory: { __typename?: 'AdminCategory', id: string } };
 
-export type AdminStoresQueryVariables = Exact<{ [key: string]: never; }>;
+export type AdminStoresQueryVariables = Exact<{
+  type?: InputMaybe<AdminStoreType>;
+}>;
 
 
-export type AdminStoresQuery = { __typename?: 'Query', adminStores: Array<{ __typename?: 'AdminStore', id: string, name: string, address: string, lat: number, lng: number, serviceRadiusM: number, isActive: boolean }> };
+export type AdminStoresQuery = { __typename?: 'Query', adminStores: Array<{ __typename?: 'AdminStore', id: string, name: string, type: AdminStoreType, partnerName?: string | null, contactPhone?: string | null, contactEmail?: string | null, commissionPct?: number | null, address: string, lat: number, lng: number, serviceRadiusM: number, isActive: boolean }> };
 
 export type AdminStoreQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
 
-export type AdminStoreQuery = { __typename?: 'Query', adminStore?: { __typename?: 'AdminStore', id: string, name: string, address: string, lat: number, lng: number, serviceRadiusM: number, isActive: boolean } | null };
+export type AdminStoreQuery = { __typename?: 'Query', adminStore?: { __typename?: 'AdminStore', id: string, name: string, type: AdminStoreType, partnerName?: string | null, contactPhone?: string | null, contactEmail?: string | null, commissionPct?: number | null, address: string, lat: number, lng: number, serviceRadiusM: number, isActive: boolean } | null };
 
 export type CreateAdminStoreMutationVariables = Exact<{
   name: Scalars['String']['input'];
+  type?: InputMaybe<AdminStoreType>;
+  partnerName?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
   address: Scalars['String']['input'];
   lat: Scalars['Float']['input'];
   lng: Scalars['Float']['input'];
@@ -11155,9 +12344,21 @@ export type CreateAdminStoreMutationVariables = Exact<{
 
 export type CreateAdminStoreMutation = { __typename?: 'Mutation', createAdminStore: { __typename?: 'AdminStore', id: string } };
 
+export type BulkCreateAdminStoresMutationVariables = Exact<{
+  stores: Array<AdminStoreInput> | AdminStoreInput;
+}>;
+
+
+export type BulkCreateAdminStoresMutation = { __typename?: 'Mutation', bulkCreateAdminStores: Array<{ __typename?: 'AdminStore', id: string, name: string, type: AdminStoreType }> };
+
 export type UpdateAdminStoreMutationVariables = Exact<{
   id: Scalars['String']['input'];
   name?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<AdminStoreType>;
+  partnerName?: InputMaybe<Scalars['String']['input']>;
+  contactPhone?: InputMaybe<Scalars['String']['input']>;
+  contactEmail?: InputMaybe<Scalars['String']['input']>;
+  commissionPct?: InputMaybe<Scalars['Int']['input']>;
   address?: InputMaybe<Scalars['String']['input']>;
   lat?: InputMaybe<Scalars['Float']['input']>;
   lng?: InputMaybe<Scalars['Float']['input']>;
@@ -11213,24 +12414,59 @@ export type TransitionAdminOrderMutationVariables = Exact<{
 
 export type TransitionAdminOrderMutation = { __typename?: 'Mutation', transitionAdminOrder: { __typename?: 'AdminOrder', id: string, status: AdminOrderStatus } };
 
+export type AdminCustomersQueryVariables = Exact<{
+  page: Scalars['Int']['input'];
+  limit: Scalars['Int']['input'];
+  query?: InputMaybe<Scalars['String']['input']>;
+}>;
 
+
+export type AdminCustomersQuery = { __typename?: 'Query', adminCustomers: { __typename?: 'AdminCustomersPage', page: number, limit: number, total: number, items: Array<{ __typename?: 'AdminUser', id: string, name: string, phone: string, email?: string | null, role: string, createdAt?: string | null, updatedAt?: string | null }> } };
+
+export type AdminCustomerQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
+
+
+export type AdminCustomerQuery = { __typename?: 'Query', adminCustomer?: { __typename?: 'AdminUser', id: string, name: string, phone: string, email?: string | null, role: string, createdAt?: string | null, updatedAt?: string | null } | null };
+
+export type UpdateAdminCustomerMutationVariables = Exact<{
+  id: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type UpdateAdminCustomerMutation = { __typename?: 'Mutation', updateAdminCustomer: { __typename?: 'AdminUser', id: string, name: string, phone: string, email?: string | null } };
+
+
+export const AdminSetupStatusDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminSetupStatus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminSetupStatus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"isRequired"}}]}}]}}]} as unknown as DocumentNode<AdminSetupStatusQuery, AdminSetupStatusQueryVariables>;
 export const AdminSessionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminSession"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminSession"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"role"}}]}},{"kind":"Field","name":{"kind":"Name","value":"expiresAt"}}]}}]}}]} as unknown as DocumentNode<AdminSessionQuery, AdminSessionQueryVariables>;
+export const AdminSetupDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminSetup"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"secret"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"phone"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminSetup"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"secret"},"value":{"kind":"Variable","name":{"kind":"Name","value":"secret"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"phone"},"value":{"kind":"Variable","name":{"kind":"Name","value":"phone"}}},{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"role"}}]}},{"kind":"Field","name":{"kind":"Name","value":"expiresAt"}}]}}]}}]} as unknown as DocumentNode<AdminSetupMutation, AdminSetupMutationVariables>;
 export const AdminLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"role"}}]}},{"kind":"Field","name":{"kind":"Name","value":"expiresAt"}}]}}]}}]} as unknown as DocumentNode<AdminLoginMutation, AdminLoginMutationVariables>;
 export const AdminLogoutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogout"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogout"}}]}}]} as unknown as DocumentNode<AdminLogoutMutation, AdminLogoutMutationVariables>;
 export const AdminDashboardDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todaysOrders"}},{"kind":"Field","name":{"kind":"Name","value":"placedOrders"}},{"kind":"Field","name":{"kind":"Name","value":"processingOrders"}},{"kind":"Field","name":{"kind":"Name","value":"lowStockItems"}}]}}]}}]} as unknown as DocumentNode<AdminDashboardQuery, AdminDashboardQueryVariables>;
-export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
-export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
+export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSection"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
+export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSection"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
+export const TimeBoundSectionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TimeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"window"}},{"kind":"Field","name":{"kind":"Name","value":"startHour"}},{"kind":"Field","name":{"kind":"Name","value":"endHour"}},{"kind":"Field","name":{"kind":"Name","value":"isNow"}}]}}]}}]} as unknown as DocumentNode<TimeBoundSectionsQuery, TimeBoundSectionsQueryVariables>;
 export const AdminCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"sortOrder"}}]}}]}}]} as unknown as DocumentNode<AdminCategoriesQuery, AdminCategoriesQueryVariables>;
-export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
-export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
+export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSection"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
+export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSection"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
+export const RegisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}},{"kind":"Argument","name":{"kind":"Name","value":"userAgent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}}}]}]}}]} as unknown as DocumentNode<RegisterAdminDeviceMutation, RegisterAdminDeviceMutationVariables>;
+export const UnregisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UnregisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unregisterAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}}]}]}}]} as unknown as DocumentNode<UnregisterAdminDeviceMutation, UnregisterAdminDeviceMutationVariables>;
 export const CreateAdminCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminCategory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"sortOrder"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminCategoryMutation, CreateAdminCategoryMutationVariables>;
 export const UpdateAdminCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminCategory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"sortOrder"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminCategoryMutation, UpdateAdminCategoryMutationVariables>;
-export const AdminStoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminStores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminStores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"lat"}},{"kind":"Field","name":{"kind":"Name","value":"lng"}},{"kind":"Field","name":{"kind":"Name","value":"serviceRadiusM"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]} as unknown as DocumentNode<AdminStoresQuery, AdminStoresQueryVariables>;
-export const AdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"lat"}},{"kind":"Field","name":{"kind":"Name","value":"lng"}},{"kind":"Field","name":{"kind":"Name","value":"serviceRadiusM"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]} as unknown as DocumentNode<AdminStoreQuery, AdminStoreQueryVariables>;
-export const CreateAdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lat"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lng"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"lat"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lat"}}},{"kind":"Argument","name":{"kind":"Name","value":"lng"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lng"}}},{"kind":"Argument","name":{"kind":"Name","value":"serviceRadiusM"},"value":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminStoreMutation, CreateAdminStoreMutationVariables>;
-export const UpdateAdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lat"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lng"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"lat"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lat"}}},{"kind":"Argument","name":{"kind":"Name","value":"lng"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lng"}}},{"kind":"Argument","name":{"kind":"Name","value":"serviceRadiusM"},"value":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminStoreMutation, UpdateAdminStoreMutationVariables>;
+export const AdminStoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminStores"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"type"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminStoreType"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminStores"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"type"},"value":{"kind":"Variable","name":{"kind":"Name","value":"type"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"partnerName"}},{"kind":"Field","name":{"kind":"Name","value":"contactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"contactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"commissionPct"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"lat"}},{"kind":"Field","name":{"kind":"Name","value":"lng"}},{"kind":"Field","name":{"kind":"Name","value":"serviceRadiusM"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]} as unknown as DocumentNode<AdminStoresQuery, AdminStoresQueryVariables>;
+export const AdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"partnerName"}},{"kind":"Field","name":{"kind":"Name","value":"contactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"contactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"commissionPct"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"lat"}},{"kind":"Field","name":{"kind":"Name","value":"lng"}},{"kind":"Field","name":{"kind":"Name","value":"serviceRadiusM"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}}]}}]}}]} as unknown as DocumentNode<AdminStoreQuery, AdminStoreQueryVariables>;
+export const CreateAdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"type"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminStoreType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"partnerName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"contactPhone"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"contactEmail"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"commissionPct"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lat"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lng"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"type"},"value":{"kind":"Variable","name":{"kind":"Name","value":"type"}}},{"kind":"Argument","name":{"kind":"Name","value":"partnerName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"partnerName"}}},{"kind":"Argument","name":{"kind":"Name","value":"contactPhone"},"value":{"kind":"Variable","name":{"kind":"Name","value":"contactPhone"}}},{"kind":"Argument","name":{"kind":"Name","value":"contactEmail"},"value":{"kind":"Variable","name":{"kind":"Name","value":"contactEmail"}}},{"kind":"Argument","name":{"kind":"Name","value":"commissionPct"},"value":{"kind":"Variable","name":{"kind":"Name","value":"commissionPct"}}},{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"lat"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lat"}}},{"kind":"Argument","name":{"kind":"Name","value":"lng"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lng"}}},{"kind":"Argument","name":{"kind":"Name","value":"serviceRadiusM"},"value":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminStoreMutation, CreateAdminStoreMutationVariables>;
+export const BulkCreateAdminStoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"BulkCreateAdminStores"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"stores"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminStoreInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bulkCreateAdminStores"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"stores"},"value":{"kind":"Variable","name":{"kind":"Name","value":"stores"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"type"}}]}}]}}]} as unknown as DocumentNode<BulkCreateAdminStoresMutation, BulkCreateAdminStoresMutationVariables>;
+export const UpdateAdminStoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminStore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"type"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminStoreType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"partnerName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"contactPhone"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"contactEmail"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"commissionPct"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lat"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lng"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminStore"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"type"},"value":{"kind":"Variable","name":{"kind":"Name","value":"type"}}},{"kind":"Argument","name":{"kind":"Name","value":"partnerName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"partnerName"}}},{"kind":"Argument","name":{"kind":"Name","value":"contactPhone"},"value":{"kind":"Variable","name":{"kind":"Name","value":"contactPhone"}}},{"kind":"Argument","name":{"kind":"Name","value":"contactEmail"},"value":{"kind":"Variable","name":{"kind":"Name","value":"contactEmail"}}},{"kind":"Argument","name":{"kind":"Name","value":"commissionPct"},"value":{"kind":"Variable","name":{"kind":"Name","value":"commissionPct"}}},{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}},{"kind":"Argument","name":{"kind":"Name","value":"lat"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lat"}}},{"kind":"Argument","name":{"kind":"Name","value":"lng"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lng"}}},{"kind":"Argument","name":{"kind":"Name","value":"serviceRadiusM"},"value":{"kind":"Variable","name":{"kind":"Name","value":"serviceRadiusM"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminStoreMutation, UpdateAdminStoreMutationVariables>;
 export const AdminInventoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminInventory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lowStockOnly"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminInventory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"storeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}}},{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}},{"kind":"Argument","name":{"kind":"Name","value":"lowStockOnly"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lowStockOnly"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"limit"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"stockQty"}},{"kind":"Field","name":{"kind":"Name","value":"lowStockThreshold"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"product"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminInventoryQuery, AdminInventoryQueryVariables>;
 export const AdjustAdminInventoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdjustAdminInventory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"inventoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"delta"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reason"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adjustAdminInventory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"inventoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"inventoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"delta"},"value":{"kind":"Variable","name":{"kind":"Name","value":"delta"}}},{"kind":"Argument","name":{"kind":"Name","value":"reason"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reason"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"stockQty"}}]}}]}}]} as unknown as DocumentNode<AdjustAdminInventoryMutation, AdjustAdminInventoryMutationVariables>;
 export const AdminOrdersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminOrders"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"status"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminOrderStatus"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminOrders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"status"},"value":{"kind":"Variable","name":{"kind":"Name","value":"status"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"limit"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"placedAt"}},{"kind":"Field","name":{"kind":"Name","value":"customer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}}]}},{"kind":"Field","name":{"kind":"Name","value":"store"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminOrdersQuery, AdminOrdersQueryVariables>;
 export const AdminOrderDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminOrder"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminOrder"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"subtotal"}},{"kind":"Field","name":{"kind":"Name","value":"deliveryFee"}},{"kind":"Field","name":{"kind":"Name","value":"discount"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"paymentMethod"}},{"kind":"Field","name":{"kind":"Name","value":"placedAt"}},{"kind":"Field","name":{"kind":"Name","value":"customer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}}]}},{"kind":"Field","name":{"kind":"Name","value":"store"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"address"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"line1"}},{"kind":"Field","name":{"kind":"Name","value":"line2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"pincode"}}]}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"unitPrice"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}}]}},{"kind":"Field","name":{"kind":"Name","value":"history"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"fromStatus"}},{"kind":"Field","name":{"kind":"Name","value":"toStatus"}},{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"allowedNextStatuses"}}]}}]}}]} as unknown as DocumentNode<AdminOrderQuery, AdminOrderQueryVariables>;
 export const TransitionAdminOrderDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"TransitionAdminOrder"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"status"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AdminOrderStatus"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"reason"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transitionAdminOrder"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orderId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderId"}}},{"kind":"Argument","name":{"kind":"Name","value":"status"},"value":{"kind":"Variable","name":{"kind":"Name","value":"status"}}},{"kind":"Argument","name":{"kind":"Name","value":"reason"},"value":{"kind":"Variable","name":{"kind":"Name","value":"reason"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<TransitionAdminOrderMutation, TransitionAdminOrderMutationVariables>;
+export const AdminCustomersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminCustomers"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminCustomers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"limit"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]}}]} as unknown as DocumentNode<AdminCustomersQuery, AdminCustomersQueryVariables>;
+export const AdminCustomerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminCustomer"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminCustomer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]} as unknown as DocumentNode<AdminCustomerQuery, AdminCustomerQueryVariables>;
+export const UpdateAdminCustomerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminCustomer"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"phone"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminCustomer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"phone"},"value":{"kind":"Variable","name":{"kind":"Name","value":"phone"}}},{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminCustomerMutation, UpdateAdminCustomerMutationVariables>;

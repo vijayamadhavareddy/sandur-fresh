@@ -1,5 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'firebase_options.dart';
 
 import 'bindings/app_binding.dart';
 import 'middlewares/auth_middleware.dart';
@@ -11,9 +14,17 @@ import 'screens/login_screen.dart';
 import 'screens/order_success_screen.dart';
 import 'screens/orders_screen.dart';
 import 'screens/product_detail_screen.dart';
+import 'services/push_service.dart';
 import 'theme/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+  // Must be registered before runApp so pushes that arrive while the app is
+  // terminated still reach a handler.
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   runApp(const SandurFreshApp());
 }
 

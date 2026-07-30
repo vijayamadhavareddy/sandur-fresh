@@ -10,6 +10,8 @@ const productFormSchema = z
     price: z.coerce.number().int().nonnegative(),
     categoryId: z.string().min(1),
     imageUrl: z.string().optional(),
+    // "" = untagged; the mutation maps it to null.
+    timeBoundSection: z.enum(["", "BREAKFAST", "LUNCH", "DINNER"]),
     isActive: z.boolean(),
   })
   .refine((value) => value.price <= value.mrp, {

@@ -19,7 +19,7 @@ const lowStockOnly = ref(false);
 const selected = ref<InventoryItem>();
 const { page, limit, reset } = usePagination();
 const client = useQueryClient();
-const stores = useQuery({ queryKey: ["stores"], queryFn: fetchStores });
+const stores = useQuery({ queryKey: ["stores"], queryFn: () => fetchStores() });
 
 watch(
   () => stores.data.value,
@@ -66,7 +66,7 @@ const inventory = useQuery({
                 class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
               >
                 <option v-for="store in stores.data.value?.adminStores" :key="store.id" :value="store.id">
-                  {{ store.name }}
+                  {{ store.type === 'DARK_STORE' ? '🏢 [Hub] ' : '🏪 [Partner] ' }}{{ store.name }}
                 </option>
               </select>
             </div>

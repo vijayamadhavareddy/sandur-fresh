@@ -1,9 +1,6 @@
 import { createApp } from "./app";
-import { env } from "./config/env";
 
 const app = createApp();
 
-export default {
-  fetch: app.fetch,
-  port: env.PORT,
-};
+export { app };
+export default app;

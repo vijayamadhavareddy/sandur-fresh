@@ -1,0 +1,56 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: sandur-api
+    restart: unless-stopped
+    ports:
+      - "${API_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_PATH=/app/data/sandur.db
+      - UPLOAD_DIR=/app/data/uploads
+      - GRAPHQL_INTROSPECTION=${GRAPHQL_INTROSPECTION:-true}
+      - DEV_OTP=${DEV_OTP:-000000}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-admin@example.com}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-test@123}
+      - ADMIN_SESSION_COOKIE=${ADMIN_SESSION_COOKIE:-sf_admin_session}
+      - RUN_MIGRATIONS=${RUN_MIGRATIONS:-true}
+      - SEED_DATABASE=${SEED_DATABASE:-false}
+      - FIREBASE_SERVICE_ACCOUNT=${FIREBASE_SERVICE_ACCOUNT:-}
+    volumes:
+      - api_data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+      args:
+        - VITE_API_URL=
+        - VITE_GRAPHQL_URL=/graphql
+        - VITE_FIREBASE_VAPID_KEY=${VITE_FIREBASE_VAPID_KEY:-}
+    container_name: sandur-admin
+    restart: unless-stopped
+    ports:
+      - "${ADMIN_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 3s
+
+volumes:
+  api_data:
+    name: sandur_api_data

@@ -307,7 +307,7 @@ class _Shelves extends GetView<CatalogController> {
     final veggies = controller.freshFromFarm;
     final deals = controller.dealsForYou;
     final snacks = controller.snackPicks;
-    final meals = controller.mealSections;
+    final timedSections = controller.timeBoundSections;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -381,15 +381,15 @@ class _Shelves extends GetView<CatalogController> {
           ),
           const SizedBox(height: AppSpacing.xl),
         ],
-        for (final meal in meals) ...[
+        for (final section in timedSections) ...[
           Row(
             children: [
-              Expanded(child: Text(meal.title, style: textTheme.headlineMedium)),
+              Expanded(child: Text(section.title, style: textTheme.headlineMedium)),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: AppSpacing.sm + 2, vertical: 4),
                 decoration: BoxDecoration(
-                  color: meal.isNow ? AppColors.primary : AppColors.surfaceVariant,
+                  color: section.isNow ? AppColors.primary : AppColors.surfaceVariant,
                   borderRadius: BorderRadius.circular(AppRadius.pill),
                 ),
                 child: Row(
@@ -397,12 +397,16 @@ class _Shelves extends GetView<CatalogController> {
                   children: [
                     Icon(Icons.schedule,
                         size: 14,
-                        color: meal.isNow ? AppColors.primaryDark : AppColors.textSecondary),
+                        color:
+                            section.isNow ? AppColors.primaryDark : AppColors.textSecondary),
                     const SizedBox(width: 4),
                     Text(
-                      meal.isNow ? 'Now · till ${meal.window.split('– ').last}' : meal.window,
+                      section.isNow
+                          ? 'Now · till ${section.window.split('– ').last}'
+                          : section.window,
                       style: textTheme.bodySmall?.copyWith(
-                        color: meal.isNow ? AppColors.primaryDark : AppColors.textSecondary,
+                        color:
+                            section.isNow ? AppColors.primaryDark : AppColors.textSecondary,
                         fontWeight: FontWeight.w700,
                         fontSize: 11,
                       ),
@@ -414,7 +418,7 @@ class _Shelves extends GetView<CatalogController> {
           ),
           const SizedBox(height: AppSpacing.sm),
           _HorizontalShelf(
-            children: meal.items
+            children: section.items
                 .map((p) => SizedBox(width: 158, child: ProductCard(product: p)))
                 .toList(),
           ),

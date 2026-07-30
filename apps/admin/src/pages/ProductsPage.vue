@@ -6,7 +6,7 @@ import PageHeader from "@/components/PageHeader.vue";
 import PaginationBar from "@/components/PaginationBar.vue";
 import QueryError from "@/components/QueryError.vue";
 import { usePagination } from "@/composables/usePagination";
-import { fetchProducts } from "@/features/products/queries";
+import { fetchProducts, fetchTimeBoundSections } from "@/features/products/queries";
 import { formatCurrency } from "@/shared/formatting/currency";
 
 const query = ref("");
@@ -17,6 +17,9 @@ const { data, isError, isPending } = useQuery({
   queryKey: key,
   queryFn: () => fetchProducts(page.value, limit.value, query.value),
 });
+const sections = useQuery({ queryKey: ["timeBoundSections"], queryFn: fetchTimeBoundSections });
+const sectionTitle = (id: string) =>
+  sections.data.value?.timeBoundSections.find((section) => section.id === id)?.title ?? id;
 </script>
 
 <template>
@@ -81,6 +84,7 @@ const { data, isError, isPending } = useQuery({
                 <tr class="bg-slate-950/60 border-b border-slate-800/80 text-slate-400 font-semibold uppercase tracking-wider">
                   <th class="py-3.5 px-4 sm:px-6">Product</th>
                   <th class="py-3.5 px-4">Category</th>
+                  <th class="py-3.5 px-4">Section</th>
                   <th class="py-3.5 px-4">Unit</th>
                   <th class="py-3.5 px-4">Price</th>
                   <th class="py-3.5 px-4">Status</th>
@@ -101,6 +105,7 @@ const { data, isError, isPending } = useQuery({
                     </div>
                   </td>
                   <td class="py-4 px-4"><div class="w-20 h-5 rounded bg-slate-800"></div></td>
+                  <td class="py-4 px-4"><div class="w-20 h-5 rounded bg-slate-800"></div></td>
                   <td class="py-4 px-4"><div class="w-12 h-4 rounded bg-slate-800"></div></td>
                   <td class="py-4 px-4"><div class="w-16 h-4 rounded bg-slate-800"></div></td>
                   <td class="py-4 px-4"><div class="w-14 h-5 rounded-full bg-slate-800"></div></td>
@@ -111,7 +116,7 @@ const { data, isError, isPending } = useQuery({
               <!-- Empty State -->
               <tbody v-else-if="!data?.adminProducts.items.length">
                 <tr>
-                  <td colspan="6" class="py-16 text-center text-slate-400">
+                  <td colspan="7" class="py-16 text-center text-slate-400">
                     <div class="flex flex-col items-center justify-center gap-3">
                       <div class="w-12 h-12 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -158,6 +163,16 @@ const { data, isError, isPending } = useQuery({
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
                       {{ product.category.name }}
                     </span>
+                  </td>
+
+                  <td class="py-3.5 px-4">
+                    <span
+                      v-if="product.timeBoundSection"
+                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30"
+                    >
+                      {{ sectionTitle(product.timeBoundSection) }}
+                    </span>
+                    <span v-else class="text-[11px] text-slate-500">—</span>
                   </td>
 
                   <td class="py-3.5 px-4 font-mono text-slate-300 text-[11px]">{{ product.unit }}</td>

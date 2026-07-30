@@ -29,6 +29,28 @@ export const adminCredentials = sqliteTable("admin_credentials", {
   updatedAt: updatedAt(),
 });
 
+/**
+ * Push targets for any user (admin or customer), one row per browser/device.
+ *
+ * `target` holds either a Firebase Installation ID or a legacy FCM registration
+ * token — the two client SDKs disagree: firebase/messaging (web) exposes only
+ * FIDs now, while firebase_messaging (Flutter) exposes only registration
+ * tokens. `kind` records which, so the sender picks the right FCM field.
+ * Rows are deleted when FCM reports the target as stale.
+ */
+export const deviceRegistrations = sqliteTable("device_registrations", {
+  id: id(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  target: text("target").notNull().unique(),
+  kind: text("kind", { enum: ["FID", "TOKEN"] }).notNull(),
+  platform: text("platform", { enum: ["web", "android", "ios"] }).notNull(),
+  userAgent: text("user_agent"),
+  createdAt: createdAt(),
+  updatedAt: updatedAt(),
+});
+
 export const inventoryAdjustments = sqliteTable("inventory_adjustments", {
   id: id(),
   inventoryId: text("inventory_id")
@@ -61,6 +83,10 @@ export const orderStatusHistory = sqliteTable("order_status_history", {
 
 export const adminCredentialsRelations = relations(adminCredentials, ({ one }) => ({
   user: one(users, { fields: [adminCredentials.userId], references: [users.id] }),
+}));
+
+export const deviceRegistrationsRelations = relations(deviceRegistrations, ({ one }) => ({
+  user: one(users, { fields: [deviceRegistrations.userId], references: [users.id] }),
 }));
 
 export const inventoryAdjustmentsRelations = relations(inventoryAdjustments, ({ one }) => ({

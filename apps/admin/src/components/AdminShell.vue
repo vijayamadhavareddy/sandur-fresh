@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {useQueryClient} from "@tanstack/vue-query";
-import {ref} from "vue";
+import {onUnmounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
+import {useAdminEvents} from "@/composables/adminEvents";
+import {useNotifications} from "@/composables/messaging";
 import {logout} from "@/features/auth/mutations";
 import {useAuthStore} from "@/stores/auth";
 
@@ -11,6 +13,7 @@ const nav = [
   {name: "Categories", to: "/catalog/categories", icon: "categories"},
   {name: "Inventory", to: "/inventory", icon: "inventory"},
   {name: "Orders", to: "/orders", icon: "orders"},
+  {name: "Customers", to: "/customers", icon: "customers"},
   {name: "Stores", to: "/stores", icon: "stores"},
 ] as const;
 
@@ -19,6 +22,57 @@ const auth = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 const queryClient = useQueryClient();
+const notifications = useNotifications();
+const lastMessage = ref<string | null>(null);
+let messageTimer: ReturnType<typeof setTimeout> | undefined;
+
+// Foreground pushes never reach the service worker, so surface them here.
+/**
+ * Pull fresh data for whatever the push was about. Pushes from the API are
+ * data-only (so the service worker can act on them), which means the title and
+ * body live on `payload.data`, not `payload.notification`.
+ */
+function showToast(text: string) {
+  lastMessage.value = text;
+  clearTimeout(messageTimer);
+  messageTimer = setTimeout(() => {
+    lastMessage.value = null;
+  }, 8000);
+}
+
+function handlePush(data: Record<string, string>) {
+  showToast([data.title, data.body].filter(Boolean).join(" — ") || "New notification");
+
+  if (data.type === "ORDER_PLACED") {
+    void queryClient.invalidateQueries({queryKey: ["orders"]});
+    void queryClient.invalidateQueries({queryKey: ["dashboard"]});
+  }
+}
+
+// Live updates while the console is open. Independent of FCM: needs no
+// notification permission and keeps working if push is unconfigured.
+const { connected } = useAdminEvents((event) => {
+  console.log("Admin Events", event);
+  if (event.type === "ORDER_PLACED") {
+    const amount = typeof event.total === "number" ? ` · ₹${(event.total / 100).toFixed(2)}` : "";
+    showToast(`New order received${amount}`);
+  }
+});
+
+// Foreground pushes are delivered straight to the page...
+const stopMessages = notifications.onForegroundMessage((payload) => {
+  handlePush(payload.data ?? {});
+});
+
+// ...while background pushes reach the service worker, which forwards them so
+// an open-but-unfocused tab still refreshes.
+const stopSwMessages = notifications.onServiceWorkerMessage(handlePush);
+
+onUnmounted(() => {
+  stopMessages();
+  stopSwMessages();
+  clearTimeout(messageTimer);
+});
 
 async function signOut() {
   try {
@@ -129,10 +183,17 @@ async function signOut() {
             </svg>
 
             <!-- Stores Icon -->
-            <svg v-else class="w-5 h-5 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24"
+            <svg v-else-if="item.icon === 'stores'" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24"
                  fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round"
                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h5m-5 0V12m0 0h-5m5 0h5"/>
+            </svg>
+
+            <!-- Customers Icon -->
+            <svg v-else class="w-5 h-5 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
 
             <span>{{ item.name }}</span>
@@ -201,10 +262,50 @@ async function signOut() {
         <!-- TOPBAR RIGHT ITEMS -->
         <div class="flex items-center gap-4">
           <div
-              class="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-medium">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="hidden sm:inline">Operational</span>
+              class="flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-medium"
+              :class="connected
+                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                : 'bg-amber-500/10 border-amber-500/20 text-amber-400'"
+              :title="connected
+                ? 'Live updates connected'
+                : 'Live stream down — falling back to polling'"
+          >
+            <span
+                class="w-2 h-2 rounded-full"
+                :class="connected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'"
+            ></span>
+            <span class="hidden sm:inline">{{ connected ? 'Live' : 'Polling' }}</span>
           </div>
+
+          <!-- NOTIFICATION BELL -->
+          <button
+              v-if="notifications.permission.value !== 'unsupported'"
+              type="button"
+              :disabled="notifications.busy.value || notifications.permission.value === 'granted'"
+              :title="notifications.permission.value === 'granted'
+                ? 'Push notifications enabled'
+                : notifications.permission.value === 'denied'
+                  ? 'Notifications are blocked in your browser settings'
+                  : 'Enable push notifications'"
+              @click="notifications.enable()"
+              class="relative p-2 rounded-xl bg-slate-900 border border-slate-800 transition cursor-pointer disabled:cursor-default"
+              :class="notifications.permission.value === 'granted'
+                ? 'text-emerald-400 border-emerald-500/30'
+                : notifications.permission.value === 'denied'
+                  ? 'text-rose-400 border-rose-500/30'
+                  : 'text-slate-300 hover:text-white'"
+              aria-label="Enable push notifications"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1h6z"/>
+            </svg>
+            <span
+                v-if="notifications.permission.value === 'default'"
+                class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-amber-400"
+            ></span>
+          </button>
 
           <div class="flex items-center gap-2">
             <div
@@ -215,6 +316,22 @@ async function signOut() {
           </div>
         </div>
       </header>
+
+      <!-- FOREGROUND PUSH TOAST -->
+      <div
+          v-if="lastMessage"
+          class="fixed bottom-6 right-6 z-50 max-w-sm px-4 py-3 rounded-xl bg-slate-900 border border-emerald-500/30 shadow-xl shadow-emerald-950/40 text-xs text-slate-100 flex items-start gap-3"
+          role="status"
+      >
+        <span class="w-2 h-2 mt-1 rounded-full bg-emerald-400 flex-shrink-0"></span>
+        <span class="flex-1">{{ lastMessage }}</span>
+        <button
+            type="button"
+            @click="lastMessage = null"
+            class="text-slate-500 hover:text-white transition cursor-pointer"
+            aria-label="Dismiss notification"
+        >&times;</button>
+      </div>
 
       <!-- MAIN PAGE CONTENT VIEW -->
       <main class="flex-1 flex flex-col min-h-0 bg-slate-950">

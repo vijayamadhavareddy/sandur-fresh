@@ -4,7 +4,7 @@ import { ClientError, GraphQLClient, type RequestOptions, type Variables } from 
 const client = new GraphQLClient(import.meta.env.VITE_GRAPHQL_URL ?? "/graphql", {
   credentials: "include",
 });
-const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+export const apiBase = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
 export const AUTH_EXPIRED_EVENT = "sandur-admin-auth-expired";
 
 export async function request<TResult, TVariables extends Variables = Variables>(

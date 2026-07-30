@@ -34,6 +34,8 @@ export const products = sqliteTable("products", {
   price: integer("price").notNull(),
   emoji: text("emoji"),
   imageUrl: text("image_url"),
+  /** Optional time-bound shelf tag (BREAKFAST | LUNCH | DINNER); null = untagged. */
+  timeBoundSection: text("time_bound_section"),
   isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
   createdAt: createdAt(),
   updatedAt: updatedAt(),
@@ -42,6 +44,11 @@ export const products = sqliteTable("products", {
 export const stores = sqliteTable("stores", {
   id: id(),
   name: text("name").notNull(),
+  type: text("type", { enum: ["DARK_STORE", "THIRD_PARTY"] }).notNull().default("DARK_STORE"),
+  partnerName: text("partner_name"),
+  contactPhone: text("contact_phone"),
+  contactEmail: text("contact_email"),
+  commissionPct: integer("commission_pct"),
   address: text("address").notNull().default(""),
   lat: real("lat").notNull(),
   lng: real("lng").notNull(),

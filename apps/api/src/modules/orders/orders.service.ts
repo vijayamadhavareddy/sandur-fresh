@@ -10,6 +10,7 @@ import {
 import { summarizeCart } from "../../shared/pricing";
 import { err, ok, type Result } from "../../shared/result";
 import type { CartRepo } from "../cart/cart.repo";
+import type { NotificationsService } from "../notifications/notifications.service";
 import type { ProductsRepo } from "../products/products.repo";
 import type { UsersRepo } from "../users/users.repo";
 import { canTransition, type OrderStatus } from "./order-status";
@@ -22,6 +23,7 @@ export type OrdersServiceDeps = {
   cartRepo: CartRepo;
   productsRepo: ProductsRepo;
   usersRepo: UsersRepo;
+  notifications: NotificationsService;
 };
 
 export type OrderView = OrderRow & {
@@ -149,6 +151,13 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
         return created;
       });
 
+      // Fire-and-forget: the order is already committed, so a push failure must
+      // not change what checkout returns. notifyOrderPlaced never throws, but
+      // the catch guards against a rejected promise going unhandled.
+      void deps.notifications
+        .notifyOrderPlaced({ id: order.id, total: order.total })
+        .catch((cause) => console.error("[push] order notification failed:", cause));
+
       return ok(await toOrderView(deps, order));
     } catch (e) {
       const code =
@@ -239,6 +248,11 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
     });
 
     if (!updated) return err(conflict("Order status changed; refresh and try again"));
+
+    void deps.notifications
+      .notifyOrderStatusChanged({ id: order.id, userId: order.userId, status: "CANCELLED" })
+      .catch((cause) => console.error("[push] status notification failed:", cause));
+
     return ok(await toOrderView(deps, updated));
   };
 
@@ -278,6 +292,12 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
       return result;
     });
     if (!updated) return err(conflict("Order status changed; refresh and try again"));
+
+    // Tell the customer their order moved along. Fire-and-forget, as with checkout.
+    void deps.notifications
+      .notifyOrderStatusChanged({ id: order.id, userId: order.userId, status })
+      .catch((cause) => console.error("[push] status notification failed:", cause));
+
     return ok(await toOrderView(deps, updated));
   };
 

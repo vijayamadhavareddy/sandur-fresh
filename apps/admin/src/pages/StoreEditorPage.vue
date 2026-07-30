@@ -8,12 +8,13 @@ import StoreForm from "@/features/stores/StoreForm.vue";
 
 const route = useRoute();
 const router = useRouter();
-const id = computed(() => (typeof route.params.id === "string" ? route.params.id : ""));
-const editing = computed(() => Boolean(id.value));
-const store = useQuery({
-  queryKey: computed(() => ["store", id.value]),
-  queryFn: () => fetchStore(id.value),
-  enabled: editing,
+const storeId = computed(() => (typeof route.params.id === "string" ? route.params.id : ""));
+const isEditing = computed(() => Boolean(storeId.value));
+
+const storeQuery = useQuery({
+  queryKey: computed(() => ["store", storeId.value]),
+  queryFn: () => fetchStore(storeId.value),
+  enabled: isEditing,
 });
 </script>
 
@@ -27,26 +28,29 @@ const store = useQuery({
       <!-- Page Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
         <div>
-          <PageHeader :title="editing ? 'Edit Store Hub' : 'New Dark Store Hub'" eyebrow="Fulfillment Network" />
-          <p class="text-sm text-slate-400 mt-1">Configure dark store hub address, geolocation coordinates, and dispatch radius.</p>
+          <PageHeader
+            :title="isEditing ? (storeQuery.data.value?.adminStore?.type === 'THIRD_PARTY' ? 'Edit Partner Store' : 'Edit Dark Store Hub') : 'Register New Store'"
+            eyebrow="Fulfillment & Partner Network"
+          />
+          <p class="text-sm text-slate-400 mt-1">Configure store classification (Dark Store Hub vs Third-Party Partner), geolocation coordinates, and dispatch radius.</p>
         </div>
       </div>
 
-      <!-- Loading State -->
-      <div v-if="editing && store.isPending.value" class="p-12 text-center text-slate-400 animate-pulse">
+      <!-- Loading State (Only when editing and fetching) -->
+      <div v-if="isEditing && storeQuery.isPending.value" class="p-12 text-center text-slate-400 animate-pulse">
         <p class="text-sm font-semibold">Loading store configuration...</p>
       </div>
 
-      <!-- Error State -->
-      <div v-else-if="store.isError.value" class="p-8 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-300 text-xs">
+      <!-- Error State (Only when editing and query failed) -->
+      <div v-else-if="isEditing && storeQuery.isError.value" class="p-8 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-300 text-xs">
         <p>Could not load this store. Please refresh or try again.</p>
       </div>
 
-      <!-- Store Form -->
+      <!-- Store Form: Always renders when creating, or when store data is available when editing -->
       <StoreForm
-        v-else-if="!editing || store.data.value?.adminStore"
-        :key="id"
-        :store="store.data.value?.adminStore ?? undefined"
+        v-else
+        :key="storeId"
+        :store="isEditing ? storeQuery.data.value?.adminStore ?? undefined : undefined"
         @saved="router.push('/stores')"
         @cancel="router.push('/stores')"
       />

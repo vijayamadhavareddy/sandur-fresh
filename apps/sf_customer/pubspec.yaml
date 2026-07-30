@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^6.3.2
   json_annotation: ^4.9.0
   gql: ^1.0.1
+  firebase_core: ^4.12.1
+  firebase_messaging: ^16.4.3
 
 dev_dependencies:
   flutter_test:

@@ -18,11 +18,6 @@ tasks:
     inputs: ['src/schema/**/*', 'drizzle.config.ts', 'package.json']
     options:
       cache: false
-  seed:
-    command: bun run db:seed
-    inputs: ['scripts/**/*', 'src/**/*', 'package.json']
-    options:
-      cache: false
   studio:
     command: bun run db:studio
     inputs: ['src/schema/**/*', 'drizzle.config.ts', 'package.json']
@@ -32,7 +27,8 @@ tasks:
       runInCI: false
   lint:
     command: bun x biome check .
-    inputs: ['src/**/*', 'scripts/**/*', 'drizzle.config.ts', 'biome.json', 'package.json']
+    inputs: ['src/**/*', 'drizzle.config.ts', 'biome.json', 'package.json']
   typecheck:
     command: bun x tsc --noEmit
-    inputs: ['src/**/*', 'scripts/**/*', 'drizzle.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']
+    inputs: ['src/**/*', 'drizzle.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']
+

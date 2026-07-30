@@ -2,6 +2,8 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
+    # Build output vendors plugin sources (incl. their tests), which are not ours to fix.
+    - "build/**"
     - "lib/graphql/**"
     - "lib/generated/**"
     - "**/*.graphql.dart"

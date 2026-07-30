@@ -26,6 +26,9 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,ico,woff2}"],
+        // The FCM service worker must never be precached — Workbox would pin it
+        // to a stale revision and it would stop updating.
+        globIgnores: ["**/firebase-messaging-sw.js"],
         navigateFallbackDenylist: [/^\/api/, /^\/graphql/],
         runtimeCaching: [
           { urlPattern: /^.*\/(api|graphql)(\/|\?|$)/, handler: "NetworkOnly", method: "GET" },

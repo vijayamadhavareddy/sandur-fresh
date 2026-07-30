@@ -326,6 +326,11 @@ type CartItemsCartRelationUserRelationAddressesRelationUserRelation {
 type CartItemsCartRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -338,6 +343,14 @@ type CartItemsCartRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelation!]!
+}
+
+enum StoresTypeEnum {
+  """Value: DARK_STORE"""
+  DARK_STORE
+
+  """Value: THIRD_PARTY"""
+  THIRD_PARTY
 }
 
 type CartItemsCartRelationStoreRelationInventoryRelation {
@@ -356,6 +369,11 @@ type CartItemsCartRelationStoreRelationInventoryRelation {
 type CartItemsCartRelationStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -379,6 +397,7 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -411,6 +430,7 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryR
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -454,6 +474,7 @@ type CartItemsProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -486,6 +507,7 @@ type CartItemsProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -511,6 +533,11 @@ type CartItemsProductRelationInventoryRelation {
 type CartItemsProductRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -546,6 +573,7 @@ type CartItemsProductRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -664,6 +692,11 @@ type CartsUserRelationAddressesRelationUserRelation {
 type CartsStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -694,6 +727,11 @@ type CartsStoreRelationInventoryRelation {
 type CartsStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -717,6 +755,7 @@ type CartsStoreRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -749,6 +788,7 @@ type CartsStoreRelationInventoryRelationProductRelationCategoryRelationProductsR
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -806,6 +846,7 @@ type CartsItemsRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -838,6 +879,7 @@ type CartsItemsRelationProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -863,6 +905,11 @@ type CartsItemsRelationProductRelationInventoryRelation {
 type CartsItemsRelationProductRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -898,6 +945,7 @@ type CartsItemsRelationProductRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -940,6 +988,7 @@ type CategoriesProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -977,6 +1026,11 @@ type CategoriesProductsRelationInventoryRelation {
 type CategoriesProductsRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1012,6 +1066,7 @@ type CategoriesProductsRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1031,6 +1086,134 @@ type CategoriesItem {
   createdAt: String!
 }
 
+type DeviceRegistrationsSelectItem {
+  id: String!
+  userId: String!
+  target: String!
+  kind: DeviceRegistrationsKindEnum!
+  platform: DeviceRegistrationsPlatformEnum!
+  userAgent: String
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): DeviceRegistrationsUserRelation
+}
+
+enum DeviceRegistrationsKindEnum {
+  """Value: FID"""
+  FID
+
+  """Value: TOKEN"""
+  TOKEN
+}
+
+enum DeviceRegistrationsPlatformEnum {
+  """Value: web"""
+  web
+
+  """Value: android"""
+  android
+
+  """Value: ios"""
+  ios
+}
+
+type DeviceRegistrationsUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  sessions(where: SessionsFilters, orderBy: SessionsOrderBy, offset: Int, limit: Int): [DeviceRegistrationsUserRelationSessionsRelation!]!
+  addresses(where: AddressesFilters, orderBy: AddressesOrderBy, offset: Int, limit: Int): [DeviceRegistrationsUserRelationAddressesRelation!]!
+}
+
+type DeviceRegistrationsUserRelationSessionsRelation {
+  id: String!
+  userId: String!
+  token: String!
+
+  """Date"""
+  expiresAt: String!
+
+  """Date"""
+  createdAt: String!
+  user(where: UsersFilters): DeviceRegistrationsUserRelationSessionsRelationUserRelation
+}
+
+type DeviceRegistrationsUserRelationSessionsRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type DeviceRegistrationsUserRelationAddressesRelation {
+  id: String!
+  userId: String!
+  label: String!
+  line1: String!
+  line2: String
+  city: String!
+  pincode: String!
+  phone: String!
+  lat: Float!
+  lng: Float!
+  isDefault: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  user(where: UsersFilters): DeviceRegistrationsUserRelationAddressesRelationUserRelation
+}
+
+type DeviceRegistrationsUserRelationAddressesRelationUserRelation {
+  id: String!
+  phone: String!
+  name: String!
+  email: String
+  role: UsersRoleEnum!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type DeviceRegistrationsItem {
+  id: String!
+  userId: String!
+  target: String!
+  kind: DeviceRegistrationsKindEnum!
+  platform: DeviceRegistrationsPlatformEnum!
+  userAgent: String
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
 type InventorySelectItem {
   id: String!
   storeId: String!
@@ -1047,6 +1230,11 @@ type InventorySelectItem {
 type InventoryStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1082,6 +1270,7 @@ type InventoryProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1114,6 +1303,7 @@ type InventoryProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1174,6 +1364,11 @@ type InventoryAdjustmentsInventoryRelation {
 type InventoryAdjustmentsInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1209,6 +1404,7 @@ type InventoryAdjustmentsInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1241,6 +1437,7 @@ type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelationProduct
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1488,6 +1685,11 @@ type OrderItemsOrderRelationUserRelationAddressesRelationUserRelation {
 type OrderItemsOrderRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1518,6 +1720,11 @@ type OrderItemsOrderRelationStoreRelationInventoryRelation {
 type OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1541,6 +1748,7 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1573,6 +1781,7 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategor
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1698,6 +1907,7 @@ type OrderItemsProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1730,6 +1940,7 @@ type OrderItemsProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1755,6 +1966,11 @@ type OrderItemsProductRelationInventoryRelation {
 type OrderItemsProductRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1790,6 +2006,7 @@ type OrderItemsProductRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -1966,6 +2183,11 @@ type OrderStatusHistoryOrderRelationUserRelationAddressesRelationUserRelation {
 type OrderStatusHistoryOrderRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -1996,6 +2218,11 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelation {
 type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2019,6 +2246,7 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2051,6 +2279,7 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2201,6 +2430,7 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2233,6 +2463,7 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2258,6 +2489,11 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
 type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2293,6 +2529,7 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2500,6 +2737,11 @@ type OrdersUserRelationAddressesRelationUserRelation {
 type OrdersStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2530,6 +2772,11 @@ type OrdersStoreRelationInventoryRelation {
 type OrdersStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2553,6 +2800,7 @@ type OrdersStoreRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2585,6 +2833,7 @@ type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationProducts
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2735,6 +2984,7 @@ type OrdersItemsRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2767,6 +3017,7 @@ type OrdersItemsRelationProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2792,6 +3043,11 @@ type OrdersItemsRelationProductRelationInventoryRelation {
 type OrdersItemsRelationProductRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2827,6 +3083,7 @@ type OrdersItemsRelationProductRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2899,6 +3156,7 @@ type ProductsSelectItem {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2931,6 +3189,7 @@ type ProductsCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -2956,6 +3215,11 @@ type ProductsInventoryRelation {
 type ProductsInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -2991,6 +3255,7 @@ type ProductsInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3010,6 +3275,7 @@ type ProductsItem {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3123,6 +3389,11 @@ type StoreSlotConfigSelectItem {
 type StoreSlotConfigStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -3153,6 +3424,11 @@ type StoreSlotConfigStoreRelationInventoryRelation {
 type StoreSlotConfigStoreRelationInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -3176,6 +3452,7 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3208,6 +3485,7 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelatio
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3243,6 +3521,11 @@ type StoreSlotConfigItem {
 type StoresSelectItem {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -3273,6 +3556,11 @@ type StoresInventoryRelation {
 type StoresInventoryRelationStoreRelation {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -3296,6 +3584,7 @@ type StoresInventoryRelationProductRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3328,6 +3617,7 @@ type StoresInventoryRelationProductRelationCategoryRelationProductsRelation {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean!
 
   """Date"""
@@ -3351,6 +3641,11 @@ type StoresInventoryRelationProductRelationInventoryRelation {
 type StoresItem {
   id: String!
   name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -5464,6 +5759,458 @@ input CategoriesOrderBy {
   slug: InnerOrder
   sortOrder: InnerOrder
   createdAt: InnerOrder
+}
+
+input DeviceRegistrationsInsertInput {
+  id: String
+  userId: String!
+  target: String!
+  kind: DeviceRegistrationsKindEnum!
+  platform: DeviceRegistrationsPlatformEnum!
+  userAgent: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input DeviceRegistrationsUpdateInput {
+  id: String
+  userId: String
+  target: String
+  kind: DeviceRegistrationsKindEnum
+  platform: DeviceRegistrationsPlatformEnum
+  userAgent: String
+
+  """Date"""
+  createdAt: String
+
+  """Date"""
+  updatedAt: String
+}
+
+input DeviceRegistrationsFilters {
+  id: DeviceRegistrationsIdFilters
+  userId: DeviceRegistrationsUserIdFilters
+  target: DeviceRegistrationsTargetFilters
+  kind: DeviceRegistrationsKindFilters
+  platform: DeviceRegistrationsPlatformFilters
+  userAgent: DeviceRegistrationsUserAgentFilters
+  createdAt: DeviceRegistrationsCreatedAtFilters
+  updatedAt: DeviceRegistrationsUpdatedAtFilters
+  OR: [DeviceRegistrationsFiltersOr!]
+}
+
+input DeviceRegistrationsIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsIdfiltersOr!]
+}
+
+input DeviceRegistrationsIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsUserIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsUserIdfiltersOr!]
+}
+
+input DeviceRegistrationsUserIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsTargetFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsTargetfiltersOr!]
+}
+
+input DeviceRegistrationsTargetfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsKindFilters {
+  eq: DeviceRegistrationsKindEnum
+  ne: DeviceRegistrationsKindEnum
+  lt: DeviceRegistrationsKindEnum
+  lte: DeviceRegistrationsKindEnum
+  gt: DeviceRegistrationsKindEnum
+  gte: DeviceRegistrationsKindEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [DeviceRegistrationsKindEnum!]
+
+  """Array<undefined>"""
+  notInArray: [DeviceRegistrationsKindEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsKindfiltersOr!]
+}
+
+input DeviceRegistrationsKindfiltersOr {
+  eq: DeviceRegistrationsKindEnum
+  ne: DeviceRegistrationsKindEnum
+  lt: DeviceRegistrationsKindEnum
+  lte: DeviceRegistrationsKindEnum
+  gt: DeviceRegistrationsKindEnum
+  gte: DeviceRegistrationsKindEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [DeviceRegistrationsKindEnum!]
+
+  """Array<undefined>"""
+  notInArray: [DeviceRegistrationsKindEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsPlatformFilters {
+  eq: DeviceRegistrationsPlatformEnum
+  ne: DeviceRegistrationsPlatformEnum
+  lt: DeviceRegistrationsPlatformEnum
+  lte: DeviceRegistrationsPlatformEnum
+  gt: DeviceRegistrationsPlatformEnum
+  gte: DeviceRegistrationsPlatformEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [DeviceRegistrationsPlatformEnum!]
+
+  """Array<undefined>"""
+  notInArray: [DeviceRegistrationsPlatformEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsPlatformfiltersOr!]
+}
+
+input DeviceRegistrationsPlatformfiltersOr {
+  eq: DeviceRegistrationsPlatformEnum
+  ne: DeviceRegistrationsPlatformEnum
+  lt: DeviceRegistrationsPlatformEnum
+  lte: DeviceRegistrationsPlatformEnum
+  gt: DeviceRegistrationsPlatformEnum
+  gte: DeviceRegistrationsPlatformEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [DeviceRegistrationsPlatformEnum!]
+
+  """Array<undefined>"""
+  notInArray: [DeviceRegistrationsPlatformEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsUserAgentFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsUserAgentfiltersOr!]
+}
+
+input DeviceRegistrationsUserAgentfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsCreatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsCreatedAtfiltersOr!]
+}
+
+input DeviceRegistrationsCreatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsUpdatedAtFilters {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [DeviceRegistrationsUpdatedAtfiltersOr!]
+}
+
+input DeviceRegistrationsUpdatedAtfiltersOr {
+  """Date"""
+  eq: String
+
+  """Date"""
+  ne: String
+
+  """Date"""
+  lt: String
+
+  """Date"""
+  lte: String
+
+  """Date"""
+  gt: String
+
+  """Date"""
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<Date>"""
+  inArray: [String!]
+
+  """Array<Date>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input DeviceRegistrationsFiltersOr {
+  id: DeviceRegistrationsIdFilters
+  userId: DeviceRegistrationsUserIdFilters
+  target: DeviceRegistrationsTargetFilters
+  kind: DeviceRegistrationsKindFilters
+  platform: DeviceRegistrationsPlatformFilters
+  userAgent: DeviceRegistrationsUserAgentFilters
+  createdAt: DeviceRegistrationsCreatedAtFilters
+  updatedAt: DeviceRegistrationsUpdatedAtFilters
+}
+
+input DeviceRegistrationsOrderBy {
+  id: InnerOrder
+  userId: InnerOrder
+  target: InnerOrder
+  kind: InnerOrder
+  platform: InnerOrder
+  userAgent: InnerOrder
+  createdAt: InnerOrder
+  updatedAt: InnerOrder
 }
 
 input InventoryInsertInput {
@@ -8062,6 +8809,7 @@ input ProductsInsertInput {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean
 
   """Date"""
@@ -8081,6 +8829,7 @@ input ProductsUpdateInput {
   price: Int
   emoji: String
   imageUrl: String
+  timeBoundSection: String
   isActive: Boolean
 
   """Date"""
@@ -8100,6 +8849,7 @@ input ProductsFilters {
   price: ProductsPriceFilters
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
+  timeBoundSection: ProductsTimeBoundSectionFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -8493,6 +9243,49 @@ input ProductsImageUrlfiltersOr {
   isNotNull: Boolean
 }
 
+input ProductsTimeBoundSectionFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsTimeBoundSectionfiltersOr!]
+}
+
+input ProductsTimeBoundSectionfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
 input ProductsIsActiveFilters {
   eq: Boolean
   ne: Boolean
@@ -8676,6 +9469,7 @@ input ProductsFiltersOr {
   price: ProductsPriceFilters
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
+  timeBoundSection: ProductsTimeBoundSectionFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -8691,6 +9485,7 @@ input ProductsOrderBy {
   price: InnerOrder
   emoji: InnerOrder
   imageUrl: InnerOrder
+  timeBoundSection: InnerOrder
   isActive: InnerOrder
   createdAt: InnerOrder
   updatedAt: InnerOrder
@@ -9385,6 +10180,11 @@ input StoreSlotConfigOrderBy {
 input StoresInsertInput {
   id: String
   name: String!
+  type: StoresTypeEnum
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String
   lat: Float!
   lng: Float!
@@ -9401,6 +10201,11 @@ input StoresInsertInput {
 input StoresUpdateInput {
   id: String
   name: String
+  type: StoresTypeEnum
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String
   lat: Float
   lng: Float
@@ -9417,6 +10222,11 @@ input StoresUpdateInput {
 input StoresFilters {
   id: StoresIdFilters
   name: StoresNameFilters
+  type: StoresTypeFilters
+  partnerName: StoresPartnerNameFilters
+  contactPhone: StoresContactPhoneFilters
+  contactEmail: StoresContactEmailFilters
+  commissionPct: StoresCommissionPctFilters
   address: StoresAddressFilters
   lat: StoresLatFilters
   lng: StoresLngFilters
@@ -9509,6 +10319,221 @@ input StoresNamefiltersOr {
 
   """Array<undefined>"""
   notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresTypeFilters {
+  eq: StoresTypeEnum
+  ne: StoresTypeEnum
+  lt: StoresTypeEnum
+  lte: StoresTypeEnum
+  gt: StoresTypeEnum
+  gte: StoresTypeEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [StoresTypeEnum!]
+
+  """Array<undefined>"""
+  notInArray: [StoresTypeEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresTypefiltersOr!]
+}
+
+input StoresTypefiltersOr {
+  eq: StoresTypeEnum
+  ne: StoresTypeEnum
+  lt: StoresTypeEnum
+  lte: StoresTypeEnum
+  gt: StoresTypeEnum
+  gte: StoresTypeEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [StoresTypeEnum!]
+
+  """Array<undefined>"""
+  notInArray: [StoresTypeEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresPartnerNameFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresPartnerNamefiltersOr!]
+}
+
+input StoresPartnerNamefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresContactPhoneFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresContactPhonefiltersOr!]
+}
+
+input StoresContactPhonefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresContactEmailFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresContactEmailfiltersOr!]
+}
+
+input StoresContactEmailfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input StoresCommissionPctFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [StoresCommissionPctfiltersOr!]
+}
+
+input StoresCommissionPctfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
   isNull: Boolean
   isNotNull: Boolean
 }
@@ -9861,6 +10886,11 @@ input StoresUpdatedAtfiltersOr {
 input StoresFiltersOr {
   id: StoresIdFilters
   name: StoresNameFilters
+  type: StoresTypeFilters
+  partnerName: StoresPartnerNameFilters
+  contactPhone: StoresContactPhoneFilters
+  contactEmail: StoresContactEmailFilters
+  commissionPct: StoresCommissionPctFilters
   address: StoresAddressFilters
   lat: StoresLatFilters
   lng: StoresLngFilters
@@ -9873,6 +10903,11 @@ input StoresFiltersOr {
 input StoresOrderBy {
   id: InnerOrder
   name: InnerOrder
+  type: InnerOrder
+  partnerName: InnerOrder
+  contactPhone: InnerOrder
+  contactEmail: InnerOrder
+  commissionPct: InnerOrder
   address: InnerOrder
   lat: InnerOrder
   lng: InnerOrder
@@ -10293,22 +11328,45 @@ type Query {
   categoriesSingle(offset: Int, orderBy: CategoriesOrderBy, where: CategoriesFilters): CategoriesSelectItem
   stores(offset: Int, limit: Int, orderBy: StoresOrderBy, where: StoresFilters): [StoresSelectItem!]!
   storesSingle(offset: Int, orderBy: StoresOrderBy, where: StoresFilters): StoresSelectItem
+  timeBoundSections: [TimeBoundSection!]!
+  adminSetupStatus: AdminSetupStatus!
   adminSession: AdminSession
   adminDashboard: AdminDashboard!
   adminProducts(page: Int, limit: Int, query: String): AdminProductsPage!
   adminProduct(id: String!): AdminProduct
   adminCategories: [AdminCategory!]!
-  adminStores: [AdminStore!]!
+  adminStores(type: AdminStoreType): [AdminStore!]!
   adminStore(id: String!): AdminStore
   adminInventory(storeId: String!, page: Int, limit: Int, query: String, lowStockOnly: Boolean): AdminInventoryPage!
   adminOrders(page: Int, limit: Int, status: AdminOrderStatus): AdminOrdersPage!
   adminOrder(id: String!): AdminOrder
+  adminCustomers(page: Int, limit: Int, query: String): AdminCustomersPage!
+  adminCustomer(id: String!): AdminUser
   myCart: AppCart!
   myOrders(page: Int, limit: Int): AppOrdersPage!
   checkServiceability(lat: Float, lng: Float, addressId: String): AppServiceability!
   availableDeliverySlots(addressId: String!): AppDeliverySlots!
   me: AppUser!
   myAddresses: [AppAddress!]!
+}
+
+type TimeBoundSection {
+  id: TimeBoundSectionId!
+  title: String!
+  window: String!
+  startHour: Int!
+  endHour: Int!
+  isNow: Boolean!
+}
+
+enum TimeBoundSectionId {
+  BREAKFAST
+  LUNCH
+  DINNER
+}
+
+type AdminSetupStatus {
+  isRequired: Boolean!
 }
 
 type AdminSession {
@@ -10322,6 +11380,8 @@ type AdminUser {
   name: String!
   email: String
   role: String!
+  createdAt: String
+  updatedAt: String
 }
 
 type AdminDashboard {
@@ -10348,6 +11408,7 @@ type AdminProduct {
   price: Int!
   emoji: String
   imageUrl: String
+  timeBoundSection: TimeBoundSectionId
   isActive: Boolean!
   category: AdminCategory!
   createdAt: String!
@@ -10365,6 +11426,11 @@ type AdminCategory {
 type AdminStore {
   id: String!
   name: String!
+  type: AdminStoreType!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
   address: String!
   lat: Float!
   lng: Float!
@@ -10372,6 +11438,11 @@ type AdminStore {
   isActive: Boolean!
   createdAt: String!
   updatedAt: String!
+}
+
+enum AdminStoreType {
+  DARK_STORE
+  THIRD_PARTY
 }
 
 type AdminInventoryPage {
@@ -10452,6 +11523,13 @@ type AdminOrderStatusHistory {
   changedBy: String
   reason: String
   createdAt: String!
+}
+
+type AdminCustomersPage {
+  items: [AdminUser!]!
+  page: Int!
+  limit: Int!
+  total: Int!
 }
 
 type AppCart {
@@ -10558,16 +11636,21 @@ type Mutation {
   addToCart(productId: String!, quantity: Int!, storeId: String): AppCart!
   updateCartItem(itemId: String!, quantity: Int!): AppCart!
   removeCartItem(itemId: String!): AppCart!
+  adminSetup(secret: String!, name: String!, phone: String!, email: String!, password: String!): AdminSession!
   adminLogin(email: String!, password: String!): AdminSession!
   adminLogout: Boolean!
-  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
-  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, isActive: Boolean): AdminProduct!
+  registerAdminDevice(fid: String!, userAgent: String): Boolean!
+  unregisterAdminDevice(fid: String!): Boolean!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, timeBoundSection: TimeBoundSectionId, isActive: Boolean): AdminProduct!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, timeBoundSection: TimeBoundSectionId, isActive: Boolean): AdminProduct!
   createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
   updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
-  createAdminStore(name: String!, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
-  updateAdminStore(id: String!, name: String, address: String, lat: Float, lng: Float, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  createAdminStore(name: String!, type: AdminStoreType, partnerName: String, contactPhone: String, contactEmail: String, commissionPct: Int, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
+  bulkCreateAdminStores(stores: [AdminStoreInput!]!): [AdminStore!]!
+  updateAdminStore(id: String!, name: String, type: AdminStoreType, partnerName: String, contactPhone: String, contactEmail: String, commissionPct: Int, address: String, lat: Float, lng: Float, serviceRadiusM: Int, isActive: Boolean): AdminStore!
   adjustAdminInventory(inventoryId: String!, delta: Int!, reason: String!): AdminInventoryItem!
   transitionAdminOrder(orderId: String!, status: AdminOrderStatus!, reason: String): AdminOrder!
+  updateAdminCustomer(id: String!, name: String, phone: String, email: String): AdminUser!
   checkout(addressId: String!, paymentMethod: String, idempotencyKey: String!): AppOrder!
   cancelOrder(orderId: String!): AppOrder!
   updateOrderStatus(orderId: String!, status: String!): AppOrder!
@@ -10577,6 +11660,20 @@ type Mutation {
   addAddress(label: String!, line1: String!, line2: String, city: String!, pincode: String!, phone: String!, lat: Float!, lng: Float!, isDefault: Boolean): AppAddress!
   updateAddress(id: String!, label: String, line1: String, line2: String, city: String, pincode: String, phone: String, lat: Float, lng: Float, isDefault: Boolean): AppAddress!
   deleteAddress(id: String!): Boolean!
+}
+
+input AdminStoreInput {
+  name: String!
+  type: AdminStoreType
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int
+  isActive: Boolean
 }
 
 type AppRequestOtpPayload {

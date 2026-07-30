@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ErrorMessage, Field, useForm} from "vee-validate";
-import {ref} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { ref } from "vue";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import {login} from "@/features/auth/mutations";
 import {loginSchema} from "@/features/auth/validation";
 import {useAuthStore} from "@/stores/auth";
@@ -242,6 +242,13 @@ const togglePassword = () => {
             </span>
           </button>
         </form>
+
+        <div class="text-center text-xs text-slate-400">
+          First-time deployment?
+          <RouterLink to="/setup" class="font-semibold text-emerald-400 hover:text-emerald-300 transition underline underline-offset-2 ml-1">
+            Run Initial Setup
+          </RouterLink>
+        </div>
 
         <!-- Divider -->
         <div class="relative flex items-center justify-center my-1">

@@ -6,9 +6,17 @@ tasks:
   dev:
     command: bun run dev
   build:
-    command: bun run build
+    command: bun run build-only
     inputs: ['src/**/*', 'public/**/*', 'index.html', 'vite.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']
     outputs: ['dist/**/*']
+  preview:
+    command: bun run preview
   typecheck:
     command: bun x vue-tsc --noEmit
     inputs: ['src/**/*', 'env.d.ts', 'vite.config.ts', 'tsconfig.json', 'package.json', '/tsconfig.options.json']
+  pages-dev:
+    command: bun run pages:dev
+    deps: ['build']
+  deploy:
+    command: bun run pages:deploy
+    deps: ['build']

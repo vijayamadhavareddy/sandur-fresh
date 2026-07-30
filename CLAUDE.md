@@ -59,6 +59,9 @@ moon run sf_consumer:test
 moon run sf_consumer:test -- test/widget_test.dart   # single file
 moon run sf_consumer:run
 moon run sf_consumer:build-apk
+moon run sf_consumer:fastlane-android-bundle
+moon run sf_consumer:fastlane-android-beta
+moon run sf_consumer:fastlane-ios-beta
 ```
 
 Do not run `get`/`analyze`/`test`/`run` concurrently for the Flutter app — they race on SDK/project ephemeral files.

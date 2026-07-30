@@ -6,3 +6,13 @@ project:
 tasks:
   run:
     command: bun run dev
+  worker-dev:
+    command: bun run worker:dev
+  deploy:
+    command: bun run worker:deploy
+  typecheck:
+    command: bun x tsc --noEmit
+  lint:
+    command: bun x biome check .
+  test:
+    command: bun test

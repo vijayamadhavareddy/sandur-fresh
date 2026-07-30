@@ -20,41 +20,71 @@ Router → Handler → Service → Repository → DB
 - Repositories are the only place Drizzle queries live
 - GraphQL critical paths call the **same services** as REST (no CRUD bypass for cart/orders/inventory)
 
+## Environments & Deployment
+
+The API supports dual runtime execution:
+
+1. **Cloudflare Workers (Edge / Production)**
+   - Database: **Cloudflare D1** (`drizzle-orm/d1`) via `DB` binding
+   - Storage: **Cloudflare R2** (`BUCKET` binding) for product images
+   - Password Hashing: Universal WebCrypto bcrypt (`bcrypt-ts`)
+   - Development server: `bun run worker:dev` (or `moon run api:worker-dev`)
+   - Deployment: `bun run worker:deploy` (or `moon run api:deploy`)
+
+2. **Local Bun Server (Development / Testing / Scripting)**
+   - Database: Local SQLite file via `bun:sqlite` with `DATABASE_PATH`
+   - Storage: Local filesystem (`UPLOAD_DIR`, default `./data/uploads`)
+   - Development server: `bun run dev` (or `moon run api:run`)
+   - Tests: `bun test` (or `moon run api:test`)
+
 ## Setup
 
 ### Prerequisites
 
-- [Bun](https://bun.sh) (latest) — includes SQLite via `bun:sqlite` (no separate DB server)
+- [Bun](https://bun.sh) (latest)
+- [Wrangler](https://developers.cloudflare.com/workers/wrangler/) (included in devDependencies)
 
 ### Install
 
 ```sh
 cp .env.example .env
-# optional: edit DATABASE_PATH (default ./data/sandur.db)
-
 bun install
 ```
 
-### Database
+### Database (Local Bun)
 
 SQLite file is created automatically under `data/` (or `DATABASE_PATH`).
 
 ```sh
-bun run db:generate   # after schema changes
-bun run db:migrate
-bun run db:seed
+bun run --cwd packages/db db:generate
+bun run --cwd packages/db db:migrate
 ```
 
-For quick local iteration you can also use `bun run db:push`.
+### Initial Admin Setup
+
+When starting with a fresh database instance:
+1. Ensure `ADMIN_SETUP_SECRET` is set in your environment (defaults to `sandur-admin-setup-secret` for local development).
+2. Open the Admin Console at `/setup`.
+3. Provide the `ADMIN_SETUP_SECRET`, name, phone, email, and password to provision the master administrator account.
+4. Once created, add categories, products, stores, and inventory directly within the admin console.
+
+### Database (Cloudflare D1)
+
+```sh
+# Apply migrations to remote D1
+bun x wrangler d1 migrations apply sandur-fresh-db --remote
+
+# Apply migrations to local D1 preview
+bun x wrangler d1 migrations apply sandur-fresh-db --local
+```
 
 ### Run
 
-```sh
-bun run dev
-# http://localhost:3000
-```
+- **Bun local dev**: `bun run dev` (http://localhost:3000)
+- **Cloudflare Worker dev**: `bun run worker:dev` (http://localhost:8787)
 
 ## Scripts
+
 
 | Script | Description |
 |--------|-------------|
@@ -66,8 +96,8 @@ bun run dev
 | `bun test` | Unit tests |
 | `bun run db:generate` | Generate migrations |
 | `bun run db:migrate` | Apply migrations |
-| `bun run db:seed` | Seed catalog + demo users |
 | `bun run db:studio` | Drizzle Studio |
+
 
 ## Auth (phone / OTP)
 

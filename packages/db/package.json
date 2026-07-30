@@ -10,9 +10,11 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "bun run scripts/seed.ts"
+    "lint": "bun x biome check .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250224.0",
     "@libsql/client": "^0.17.4",
     "drizzle-kit": "^0.31.10"
   },

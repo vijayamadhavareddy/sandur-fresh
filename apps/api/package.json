@@ -11,19 +11,26 @@
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "test": "bun test",
-    "graphql:schema": "bun run scripts/export-graphql-schema.ts"
+    "graphql:schema": "bun run scripts/export-graphql-schema.ts",
+    "worker:dev": "wrangler dev",
+    "worker:deploy": "wrangler deploy",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@sf/db": "workspace:*",
     "@hono/zod-validator": "^0.9.0",
+    "@sf/db": "workspace:*",
+    "bcrypt-ts": "^5.0.3",
     "drizzle-graphql": "^0.8.5",
     "drizzle-orm": "^0.45.2",
+    "firebase-admin": "^14.2.0",
     "graphql": "16.11.0",
     "graphql-yoga": "^5.21.2",
     "hono": "^4.12.31",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.5"
+    "@biomejs/biome": "^2.5.5",
+    "@cloudflare/workers-types": "^4.20250224.0",
+    "wrangler": "^3.114.0"
   }
 }

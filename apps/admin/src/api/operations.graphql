@@ -1,5 +1,28 @@
+query AdminSetupStatus {
+  adminSetupStatus {
+    isRequired
+  }
+}
 query AdminSession {
   adminSession {
+    user {
+      id
+      email
+      name
+      phone
+      role
+    }
+    expiresAt
+  }
+}
+mutation AdminSetup(
+  $secret: String!
+  $name: String!
+  $phone: String!
+  $email: String!
+  $password: String!
+) {
+  adminSetup(secret: $secret, name: $name, phone: $phone, email: $email, password: $password) {
     user {
       id
       email
@@ -45,6 +68,7 @@ query AdminProducts($page: Int!, $limit: Int!, $query: String) {
       mrp
       price
       imageUrl
+      timeBoundSection
       isActive
       category {
         id
@@ -62,12 +86,23 @@ query AdminProduct($id: String!) {
     mrp
     price
     imageUrl
+    timeBoundSection
     isActive
     categoryId
     category {
       id
       name
     }
+  }
+}
+query TimeBoundSections {
+  timeBoundSections {
+    id
+    title
+    window
+    startHour
+    endHour
+    isNow
   }
 }
 query AdminCategories {
@@ -86,6 +121,7 @@ mutation CreateAdminProduct(
   $mrp: Int!
   $price: Int!
   $imageUrl: String
+  $timeBoundSection: TimeBoundSectionId
   $isActive: Boolean
 ) {
   createAdminProduct(
@@ -96,6 +132,7 @@ mutation CreateAdminProduct(
     mrp: $mrp
     price: $price
     imageUrl: $imageUrl
+    timeBoundSection: $timeBoundSection
     isActive: $isActive
   ) {
     id
@@ -110,6 +147,7 @@ mutation UpdateAdminProduct(
   $mrp: Int
   $price: Int
   $imageUrl: String
+  $timeBoundSection: TimeBoundSectionId
   $isActive: Boolean
 ) {
   updateAdminProduct(
@@ -121,10 +159,17 @@ mutation UpdateAdminProduct(
     mrp: $mrp
     price: $price
     imageUrl: $imageUrl
+    timeBoundSection: $timeBoundSection
     isActive: $isActive
   ) {
     id
   }
+}
+mutation RegisterAdminDevice($fid: String!, $userAgent: String) {
+  registerAdminDevice(fid: $fid, userAgent: $userAgent)
+}
+mutation UnregisterAdminDevice($fid: String!) {
+  unregisterAdminDevice(fid: $fid)
 }
 mutation CreateAdminCategory($name: String!, $slug: String!, $sortOrder: Int) {
   createAdminCategory(name: $name, slug: $slug, sortOrder: $sortOrder) {
@@ -136,10 +181,15 @@ mutation UpdateAdminCategory($id: String!, $name: String, $slug: String, $sortOr
     id
   }
 }
-query AdminStores {
-  adminStores {
+query AdminStores($type: AdminStoreType) {
+  adminStores(type: $type) {
     id
     name
+    type
+    partnerName
+    contactPhone
+    contactEmail
+    commissionPct
     address
     lat
     lng
@@ -151,6 +201,11 @@ query AdminStore($id: String!) {
   adminStore(id: $id) {
     id
     name
+    type
+    partnerName
+    contactPhone
+    contactEmail
+    commissionPct
     address
     lat
     lng
@@ -160,6 +215,11 @@ query AdminStore($id: String!) {
 }
 mutation CreateAdminStore(
   $name: String!
+  $type: AdminStoreType
+  $partnerName: String
+  $contactPhone: String
+  $contactEmail: String
+  $commissionPct: Int
   $address: String!
   $lat: Float!
   $lng: Float!
@@ -168,6 +228,11 @@ mutation CreateAdminStore(
 ) {
   createAdminStore(
     name: $name
+    type: $type
+    partnerName: $partnerName
+    contactPhone: $contactPhone
+    contactEmail: $contactEmail
+    commissionPct: $commissionPct
     address: $address
     lat: $lat
     lng: $lng
@@ -177,9 +242,21 @@ mutation CreateAdminStore(
     id
   }
 }
+mutation BulkCreateAdminStores($stores: [AdminStoreInput!]!) {
+  bulkCreateAdminStores(stores: $stores) {
+    id
+    name
+    type
+  }
+}
 mutation UpdateAdminStore(
   $id: String!
   $name: String
+  $type: AdminStoreType
+  $partnerName: String
+  $contactPhone: String
+  $contactEmail: String
+  $commissionPct: Int
   $address: String
   $lat: Float
   $lng: Float
@@ -189,6 +266,11 @@ mutation UpdateAdminStore(
   updateAdminStore(
     id: $id
     name: $name
+    type: $type
+    partnerName: $partnerName
+    contactPhone: $contactPhone
+    contactEmail: $contactEmail
+    commissionPct: $commissionPct
     address: $address
     lat: $lat
     lng: $lng
@@ -304,5 +386,40 @@ mutation TransitionAdminOrder($orderId: String!, $status: AdminOrderStatus!, $re
   transitionAdminOrder(orderId: $orderId, status: $status, reason: $reason) {
     id
     status
+  }
+}
+query AdminCustomers($page: Int!, $limit: Int!, $query: String) {
+  adminCustomers(page: $page, limit: $limit, query: $query) {
+    page
+    limit
+    total
+    items {
+      id
+      name
+      phone
+      email
+      role
+      createdAt
+      updatedAt
+    }
+  }
+}
+query AdminCustomer($id: String!) {
+  adminCustomer(id: $id) {
+    id
+    name
+    phone
+    email
+    role
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateAdminCustomer($id: String!, $name: String, $phone: String, $email: String) {
+  updateAdminCustomer(id: $id, name: $name, phone: $phone, email: $email) {
+    id
+    name
+    phone
+    email
   }
 }
