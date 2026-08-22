@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sandur_fresh/controllers/address_controller.dart';
 import 'package:sandur_fresh/controllers/auth_controller.dart';
 import 'package:sandur_fresh/controllers/cart_controller.dart';
+import 'package:sandur_fresh/controllers/catalog_controller.dart';
 import 'package:sandur_fresh/controllers/checkout_controller.dart';
 import 'package:sandur_fresh/controllers/orders_controller.dart';
 import 'package:sandur_fresh/main.dart';
@@ -341,6 +342,62 @@ void main() {
       expect(order.paymentMethod, 'COD');
       expect(checkout.lastOrderId.value, order.id);
       expect(cart.items, isEmpty);
+    });
+  });
+
+  group('CatalogController', () {
+    test('filters products across multiple time-bound sections', () {
+      final controller = Get.put(CatalogController());
+      controller.fetchedSections.assignAll([
+        const TimeBoundSection(
+          id: 'BREAKFAST',
+          title: 'Breakfast essentials',
+          window: '5 – 11 AM',
+          isNow: true,
+          items: [],
+        ),
+        const TimeBoundSection(
+          id: 'LUNCH',
+          title: 'Lunch thali picks',
+          window: '11 AM – 4 PM',
+          isNow: true,
+          items: [],
+        ),
+      ]);
+
+      final allDayItem = const Product(
+        id: 'p1',
+        name: 'Eggs Pack',
+        category: 'Dairy',
+        price: 60,
+        mrp: 70,
+        unit: '6 pcs',
+        emoji: '🥚',
+        timeBoundSections: ['BREAKFAST', 'LUNCH'],
+      );
+
+      final breakfastOnly = const Product(
+        id: 'p2',
+        name: 'Bread',
+        category: 'Bakery',
+        price: 40,
+        mrp: 45,
+        unit: '400 g',
+        emoji: '🍞',
+        timeBoundSections: ['BREAKFAST'],
+      );
+
+      controller.fetchedProducts.assignAll([allDayItem, breakfastOnly]);
+
+      final sections = controller.timeBoundSections;
+      expect(sections.length, 2);
+
+      final breakfastSection = sections.firstWhere((s) => s.id == 'BREAKFAST');
+      expect(breakfastSection.items.map((p) => p.id), containsAll(['p1', 'p2']));
+
+      final lunchSection = sections.firstWhere((s) => s.id == 'LUNCH');
+      expect(lunchSection.items.map((p) => p.id), contains('p1'));
+      expect(lunchSection.items.map((p) => p.id), isNot(contains('p2')));
     });
   });
 }

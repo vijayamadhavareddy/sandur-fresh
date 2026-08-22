@@ -4,10 +4,12 @@ import {
   type DomainError,
   forbidden,
   notFound,
+  rateLimited,
   unauthorized,
   validationError,
 } from "../../shared/errors";
 import { err, ok, type Result } from "../../shared/result";
+import type { OtpProvider } from "../otp/otp.types";
 import type { AddressRow, UserRow, UsersRepo } from "./users.repo";
 import type {
   AddressInput,
@@ -18,6 +20,7 @@ import type {
 } from "./users.schemas";
 
 const OTP_TTL_MS = 10 * 60 * 1000;
+const OTP_RESEND_COOLDOWN_MS = 120 * 1000;
 const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
 const publicUser = (user: UserRow) => ({
@@ -32,10 +35,11 @@ const publicUser = (user: UserRow) => ({
 export type UsersServiceDeps = {
   db: Db;
   usersRepo: UsersRepo;
+  otpProvider: OtpProvider;
 };
 
-const generateOtpCode = (): string => {
-  if (!isProduction) return env.DEV_OTP;
+const generateOtpCode = (providerName: string): string => {
+  if (!isProduction && providerName === "dev") return env.DEV_OTP;
   return String(Math.floor(100000 + Math.random() * 900000));
 };
 
@@ -43,16 +47,38 @@ export const createUsersService = (deps: UsersServiceDeps) => {
   const requestOtp = async (
     input: RequestOtpInput,
   ): Promise<Result<{ message: string }, DomainError>> => {
-    const code = generateOtpCode();
+    const latest = await deps.usersRepo.findLatestOtpChallenge(deps.db, input.phone);
+    if (latest) {
+      const elapsedMs = Date.now() - new Date(latest.createdAt).getTime();
+      if (elapsedMs < OTP_RESEND_COOLDOWN_MS) {
+        const remainingSeconds = Math.ceil((OTP_RESEND_COOLDOWN_MS - elapsedMs) / 1000);
+        return err(
+          rateLimited(`Please wait ${remainingSeconds} seconds before requesting a new OTP.`, {
+            retryAfter: remainingSeconds,
+          }),
+        );
+      }
+    }
+
+    const code = generateOtpCode(deps.otpProvider.name);
     const expiresAt = new Date(Date.now() + OTP_TTL_MS);
     await deps.usersRepo.createOtpChallenge(deps.db, {
       phone: input.phone,
       code,
       expiresAt,
     });
-    if (!isProduction) {
-      console.log(JSON.stringify({ level: "info", msg: "dev_otp", phone: input.phone, code }));
+
+    const sendResult = await deps.otpProvider.sendOtp({
+      phone: input.phone,
+      otp: code,
+      template: env.OTP_TEMPLATE,
+      senderId: env.OTP_SENDER_ID,
+    });
+
+    if (!sendResult.ok) {
+      return sendResult;
     }
+
     return ok({ message: "OTP sent" });
   };
 

@@ -10,9 +10,9 @@ class Product {
   final String emoji;
   final bool inStock;
 
-  /// Time-bound shelf tag set in admin (BREAKFAST | LUNCH | DINNER), or null
+  /// Time-bound shelf tags set in admin (e.g. ['BREAKFAST', 'LUNCH']), or empty
   /// when the product isn't tagged to any shelf.
-  final String? timeBoundSection;
+  final List<String> timeBoundSections;
 
   const Product({
     required this.id,
@@ -23,7 +23,7 @@ class Product {
     required this.unit,
     required this.emoji,
     this.inStock = true,
-    this.timeBoundSection,
+    this.timeBoundSections = const [],
   });
 
   factory Product.fromGraphQL(Map<String, dynamic> json, {String? categoryName}) {
@@ -31,6 +31,11 @@ class Product {
     final rawMrp = json['mrp'];
     final priceVal = rawPrice is num ? (rawPrice > 1000 ? rawPrice / 100.0 : rawPrice.toDouble()) : 0.0;
     final mrpVal = rawMrp is num ? (rawMrp > 1000 ? rawMrp / 100.0 : rawMrp.toDouble()) : priceVal;
+
+    final rawSections = json['timeBoundSections'] ?? json['timeBoundSection'];
+    final List<String> sections = rawSections is List
+        ? rawSections.map((e) => e.toString()).toList()
+        : (rawSections is String && rawSections.isNotEmpty ? [rawSections] : const []);
 
     return Product(
       id: json['id'] as String? ?? '',
@@ -41,7 +46,7 @@ class Product {
       unit: json['unit'] as String? ?? '1 unit',
       emoji: json['emoji'] as String? ?? '🛒',
       inStock: json['isActive'] as bool? ?? json['inStock'] as bool? ?? true,
-      timeBoundSection: json['timeBoundSection'] as String?,
+      timeBoundSections: sections,
     );
   }
 

@@ -67,8 +67,11 @@ query AdminProducts($page: Int!, $limit: Int!, $query: String) {
       unit
       mrp
       price
+      originalPrice
+      markup
+      markupType
       imageUrl
-      timeBoundSection
+      timeBoundSections
       isActive
       category {
         id
@@ -85,8 +88,11 @@ query AdminProduct($id: String!) {
     unit
     mrp
     price
+    originalPrice
+    markup
+    markupType
     imageUrl
-    timeBoundSection
+    timeBoundSections
     isActive
     categoryId
     category {
@@ -120,8 +126,11 @@ mutation CreateAdminProduct(
   $unit: String!
   $mrp: Int!
   $price: Int!
+  $originalPrice: Int
+  $markup: Int
+  $markupType: MarkupType
   $imageUrl: String
-  $timeBoundSection: TimeBoundSectionId
+  $timeBoundSections: [TimeBoundSectionId!]
   $isActive: Boolean
 ) {
   createAdminProduct(
@@ -131,8 +140,11 @@ mutation CreateAdminProduct(
     unit: $unit
     mrp: $mrp
     price: $price
+    originalPrice: $originalPrice
+    markup: $markup
+    markupType: $markupType
     imageUrl: $imageUrl
-    timeBoundSection: $timeBoundSection
+    timeBoundSections: $timeBoundSections
     isActive: $isActive
   ) {
     id
@@ -146,8 +158,11 @@ mutation UpdateAdminProduct(
   $unit: String
   $mrp: Int
   $price: Int
+  $originalPrice: Int
+  $markup: Int
+  $markupType: MarkupType
   $imageUrl: String
-  $timeBoundSection: TimeBoundSectionId
+  $timeBoundSections: [TimeBoundSectionId!]
   $isActive: Boolean
 ) {
   updateAdminProduct(
@@ -158,8 +173,11 @@ mutation UpdateAdminProduct(
     unit: $unit
     mrp: $mrp
     price: $price
+    originalPrice: $originalPrice
+    markup: $markup
+    markupType: $markupType
     imageUrl: $imageUrl
-    timeBoundSection: $timeBoundSection
+    timeBoundSections: $timeBoundSections
     isActive: $isActive
   ) {
     id

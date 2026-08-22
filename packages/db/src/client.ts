@@ -9,7 +9,21 @@ export type BunDb = BunSQLiteDatabase<Schema>;
 export type D1Db = DrizzleD1Database<Schema>;
 
 export const createD1Db = (d1: D1Database): D1Db => {
-  return drizzleD1(d1, { schema, logger: false });
+  const d1Instance = drizzleD1(d1, { schema, logger: false });
+  const originalTx = d1Instance.transaction.bind(d1Instance);
+  // biome-ignore lint/suspicious/noExplicitAny: D1 transaction fallback wrapper
+  d1Instance.transaction = (async (cb: (tx: any) => Promise<any>, config?: any) => {
+    try {
+      return await originalTx(cb, config);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg.includes("begin") || msg.includes("Failed query: begin")) {
+        return await cb(d1Instance);
+      }
+      throw err;
+    }
+  }) as any;
+  return d1Instance;
 };
 
 console.log("DATABASE_PATH", process.env.DATABASE_PATH);

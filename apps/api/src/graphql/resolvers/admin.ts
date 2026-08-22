@@ -75,6 +75,14 @@ const CategoryType = new GraphQLObjectType({
   },
 });
 
+const MarkupTypeEnum = new GraphQLEnumType({
+  name: "MarkupType",
+  values: {
+    PERCENTAGE: { value: "PERCENTAGE" },
+    AMOUNT: { value: "AMOUNT" },
+  },
+});
+
 const ProductType = new GraphQLObjectType({
   name: "AdminProduct",
   fields: {
@@ -85,9 +93,14 @@ const ProductType = new GraphQLObjectType({
     unit: { type: new GraphQLNonNull(GraphQLString) },
     mrp: { type: new GraphQLNonNull(GraphQLInt) },
     price: { type: new GraphQLNonNull(GraphQLInt) },
+    originalPrice: { type: GraphQLInt },
+    markup: { type: GraphQLInt },
+    markupType: { type: MarkupTypeEnum },
     emoji: { type: GraphQLString },
     imageUrl: { type: GraphQLString },
-    timeBoundSection: { type: TimeBoundSectionIdType },
+    timeBoundSections: {
+      type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType))),
+    },
     isActive: { type: new GraphQLNonNull(GraphQLBoolean) },
     category: { type: new GraphQLNonNull(CategoryType) },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
@@ -267,11 +280,17 @@ const CustomersPageType = new GraphQLObjectType({
 
 const iso = (value: Date) => value.toISOString();
 const serializeProduct = <
-  T extends { createdAt: Date; updatedAt: Date; category: { createdAt: Date } },
+  T extends {
+    createdAt: Date;
+    updatedAt: Date;
+    category: { createdAt: Date };
+    timeBoundSections?: string[] | null;
+  },
 >(
   value: T,
 ) => ({
   ...value,
+  timeBoundSections: value.timeBoundSections ?? [],
   category: { ...value.category, createdAt: iso(value.category.createdAt) },
   createdAt: iso(value.createdAt),
   updatedAt: iso(value.updatedAt),
@@ -446,9 +465,14 @@ const productArgs = {
   unit: { type: GraphQLString },
   mrp: { type: GraphQLInt },
   price: { type: GraphQLInt },
+  originalPrice: { type: GraphQLInt },
+  markup: { type: GraphQLInt },
+  markupType: { type: MarkupTypeEnum },
   emoji: { type: GraphQLString },
   imageUrl: { type: GraphQLString },
-  timeBoundSection: { type: TimeBoundSectionIdType },
+  timeBoundSections: {
+    type: new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType)),
+  },
   isActive: { type: GraphQLBoolean },
 };
 

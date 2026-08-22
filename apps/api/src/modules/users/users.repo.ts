@@ -1,6 +1,6 @@
 import type { DbOrTx } from "@sf/db";
 import { addresses, otpChallenges, sessions, users } from "@sf/db";
-import { and, eq, gt, isNull } from "drizzle-orm";
+import { and, desc, eq, gt, isNull } from "drizzle-orm";
 
 export type UserRow = typeof users.$inferSelect;
 export type AddressRow = typeof addresses.$inferSelect;
@@ -50,6 +50,16 @@ export const createOtpChallenge = async (
 ) => {
   const rows = await db.insert(otpChallenges).values(input).returning();
   return rows[0]!;
+};
+
+export const findLatestOtpChallenge = async (db: DbOrTx, phone: string) => {
+  const rows = await db
+    .select()
+    .from(otpChallenges)
+    .where(eq(otpChallenges.phone, phone))
+    .orderBy(desc(otpChallenges.createdAt))
+    .limit(1);
+  return rows[0] ?? null;
 };
 
 export const findValidOtp = async (db: DbOrTx, phone: string, code: string, now: Date) => {
@@ -170,6 +180,7 @@ export const usersRepo = {
   createUser,
   updateUser,
   createOtpChallenge,
+  findLatestOtpChallenge,
   findValidOtp,
   consumeOtp,
   createSession,

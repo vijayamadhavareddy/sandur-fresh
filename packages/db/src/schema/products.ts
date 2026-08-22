@@ -32,10 +32,19 @@ export const products = sqliteTable("products", {
   unit: text("unit").notNull(),
   mrp: integer("mrp").notNull(),
   price: integer("price").notNull(),
+  /** Procurement / cost price in paise (optional). */
+  originalPrice: integer("original_price"),
+  /** Markup value (either percentage or fixed amount in paise). */
+  markup: integer("markup"),
+  /** Type of markup: PERCENTAGE (e.g. 20%) or AMOUNT (fixed paise). */
+  markupType: text("markup_type", { enum: ["PERCENTAGE", "AMOUNT"] }).default("PERCENTAGE"),
   emoji: text("emoji"),
   imageUrl: text("image_url"),
-  /** Optional time-bound shelf tag (BREAKFAST | LUNCH | DINNER); null = untagged. */
-  timeBoundSection: text("time_bound_section"),
+  /** Optional time-bound shelf tags (e.g. ['BREAKFAST', 'LUNCH']); empty array = untagged. */
+  timeBoundSections: text("time_bound_sections", { mode: "json" })
+    .$type<string[]>()
+    .notNull()
+    .default(sql`'[]'`),
   isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
   createdAt: createdAt(),
   updatedAt: updatedAt(),

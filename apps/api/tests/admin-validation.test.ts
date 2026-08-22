@@ -162,6 +162,51 @@ describe("admin validation", () => {
     expect(createAdminProductSchema.safeParse({ ...base, price: 45.5 }).success).toBe(false);
   });
 
+  test("validates timeBoundSections array", () => {
+    const base = { categoryId: "cat", name: "Bread", unit: "400 g", mrp: 4000, price: 3500 };
+    const withSections = createAdminProductSchema.safeParse({
+      ...base,
+      timeBoundSections: ["BREAKFAST", "LUNCH"],
+    });
+    expect(withSections.success).toBe(true);
+    if (withSections.success) {
+      expect(withSections.data.timeBoundSections).toEqual(["BREAKFAST", "LUNCH"]);
+    }
+
+    const invalidSection = createAdminProductSchema.safeParse({
+      ...base,
+      timeBoundSections: ["INVALID_SECTION"],
+    });
+    expect(invalidSection.success).toBe(false);
+  });
+
+  test("validates originalPrice, markup, and markupType", () => {
+    const base = {
+      categoryId: "cat",
+      name: "Butter",
+      unit: "500 g",
+      mrp: 6000,
+      price: 5500,
+      originalPrice: 4500,
+      markup: 22,
+      markupType: "PERCENTAGE" as const,
+    };
+    expect(createAdminProductSchema.safeParse(base).success).toBe(true);
+
+    const withAmountMarkup = {
+      ...base,
+      markup: 1000,
+      markupType: "AMOUNT" as const,
+    };
+    expect(createAdminProductSchema.safeParse(withAmountMarkup).success).toBe(true);
+
+    const invalidMarkupType = {
+      ...base,
+      markupType: "INVALID",
+    };
+    expect(createAdminProductSchema.safeParse(invalidMarkupType).success).toBe(false);
+  });
+
   test("rejects zero inventory adjustments", () => {
     expect(
       adjustInventorySchema.safeParse({ inventoryId: "inventory", delta: 0, reason: "count" })

@@ -74,7 +74,7 @@ class CatalogController extends GetxController {
           unit: p.unit,
           emoji: p.emoji ?? '🛒',
           inStock: p.isActive,
-          timeBoundSection: p.timeBoundSection,
+          timeBoundSections: (p.timeBoundSections as List?)?.map((e) => e.toString()).toList() ?? const [],
         );
       }).toList();
 
@@ -164,13 +164,13 @@ class CatalogController extends GetxController {
   List<Product> get snackPicks =>
       products.where((p) => p.category.toLowerCase().contains('snack')).take(4).toList();
 
-  /// Time-bound shelves, built from each product's admin-assigned tag.
+  /// Time-bound shelves, built from each product's admin-assigned tags.
   /// A section only renders when at least one product is tagged to it.
   List<TimeBoundSection> get timeBoundSections {
     return fetchedSections
         .map((section) {
           final items = products
-              .where((p) => p.inStock && p.timeBoundSection == section.id)
+              .where((p) => p.inStock && p.timeBoundSections.contains(section.id))
               .take(6)
               .toList();
           return TimeBoundSection(

@@ -30,7 +30,7 @@ const storeQuery = useQuery({
         <div>
           <PageHeader
             :title="isEditing ? (storeQuery.data.value?.adminStore?.type === 'THIRD_PARTY' ? 'Edit Partner Store' : 'Edit Dark Store Hub') : 'Register New Store'"
-            eyebrow="Fulfillment & Partner Network"
+            eyebrow=""
           />
           <p class="text-sm text-slate-400 mt-1">Configure store classification (Dark Store Hub vs Third-Party Partner), geolocation coordinates, and dispatch radius.</p>
         </div>

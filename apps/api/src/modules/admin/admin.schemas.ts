@@ -29,10 +29,13 @@ const productFields = {
   unit: z.string().trim().min(1).max(100),
   mrp: z.number().int().nonnegative(),
   price: z.number().int().nonnegative(),
+  originalPrice: z.number().int().nonnegative().nullable().optional(),
+  markup: z.number().int().nonnegative().nullable().optional(),
+  markupType: z.enum(["PERCENTAGE", "AMOUNT"]).nullable().optional(),
   emoji: z.string().max(20).nullable().optional(),
   imageUrl: z.string().max(2048).nullable().optional(),
-  /** null / omitted = untagged; otherwise one time-bound shelf. */
-  timeBoundSection: z.enum(TIME_BOUND_SECTION_IDS).nullable().optional(),
+  /** Empty array or omitted = untagged; otherwise list of time-bound shelf IDs. */
+  timeBoundSections: z.array(z.enum(TIME_BOUND_SECTION_IDS)).optional().default([]),
   isActive: z.boolean().optional(),
 };
 

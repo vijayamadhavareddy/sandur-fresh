@@ -7,6 +7,7 @@ import type {
   TimeBoundSectionsQuery,
 } from "@/api/generated/graphql";
 import AppButton from "@/components/AppButton.vue";
+import { formatCurrency } from "@/shared/formatting/currency";
 import { createProduct, updateProduct, uploadProductImage } from "./mutations";
 import { type ProductFormValues, productSchema } from "./validation";
 
@@ -21,7 +22,7 @@ const props = defineProps<{
 const emit = defineEmits<{ saved: [id: string]; cancel: [] }>();
 const busy = ref(false);
 const serverError = ref("");
-const { handleSubmit, setFieldValue, values } = useForm({
+const { handleSubmit, setFieldValue, values } = useForm<ProductFormValues>({
   validationSchema: productSchema,
   initialValues: props.product
     ? {
@@ -30,8 +31,11 @@ const { handleSubmit, setFieldValue, values } = useForm({
         unit: props.product.unit,
         mrp: props.product.mrp,
         price: props.product.price,
+        originalPrice: props.product.originalPrice ?? undefined,
+        markup: props.product.markup ?? undefined,
+        markupType: (props.product.markupType as "PERCENTAGE" | "AMOUNT") ?? "PERCENTAGE",
         imageUrl: props.product.imageUrl ?? "",
-        timeBoundSection: props.product.timeBoundSection ?? "",
+        timeBoundSections: (props.product.timeBoundSections as ("BREAKFAST" | "LUNCH" | "DINNER")[]) ?? [],
         isActive: props.product.isActive,
         categoryId: props.product.categoryId,
       }
@@ -41,12 +45,77 @@ const { handleSubmit, setFieldValue, values } = useForm({
         unit: "",
         mrp: 0,
         price: 0,
+        originalPrice: undefined,
+        markup: undefined,
+        markupType: "PERCENTAGE" as "PERCENTAGE" | "AMOUNT",
         imageUrl: "",
-        timeBoundSection: "",
+        timeBoundSections: [] as ("BREAKFAST" | "LUNCH" | "DINNER")[],
         isActive: true,
         categoryId: "",
       },
 });
+
+function toggleSection(sectionId: "BREAKFAST" | "LUNCH" | "DINNER") {
+  const current = (values.timeBoundSections as ("BREAKFAST" | "LUNCH" | "DINNER")[] | undefined) ?? [];
+  const index = current.indexOf(sectionId);
+  if (index >= 0) {
+    setFieldValue(
+      "timeBoundSections",
+      current.filter((id) => id !== sectionId),
+    );
+  } else {
+    setFieldValue("timeBoundSections", [...current, sectionId]);
+  }
+}
+
+function onOriginalPriceInput(e: Event) {
+  const raw = (e.target as HTMLInputElement).value;
+  const val = raw !== "" ? Number(raw) : undefined;
+  setFieldValue("originalPrice", val);
+  syncPriceFromMarkup(val, values.markup as number | undefined, values.markupType as "PERCENTAGE" | "AMOUNT" | undefined);
+}
+
+function onMarkupInput(e: Event) {
+  const raw = (e.target as HTMLInputElement).value;
+  const val = raw !== "" ? Number(raw) : undefined;
+  setFieldValue("markup", val);
+  syncPriceFromMarkup(values.originalPrice as number | undefined, val, values.markupType as "PERCENTAGE" | "AMOUNT" | undefined);
+}
+
+function setMarkupType(type: "PERCENTAGE" | "AMOUNT") {
+  setFieldValue("markupType", type);
+  syncPriceFromMarkup(values.originalPrice as number | undefined, values.markup as number | undefined, type);
+}
+
+function syncPriceFromMarkup(
+  origPrice?: number,
+  markupVal?: number,
+  type: "PERCENTAGE" | "AMOUNT" = "PERCENTAGE",
+) {
+  if (typeof origPrice === "number" && origPrice > 0 && typeof markupVal === "number" && markupVal >= 0) {
+    if (type === "PERCENTAGE") {
+      const computedPrice = Math.round(origPrice + (origPrice * markupVal) / 100);
+      setFieldValue("price", computedPrice);
+    } else {
+      const computedPrice = origPrice + markupVal;
+      setFieldValue("price", computedPrice);
+    }
+  }
+}
+
+function onSellingPriceInput(e: Event) {
+  const newPrice = Number((e.target as HTMLInputElement).value);
+  setFieldValue("price", newPrice);
+  const origPrice = values.originalPrice as number | undefined;
+  if (typeof origPrice === "number" && origPrice > 0 && newPrice >= origPrice) {
+    if (values.markupType === "AMOUNT") {
+      setFieldValue("markup", newPrice - origPrice);
+    } else {
+      const pct = Math.round(((newPrice - origPrice) / origPrice) * 100);
+      setFieldValue("markup", pct);
+    }
+  }
+}
 
 const submit = handleSubmit(async (formValues) => {
   busy.value = true;
@@ -148,51 +217,163 @@ async function upload(event: Event) {
         <ErrorMessage name="categoryId" class="text-xs text-red-400 font-medium" />
       </div>
 
-      <!-- Time-bound section -->
-      <div class="md:col-span-2 flex flex-col gap-1.5">
-        <label for="product-section" class="text-xs font-semibold text-slate-300">Time-bound section</label>
-        <Field
-          id="product-section"
-          name="timeBoundSection"
-          as="select"
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
-        >
-          <option value="">No section (always in catalog only)</option>
-          <option v-for="item in sections" :key="item.id" :value="item.id">
-            {{ item.title }} — {{ item.window }}
-          </option>
-        </Field>
+      <!-- Time-bound sections (Multi-select) -->
+      <div class="md:col-span-2 flex flex-col gap-2">
+        <span class="text-xs font-semibold text-slate-300">Time-bound Sections (Multi-select)</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <button
+            v-for="item in sections"
+            :key="item.id"
+            type="button"
+            @click="toggleSection(item.id as 'BREAKFAST' | 'LUNCH' | 'DINNER')"
+            class="flex items-start gap-2.5 p-3 rounded-xl border text-left transition duration-150 cursor-pointer select-none"
+            :class="
+              values.timeBoundSections?.includes(item.id as 'BREAKFAST' | 'LUNCH' | 'DINNER')
+                ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-sm shadow-amber-500/10'
+                : 'bg-slate-950/70 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-300'
+            "
+          >
+            <div
+              class="w-4 h-4 mt-0.5 rounded border flex items-center justify-center flex-shrink-0 transition-colors"
+              :class="
+                values.timeBoundSections?.includes(item.id as 'BREAKFAST' | 'LUNCH' | 'DINNER')
+                  ? 'bg-amber-500 border-amber-500 text-slate-950'
+                  : 'border-slate-700 bg-slate-900'
+              "
+            >
+              <svg
+                v-if="values.timeBoundSections?.includes(item.id as 'BREAKFAST' | 'LUNCH' | 'DINNER')"
+                class="w-3 h-3 stroke-[3]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-semibold block leading-tight">{{ item.title }}</span>
+              <span class="text-[11px] opacity-75 font-mono">{{ item.window }}</span>
+            </div>
+          </button>
+        </div>
         <p class="text-xs text-slate-500">
-          Tagged products get their own shelf in the customer app during this window. Leave unset to
-          keep the product out of every time-bound shelf.
+          Tagged products get their own shelf in the customer app during these active windows. Select all that apply.
         </p>
-        <ErrorMessage name="timeBoundSection" class="text-xs text-red-400 font-medium" />
+        <ErrorMessage name="timeBoundSections" class="text-xs text-red-400 font-medium" />
       </div>
 
-      <!-- MRP -->
-      <div class="flex flex-col gap-1.5">
-        <label for="product-mrp" class="text-xs font-semibold text-slate-300">MRP (in paise, e.g. 5000 = ₹50.00)</label>
-        <Field
-          id="product-mrp"
-          name="mrp"
-          type="number"
-          placeholder="5000"
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
-        />
-        <ErrorMessage name="mrp" class="text-xs text-red-400 font-medium" />
-      </div>
+      <!-- Pricing & Margins Section -->
+      <div class="md:col-span-2 p-4 sm:p-5 rounded-2xl bg-slate-950/60 border border-slate-800/80 flex flex-col gap-4">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800/60">
+          <span class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            Pricing & Margins
+          </span>
+          <span class="text-[11px] text-slate-400">All values in integer paise (₹1 = 100 paise)</span>
+        </div>
 
-      <!-- Price -->
-      <div class="flex flex-col gap-1.5">
-        <label for="product-price" class="text-xs font-semibold text-slate-300">Selling Price (in paise, e.g. 4500 = ₹45.00)</label>
-        <Field
-          id="product-price"
-          name="price"
-          type="number"
-          placeholder="4500"
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
-        />
-        <ErrorMessage name="price" class="text-xs text-red-400 font-medium" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- MRP -->
+          <div class="flex flex-col gap-1.5">
+            <label for="product-mrp" class="text-xs font-semibold text-slate-300">
+              MRP (Maximum Retail Price)
+            </label>
+            <Field
+              id="product-mrp"
+              name="mrp"
+              type="number"
+              placeholder="5000"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
+            />
+            <span v-if="typeof values.mrp === 'number' && values.mrp > 0" class="text-[11px] font-mono text-slate-400">
+              {{ formatCurrency(Number(values.mrp)) }}
+            </span>
+            <ErrorMessage name="mrp" class="text-xs text-red-400 font-medium" />
+          </div>
+
+          <!-- Cost / Original Price -->
+          <div class="flex flex-col gap-1.5">
+            <label for="product-original-price" class="text-xs font-semibold text-slate-300">
+              Cost / Original Price
+            </label>
+            <input
+              id="product-original-price"
+              type="number"
+              :value="values.originalPrice"
+              @input="onOriginalPriceInput"
+              placeholder="3500"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
+            />
+            <Field name="originalPrice" type="hidden" />
+            <span v-if="typeof values.originalPrice === 'number' && values.originalPrice > 0" class="text-[11px] font-mono text-slate-400">
+              {{ formatCurrency(Number(values.originalPrice)) }}
+            </span>
+            <ErrorMessage name="originalPrice" class="text-xs text-red-400 font-medium" />
+          </div>
+
+          <!-- Markup -->
+          <div class="flex flex-col gap-1.5">
+            <div class="flex items-center justify-between">
+              <label for="product-markup" class="text-xs font-semibold text-slate-300">
+                Markup
+              </label>
+              <div class="flex rounded-lg bg-slate-900 p-0.5 border border-slate-800 text-[10px] font-medium">
+                <button
+                  type="button"
+                  @click="setMarkupType('PERCENTAGE')"
+                  class="px-2 py-0.5 rounded transition cursor-pointer"
+                  :class="values.markupType === 'PERCENTAGE' ? 'bg-amber-500/20 text-amber-300 font-bold' : 'text-slate-400 hover:text-slate-200'"
+                >
+                  %
+                </button>
+                <button
+                  type="button"
+                  @click="setMarkupType('AMOUNT')"
+                  class="px-2 py-0.5 rounded transition cursor-pointer"
+                  :class="values.markupType === 'AMOUNT' ? 'bg-amber-500/20 text-amber-300 font-bold' : 'text-slate-400 hover:text-slate-200'"
+                >
+                  ₹ (paise)
+                </button>
+              </div>
+            </div>
+            <input
+              id="product-markup"
+              type="number"
+              :value="values.markup"
+              @input="onMarkupInput"
+              :placeholder="values.markupType === 'PERCENTAGE' ? '20 (%)' : '1000 (paise)'"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
+            />
+            <Field name="markup" type="hidden" />
+            <Field name="markupType" type="hidden" />
+            <span v-if="typeof values.markup === 'number' && values.markupType === 'AMOUNT'" class="text-[11px] font-mono text-slate-400">
+              {{ formatCurrency(Number(values.markup)) }}
+            </span>
+            <ErrorMessage name="markup" class="text-xs text-red-400 font-medium" />
+          </div>
+
+          <!-- Selling Price -->
+          <div class="flex flex-col gap-1.5">
+            <label for="product-price" class="text-xs font-semibold text-slate-300">
+              Selling Price
+            </label>
+            <input
+              id="product-price"
+              type="number"
+              :value="values.price"
+              @input="onSellingPriceInput"
+              placeholder="4500"
+              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-emerald-300 placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono font-semibold"
+            />
+            <Field name="price" type="hidden" />
+            <span v-if="typeof values.price === 'number' && values.price > 0" class="text-[11px] font-mono text-emerald-400 font-semibold">
+              {{ formatCurrency(Number(values.price)) }}
+            </span>
+            <ErrorMessage name="price" class="text-xs text-red-400 font-medium" />
+          </div>
+        </div>
       </div>
 
       <!-- Image Upload & Preview -->

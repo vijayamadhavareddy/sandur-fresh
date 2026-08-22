@@ -8,7 +8,7 @@ fragment ProductFields on ProductsSelectItem {
   price
   emoji
   imageUrl
-  timeBoundSection
+  timeBoundSections
   isActive
 }
 

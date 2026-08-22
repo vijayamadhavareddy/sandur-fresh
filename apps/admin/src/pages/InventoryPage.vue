@@ -49,7 +49,7 @@ const inventory = useQuery({
         <!-- Page Header -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
           <div>
-            <PageHeader title="Inventory Control" eyebrow="Stock Control" />
+            <PageHeader title="Inventory Management" eyebrow="" />
             <p class="text-sm text-slate-400 mt-1">Real-time dark store stock levels, replenishment alerts, and inventory adjustments.</p>
           </div>
         </div>

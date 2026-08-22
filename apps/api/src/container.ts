@@ -15,6 +15,7 @@ import { createNotificationsService } from "./modules/notifications/notification
 import { createOrdersHandlers } from "./modules/orders/orders.handlers";
 import { ordersRepo } from "./modules/orders/orders.repo";
 import { createOrdersService } from "./modules/orders/orders.service";
+import { createOtpProvider, type OtpProvider } from "./modules/otp";
 import { createProductsHandlers } from "./modules/products/products.handlers";
 import { productsRepo } from "./modules/products/products.repo";
 import { createProductsService } from "./modules/products/products.service";
@@ -23,14 +24,18 @@ import { usersRepo } from "./modules/users/users.repo";
 import { createUsersService } from "./modules/users/users.service";
 import { type PushSender, sendPush } from "./shared/push";
 
-export const createContainer = (targetDb: DbOrTx = db, options?: { sendPush?: PushSender }) => {
+export const createContainer = (
+  targetDb: DbOrTx = db,
+  options?: { sendPush?: PushSender; otpProvider?: OtpProvider },
+) => {
   const push = options?.sendPush ?? sendPush;
+  const otpProvider = options?.otpProvider ?? createOtpProvider();
   const notificationsService = createNotificationsService({
     db: targetDb,
     notificationsRepo,
     sendPush: push,
   });
-  const usersService = createUsersService({ db: targetDb, usersRepo });
+  const usersService = createUsersService({ db: targetDb, usersRepo, otpProvider });
   const productsService = createProductsService({ db: targetDb, productsRepo });
   const cartService = createCartService({ db: targetDb, cartRepo, productsRepo });
   const ordersService = createOrdersService({

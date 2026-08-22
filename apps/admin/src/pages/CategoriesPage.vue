@@ -31,7 +31,7 @@ async function saved() {
         <!-- Page Header -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
           <div>
-            <PageHeader title="Categories" eyebrow="Catalog Management" />
+            <PageHeader title="Categories" eyebrow="" />
             <p class="text-sm text-slate-400 mt-1">Organize product catalog categories and sort hierarchies.</p>
           </div>
 

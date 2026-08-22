@@ -12,6 +12,32 @@ const envSchema = z.object({
     .default(false)
     .transform((v) => v === true || v === "true"),
   DEV_OTP: z.string().min(4).max(8).default("0000"),
+  /** OTP provider implementation: "2factor" | "dev" | "mock" */
+  OTP_PROVIDER: z.enum(["2factor", "dev", "mock"]).optional(),
+  /** API key for the configured OTP provider (e.g. 2factor.in API key) */
+  OTP_API_KEY: z
+    .string()
+    .trim()
+    .optional()
+    .transform((value) => (value ? value : undefined)),
+  /** Optional fallback compatibility for TWO_FACTOR_API_KEY */
+  TWO_FACTOR_API_KEY: z
+    .string()
+    .trim()
+    .optional()
+    .transform((value) => (value ? value : undefined)),
+  /** Optional SMS template name or DLT template ID */
+  OTP_TEMPLATE: z
+    .string()
+    .trim()
+    .optional()
+    .transform((value) => (value ? value : undefined)),
+  /** Optional SMS sender header / DLT sender ID */
+  OTP_SENDER_ID: z
+    .string()
+    .trim()
+    .optional()
+    .transform((value) => (value ? value : undefined)),
   ADMIN_SESSION_COOKIE: z.string().min(1).default("sf_admin_session"),
   /** Secret phrase required during first-time initial admin account creation */
   ADMIN_SETUP_SECRET: z.string().min(6).default("sandur-admin-setup-secret"),

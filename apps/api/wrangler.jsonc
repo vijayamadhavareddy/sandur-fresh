@@ -25,7 +25,7 @@
     "ADMIN_SESSION_COOKIE": "sf_admin_session",
     "ADMIN_SETUP_SECRET": "sandur-admin-setup-secret",
     "DEV_OTP": "0000",
-    "CORS_ORIGIN": "https://aloha.binyoga.com"
+    "CORS_ORIGIN": "http://localhost:5173,http://localhost:4173,http://localhost:8788,https://sandur-fresh-admin.pages.dev,https://aloha.binyoga.com"
   },
   "observability": {
     "enabled": true

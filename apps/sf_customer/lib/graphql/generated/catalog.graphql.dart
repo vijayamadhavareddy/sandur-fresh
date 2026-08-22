@@ -12,7 +12,7 @@ class Fragment$ProductFields {
     required this.price,
     this.emoji,
     this.imageUrl,
-    this.timeBoundSection,
+    required this.timeBoundSections,
     required this.isActive,
     this.$__typename = 'ProductsSelectItem',
   });
@@ -27,7 +27,7 @@ class Fragment$ProductFields {
     final l$price = json['price'];
     final l$emoji = json['emoji'];
     final l$imageUrl = json['imageUrl'];
-    final l$timeBoundSection = json['timeBoundSection'];
+    final l$timeBoundSections = json['timeBoundSections'];
     final l$isActive = json['isActive'];
     final l$$__typename = json['__typename'];
     return Fragment$ProductFields(
@@ -40,7 +40,7 @@ class Fragment$ProductFields {
       price: (l$price as int),
       emoji: (l$emoji as String?),
       imageUrl: (l$imageUrl as String?),
-      timeBoundSection: (l$timeBoundSection as String?),
+      timeBoundSections: (l$timeBoundSections as String),
       isActive: (l$isActive as bool),
       $__typename: (l$$__typename as String),
     );
@@ -64,7 +64,7 @@ class Fragment$ProductFields {
 
   final String? imageUrl;
 
-  final String? timeBoundSection;
+  final String timeBoundSections;
 
   final bool isActive;
 
@@ -90,8 +90,8 @@ class Fragment$ProductFields {
     _resultData['emoji'] = l$emoji;
     final l$imageUrl = imageUrl;
     _resultData['imageUrl'] = l$imageUrl;
-    final l$timeBoundSection = timeBoundSection;
-    _resultData['timeBoundSection'] = l$timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
+    _resultData['timeBoundSections'] = l$timeBoundSections;
     final l$isActive = isActive;
     _resultData['isActive'] = l$isActive;
     final l$$__typename = $__typename;
@@ -110,7 +110,7 @@ class Fragment$ProductFields {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$$__typename = $__typename;
     return Object.hashAll([
@@ -123,7 +123,7 @@ class Fragment$ProductFields {
       l$price,
       l$emoji,
       l$imageUrl,
-      l$timeBoundSection,
+      l$timeBoundSections,
       l$isActive,
       l$$__typename,
     ]);
@@ -182,9 +182,9 @@ class Fragment$ProductFields {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -225,7 +225,7 @@ abstract class CopyWith$Fragment$ProductFields<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? $__typename,
   });
@@ -251,7 +251,7 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? $__typename = _undefined,
   }) => _then(
@@ -277,9 +277,10 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
       imageUrl: imageUrl == _undefined
           ? _instance.imageUrl
           : (imageUrl as String?),
-      timeBoundSection: timeBoundSection == _undefined
-          ? _instance.timeBoundSection
-          : (timeBoundSection as String?),
+      timeBoundSections:
+          timeBoundSections == _undefined || timeBoundSections == null
+          ? _instance.timeBoundSections
+          : (timeBoundSections as String),
       isActive: isActive == _undefined || isActive == null
           ? _instance.isActive
           : (isActive as bool),
@@ -306,7 +307,7 @@ class _CopyWithStubImpl$Fragment$ProductFields<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? $__typename,
   }) => _res;
@@ -387,7 +388,7 @@ const fragmentDefinitionProductFields = FragmentDefinitionNode(
         selectionSet: null,
       ),
       FieldNode(
-        name: NameNode(value: 'timeBoundSection'),
+        name: NameNode(value: 'timeBoundSections'),
         alias: null,
         arguments: [],
         directives: [],

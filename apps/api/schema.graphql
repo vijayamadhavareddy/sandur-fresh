@@ -395,9 +395,14 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -407,6 +412,14 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
   updatedAt: String!
   category(where: CategoriesFilters): CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
+}
+
+enum ProductsMarkupTypeEnum {
+  """Value: PERCENTAGE"""
+  PERCENTAGE
+
+  """Value: AMOUNT"""
+  AMOUNT
 }
 
 type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation {
@@ -428,9 +441,14 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryR
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -472,9 +490,14 @@ type CartItemsProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -505,9 +528,14 @@ type CartItemsProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -571,9 +599,14 @@ type CartItemsProductRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -753,9 +786,14 @@ type CartsStoreRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -786,9 +824,14 @@ type CartsStoreRelationInventoryRelationProductRelationCategoryRelationProductsR
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -844,9 +887,14 @@ type CartsItemsRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -877,9 +925,14 @@ type CartsItemsRelationProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -943,9 +996,14 @@ type CartsItemsRelationProductRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -986,9 +1044,14 @@ type CategoriesProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1064,9 +1127,14 @@ type CategoriesProductsRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1268,9 +1336,14 @@ type InventoryProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1301,9 +1374,14 @@ type InventoryProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1402,9 +1480,14 @@ type InventoryAdjustmentsInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1435,9 +1518,14 @@ type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelationProduct
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1746,9 +1834,14 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1779,9 +1872,14 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategor
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1905,9 +2003,14 @@ type OrderItemsProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -1938,9 +2041,14 @@ type OrderItemsProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2004,9 +2112,14 @@ type OrderItemsProductRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2244,9 +2357,14 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2277,9 +2395,14 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2428,9 +2551,14 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2461,9 +2589,14 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2527,9 +2660,14 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2798,9 +2936,14 @@ type OrdersStoreRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2831,9 +2974,14 @@ type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationProducts
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -2982,9 +3130,14 @@ type OrdersItemsRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3015,9 +3168,14 @@ type OrdersItemsRelationProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3081,9 +3239,14 @@ type OrdersItemsRelationProductRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3154,9 +3317,14 @@ type ProductsSelectItem {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3187,9 +3355,14 @@ type ProductsCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3253,9 +3426,14 @@ type ProductsInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3273,9 +3451,14 @@ type ProductsItem {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3450,9 +3633,14 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3483,9 +3671,14 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelatio
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3582,9 +3775,14 @@ type StoresInventoryRelationProductRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -3615,9 +3813,14 @@ type StoresInventoryRelationProductRelationCategoryRelationProductsRelation {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String!
   isActive: Boolean!
 
   """Date"""
@@ -8807,9 +9010,14 @@ input ProductsInsertInput {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String
   isActive: Boolean
 
   """Date"""
@@ -8827,9 +9035,14 @@ input ProductsUpdateInput {
   unit: String
   mrp: Int
   price: Int
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
   emoji: String
   imageUrl: String
-  timeBoundSection: String
+
+  """JSON"""
+  timeBoundSections: String
   isActive: Boolean
 
   """Date"""
@@ -8847,9 +9060,12 @@ input ProductsFilters {
   unit: ProductsUnitFilters
   mrp: ProductsMrpFilters
   price: ProductsPriceFilters
+  originalPrice: ProductsOriginalPriceFilters
+  markup: ProductsMarkupFilters
+  markupType: ProductsMarkupTypeFilters
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
-  timeBoundSection: ProductsTimeBoundSectionFilters
+  timeBoundSections: ProductsTimeBoundSectionsFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -9157,6 +9373,135 @@ input ProductsPricefiltersOr {
   isNotNull: Boolean
 }
 
+input ProductsOriginalPriceFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsOriginalPricefiltersOr!]
+}
+
+input ProductsOriginalPricefiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsMarkupFilters {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsMarkupfiltersOr!]
+}
+
+input ProductsMarkupfiltersOr {
+  eq: Int
+  ne: Int
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Int!]
+
+  """Array<undefined>"""
+  notInArray: [Int!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsMarkupTypeFilters {
+  eq: ProductsMarkupTypeEnum
+  ne: ProductsMarkupTypeEnum
+  lt: ProductsMarkupTypeEnum
+  lte: ProductsMarkupTypeEnum
+  gt: ProductsMarkupTypeEnum
+  gte: ProductsMarkupTypeEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [ProductsMarkupTypeEnum!]
+
+  """Array<undefined>"""
+  notInArray: [ProductsMarkupTypeEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsMarkupTypefiltersOr!]
+}
+
+input ProductsMarkupTypefiltersOr {
+  eq: ProductsMarkupTypeEnum
+  ne: ProductsMarkupTypeEnum
+  lt: ProductsMarkupTypeEnum
+  lte: ProductsMarkupTypeEnum
+  gt: ProductsMarkupTypeEnum
+  gte: ProductsMarkupTypeEnum
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [ProductsMarkupTypeEnum!]
+
+  """Array<undefined>"""
+  notInArray: [ProductsMarkupTypeEnum!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
 input ProductsEmojiFilters {
   eq: String
   ne: String
@@ -9243,44 +9588,66 @@ input ProductsImageUrlfiltersOr {
   isNotNull: Boolean
 }
 
-input ProductsTimeBoundSectionFilters {
+input ProductsTimeBoundSectionsFilters {
+  """JSON"""
   eq: String
+
+  """JSON"""
   ne: String
+
+  """JSON"""
   lt: String
+
+  """JSON"""
   lte: String
+
+  """JSON"""
   gt: String
+
+  """JSON"""
   gte: String
   like: String
   notLike: String
   ilike: String
   notIlike: String
 
-  """Array<undefined>"""
+  """Array<JSON>"""
   inArray: [String!]
 
-  """Array<undefined>"""
+  """Array<JSON>"""
   notInArray: [String!]
   isNull: Boolean
   isNotNull: Boolean
-  OR: [ProductsTimeBoundSectionfiltersOr!]
+  OR: [ProductsTimeBoundSectionsfiltersOr!]
 }
 
-input ProductsTimeBoundSectionfiltersOr {
+input ProductsTimeBoundSectionsfiltersOr {
+  """JSON"""
   eq: String
+
+  """JSON"""
   ne: String
+
+  """JSON"""
   lt: String
+
+  """JSON"""
   lte: String
+
+  """JSON"""
   gt: String
+
+  """JSON"""
   gte: String
   like: String
   notLike: String
   ilike: String
   notIlike: String
 
-  """Array<undefined>"""
+  """Array<JSON>"""
   inArray: [String!]
 
-  """Array<undefined>"""
+  """Array<JSON>"""
   notInArray: [String!]
   isNull: Boolean
   isNotNull: Boolean
@@ -9467,9 +9834,12 @@ input ProductsFiltersOr {
   unit: ProductsUnitFilters
   mrp: ProductsMrpFilters
   price: ProductsPriceFilters
+  originalPrice: ProductsOriginalPriceFilters
+  markup: ProductsMarkupFilters
+  markupType: ProductsMarkupTypeFilters
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
-  timeBoundSection: ProductsTimeBoundSectionFilters
+  timeBoundSections: ProductsTimeBoundSectionsFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -9483,9 +9853,12 @@ input ProductsOrderBy {
   unit: InnerOrder
   mrp: InnerOrder
   price: InnerOrder
+  originalPrice: InnerOrder
+  markup: InnerOrder
+  markupType: InnerOrder
   emoji: InnerOrder
   imageUrl: InnerOrder
-  timeBoundSection: InnerOrder
+  timeBoundSections: InnerOrder
   isActive: InnerOrder
   createdAt: InnerOrder
   updatedAt: InnerOrder
@@ -11406,13 +11779,21 @@ type AdminProduct {
   unit: String!
   mrp: Int!
   price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: MarkupType
   emoji: String
   imageUrl: String
-  timeBoundSection: TimeBoundSectionId
+  timeBoundSections: [TimeBoundSectionId!]!
   isActive: Boolean!
   category: AdminCategory!
   createdAt: String!
   updatedAt: String!
+}
+
+enum MarkupType {
+  PERCENTAGE
+  AMOUNT
 }
 
 type AdminCategory {
@@ -11641,8 +12022,8 @@ type Mutation {
   adminLogout: Boolean!
   registerAdminDevice(fid: String!, userAgent: String): Boolean!
   unregisterAdminDevice(fid: String!): Boolean!
-  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, emoji: String, imageUrl: String, timeBoundSection: TimeBoundSectionId, isActive: Boolean): AdminProduct!
-  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, emoji: String, imageUrl: String, timeBoundSection: TimeBoundSectionId, isActive: Boolean): AdminProduct!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], isActive: Boolean): AdminProduct!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], isActive: Boolean): AdminProduct!
   createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
   updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
   createAdminStore(name: String!, type: AdminStoreType, partnerName: String, contactPhone: String, contactEmail: String, commissionPct: Int, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!

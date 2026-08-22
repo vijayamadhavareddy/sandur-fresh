@@ -2,10 +2,9 @@ import { request, uploadProductImage } from "@/api/client";
 import { CreateAdminProductDocument, UpdateAdminProductDocument } from "@/api/generated/graphql";
 import type { ProductFormValues } from "./validation";
 
-/** The form uses "" for "no section"; the API expects null to clear the tag. */
-const toVariables = ({ timeBoundSection, ...rest }: ProductFormValues) => ({
-  ...rest,
-  timeBoundSection: timeBoundSection === "" ? null : timeBoundSection,
+const toVariables = (input: ProductFormValues) => ({
+  ...input,
+  timeBoundSections: input.timeBoundSections ?? [],
 });
 
 export const createProduct = (input: ProductFormValues) =>

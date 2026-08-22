@@ -33,7 +33,7 @@ const sectionTitle = (id: string) =>
         <!-- Page Header Bar -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
           <div>
-            <PageHeader title="Product Catalog" eyebrow="Catalog Management" />
+            <PageHeader title="Product Catalog" eyebrow="" />
             <p class="text-sm text-slate-400 mt-1">Manage dark store inventory items, pricing, categories, and stock availability.</p>
           </div>
 
@@ -166,18 +166,31 @@ const sectionTitle = (id: string) =>
                   </td>
 
                   <td class="py-3.5 px-4">
-                    <span
-                      v-if="product.timeBoundSection"
-                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30"
-                    >
-                      {{ sectionTitle(product.timeBoundSection) }}
-                    </span>
+                    <div v-if="product.timeBoundSections?.length" class="flex flex-wrap gap-1">
+                      <span
+                        v-for="sec in product.timeBoundSections"
+                        :key="sec"
+                        class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30"
+                      >
+                        {{ sectionTitle(sec) }}
+                      </span>
+                    </div>
                     <span v-else class="text-[11px] text-slate-500">—</span>
                   </td>
 
                   <td class="py-3.5 px-4 font-mono text-slate-300 text-[11px]">{{ product.unit }}</td>
 
-                  <td class="py-3.5 px-4 font-mono text-emerald-400 font-bold">{{ formatCurrency(product.price) }}</td>
+                  <td class="py-3.5 px-4">
+                    <div class="flex flex-col">
+                      <span class="font-mono text-emerald-400 font-bold text-xs">{{ formatCurrency(product.price) }}</span>
+                      <span v-if="product.originalPrice" class="font-mono text-[10px] text-slate-400">
+                        Cost: {{ formatCurrency(product.originalPrice) }}
+                        <span v-if="product.markup !== undefined && product.markup !== null" class="text-amber-400/90 font-sans">
+                          ({{ product.markupType === 'AMOUNT' ? `+${formatCurrency(product.markup)}` : `+${product.markup}%` }})
+                        </span>
+                      </span>
+                    </div>
+                  </td>
 
                   <td class="py-3.5 px-4">
                     <span

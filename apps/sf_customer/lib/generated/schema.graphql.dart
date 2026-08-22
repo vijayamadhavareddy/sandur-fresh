@@ -45304,6 +45304,10651 @@ class _CopyWithStubImpl$Input$CategoriesOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 }
 
+class Input$DeviceRegistrationsInsertInput {
+  factory Input$DeviceRegistrationsInsertInput({
+    String? id,
+    required String userId,
+    required String target,
+    required Enum$DeviceRegistrationsKindEnum kind,
+    required Enum$DeviceRegistrationsPlatformEnum platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  }) => Input$DeviceRegistrationsInsertInput._({
+    if (id != null) r'id': id,
+    r'userId': userId,
+    r'target': target,
+    r'kind': kind,
+    r'platform': platform,
+    if (userAgent != null) r'userAgent': userAgent,
+    if (createdAt != null) r'createdAt': createdAt,
+    if (updatedAt != null) r'updatedAt': updatedAt,
+  });
+
+  Input$DeviceRegistrationsInsertInput._(this._$data);
+
+  factory Input$DeviceRegistrationsInsertInput.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    final l$userId = data['userId'];
+    result$data['userId'] = (l$userId as String);
+    final l$target = data['target'];
+    result$data['target'] = (l$target as String);
+    final l$kind = data['kind'];
+    result$data['kind'] = fromJson$Enum$DeviceRegistrationsKindEnum(
+      (l$kind as String),
+    );
+    final l$platform = data['platform'];
+    result$data['platform'] = fromJson$Enum$DeviceRegistrationsPlatformEnum(
+      (l$platform as String),
+    );
+    if (data.containsKey('userAgent')) {
+      final l$userAgent = data['userAgent'];
+      result$data['userAgent'] = (l$userAgent as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = (l$createdAt as String?);
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = (l$updatedAt as String?);
+    }
+    return Input$DeviceRegistrationsInsertInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String get userId => (_$data['userId'] as String);
+
+  String get target => (_$data['target'] as String);
+
+  Enum$DeviceRegistrationsKindEnum get kind =>
+      (_$data['kind'] as Enum$DeviceRegistrationsKindEnum);
+
+  Enum$DeviceRegistrationsPlatformEnum get platform =>
+      (_$data['platform'] as Enum$DeviceRegistrationsPlatformEnum);
+
+  String? get userAgent => (_$data['userAgent'] as String?);
+
+  String? get createdAt => (_$data['createdAt'] as String?);
+
+  String? get updatedAt => (_$data['updatedAt'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    final l$userId = userId;
+    result$data['userId'] = l$userId;
+    final l$target = target;
+    result$data['target'] = l$target;
+    final l$kind = kind;
+    result$data['kind'] = toJson$Enum$DeviceRegistrationsKindEnum(l$kind);
+    final l$platform = platform;
+    result$data['platform'] = toJson$Enum$DeviceRegistrationsPlatformEnum(
+      l$platform,
+    );
+    if (_$data.containsKey('userAgent')) {
+      final l$userAgent = userAgent;
+      result$data['userAgent'] = l$userAgent;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt;
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsInsertInput<
+    Input$DeviceRegistrationsInsertInput
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsInsertInput(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsInsertInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$target = target;
+    final lOther$target = other.target;
+    if (l$target != lOther$target) {
+      return false;
+    }
+    final l$kind = kind;
+    final lOther$kind = other.kind;
+    if (l$kind != lOther$kind) {
+      return false;
+    }
+    final l$platform = platform;
+    final lOther$platform = other.platform;
+    if (l$platform != lOther$platform) {
+      return false;
+    }
+    final l$userAgent = userAgent;
+    final lOther$userAgent = other.userAgent;
+    if (_$data.containsKey('userAgent') !=
+        other._$data.containsKey('userAgent')) {
+      return false;
+    }
+    if (l$userAgent != lOther$userAgent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$target = target;
+    final l$kind = kind;
+    final l$platform = platform;
+    final l$userAgent = userAgent;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      l$userId,
+      l$target,
+      l$kind,
+      l$platform,
+      _$data.containsKey('userAgent') ? l$userAgent : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsInsertInput<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsInsertInput(
+    Input$DeviceRegistrationsInsertInput instance,
+    TRes Function(Input$DeviceRegistrationsInsertInput) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsInsertInput;
+
+  factory CopyWith$Input$DeviceRegistrationsInsertInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsInsertInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? target,
+    Enum$DeviceRegistrationsKindEnum? kind,
+    Enum$DeviceRegistrationsPlatformEnum? platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsInsertInput<TRes>
+    implements CopyWith$Input$DeviceRegistrationsInsertInput<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsInsertInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsInsertInput _instance;
+
+  final TRes Function(Input$DeviceRegistrationsInsertInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? target = _undefined,
+    Object? kind = _undefined,
+    Object? platform = _undefined,
+    Object? userAgent = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsInsertInput._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as String?),
+      if (userId != _undefined && userId != null) 'userId': (userId as String),
+      if (target != _undefined && target != null) 'target': (target as String),
+      if (kind != _undefined && kind != null)
+        'kind': (kind as Enum$DeviceRegistrationsKindEnum),
+      if (platform != _undefined && platform != null)
+        'platform': (platform as Enum$DeviceRegistrationsPlatformEnum),
+      if (userAgent != _undefined) 'userAgent': (userAgent as String?),
+      if (createdAt != _undefined) 'createdAt': (createdAt as String?),
+      if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsInsertInput<TRes>
+    implements CopyWith$Input$DeviceRegistrationsInsertInput<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsInsertInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? target,
+    Enum$DeviceRegistrationsKindEnum? kind,
+    Enum$DeviceRegistrationsPlatformEnum? platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsUpdateInput {
+  factory Input$DeviceRegistrationsUpdateInput({
+    String? id,
+    String? userId,
+    String? target,
+    Enum$DeviceRegistrationsKindEnum? kind,
+    Enum$DeviceRegistrationsPlatformEnum? platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  }) => Input$DeviceRegistrationsUpdateInput._({
+    if (id != null) r'id': id,
+    if (userId != null) r'userId': userId,
+    if (target != null) r'target': target,
+    if (kind != null) r'kind': kind,
+    if (platform != null) r'platform': platform,
+    if (userAgent != null) r'userAgent': userAgent,
+    if (createdAt != null) r'createdAt': createdAt,
+    if (updatedAt != null) r'updatedAt': updatedAt,
+  });
+
+  Input$DeviceRegistrationsUpdateInput._(this._$data);
+
+  factory Input$DeviceRegistrationsUpdateInput.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = (l$userId as String?);
+    }
+    if (data.containsKey('target')) {
+      final l$target = data['target'];
+      result$data['target'] = (l$target as String?);
+    }
+    if (data.containsKey('kind')) {
+      final l$kind = data['kind'];
+      result$data['kind'] = l$kind == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$kind as String));
+    }
+    if (data.containsKey('platform')) {
+      final l$platform = data['platform'];
+      result$data['platform'] = l$platform == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum(
+              (l$platform as String),
+            );
+    }
+    if (data.containsKey('userAgent')) {
+      final l$userAgent = data['userAgent'];
+      result$data['userAgent'] = (l$userAgent as String?);
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = (l$createdAt as String?);
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = (l$updatedAt as String?);
+    }
+    return Input$DeviceRegistrationsUpdateInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get id => (_$data['id'] as String?);
+
+  String? get userId => (_$data['userId'] as String?);
+
+  String? get target => (_$data['target'] as String?);
+
+  Enum$DeviceRegistrationsKindEnum? get kind =>
+      (_$data['kind'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get platform =>
+      (_$data['platform'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  String? get userAgent => (_$data['userAgent'] as String?);
+
+  String? get createdAt => (_$data['createdAt'] as String?);
+
+  String? get updatedAt => (_$data['updatedAt'] as String?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId;
+    }
+    if (_$data.containsKey('target')) {
+      final l$target = target;
+      result$data['target'] = l$target;
+    }
+    if (_$data.containsKey('kind')) {
+      final l$kind = kind;
+      result$data['kind'] = l$kind == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$kind);
+    }
+    if (_$data.containsKey('platform')) {
+      final l$platform = platform;
+      result$data['platform'] = l$platform == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$platform);
+    }
+    if (_$data.containsKey('userAgent')) {
+      final l$userAgent = userAgent;
+      result$data['userAgent'] = l$userAgent;
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt;
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUpdateInput<
+    Input$DeviceRegistrationsUpdateInput
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsUpdateInput(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUpdateInput ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$target = target;
+    final lOther$target = other.target;
+    if (_$data.containsKey('target') != other._$data.containsKey('target')) {
+      return false;
+    }
+    if (l$target != lOther$target) {
+      return false;
+    }
+    final l$kind = kind;
+    final lOther$kind = other.kind;
+    if (_$data.containsKey('kind') != other._$data.containsKey('kind')) {
+      return false;
+    }
+    if (l$kind != lOther$kind) {
+      return false;
+    }
+    final l$platform = platform;
+    final lOther$platform = other.platform;
+    if (_$data.containsKey('platform') !=
+        other._$data.containsKey('platform')) {
+      return false;
+    }
+    if (l$platform != lOther$platform) {
+      return false;
+    }
+    final l$userAgent = userAgent;
+    final lOther$userAgent = other.userAgent;
+    if (_$data.containsKey('userAgent') !=
+        other._$data.containsKey('userAgent')) {
+      return false;
+    }
+    if (l$userAgent != lOther$userAgent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$target = target;
+    final l$kind = kind;
+    final l$platform = platform;
+    final l$userAgent = userAgent;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('target') ? l$target : const {},
+      _$data.containsKey('kind') ? l$kind : const {},
+      _$data.containsKey('platform') ? l$platform : const {},
+      _$data.containsKey('userAgent') ? l$userAgent : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUpdateInput<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUpdateInput(
+    Input$DeviceRegistrationsUpdateInput instance,
+    TRes Function(Input$DeviceRegistrationsUpdateInput) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUpdateInput;
+
+  factory CopyWith$Input$DeviceRegistrationsUpdateInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUpdateInput;
+
+  TRes call({
+    String? id,
+    String? userId,
+    String? target,
+    Enum$DeviceRegistrationsKindEnum? kind,
+    Enum$DeviceRegistrationsPlatformEnum? platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUpdateInput<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdateInput<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUpdateInput(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUpdateInput _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUpdateInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? target = _undefined,
+    Object? kind = _undefined,
+    Object? platform = _undefined,
+    Object? userAgent = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUpdateInput._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as String?),
+      if (userId != _undefined) 'userId': (userId as String?),
+      if (target != _undefined) 'target': (target as String?),
+      if (kind != _undefined)
+        'kind': (kind as Enum$DeviceRegistrationsKindEnum?),
+      if (platform != _undefined)
+        'platform': (platform as Enum$DeviceRegistrationsPlatformEnum?),
+      if (userAgent != _undefined) 'userAgent': (userAgent as String?),
+      if (createdAt != _undefined) 'createdAt': (createdAt as String?),
+      if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUpdateInput<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdateInput<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUpdateInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? userId,
+    String? target,
+    Enum$DeviceRegistrationsKindEnum? kind,
+    Enum$DeviceRegistrationsPlatformEnum? platform,
+    String? userAgent,
+    String? createdAt,
+    String? updatedAt,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsFilters {
+  factory Input$DeviceRegistrationsFilters({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+    List<Input$DeviceRegistrationsFiltersOr>? OR,
+  }) => Input$DeviceRegistrationsFilters._({
+    if (id != null) r'id': id,
+    if (userId != null) r'userId': userId,
+    if (target != null) r'target': target,
+    if (kind != null) r'kind': kind,
+    if (platform != null) r'platform': platform,
+    if (userAgent != null) r'userAgent': userAgent,
+    if (createdAt != null) r'createdAt': createdAt,
+    if (updatedAt != null) r'updatedAt': updatedAt,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$DeviceRegistrationsIdFilters.fromJson(
+              (l$id as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : Input$DeviceRegistrationsUserIdFilters.fromJson(
+              (l$userId as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('target')) {
+      final l$target = data['target'];
+      result$data['target'] = l$target == null
+          ? null
+          : Input$DeviceRegistrationsTargetFilters.fromJson(
+              (l$target as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('kind')) {
+      final l$kind = data['kind'];
+      result$data['kind'] = l$kind == null
+          ? null
+          : Input$DeviceRegistrationsKindFilters.fromJson(
+              (l$kind as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('platform')) {
+      final l$platform = data['platform'];
+      result$data['platform'] = l$platform == null
+          ? null
+          : Input$DeviceRegistrationsPlatformFilters.fromJson(
+              (l$platform as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('userAgent')) {
+      final l$userAgent = data['userAgent'];
+      result$data['userAgent'] = l$userAgent == null
+          ? null
+          : Input$DeviceRegistrationsUserAgentFilters.fromJson(
+              (l$userAgent as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DeviceRegistrationsCreatedAtFilters.fromJson(
+              (l$createdAt as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$DeviceRegistrationsUpdatedAtFilters.fromJson(
+              (l$updatedAt as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsFiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$DeviceRegistrationsIdFilters? get id =>
+      (_$data['id'] as Input$DeviceRegistrationsIdFilters?);
+
+  Input$DeviceRegistrationsUserIdFilters? get userId =>
+      (_$data['userId'] as Input$DeviceRegistrationsUserIdFilters?);
+
+  Input$DeviceRegistrationsTargetFilters? get target =>
+      (_$data['target'] as Input$DeviceRegistrationsTargetFilters?);
+
+  Input$DeviceRegistrationsKindFilters? get kind =>
+      (_$data['kind'] as Input$DeviceRegistrationsKindFilters?);
+
+  Input$DeviceRegistrationsPlatformFilters? get platform =>
+      (_$data['platform'] as Input$DeviceRegistrationsPlatformFilters?);
+
+  Input$DeviceRegistrationsUserAgentFilters? get userAgent =>
+      (_$data['userAgent'] as Input$DeviceRegistrationsUserAgentFilters?);
+
+  Input$DeviceRegistrationsCreatedAtFilters? get createdAt =>
+      (_$data['createdAt'] as Input$DeviceRegistrationsCreatedAtFilters?);
+
+  Input$DeviceRegistrationsUpdatedAtFilters? get updatedAt =>
+      (_$data['updatedAt'] as Input$DeviceRegistrationsUpdatedAtFilters?);
+
+  List<Input$DeviceRegistrationsFiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsFiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId?.toJson();
+    }
+    if (_$data.containsKey('target')) {
+      final l$target = target;
+      result$data['target'] = l$target?.toJson();
+    }
+    if (_$data.containsKey('kind')) {
+      final l$kind = kind;
+      result$data['kind'] = l$kind?.toJson();
+    }
+    if (_$data.containsKey('platform')) {
+      final l$platform = platform;
+      result$data['platform'] = l$platform?.toJson();
+    }
+    if (_$data.containsKey('userAgent')) {
+      final l$userAgent = userAgent;
+      result$data['userAgent'] = l$userAgent?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsFilters<Input$DeviceRegistrationsFilters>
+  get copyWith => CopyWith$Input$DeviceRegistrationsFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$target = target;
+    final lOther$target = other.target;
+    if (_$data.containsKey('target') != other._$data.containsKey('target')) {
+      return false;
+    }
+    if (l$target != lOther$target) {
+      return false;
+    }
+    final l$kind = kind;
+    final lOther$kind = other.kind;
+    if (_$data.containsKey('kind') != other._$data.containsKey('kind')) {
+      return false;
+    }
+    if (l$kind != lOther$kind) {
+      return false;
+    }
+    final l$platform = platform;
+    final lOther$platform = other.platform;
+    if (_$data.containsKey('platform') !=
+        other._$data.containsKey('platform')) {
+      return false;
+    }
+    if (l$platform != lOther$platform) {
+      return false;
+    }
+    final l$userAgent = userAgent;
+    final lOther$userAgent = other.userAgent;
+    if (_$data.containsKey('userAgent') !=
+        other._$data.containsKey('userAgent')) {
+      return false;
+    }
+    if (l$userAgent != lOther$userAgent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$target = target;
+    final l$kind = kind;
+    final l$platform = platform;
+    final l$userAgent = userAgent;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('target') ? l$target : const {},
+      _$data.containsKey('kind') ? l$kind : const {},
+      _$data.containsKey('platform') ? l$platform : const {},
+      _$data.containsKey('userAgent') ? l$userAgent : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsFilters(
+    Input$DeviceRegistrationsFilters instance,
+    TRes Function(Input$DeviceRegistrationsFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsFilters;
+
+  TRes call({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+    List<Input$DeviceRegistrationsFiltersOr>? OR,
+  });
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id;
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId;
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target;
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind;
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform;
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent;
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt;
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt;
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsFiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsFiltersOr<
+          Input$DeviceRegistrationsFiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsFilters(this._instance, this._then);
+
+  final Input$DeviceRegistrationsFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? target = _undefined,
+    Object? kind = _undefined,
+    Object? platform = _undefined,
+    Object? userAgent = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsFilters._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as Input$DeviceRegistrationsIdFilters?),
+      if (userId != _undefined)
+        'userId': (userId as Input$DeviceRegistrationsUserIdFilters?),
+      if (target != _undefined)
+        'target': (target as Input$DeviceRegistrationsTargetFilters?),
+      if (kind != _undefined)
+        'kind': (kind as Input$DeviceRegistrationsKindFilters?),
+      if (platform != _undefined)
+        'platform': (platform as Input$DeviceRegistrationsPlatformFilters?),
+      if (userAgent != _undefined)
+        'userAgent': (userAgent as Input$DeviceRegistrationsUserAgentFilters?),
+      if (createdAt != _undefined)
+        'createdAt': (createdAt as Input$DeviceRegistrationsCreatedAtFilters?),
+      if (updatedAt != _undefined)
+        'updatedAt': (updatedAt as Input$DeviceRegistrationsUpdatedAtFilters?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsFiltersOr>?),
+    }),
+  );
+
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$DeviceRegistrationsIdFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsIdFilters(
+            local$id,
+            (e) => call(id: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId {
+    final local$userId = _instance.userId;
+    return local$userId == null
+        ? CopyWith$Input$DeviceRegistrationsUserIdFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsUserIdFilters(
+            local$userId,
+            (e) => call(userId: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target {
+    final local$target = _instance.target;
+    return local$target == null
+        ? CopyWith$Input$DeviceRegistrationsTargetFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsTargetFilters(
+            local$target,
+            (e) => call(target: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind {
+    final local$kind = _instance.kind;
+    return local$kind == null
+        ? CopyWith$Input$DeviceRegistrationsKindFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsKindFilters(
+            local$kind,
+            (e) => call(kind: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform {
+    final local$platform = _instance.platform;
+    return local$platform == null
+        ? CopyWith$Input$DeviceRegistrationsPlatformFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsPlatformFilters(
+            local$platform,
+            (e) => call(platform: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent {
+    final local$userAgent = _instance.userAgent;
+    return local$userAgent == null
+        ? CopyWith$Input$DeviceRegistrationsUserAgentFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsUserAgentFilters(
+            local$userAgent,
+            (e) => call(userAgent: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DeviceRegistrationsCreatedAtFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsCreatedAtFilters(
+            local$createdAt,
+            (e) => call(createdAt: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$DeviceRegistrationsUpdatedAtFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsUpdatedAtFilters(
+            local$updatedAt,
+            (e) => call(updatedAt: e),
+          );
+  }
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsFiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsFiltersOr<
+          Input$DeviceRegistrationsFiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsFiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsFilters(this._res);
+
+  TRes _res;
+
+  call({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+    List<Input$DeviceRegistrationsFiltersOr>? OR,
+  }) => _res;
+
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id =>
+      CopyWith$Input$DeviceRegistrationsIdFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId =>
+      CopyWith$Input$DeviceRegistrationsUserIdFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target =>
+      CopyWith$Input$DeviceRegistrationsTargetFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind =>
+      CopyWith$Input$DeviceRegistrationsKindFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform =>
+      CopyWith$Input$DeviceRegistrationsPlatformFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent =>
+      CopyWith$Input$DeviceRegistrationsUserAgentFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt =>
+      CopyWith$Input$DeviceRegistrationsCreatedAtFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt =>
+      CopyWith$Input$DeviceRegistrationsUpdatedAtFilters.stub(_res);
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsIdFilters {
+  factory Input$DeviceRegistrationsIdFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsIdfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsIdFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsIdFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsIdFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsIdfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsIdFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsIdfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsIdfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsIdFilters<
+    Input$DeviceRegistrationsIdFilters
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsIdFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsIdFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsIdFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsIdFilters(
+    Input$DeviceRegistrationsIdFilters instance,
+    TRes Function(Input$DeviceRegistrationsIdFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsIdFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsIdFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsIdFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsIdfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsIdfiltersOr<
+          Input$DeviceRegistrationsIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsIdFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsIdFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsIdFilters(this._instance, this._then);
+
+  final Input$DeviceRegistrationsIdFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsIdFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsIdFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsIdfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsIdfiltersOr<
+          Input$DeviceRegistrationsIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsIdfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsIdFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsIdFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsIdFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsIdfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsIdfiltersOr {
+  factory Input$DeviceRegistrationsIdfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsIdfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsIdfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsIdfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsIdfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsIdfiltersOr<
+    Input$DeviceRegistrationsIdfiltersOr
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsIdfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsIdfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsIdfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsIdfiltersOr(
+    Input$DeviceRegistrationsIdfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsIdfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsIdfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsIdfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsIdfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsIdfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsIdfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsIdfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsIdfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsIdfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsIdfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsIdfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsIdfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsIdfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsUserIdFilters {
+  factory Input$DeviceRegistrationsUserIdFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserIdfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsUserIdFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsUserIdFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsUserIdFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsUserIdfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsUserIdFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsUserIdfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsUserIdfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<
+    Input$DeviceRegistrationsUserIdFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUserIdFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUserIdFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUserIdFilters(
+    Input$DeviceRegistrationsUserIdFilters instance,
+    TRes Function(Input$DeviceRegistrationsUserIdFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUserIdFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsUserIdFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUserIdFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserIdfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUserIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<
+          Input$DeviceRegistrationsUserIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUserIdFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUserIdFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUserIdFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUserIdFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUserIdFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsUserIdfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUserIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<
+          Input$DeviceRegistrationsUserIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsUserIdfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUserIdFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUserIdFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserIdfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsUserIdfiltersOr {
+  factory Input$DeviceRegistrationsUserIdfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsUserIdfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsUserIdfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsUserIdfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsUserIdfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<
+    Input$DeviceRegistrationsUserIdfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUserIdfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUserIdfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUserIdfiltersOr(
+    Input$DeviceRegistrationsUserIdfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsUserIdfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUserIdfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsUserIdfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUserIdfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUserIdfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUserIdfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUserIdfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUserIdfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUserIdfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUserIdfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserIdfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUserIdfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsTargetFilters {
+  factory Input$DeviceRegistrationsTargetFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsTargetfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsTargetFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsTargetFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsTargetFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsTargetfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsTargetFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsTargetfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsTargetfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsTargetFilters<
+    Input$DeviceRegistrationsTargetFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsTargetFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsTargetFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsTargetFilters(
+    Input$DeviceRegistrationsTargetFilters instance,
+    TRes Function(Input$DeviceRegistrationsTargetFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsTargetFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsTargetFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsTargetFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsTargetfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsTargetfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsTargetfiltersOr<
+          Input$DeviceRegistrationsTargetfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsTargetFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsTargetFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsTargetFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsTargetFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsTargetFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsTargetfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsTargetfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsTargetfiltersOr<
+          Input$DeviceRegistrationsTargetfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsTargetfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsTargetFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsTargetFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsTargetfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsTargetfiltersOr {
+  factory Input$DeviceRegistrationsTargetfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsTargetfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsTargetfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsTargetfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsTargetfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsTargetfiltersOr<
+    Input$DeviceRegistrationsTargetfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsTargetfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsTargetfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsTargetfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsTargetfiltersOr(
+    Input$DeviceRegistrationsTargetfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsTargetfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsTargetfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsTargetfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsTargetfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsTargetfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsTargetfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsTargetfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsTargetfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsTargetfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsTargetfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsTargetfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsTargetfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsTargetfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsKindFilters {
+  factory Input$DeviceRegistrationsKindFilters({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsKindfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsKindFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsKindFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsKindFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$DeviceRegistrationsKindEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$DeviceRegistrationsKindEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsKindfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsKindFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$DeviceRegistrationsKindEnum? get eq =>
+      (_$data['eq'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get ne =>
+      (_$data['ne'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get lt =>
+      (_$data['lt'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get lte =>
+      (_$data['lte'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get gt =>
+      (_$data['gt'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get gte =>
+      (_$data['gte'] as Enum$DeviceRegistrationsKindEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$DeviceRegistrationsKindEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$DeviceRegistrationsKindEnum>?);
+
+  List<Enum$DeviceRegistrationsKindEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$DeviceRegistrationsKindEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsKindfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsKindfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsKindEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsKindEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsKindFilters<
+    Input$DeviceRegistrationsKindFilters
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsKindFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsKindFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsKindFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsKindFilters(
+    Input$DeviceRegistrationsKindFilters instance,
+    TRes Function(Input$DeviceRegistrationsKindFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsKindFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsKindFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsKindFilters;
+
+  TRes call({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsKindfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsKindfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsKindfiltersOr<
+          Input$DeviceRegistrationsKindfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsKindFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsKindFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsKindFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsKindFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsKindFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsKindFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$DeviceRegistrationsKindEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$DeviceRegistrationsKindEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$DeviceRegistrationsKindEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$DeviceRegistrationsKindEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$DeviceRegistrationsKindEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$DeviceRegistrationsKindEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$DeviceRegistrationsKindEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$DeviceRegistrationsKindEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsKindfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsKindfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsKindfiltersOr<
+          Input$DeviceRegistrationsKindfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsKindfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsKindFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsKindFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsKindFilters(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsKindfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsKindfiltersOr {
+  factory Input$DeviceRegistrationsKindfiltersOr({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsKindfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsKindfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsKindfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsKindEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$DeviceRegistrationsKindEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$DeviceRegistrationsKindEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsKindfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$DeviceRegistrationsKindEnum? get eq =>
+      (_$data['eq'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get ne =>
+      (_$data['ne'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get lt =>
+      (_$data['lt'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get lte =>
+      (_$data['lte'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get gt =>
+      (_$data['gt'] as Enum$DeviceRegistrationsKindEnum?);
+
+  Enum$DeviceRegistrationsKindEnum? get gte =>
+      (_$data['gte'] as Enum$DeviceRegistrationsKindEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$DeviceRegistrationsKindEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$DeviceRegistrationsKindEnum>?);
+
+  List<Enum$DeviceRegistrationsKindEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$DeviceRegistrationsKindEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsKindEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsKindEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsKindEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsKindfiltersOr<
+    Input$DeviceRegistrationsKindfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsKindfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsKindfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsKindfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsKindfiltersOr(
+    Input$DeviceRegistrationsKindfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsKindfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsKindfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsKindfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsKindfiltersOr;
+
+  TRes call({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsKindfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsKindfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsKindfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsKindfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsKindfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsKindfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$DeviceRegistrationsKindEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$DeviceRegistrationsKindEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$DeviceRegistrationsKindEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$DeviceRegistrationsKindEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$DeviceRegistrationsKindEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$DeviceRegistrationsKindEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$DeviceRegistrationsKindEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$DeviceRegistrationsKindEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsKindfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsKindfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsKindfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$DeviceRegistrationsKindEnum? eq,
+    Enum$DeviceRegistrationsKindEnum? ne,
+    Enum$DeviceRegistrationsKindEnum? lt,
+    Enum$DeviceRegistrationsKindEnum? lte,
+    Enum$DeviceRegistrationsKindEnum? gt,
+    Enum$DeviceRegistrationsKindEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsKindEnum>? inArray,
+    List<Enum$DeviceRegistrationsKindEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsPlatformFilters {
+  factory Input$DeviceRegistrationsPlatformFilters({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsPlatformfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsPlatformFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsPlatformFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsPlatformFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map(
+            (e) => fromJson$Enum$DeviceRegistrationsPlatformEnum((e as String)),
+          )
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map(
+            (e) => fromJson$Enum$DeviceRegistrationsPlatformEnum((e as String)),
+          )
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsPlatformfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsPlatformFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$DeviceRegistrationsPlatformEnum? get eq =>
+      (_$data['eq'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get ne =>
+      (_$data['ne'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get lt =>
+      (_$data['lt'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get lte =>
+      (_$data['lte'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get gt =>
+      (_$data['gt'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get gte =>
+      (_$data['gte'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$DeviceRegistrationsPlatformEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$DeviceRegistrationsPlatformEnum>?);
+
+  List<Enum$DeviceRegistrationsPlatformEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$DeviceRegistrationsPlatformEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsPlatformfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsPlatformfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsPlatformEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsPlatformEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<
+    Input$DeviceRegistrationsPlatformFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsPlatformFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsPlatformFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsPlatformFilters(
+    Input$DeviceRegistrationsPlatformFilters instance,
+    TRes Function(Input$DeviceRegistrationsPlatformFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsPlatformFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsPlatformFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsPlatformFilters;
+
+  TRes call({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsPlatformfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsPlatformfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<
+          Input$DeviceRegistrationsPlatformfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsPlatformFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsPlatformFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsPlatformFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsPlatformFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsPlatformFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$DeviceRegistrationsPlatformEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$DeviceRegistrationsPlatformEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$DeviceRegistrationsPlatformEnum?),
+      if (lte != _undefined)
+        'lte': (lte as Enum$DeviceRegistrationsPlatformEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$DeviceRegistrationsPlatformEnum?),
+      if (gte != _undefined)
+        'gte': (gte as Enum$DeviceRegistrationsPlatformEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$DeviceRegistrationsPlatformEnum>?),
+      if (notInArray != _undefined)
+        'notInArray':
+            (notInArray as List<Enum$DeviceRegistrationsPlatformEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsPlatformfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsPlatformfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<
+          Input$DeviceRegistrationsPlatformfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$DeviceRegistrationsPlatformfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsPlatformFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsPlatformFilters(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsPlatformfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsPlatformfiltersOr {
+  factory Input$DeviceRegistrationsPlatformfiltersOr({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsPlatformfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsPlatformfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsPlatformfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$DeviceRegistrationsPlatformEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map(
+            (e) => fromJson$Enum$DeviceRegistrationsPlatformEnum((e as String)),
+          )
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map(
+            (e) => fromJson$Enum$DeviceRegistrationsPlatformEnum((e as String)),
+          )
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsPlatformfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$DeviceRegistrationsPlatformEnum? get eq =>
+      (_$data['eq'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get ne =>
+      (_$data['ne'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get lt =>
+      (_$data['lt'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get lte =>
+      (_$data['lte'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get gt =>
+      (_$data['gt'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  Enum$DeviceRegistrationsPlatformEnum? get gte =>
+      (_$data['gte'] as Enum$DeviceRegistrationsPlatformEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$DeviceRegistrationsPlatformEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$DeviceRegistrationsPlatformEnum>?);
+
+  List<Enum$DeviceRegistrationsPlatformEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$DeviceRegistrationsPlatformEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$DeviceRegistrationsPlatformEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsPlatformEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$DeviceRegistrationsPlatformEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<
+    Input$DeviceRegistrationsPlatformfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsPlatformfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsPlatformfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsPlatformfiltersOr(
+    Input$DeviceRegistrationsPlatformfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsPlatformfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsPlatformfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsPlatformfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsPlatformfiltersOr;
+
+  TRes call({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsPlatformfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsPlatformfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsPlatformfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsPlatformfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsPlatformfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$DeviceRegistrationsPlatformEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$DeviceRegistrationsPlatformEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$DeviceRegistrationsPlatformEnum?),
+      if (lte != _undefined)
+        'lte': (lte as Enum$DeviceRegistrationsPlatformEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$DeviceRegistrationsPlatformEnum?),
+      if (gte != _undefined)
+        'gte': (gte as Enum$DeviceRegistrationsPlatformEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$DeviceRegistrationsPlatformEnum>?),
+      if (notInArray != _undefined)
+        'notInArray':
+            (notInArray as List<Enum$DeviceRegistrationsPlatformEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsPlatformfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsPlatformfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsPlatformfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$DeviceRegistrationsPlatformEnum? eq,
+    Enum$DeviceRegistrationsPlatformEnum? ne,
+    Enum$DeviceRegistrationsPlatformEnum? lt,
+    Enum$DeviceRegistrationsPlatformEnum? lte,
+    Enum$DeviceRegistrationsPlatformEnum? gt,
+    Enum$DeviceRegistrationsPlatformEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$DeviceRegistrationsPlatformEnum>? inArray,
+    List<Enum$DeviceRegistrationsPlatformEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsUserAgentFilters {
+  factory Input$DeviceRegistrationsUserAgentFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserAgentfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsUserAgentFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsUserAgentFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsUserAgentFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsUserAgentfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsUserAgentFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsUserAgentfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsUserAgentfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<
+    Input$DeviceRegistrationsUserAgentFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUserAgentFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUserAgentFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUserAgentFilters(
+    Input$DeviceRegistrationsUserAgentFilters instance,
+    TRes Function(Input$DeviceRegistrationsUserAgentFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUserAgentFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsUserAgentFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserAgentfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUserAgentfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<
+          Input$DeviceRegistrationsUserAgentfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUserAgentFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUserAgentFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUserAgentFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUserAgentFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUserAgentFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsUserAgentfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUserAgentfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<
+          Input$DeviceRegistrationsUserAgentfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) =>
+            CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUserAgentfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsUserAgentfiltersOr {
+  factory Input$DeviceRegistrationsUserAgentfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsUserAgentfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsUserAgentfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsUserAgentfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsUserAgentfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<
+    Input$DeviceRegistrationsUserAgentfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUserAgentfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr(
+    Input$DeviceRegistrationsUserAgentfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsUserAgentfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUserAgentfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUserAgentfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUserAgentfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUserAgentfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUserAgentfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUserAgentfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUserAgentfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUserAgentfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsCreatedAtFilters {
+  factory Input$DeviceRegistrationsCreatedAtFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsCreatedAtfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsCreatedAtFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsCreatedAtFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsCreatedAtFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsCreatedAtfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsCreatedAtFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsCreatedAtfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsCreatedAtfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<
+    Input$DeviceRegistrationsCreatedAtFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsCreatedAtFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsCreatedAtFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsCreatedAtFilters(
+    Input$DeviceRegistrationsCreatedAtFilters instance,
+    TRes Function(Input$DeviceRegistrationsCreatedAtFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsCreatedAtFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsCreatedAtFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsCreatedAtfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsCreatedAtfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<
+          Input$DeviceRegistrationsCreatedAtfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsCreatedAtFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsCreatedAtFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsCreatedAtFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsCreatedAtFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsCreatedAtFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsCreatedAtfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsCreatedAtfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<
+          Input$DeviceRegistrationsCreatedAtfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) =>
+            CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsCreatedAtfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsCreatedAtfiltersOr {
+  factory Input$DeviceRegistrationsCreatedAtfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsCreatedAtfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsCreatedAtfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsCreatedAtfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsCreatedAtfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<
+    Input$DeviceRegistrationsCreatedAtfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsCreatedAtfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr(
+    Input$DeviceRegistrationsCreatedAtfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsCreatedAtfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsCreatedAtfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsCreatedAtfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsCreatedAtfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsCreatedAtfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsCreatedAtfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsCreatedAtfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsCreatedAtfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsCreatedAtfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsUpdatedAtFilters {
+  factory Input$DeviceRegistrationsUpdatedAtFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUpdatedAtfiltersOr>? OR,
+  }) => Input$DeviceRegistrationsUpdatedAtFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$DeviceRegistrationsUpdatedAtFilters._(this._$data);
+
+  factory Input$DeviceRegistrationsUpdatedAtFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$DeviceRegistrationsUpdatedAtfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$DeviceRegistrationsUpdatedAtFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$DeviceRegistrationsUpdatedAtfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$DeviceRegistrationsUpdatedAtfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<
+    Input$DeviceRegistrationsUpdatedAtFilters
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUpdatedAtFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUpdatedAtFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUpdatedAtFilters(
+    Input$DeviceRegistrationsUpdatedAtFilters instance,
+    TRes Function(Input$DeviceRegistrationsUpdatedAtFilters) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtFilters;
+
+  factory CopyWith$Input$DeviceRegistrationsUpdatedAtFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUpdatedAtfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUpdatedAtfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<
+          Input$DeviceRegistrationsUpdatedAtfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtFilters(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUpdatedAtFilters _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUpdatedAtFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUpdatedAtFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$DeviceRegistrationsUpdatedAtfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$DeviceRegistrationsUpdatedAtfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<
+          Input$DeviceRegistrationsUpdatedAtfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) =>
+            CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtFilters<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$DeviceRegistrationsUpdatedAtfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$DeviceRegistrationsUpdatedAtfiltersOr {
+  factory Input$DeviceRegistrationsUpdatedAtfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$DeviceRegistrationsUpdatedAtfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$DeviceRegistrationsUpdatedAtfiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsUpdatedAtfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$DeviceRegistrationsUpdatedAtfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<
+    Input$DeviceRegistrationsUpdatedAtfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsUpdatedAtfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr(
+    Input$DeviceRegistrationsUpdatedAtfiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsUpdatedAtfiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$DeviceRegistrationsUpdatedAtfiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsUpdatedAtfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsUpdatedAtfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsUpdatedAtfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsUpdatedAtfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$DeviceRegistrationsFiltersOr {
+  factory Input$DeviceRegistrationsFiltersOr({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+  }) => Input$DeviceRegistrationsFiltersOr._({
+    if (id != null) r'id': id,
+    if (userId != null) r'userId': userId,
+    if (target != null) r'target': target,
+    if (kind != null) r'kind': kind,
+    if (platform != null) r'platform': platform,
+    if (userAgent != null) r'userAgent': userAgent,
+    if (createdAt != null) r'createdAt': createdAt,
+    if (updatedAt != null) r'updatedAt': updatedAt,
+  });
+
+  Input$DeviceRegistrationsFiltersOr._(this._$data);
+
+  factory Input$DeviceRegistrationsFiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$DeviceRegistrationsIdFilters.fromJson(
+              (l$id as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : Input$DeviceRegistrationsUserIdFilters.fromJson(
+              (l$userId as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('target')) {
+      final l$target = data['target'];
+      result$data['target'] = l$target == null
+          ? null
+          : Input$DeviceRegistrationsTargetFilters.fromJson(
+              (l$target as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('kind')) {
+      final l$kind = data['kind'];
+      result$data['kind'] = l$kind == null
+          ? null
+          : Input$DeviceRegistrationsKindFilters.fromJson(
+              (l$kind as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('platform')) {
+      final l$platform = data['platform'];
+      result$data['platform'] = l$platform == null
+          ? null
+          : Input$DeviceRegistrationsPlatformFilters.fromJson(
+              (l$platform as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('userAgent')) {
+      final l$userAgent = data['userAgent'];
+      result$data['userAgent'] = l$userAgent == null
+          ? null
+          : Input$DeviceRegistrationsUserAgentFilters.fromJson(
+              (l$userAgent as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$DeviceRegistrationsCreatedAtFilters.fromJson(
+              (l$createdAt as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$DeviceRegistrationsUpdatedAtFilters.fromJson(
+              (l$updatedAt as Map<String, dynamic>),
+            );
+    }
+    return Input$DeviceRegistrationsFiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$DeviceRegistrationsIdFilters? get id =>
+      (_$data['id'] as Input$DeviceRegistrationsIdFilters?);
+
+  Input$DeviceRegistrationsUserIdFilters? get userId =>
+      (_$data['userId'] as Input$DeviceRegistrationsUserIdFilters?);
+
+  Input$DeviceRegistrationsTargetFilters? get target =>
+      (_$data['target'] as Input$DeviceRegistrationsTargetFilters?);
+
+  Input$DeviceRegistrationsKindFilters? get kind =>
+      (_$data['kind'] as Input$DeviceRegistrationsKindFilters?);
+
+  Input$DeviceRegistrationsPlatformFilters? get platform =>
+      (_$data['platform'] as Input$DeviceRegistrationsPlatformFilters?);
+
+  Input$DeviceRegistrationsUserAgentFilters? get userAgent =>
+      (_$data['userAgent'] as Input$DeviceRegistrationsUserAgentFilters?);
+
+  Input$DeviceRegistrationsCreatedAtFilters? get createdAt =>
+      (_$data['createdAt'] as Input$DeviceRegistrationsCreatedAtFilters?);
+
+  Input$DeviceRegistrationsUpdatedAtFilters? get updatedAt =>
+      (_$data['updatedAt'] as Input$DeviceRegistrationsUpdatedAtFilters?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId?.toJson();
+    }
+    if (_$data.containsKey('target')) {
+      final l$target = target;
+      result$data['target'] = l$target?.toJson();
+    }
+    if (_$data.containsKey('kind')) {
+      final l$kind = kind;
+      result$data['kind'] = l$kind?.toJson();
+    }
+    if (_$data.containsKey('platform')) {
+      final l$platform = platform;
+      result$data['platform'] = l$platform?.toJson();
+    }
+    if (_$data.containsKey('userAgent')) {
+      final l$userAgent = userAgent;
+      result$data['userAgent'] = l$userAgent?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsFiltersOr<
+    Input$DeviceRegistrationsFiltersOr
+  >
+  get copyWith => CopyWith$Input$DeviceRegistrationsFiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsFiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$target = target;
+    final lOther$target = other.target;
+    if (_$data.containsKey('target') != other._$data.containsKey('target')) {
+      return false;
+    }
+    if (l$target != lOther$target) {
+      return false;
+    }
+    final l$kind = kind;
+    final lOther$kind = other.kind;
+    if (_$data.containsKey('kind') != other._$data.containsKey('kind')) {
+      return false;
+    }
+    if (l$kind != lOther$kind) {
+      return false;
+    }
+    final l$platform = platform;
+    final lOther$platform = other.platform;
+    if (_$data.containsKey('platform') !=
+        other._$data.containsKey('platform')) {
+      return false;
+    }
+    if (l$platform != lOther$platform) {
+      return false;
+    }
+    final l$userAgent = userAgent;
+    final lOther$userAgent = other.userAgent;
+    if (_$data.containsKey('userAgent') !=
+        other._$data.containsKey('userAgent')) {
+      return false;
+    }
+    if (l$userAgent != lOther$userAgent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$target = target;
+    final l$kind = kind;
+    final l$platform = platform;
+    final l$userAgent = userAgent;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('target') ? l$target : const {},
+      _$data.containsKey('kind') ? l$kind : const {},
+      _$data.containsKey('platform') ? l$platform : const {},
+      _$data.containsKey('userAgent') ? l$userAgent : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsFiltersOr<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsFiltersOr(
+    Input$DeviceRegistrationsFiltersOr instance,
+    TRes Function(Input$DeviceRegistrationsFiltersOr) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsFiltersOr;
+
+  factory CopyWith$Input$DeviceRegistrationsFiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsFiltersOr;
+
+  TRes call({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+  });
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id;
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId;
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target;
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind;
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform;
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent;
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt;
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt;
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsFiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsFiltersOr<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsFiltersOr(this._instance, this._then);
+
+  final Input$DeviceRegistrationsFiltersOr _instance;
+
+  final TRes Function(Input$DeviceRegistrationsFiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? target = _undefined,
+    Object? kind = _undefined,
+    Object? platform = _undefined,
+    Object? userAgent = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsFiltersOr._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as Input$DeviceRegistrationsIdFilters?),
+      if (userId != _undefined)
+        'userId': (userId as Input$DeviceRegistrationsUserIdFilters?),
+      if (target != _undefined)
+        'target': (target as Input$DeviceRegistrationsTargetFilters?),
+      if (kind != _undefined)
+        'kind': (kind as Input$DeviceRegistrationsKindFilters?),
+      if (platform != _undefined)
+        'platform': (platform as Input$DeviceRegistrationsPlatformFilters?),
+      if (userAgent != _undefined)
+        'userAgent': (userAgent as Input$DeviceRegistrationsUserAgentFilters?),
+      if (createdAt != _undefined)
+        'createdAt': (createdAt as Input$DeviceRegistrationsCreatedAtFilters?),
+      if (updatedAt != _undefined)
+        'updatedAt': (updatedAt as Input$DeviceRegistrationsUpdatedAtFilters?),
+    }),
+  );
+
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$DeviceRegistrationsIdFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsIdFilters(
+            local$id,
+            (e) => call(id: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId {
+    final local$userId = _instance.userId;
+    return local$userId == null
+        ? CopyWith$Input$DeviceRegistrationsUserIdFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsUserIdFilters(
+            local$userId,
+            (e) => call(userId: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target {
+    final local$target = _instance.target;
+    return local$target == null
+        ? CopyWith$Input$DeviceRegistrationsTargetFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsTargetFilters(
+            local$target,
+            (e) => call(target: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind {
+    final local$kind = _instance.kind;
+    return local$kind == null
+        ? CopyWith$Input$DeviceRegistrationsKindFilters.stub(_then(_instance))
+        : CopyWith$Input$DeviceRegistrationsKindFilters(
+            local$kind,
+            (e) => call(kind: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform {
+    final local$platform = _instance.platform;
+    return local$platform == null
+        ? CopyWith$Input$DeviceRegistrationsPlatformFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsPlatformFilters(
+            local$platform,
+            (e) => call(platform: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent {
+    final local$userAgent = _instance.userAgent;
+    return local$userAgent == null
+        ? CopyWith$Input$DeviceRegistrationsUserAgentFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsUserAgentFilters(
+            local$userAgent,
+            (e) => call(userAgent: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$DeviceRegistrationsCreatedAtFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsCreatedAtFilters(
+            local$createdAt,
+            (e) => call(createdAt: e),
+          );
+  }
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$DeviceRegistrationsUpdatedAtFilters.stub(
+            _then(_instance),
+          )
+        : CopyWith$Input$DeviceRegistrationsUpdatedAtFilters(
+            local$updatedAt,
+            (e) => call(updatedAt: e),
+          );
+  }
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsFiltersOr<TRes>
+    implements CopyWith$Input$DeviceRegistrationsFiltersOr<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsFiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    Input$DeviceRegistrationsIdFilters? id,
+    Input$DeviceRegistrationsUserIdFilters? userId,
+    Input$DeviceRegistrationsTargetFilters? target,
+    Input$DeviceRegistrationsKindFilters? kind,
+    Input$DeviceRegistrationsPlatformFilters? platform,
+    Input$DeviceRegistrationsUserAgentFilters? userAgent,
+    Input$DeviceRegistrationsCreatedAtFilters? createdAt,
+    Input$DeviceRegistrationsUpdatedAtFilters? updatedAt,
+  }) => _res;
+
+  CopyWith$Input$DeviceRegistrationsIdFilters<TRes> get id =>
+      CopyWith$Input$DeviceRegistrationsIdFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUserIdFilters<TRes> get userId =>
+      CopyWith$Input$DeviceRegistrationsUserIdFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsTargetFilters<TRes> get target =>
+      CopyWith$Input$DeviceRegistrationsTargetFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsKindFilters<TRes> get kind =>
+      CopyWith$Input$DeviceRegistrationsKindFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsPlatformFilters<TRes> get platform =>
+      CopyWith$Input$DeviceRegistrationsPlatformFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUserAgentFilters<TRes> get userAgent =>
+      CopyWith$Input$DeviceRegistrationsUserAgentFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsCreatedAtFilters<TRes> get createdAt =>
+      CopyWith$Input$DeviceRegistrationsCreatedAtFilters.stub(_res);
+
+  CopyWith$Input$DeviceRegistrationsUpdatedAtFilters<TRes> get updatedAt =>
+      CopyWith$Input$DeviceRegistrationsUpdatedAtFilters.stub(_res);
+}
+
+class Input$DeviceRegistrationsOrderBy {
+  factory Input$DeviceRegistrationsOrderBy({
+    Input$InnerOrder? id,
+    Input$InnerOrder? userId,
+    Input$InnerOrder? target,
+    Input$InnerOrder? kind,
+    Input$InnerOrder? platform,
+    Input$InnerOrder? userAgent,
+    Input$InnerOrder? createdAt,
+    Input$InnerOrder? updatedAt,
+  }) => Input$DeviceRegistrationsOrderBy._({
+    if (id != null) r'id': id,
+    if (userId != null) r'userId': userId,
+    if (target != null) r'target': target,
+    if (kind != null) r'kind': kind,
+    if (platform != null) r'platform': platform,
+    if (userAgent != null) r'userAgent': userAgent,
+    if (createdAt != null) r'createdAt': createdAt,
+    if (updatedAt != null) r'updatedAt': updatedAt,
+  });
+
+  Input$DeviceRegistrationsOrderBy._(this._$data);
+
+  factory Input$DeviceRegistrationsOrderBy.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = l$id == null
+          ? null
+          : Input$InnerOrder.fromJson((l$id as Map<String, dynamic>));
+    }
+    if (data.containsKey('userId')) {
+      final l$userId = data['userId'];
+      result$data['userId'] = l$userId == null
+          ? null
+          : Input$InnerOrder.fromJson((l$userId as Map<String, dynamic>));
+    }
+    if (data.containsKey('target')) {
+      final l$target = data['target'];
+      result$data['target'] = l$target == null
+          ? null
+          : Input$InnerOrder.fromJson((l$target as Map<String, dynamic>));
+    }
+    if (data.containsKey('kind')) {
+      final l$kind = data['kind'];
+      result$data['kind'] = l$kind == null
+          ? null
+          : Input$InnerOrder.fromJson((l$kind as Map<String, dynamic>));
+    }
+    if (data.containsKey('platform')) {
+      final l$platform = data['platform'];
+      result$data['platform'] = l$platform == null
+          ? null
+          : Input$InnerOrder.fromJson((l$platform as Map<String, dynamic>));
+    }
+    if (data.containsKey('userAgent')) {
+      final l$userAgent = data['userAgent'];
+      result$data['userAgent'] = l$userAgent == null
+          ? null
+          : Input$InnerOrder.fromJson((l$userAgent as Map<String, dynamic>));
+    }
+    if (data.containsKey('createdAt')) {
+      final l$createdAt = data['createdAt'];
+      result$data['createdAt'] = l$createdAt == null
+          ? null
+          : Input$InnerOrder.fromJson((l$createdAt as Map<String, dynamic>));
+    }
+    if (data.containsKey('updatedAt')) {
+      final l$updatedAt = data['updatedAt'];
+      result$data['updatedAt'] = l$updatedAt == null
+          ? null
+          : Input$InnerOrder.fromJson((l$updatedAt as Map<String, dynamic>));
+    }
+    return Input$DeviceRegistrationsOrderBy._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$InnerOrder? get id => (_$data['id'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get userId => (_$data['userId'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get target => (_$data['target'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get kind => (_$data['kind'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get platform => (_$data['platform'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get userAgent => (_$data['userAgent'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get createdAt => (_$data['createdAt'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get updatedAt => (_$data['updatedAt'] as Input$InnerOrder?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id?.toJson();
+    }
+    if (_$data.containsKey('userId')) {
+      final l$userId = userId;
+      result$data['userId'] = l$userId?.toJson();
+    }
+    if (_$data.containsKey('target')) {
+      final l$target = target;
+      result$data['target'] = l$target?.toJson();
+    }
+    if (_$data.containsKey('kind')) {
+      final l$kind = kind;
+      result$data['kind'] = l$kind?.toJson();
+    }
+    if (_$data.containsKey('platform')) {
+      final l$platform = platform;
+      result$data['platform'] = l$platform?.toJson();
+    }
+    if (_$data.containsKey('userAgent')) {
+      final l$userAgent = userAgent;
+      result$data['userAgent'] = l$userAgent?.toJson();
+    }
+    if (_$data.containsKey('createdAt')) {
+      final l$createdAt = createdAt;
+      result$data['createdAt'] = l$createdAt?.toJson();
+    }
+    if (_$data.containsKey('updatedAt')) {
+      final l$updatedAt = updatedAt;
+      result$data['updatedAt'] = l$updatedAt?.toJson();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DeviceRegistrationsOrderBy<Input$DeviceRegistrationsOrderBy>
+  get copyWith => CopyWith$Input$DeviceRegistrationsOrderBy(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$DeviceRegistrationsOrderBy ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (_$data.containsKey('userId') != other._$data.containsKey('userId')) {
+      return false;
+    }
+    if (l$userId != lOther$userId) {
+      return false;
+    }
+    final l$target = target;
+    final lOther$target = other.target;
+    if (_$data.containsKey('target') != other._$data.containsKey('target')) {
+      return false;
+    }
+    if (l$target != lOther$target) {
+      return false;
+    }
+    final l$kind = kind;
+    final lOther$kind = other.kind;
+    if (_$data.containsKey('kind') != other._$data.containsKey('kind')) {
+      return false;
+    }
+    if (l$kind != lOther$kind) {
+      return false;
+    }
+    final l$platform = platform;
+    final lOther$platform = other.platform;
+    if (_$data.containsKey('platform') !=
+        other._$data.containsKey('platform')) {
+      return false;
+    }
+    if (l$platform != lOther$platform) {
+      return false;
+    }
+    final l$userAgent = userAgent;
+    final lOther$userAgent = other.userAgent;
+    if (_$data.containsKey('userAgent') !=
+        other._$data.containsKey('userAgent')) {
+      return false;
+    }
+    if (l$userAgent != lOther$userAgent) {
+      return false;
+    }
+    final l$createdAt = createdAt;
+    final lOther$createdAt = other.createdAt;
+    if (_$data.containsKey('createdAt') !=
+        other._$data.containsKey('createdAt')) {
+      return false;
+    }
+    if (l$createdAt != lOther$createdAt) {
+      return false;
+    }
+    final l$updatedAt = updatedAt;
+    final lOther$updatedAt = other.updatedAt;
+    if (_$data.containsKey('updatedAt') !=
+        other._$data.containsKey('updatedAt')) {
+      return false;
+    }
+    if (l$updatedAt != lOther$updatedAt) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$userId = userId;
+    final l$target = target;
+    final l$kind = kind;
+    final l$platform = platform;
+    final l$userAgent = userAgent;
+    final l$createdAt = createdAt;
+    final l$updatedAt = updatedAt;
+    return Object.hashAll([
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('userId') ? l$userId : const {},
+      _$data.containsKey('target') ? l$target : const {},
+      _$data.containsKey('kind') ? l$kind : const {},
+      _$data.containsKey('platform') ? l$platform : const {},
+      _$data.containsKey('userAgent') ? l$userAgent : const {},
+      _$data.containsKey('createdAt') ? l$createdAt : const {},
+      _$data.containsKey('updatedAt') ? l$updatedAt : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeviceRegistrationsOrderBy<TRes> {
+  factory CopyWith$Input$DeviceRegistrationsOrderBy(
+    Input$DeviceRegistrationsOrderBy instance,
+    TRes Function(Input$DeviceRegistrationsOrderBy) then,
+  ) = _CopyWithImpl$Input$DeviceRegistrationsOrderBy;
+
+  factory CopyWith$Input$DeviceRegistrationsOrderBy.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeviceRegistrationsOrderBy;
+
+  TRes call({
+    Input$InnerOrder? id,
+    Input$InnerOrder? userId,
+    Input$InnerOrder? target,
+    Input$InnerOrder? kind,
+    Input$InnerOrder? platform,
+    Input$InnerOrder? userAgent,
+    Input$InnerOrder? createdAt,
+    Input$InnerOrder? updatedAt,
+  });
+  CopyWith$Input$InnerOrder<TRes> get id;
+  CopyWith$Input$InnerOrder<TRes> get userId;
+  CopyWith$Input$InnerOrder<TRes> get target;
+  CopyWith$Input$InnerOrder<TRes> get kind;
+  CopyWith$Input$InnerOrder<TRes> get platform;
+  CopyWith$Input$InnerOrder<TRes> get userAgent;
+  CopyWith$Input$InnerOrder<TRes> get createdAt;
+  CopyWith$Input$InnerOrder<TRes> get updatedAt;
+}
+
+class _CopyWithImpl$Input$DeviceRegistrationsOrderBy<TRes>
+    implements CopyWith$Input$DeviceRegistrationsOrderBy<TRes> {
+  _CopyWithImpl$Input$DeviceRegistrationsOrderBy(this._instance, this._then);
+
+  final Input$DeviceRegistrationsOrderBy _instance;
+
+  final TRes Function(Input$DeviceRegistrationsOrderBy) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? userId = _undefined,
+    Object? target = _undefined,
+    Object? kind = _undefined,
+    Object? platform = _undefined,
+    Object? userAgent = _undefined,
+    Object? createdAt = _undefined,
+    Object? updatedAt = _undefined,
+  }) => _then(
+    Input$DeviceRegistrationsOrderBy._({
+      ..._instance._$data,
+      if (id != _undefined) 'id': (id as Input$InnerOrder?),
+      if (userId != _undefined) 'userId': (userId as Input$InnerOrder?),
+      if (target != _undefined) 'target': (target as Input$InnerOrder?),
+      if (kind != _undefined) 'kind': (kind as Input$InnerOrder?),
+      if (platform != _undefined) 'platform': (platform as Input$InnerOrder?),
+      if (userAgent != _undefined)
+        'userAgent': (userAgent as Input$InnerOrder?),
+      if (createdAt != _undefined)
+        'createdAt': (createdAt as Input$InnerOrder?),
+      if (updatedAt != _undefined)
+        'updatedAt': (updatedAt as Input$InnerOrder?),
+    }),
+  );
+
+  CopyWith$Input$InnerOrder<TRes> get id {
+    final local$id = _instance.id;
+    return local$id == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$id, (e) => call(id: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get userId {
+    final local$userId = _instance.userId;
+    return local$userId == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$userId, (e) => call(userId: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get target {
+    final local$target = _instance.target;
+    return local$target == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$target, (e) => call(target: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get kind {
+    final local$kind = _instance.kind;
+    return local$kind == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$kind, (e) => call(kind: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get platform {
+    final local$platform = _instance.platform;
+    return local$platform == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$platform, (e) => call(platform: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get userAgent {
+    final local$userAgent = _instance.userAgent;
+    return local$userAgent == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$userAgent, (e) => call(userAgent: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get createdAt {
+    final local$createdAt = _instance.createdAt;
+    return local$createdAt == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$createdAt, (e) => call(createdAt: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get updatedAt {
+    final local$updatedAt = _instance.updatedAt;
+    return local$updatedAt == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$updatedAt, (e) => call(updatedAt: e));
+  }
+}
+
+class _CopyWithStubImpl$Input$DeviceRegistrationsOrderBy<TRes>
+    implements CopyWith$Input$DeviceRegistrationsOrderBy<TRes> {
+  _CopyWithStubImpl$Input$DeviceRegistrationsOrderBy(this._res);
+
+  TRes _res;
+
+  call({
+    Input$InnerOrder? id,
+    Input$InnerOrder? userId,
+    Input$InnerOrder? target,
+    Input$InnerOrder? kind,
+    Input$InnerOrder? platform,
+    Input$InnerOrder? userAgent,
+    Input$InnerOrder? createdAt,
+    Input$InnerOrder? updatedAt,
+  }) => _res;
+
+  CopyWith$Input$InnerOrder<TRes> get id =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get userId =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get target =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get kind =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get platform =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get userAgent =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get createdAt =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get updatedAt =>
+      CopyWith$Input$InnerOrder.stub(_res);
+}
+
 class Input$InventoryInsertInput {
   factory Input$InventoryInsertInput({
     String? id,
@@ -106369,7 +117014,7 @@ class Input$ProductsInsertInput {
     required int price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106383,7 +117028,7 @@ class Input$ProductsInsertInput {
     r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
-    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
+    if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -106419,9 +117064,9 @@ class Input$ProductsInsertInput {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
     }
-    if (data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = data['timeBoundSection'];
-      result$data['timeBoundSection'] = (l$timeBoundSection as String?);
+    if (data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = data['timeBoundSections'];
+      result$data['timeBoundSections'] = (l$timeBoundSections as String?);
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -106458,7 +117103,7 @@ class Input$ProductsInsertInput {
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
-  String? get timeBoundSection => (_$data['timeBoundSection'] as String?);
+  String? get timeBoundSections => (_$data['timeBoundSections'] as String?);
 
   bool? get isActive => (_$data['isActive'] as bool?);
 
@@ -106494,9 +117139,9 @@ class Input$ProductsInsertInput {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
     }
-    if (_$data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = timeBoundSection;
-      result$data['timeBoundSection'] = l$timeBoundSection;
+    if (_$data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = timeBoundSections;
+      result$data['timeBoundSections'] = l$timeBoundSections;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -106584,13 +117229,13 @@ class Input$ProductsInsertInput {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (_$data.containsKey('timeBoundSection') !=
-        other._$data.containsKey('timeBoundSection')) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (_$data.containsKey('timeBoundSections') !=
+        other._$data.containsKey('timeBoundSections')) {
       return false;
     }
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -106634,7 +117279,7 @@ class Input$ProductsInsertInput {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -106648,7 +117293,7 @@ class Input$ProductsInsertInput {
       l$price,
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
-      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
+      _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -106675,7 +117320,7 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106702,7 +117347,7 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -106719,8 +117364,8 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
       if (price != _undefined && price != null) 'price': (price as int),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
-      if (timeBoundSection != _undefined)
-        'timeBoundSection': (timeBoundSection as String?),
+      if (timeBoundSections != _undefined)
+        'timeBoundSections': (timeBoundSections as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -106744,7 +117389,7 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106762,7 +117407,7 @@ class Input$ProductsUpdateInput {
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -106776,7 +117421,7 @@ class Input$ProductsUpdateInput {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
-    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
+    if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -106822,9 +117467,9 @@ class Input$ProductsUpdateInput {
       final l$imageUrl = data['imageUrl'];
       result$data['imageUrl'] = (l$imageUrl as String?);
     }
-    if (data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = data['timeBoundSection'];
-      result$data['timeBoundSection'] = (l$timeBoundSection as String?);
+    if (data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = data['timeBoundSections'];
+      result$data['timeBoundSections'] = (l$timeBoundSections as String?);
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -106861,7 +117506,7 @@ class Input$ProductsUpdateInput {
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
-  String? get timeBoundSection => (_$data['timeBoundSection'] as String?);
+  String? get timeBoundSections => (_$data['timeBoundSections'] as String?);
 
   bool? get isActive => (_$data['isActive'] as bool?);
 
@@ -106907,9 +117552,9 @@ class Input$ProductsUpdateInput {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl;
     }
-    if (_$data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = timeBoundSection;
-      result$data['timeBoundSection'] = l$timeBoundSection;
+    if (_$data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = timeBoundSections;
+      result$data['timeBoundSections'] = l$timeBoundSections;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -107013,13 +117658,13 @@ class Input$ProductsUpdateInput {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (_$data.containsKey('timeBoundSection') !=
-        other._$data.containsKey('timeBoundSection')) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (_$data.containsKey('timeBoundSections') !=
+        other._$data.containsKey('timeBoundSections')) {
       return false;
     }
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -107063,7 +117708,7 @@ class Input$ProductsUpdateInput {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -107077,7 +117722,7 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
-      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
+      _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -107104,7 +117749,7 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -107131,7 +117776,7 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -107147,8 +117792,8 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
       if (price != _undefined) 'price': (price as int?),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
-      if (timeBoundSection != _undefined)
-        'timeBoundSection': (timeBoundSection as String?),
+      if (timeBoundSections != _undefined)
+        'timeBoundSections': (timeBoundSections as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -107172,7 +117817,7 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSection,
+    String? timeBoundSections,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -107190,7 +117835,7 @@ class Input$ProductsFilters {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107205,7 +117850,7 @@ class Input$ProductsFilters {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
-    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
+    if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -107284,12 +117929,12 @@ class Input$ProductsFilters {
               (l$imageUrl as Map<String, dynamic>),
             );
     }
-    if (data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = data['timeBoundSection'];
-      result$data['timeBoundSection'] = l$timeBoundSection == null
+    if (data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = data['timeBoundSections'];
+      result$data['timeBoundSections'] = l$timeBoundSections == null
           ? null
-          : Input$ProductsTimeBoundSectionFilters.fromJson(
-              (l$timeBoundSection as Map<String, dynamic>),
+          : Input$ProductsTimeBoundSectionsFilters.fromJson(
+              (l$timeBoundSections as Map<String, dynamic>),
             );
     }
     if (data.containsKey('isActive')) {
@@ -107356,8 +118001,8 @@ class Input$ProductsFilters {
   Input$ProductsImageUrlFilters? get imageUrl =>
       (_$data['imageUrl'] as Input$ProductsImageUrlFilters?);
 
-  Input$ProductsTimeBoundSectionFilters? get timeBoundSection =>
-      (_$data['timeBoundSection'] as Input$ProductsTimeBoundSectionFilters?);
+  Input$ProductsTimeBoundSectionsFilters? get timeBoundSections =>
+      (_$data['timeBoundSections'] as Input$ProductsTimeBoundSectionsFilters?);
 
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
@@ -107409,9 +118054,9 @@ class Input$ProductsFilters {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
     }
-    if (_$data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = timeBoundSection;
-      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
+    if (_$data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = timeBoundSections;
+      result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -107518,13 +118163,13 @@ class Input$ProductsFilters {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (_$data.containsKey('timeBoundSection') !=
-        other._$data.containsKey('timeBoundSection')) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (_$data.containsKey('timeBoundSections') !=
+        other._$data.containsKey('timeBoundSections')) {
       return false;
     }
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -107587,7 +118232,7 @@ class Input$ProductsFilters {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -107602,7 +118247,7 @@ class Input$ProductsFilters {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
-      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
+      _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -107634,7 +118279,7 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107649,7 +118294,7 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection;
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -107681,7 +118326,7 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -107701,9 +118346,9 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
-      if (timeBoundSection != _undefined)
-        'timeBoundSection':
-            (timeBoundSection as Input$ProductsTimeBoundSectionFilters?),
+      if (timeBoundSections != _undefined)
+        'timeBoundSections':
+            (timeBoundSections as Input$ProductsTimeBoundSectionsFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -107792,13 +118437,13 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
           );
   }
 
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection {
-    final local$timeBoundSection = _instance.timeBoundSection;
-    return local$timeBoundSection == null
-        ? CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_then(_instance))
-        : CopyWith$Input$ProductsTimeBoundSectionFilters(
-            local$timeBoundSection,
-            (e) => call(timeBoundSection: e),
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections {
+    final local$timeBoundSections = _instance.timeBoundSections;
+    return local$timeBoundSections == null
+        ? CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTimeBoundSectionsFilters(
+            local$timeBoundSections,
+            (e) => call(timeBoundSections: e),
           );
   }
 
@@ -107860,7 +118505,7 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -107894,8 +118539,8 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl =>
       CopyWith$Input$ProductsImageUrlFilters.stub(_res);
 
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection =>
-      CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_res);
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections =>
+      CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_res);
 
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
@@ -117273,8 +127918,8 @@ class _CopyWithStubImpl$Input$ProductsImageUrlfiltersOr<TRes>
   }) => _res;
 }
 
-class Input$ProductsTimeBoundSectionFilters {
-  factory Input$ProductsTimeBoundSectionFilters({
+class Input$ProductsTimeBoundSectionsFilters {
+  factory Input$ProductsTimeBoundSectionsFilters({
     String? eq,
     String? ne,
     String? lt,
@@ -117289,8 +127934,8 @@ class Input$ProductsTimeBoundSectionFilters {
     List<String>? notInArray,
     bool? isNull,
     bool? isNotNull,
-    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
-  }) => Input$ProductsTimeBoundSectionFilters._({
+    List<Input$ProductsTimeBoundSectionsfiltersOr>? OR,
+  }) => Input$ProductsTimeBoundSectionsFilters._({
     if (eq != null) r'eq': eq,
     if (ne != null) r'ne': ne,
     if (lt != null) r'lt': lt,
@@ -117308,9 +127953,9 @@ class Input$ProductsTimeBoundSectionFilters {
     if (OR != null) r'OR': OR,
   });
 
-  Input$ProductsTimeBoundSectionFilters._(this._$data);
+  Input$ProductsTimeBoundSectionsFilters._(this._$data);
 
-  factory Input$ProductsTimeBoundSectionFilters.fromJson(
+  factory Input$ProductsTimeBoundSectionsFilters.fromJson(
     Map<String, dynamic> data,
   ) {
     final result$data = <String, dynamic>{};
@@ -117378,13 +128023,13 @@ class Input$ProductsTimeBoundSectionFilters {
       final l$OR = data['OR'];
       result$data['OR'] = (l$OR as List<dynamic>?)
           ?.map(
-            (e) => Input$ProductsTimeBoundSectionfiltersOr.fromJson(
+            (e) => Input$ProductsTimeBoundSectionsfiltersOr.fromJson(
               (e as Map<String, dynamic>),
             ),
           )
           .toList();
     }
-    return Input$ProductsTimeBoundSectionFilters._(result$data);
+    return Input$ProductsTimeBoundSectionsFilters._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -117417,8 +128062,8 @@ class Input$ProductsTimeBoundSectionFilters {
 
   bool? get isNotNull => (_$data['isNotNull'] as bool?);
 
-  List<Input$ProductsTimeBoundSectionfiltersOr>? get OR =>
-      (_$data['OR'] as List<Input$ProductsTimeBoundSectionfiltersOr>?);
+  List<Input$ProductsTimeBoundSectionsfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsTimeBoundSectionsfiltersOr>?);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -117485,18 +128130,18 @@ class Input$ProductsTimeBoundSectionFilters {
     return result$data;
   }
 
-  CopyWith$Input$ProductsTimeBoundSectionFilters<
-    Input$ProductsTimeBoundSectionFilters
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<
+    Input$ProductsTimeBoundSectionsFilters
   >
   get copyWith =>
-      CopyWith$Input$ProductsTimeBoundSectionFilters(this, (i) => i);
+      CopyWith$Input$ProductsTimeBoundSectionsFilters(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Input$ProductsTimeBoundSectionFilters ||
+    if (other is! Input$ProductsTimeBoundSectionsFilters ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -117708,14 +128353,14 @@ class Input$ProductsTimeBoundSectionFilters {
   }
 }
 
-abstract class CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
-  factory CopyWith$Input$ProductsTimeBoundSectionFilters(
-    Input$ProductsTimeBoundSectionFilters instance,
-    TRes Function(Input$ProductsTimeBoundSectionFilters) then,
-  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionFilters;
+abstract class CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> {
+  factory CopyWith$Input$ProductsTimeBoundSectionsFilters(
+    Input$ProductsTimeBoundSectionsFilters instance,
+    TRes Function(Input$ProductsTimeBoundSectionsFilters) then,
+  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionsFilters;
 
-  factory CopyWith$Input$ProductsTimeBoundSectionFilters.stub(TRes res) =
-      _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters;
+  factory CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTimeBoundSectionsFilters;
 
   TRes call({
     String? eq,
@@ -117732,13 +128377,13 @@ abstract class CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
     List<String>? notInArray,
     bool? isNull,
     bool? isNotNull,
-    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
+    List<Input$ProductsTimeBoundSectionsfiltersOr>? OR,
   });
   TRes OR(
-    Iterable<Input$ProductsTimeBoundSectionfiltersOr>? Function(
+    Iterable<Input$ProductsTimeBoundSectionsfiltersOr>? Function(
       Iterable<
-        CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
-          Input$ProductsTimeBoundSectionfiltersOr
+        CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<
+          Input$ProductsTimeBoundSectionsfiltersOr
         >
       >?,
     )
@@ -117746,16 +128391,16 @@ abstract class CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
   );
 }
 
-class _CopyWithImpl$Input$ProductsTimeBoundSectionFilters<TRes>
-    implements CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
-  _CopyWithImpl$Input$ProductsTimeBoundSectionFilters(
+class _CopyWithImpl$Input$ProductsTimeBoundSectionsFilters<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> {
+  _CopyWithImpl$Input$ProductsTimeBoundSectionsFilters(
     this._instance,
     this._then,
   );
 
-  final Input$ProductsTimeBoundSectionFilters _instance;
+  final Input$ProductsTimeBoundSectionsFilters _instance;
 
-  final TRes Function(Input$ProductsTimeBoundSectionFilters) _then;
+  final TRes Function(Input$ProductsTimeBoundSectionsFilters) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -117776,7 +128421,7 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionFilters<TRes>
     Object? isNotNull = _undefined,
     Object? OR = _undefined,
   }) => _then(
-    Input$ProductsTimeBoundSectionFilters._({
+    Input$ProductsTimeBoundSectionsFilters._({
       ..._instance._$data,
       if (eq != _undefined) 'eq': (eq as String?),
       if (ne != _undefined) 'ne': (ne as String?),
@@ -117793,15 +128438,15 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionFilters<TRes>
       if (isNull != _undefined) 'isNull': (isNull as bool?),
       if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
       if (OR != _undefined)
-        'OR': (OR as List<Input$ProductsTimeBoundSectionfiltersOr>?),
+        'OR': (OR as List<Input$ProductsTimeBoundSectionsfiltersOr>?),
     }),
   );
 
   TRes OR(
-    Iterable<Input$ProductsTimeBoundSectionfiltersOr>? Function(
+    Iterable<Input$ProductsTimeBoundSectionsfiltersOr>? Function(
       Iterable<
-        CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
-          Input$ProductsTimeBoundSectionfiltersOr
+        CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<
+          Input$ProductsTimeBoundSectionsfiltersOr
         >
       >?,
     )
@@ -117809,15 +128454,15 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionFilters<TRes>
   ) => call(
     OR: _fn(
       _instance.OR?.map(
-        (e) => CopyWith$Input$ProductsTimeBoundSectionfiltersOr(e, (i) => i),
+        (e) => CopyWith$Input$ProductsTimeBoundSectionsfiltersOr(e, (i) => i),
       ),
     )?.toList(),
   );
 }
 
-class _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters<TRes>
-    implements CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> {
-  _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters(this._res);
+class _CopyWithStubImpl$Input$ProductsTimeBoundSectionsFilters<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsTimeBoundSectionsFilters(this._res);
 
   TRes _res;
 
@@ -117836,14 +128481,14 @@ class _CopyWithStubImpl$Input$ProductsTimeBoundSectionFilters<TRes>
     List<String>? notInArray,
     bool? isNull,
     bool? isNotNull,
-    List<Input$ProductsTimeBoundSectionfiltersOr>? OR,
+    List<Input$ProductsTimeBoundSectionsfiltersOr>? OR,
   }) => _res;
 
   OR(_fn) => _res;
 }
 
-class Input$ProductsTimeBoundSectionfiltersOr {
-  factory Input$ProductsTimeBoundSectionfiltersOr({
+class Input$ProductsTimeBoundSectionsfiltersOr {
+  factory Input$ProductsTimeBoundSectionsfiltersOr({
     String? eq,
     String? ne,
     String? lt,
@@ -117858,7 +128503,7 @@ class Input$ProductsTimeBoundSectionfiltersOr {
     List<String>? notInArray,
     bool? isNull,
     bool? isNotNull,
-  }) => Input$ProductsTimeBoundSectionfiltersOr._({
+  }) => Input$ProductsTimeBoundSectionsfiltersOr._({
     if (eq != null) r'eq': eq,
     if (ne != null) r'ne': ne,
     if (lt != null) r'lt': lt,
@@ -117875,9 +128520,9 @@ class Input$ProductsTimeBoundSectionfiltersOr {
     if (isNotNull != null) r'isNotNull': isNotNull,
   });
 
-  Input$ProductsTimeBoundSectionfiltersOr._(this._$data);
+  Input$ProductsTimeBoundSectionsfiltersOr._(this._$data);
 
-  factory Input$ProductsTimeBoundSectionfiltersOr.fromJson(
+  factory Input$ProductsTimeBoundSectionsfiltersOr.fromJson(
     Map<String, dynamic> data,
   ) {
     final result$data = <String, dynamic>{};
@@ -117941,7 +128586,7 @@ class Input$ProductsTimeBoundSectionfiltersOr {
       final l$isNotNull = data['isNotNull'];
       result$data['isNotNull'] = (l$isNotNull as bool?);
     }
-    return Input$ProductsTimeBoundSectionfiltersOr._(result$data);
+    return Input$ProductsTimeBoundSectionsfiltersOr._(result$data);
   }
 
   Map<String, dynamic> _$data;
@@ -118035,18 +128680,18 @@ class Input$ProductsTimeBoundSectionfiltersOr {
     return result$data;
   }
 
-  CopyWith$Input$ProductsTimeBoundSectionfiltersOr<
-    Input$ProductsTimeBoundSectionfiltersOr
+  CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<
+    Input$ProductsTimeBoundSectionsfiltersOr
   >
   get copyWith =>
-      CopyWith$Input$ProductsTimeBoundSectionfiltersOr(this, (i) => i);
+      CopyWith$Input$ProductsTimeBoundSectionsfiltersOr(this, (i) => i);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-    if (other is! Input$ProductsTimeBoundSectionfiltersOr ||
+    if (other is! Input$ProductsTimeBoundSectionsfiltersOr ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -118233,14 +128878,14 @@ class Input$ProductsTimeBoundSectionfiltersOr {
   }
 }
 
-abstract class CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
-  factory CopyWith$Input$ProductsTimeBoundSectionfiltersOr(
-    Input$ProductsTimeBoundSectionfiltersOr instance,
-    TRes Function(Input$ProductsTimeBoundSectionfiltersOr) then,
-  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr;
+abstract class CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<TRes> {
+  factory CopyWith$Input$ProductsTimeBoundSectionsfiltersOr(
+    Input$ProductsTimeBoundSectionsfiltersOr instance,
+    TRes Function(Input$ProductsTimeBoundSectionsfiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsTimeBoundSectionsfiltersOr;
 
-  factory CopyWith$Input$ProductsTimeBoundSectionfiltersOr.stub(TRes res) =
-      _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr;
+  factory CopyWith$Input$ProductsTimeBoundSectionsfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTimeBoundSectionsfiltersOr;
 
   TRes call({
     String? eq,
@@ -118260,16 +128905,16 @@ abstract class CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
   });
 }
 
-class _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
-    implements CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
-  _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr(
+class _CopyWithImpl$Input$ProductsTimeBoundSectionsfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsTimeBoundSectionsfiltersOr(
     this._instance,
     this._then,
   );
 
-  final Input$ProductsTimeBoundSectionfiltersOr _instance;
+  final Input$ProductsTimeBoundSectionsfiltersOr _instance;
 
-  final TRes Function(Input$ProductsTimeBoundSectionfiltersOr) _then;
+  final TRes Function(Input$ProductsTimeBoundSectionsfiltersOr) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -118289,7 +128934,7 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
     Object? isNull = _undefined,
     Object? isNotNull = _undefined,
   }) => _then(
-    Input$ProductsTimeBoundSectionfiltersOr._({
+    Input$ProductsTimeBoundSectionsfiltersOr._({
       ..._instance._$data,
       if (eq != _undefined) 'eq': (eq as String?),
       if (ne != _undefined) 'ne': (ne as String?),
@@ -118309,9 +128954,9 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
   );
 }
 
-class _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr<TRes>
-    implements CopyWith$Input$ProductsTimeBoundSectionfiltersOr<TRes> {
-  _CopyWithStubImpl$Input$ProductsTimeBoundSectionfiltersOr(this._res);
+class _CopyWithStubImpl$Input$ProductsTimeBoundSectionsfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsTimeBoundSectionsfiltersOr(this._res);
 
   TRes _res;
 
@@ -121476,7 +132121,7 @@ class Input$ProductsFiltersOr {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -121490,7 +132135,7 @@ class Input$ProductsFiltersOr {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
-    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
+    if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -121568,12 +132213,12 @@ class Input$ProductsFiltersOr {
               (l$imageUrl as Map<String, dynamic>),
             );
     }
-    if (data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = data['timeBoundSection'];
-      result$data['timeBoundSection'] = l$timeBoundSection == null
+    if (data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = data['timeBoundSections'];
+      result$data['timeBoundSections'] = l$timeBoundSections == null
           ? null
-          : Input$ProductsTimeBoundSectionFilters.fromJson(
-              (l$timeBoundSection as Map<String, dynamic>),
+          : Input$ProductsTimeBoundSectionsFilters.fromJson(
+              (l$timeBoundSections as Map<String, dynamic>),
             );
     }
     if (data.containsKey('isActive')) {
@@ -121631,8 +132276,8 @@ class Input$ProductsFiltersOr {
   Input$ProductsImageUrlFilters? get imageUrl =>
       (_$data['imageUrl'] as Input$ProductsImageUrlFilters?);
 
-  Input$ProductsTimeBoundSectionFilters? get timeBoundSection =>
-      (_$data['timeBoundSection'] as Input$ProductsTimeBoundSectionFilters?);
+  Input$ProductsTimeBoundSectionsFilters? get timeBoundSections =>
+      (_$data['timeBoundSections'] as Input$ProductsTimeBoundSectionsFilters?);
 
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
@@ -121681,9 +132326,9 @@ class Input$ProductsFiltersOr {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
     }
-    if (_$data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = timeBoundSection;
-      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
+    if (_$data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = timeBoundSections;
+      result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -121786,13 +132431,13 @@ class Input$ProductsFiltersOr {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (_$data.containsKey('timeBoundSection') !=
-        other._$data.containsKey('timeBoundSection')) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (_$data.containsKey('timeBoundSections') !=
+        other._$data.containsKey('timeBoundSections')) {
       return false;
     }
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -121836,7 +132481,7 @@ class Input$ProductsFiltersOr {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -121850,7 +132495,7 @@ class Input$ProductsFiltersOr {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
-      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
+      _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -121877,7 +132522,7 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -121891,7 +132536,7 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection;
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -121917,7 +132562,7 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -121936,9 +132581,9 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
-      if (timeBoundSection != _undefined)
-        'timeBoundSection':
-            (timeBoundSection as Input$ProductsTimeBoundSectionFilters?),
+      if (timeBoundSections != _undefined)
+        'timeBoundSections':
+            (timeBoundSections as Input$ProductsTimeBoundSectionsFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -122026,13 +132671,13 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
           );
   }
 
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection {
-    final local$timeBoundSection = _instance.timeBoundSection;
-    return local$timeBoundSection == null
-        ? CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_then(_instance))
-        : CopyWith$Input$ProductsTimeBoundSectionFilters(
-            local$timeBoundSection,
-            (e) => call(timeBoundSection: e),
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections {
+    final local$timeBoundSections = _instance.timeBoundSections;
+    return local$timeBoundSections == null
+        ? CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTimeBoundSectionsFilters(
+            local$timeBoundSections,
+            (e) => call(timeBoundSections: e),
           );
   }
 
@@ -122083,7 +132728,7 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
     Input$ProductsPriceFilters? price,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
-    Input$ProductsTimeBoundSectionFilters? timeBoundSection,
+    Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -122116,8 +132761,8 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl =>
       CopyWith$Input$ProductsImageUrlFilters.stub(_res);
 
-  CopyWith$Input$ProductsTimeBoundSectionFilters<TRes> get timeBoundSection =>
-      CopyWith$Input$ProductsTimeBoundSectionFilters.stub(_res);
+  CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections =>
+      CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_res);
 
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
@@ -122140,7 +132785,7 @@ class Input$ProductsOrderBy {
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
-    Input$InnerOrder? timeBoundSection,
+    Input$InnerOrder? timeBoundSections,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -122154,7 +132799,7 @@ class Input$ProductsOrderBy {
     if (price != null) r'price': price,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
-    if (timeBoundSection != null) r'timeBoundSection': timeBoundSection,
+    if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -122218,12 +132863,12 @@ class Input$ProductsOrderBy {
           ? null
           : Input$InnerOrder.fromJson((l$imageUrl as Map<String, dynamic>));
     }
-    if (data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = data['timeBoundSection'];
-      result$data['timeBoundSection'] = l$timeBoundSection == null
+    if (data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = data['timeBoundSections'];
+      result$data['timeBoundSections'] = l$timeBoundSections == null
           ? null
           : Input$InnerOrder.fromJson(
-              (l$timeBoundSection as Map<String, dynamic>),
+              (l$timeBoundSections as Map<String, dynamic>),
             );
     }
     if (data.containsKey('isActive')) {
@@ -122269,8 +132914,8 @@ class Input$ProductsOrderBy {
 
   Input$InnerOrder? get imageUrl => (_$data['imageUrl'] as Input$InnerOrder?);
 
-  Input$InnerOrder? get timeBoundSection =>
-      (_$data['timeBoundSection'] as Input$InnerOrder?);
+  Input$InnerOrder? get timeBoundSections =>
+      (_$data['timeBoundSections'] as Input$InnerOrder?);
 
   Input$InnerOrder? get isActive => (_$data['isActive'] as Input$InnerOrder?);
 
@@ -122316,9 +132961,9 @@ class Input$ProductsOrderBy {
       final l$imageUrl = imageUrl;
       result$data['imageUrl'] = l$imageUrl?.toJson();
     }
-    if (_$data.containsKey('timeBoundSection')) {
-      final l$timeBoundSection = timeBoundSection;
-      result$data['timeBoundSection'] = l$timeBoundSection?.toJson();
+    if (_$data.containsKey('timeBoundSections')) {
+      final l$timeBoundSections = timeBoundSections;
+      result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -122421,13 +133066,13 @@ class Input$ProductsOrderBy {
     if (l$imageUrl != lOther$imageUrl) {
       return false;
     }
-    final l$timeBoundSection = timeBoundSection;
-    final lOther$timeBoundSection = other.timeBoundSection;
-    if (_$data.containsKey('timeBoundSection') !=
-        other._$data.containsKey('timeBoundSection')) {
+    final l$timeBoundSections = timeBoundSections;
+    final lOther$timeBoundSections = other.timeBoundSections;
+    if (_$data.containsKey('timeBoundSections') !=
+        other._$data.containsKey('timeBoundSections')) {
       return false;
     }
-    if (l$timeBoundSection != lOther$timeBoundSection) {
+    if (l$timeBoundSections != lOther$timeBoundSections) {
       return false;
     }
     final l$isActive = isActive;
@@ -122471,7 +133116,7 @@ class Input$ProductsOrderBy {
     final l$price = price;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
-    final l$timeBoundSection = timeBoundSection;
+    final l$timeBoundSections = timeBoundSections;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -122485,7 +133130,7 @@ class Input$ProductsOrderBy {
       _$data.containsKey('price') ? l$price : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
-      _$data.containsKey('timeBoundSection') ? l$timeBoundSection : const {},
+      _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -122512,7 +133157,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
-    Input$InnerOrder? timeBoundSection,
+    Input$InnerOrder? timeBoundSections,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -122526,7 +133171,7 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
   CopyWith$Input$InnerOrder<TRes> get price;
   CopyWith$Input$InnerOrder<TRes> get emoji;
   CopyWith$Input$InnerOrder<TRes> get imageUrl;
-  CopyWith$Input$InnerOrder<TRes> get timeBoundSection;
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSections;
   CopyWith$Input$InnerOrder<TRes> get isActive;
   CopyWith$Input$InnerOrder<TRes> get createdAt;
   CopyWith$Input$InnerOrder<TRes> get updatedAt;
@@ -122552,7 +133197,7 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? price = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
-    Object? timeBoundSection = _undefined,
+    Object? timeBoundSections = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -122570,8 +133215,8 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
       if (price != _undefined) 'price': (price as Input$InnerOrder?),
       if (emoji != _undefined) 'emoji': (emoji as Input$InnerOrder?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as Input$InnerOrder?),
-      if (timeBoundSection != _undefined)
-        'timeBoundSection': (timeBoundSection as Input$InnerOrder?),
+      if (timeBoundSections != _undefined)
+        'timeBoundSections': (timeBoundSections as Input$InnerOrder?),
       if (isActive != _undefined) 'isActive': (isActive as Input$InnerOrder?),
       if (createdAt != _undefined)
         'createdAt': (createdAt as Input$InnerOrder?),
@@ -122649,13 +133294,13 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
         : CopyWith$Input$InnerOrder(local$imageUrl, (e) => call(imageUrl: e));
   }
 
-  CopyWith$Input$InnerOrder<TRes> get timeBoundSection {
-    final local$timeBoundSection = _instance.timeBoundSection;
-    return local$timeBoundSection == null
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSections {
+    final local$timeBoundSections = _instance.timeBoundSections;
+    return local$timeBoundSections == null
         ? CopyWith$Input$InnerOrder.stub(_then(_instance))
         : CopyWith$Input$InnerOrder(
-            local$timeBoundSection,
-            (e) => call(timeBoundSection: e),
+            local$timeBoundSections,
+            (e) => call(timeBoundSections: e),
           );
   }
 
@@ -122697,7 +133342,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Input$InnerOrder? price,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
-    Input$InnerOrder? timeBoundSection,
+    Input$InnerOrder? timeBoundSections,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -122730,7 +133375,7 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
   CopyWith$Input$InnerOrder<TRes> get imageUrl =>
       CopyWith$Input$InnerOrder.stub(_res);
 
-  CopyWith$Input$InnerOrder<TRes> get timeBoundSection =>
+  CopyWith$Input$InnerOrder<TRes> get timeBoundSections =>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get isActive =>
@@ -138601,6 +149246,11 @@ class Input$StoresInsertInput {
   factory Input$StoresInsertInput({
     String? id,
     required String name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     required double lat,
     required double lng,
@@ -138611,6 +149261,11 @@ class Input$StoresInsertInput {
   }) => Input$StoresInsertInput._({
     if (id != null) r'id': id,
     r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
     if (address != null) r'address': address,
     r'lat': lat,
     r'lng': lng,
@@ -138630,6 +149285,28 @@ class Input$StoresInsertInput {
     }
     final l$name = data['name'];
     result$data['name'] = (l$name as String);
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$type as String));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = (l$partnerName as String?);
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = (l$contactPhone as String?);
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = (l$contactEmail as String?);
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = (l$commissionPct as int?);
+    }
     if (data.containsKey('address')) {
       final l$address = data['address'];
       result$data['address'] = (l$address as String?);
@@ -138663,6 +149340,16 @@ class Input$StoresInsertInput {
 
   String get name => (_$data['name'] as String);
 
+  Enum$StoresTypeEnum? get type => (_$data['type'] as Enum$StoresTypeEnum?);
+
+  String? get partnerName => (_$data['partnerName'] as String?);
+
+  String? get contactPhone => (_$data['contactPhone'] as String?);
+
+  String? get contactEmail => (_$data['contactEmail'] as String?);
+
+  int? get commissionPct => (_$data['commissionPct'] as int?);
+
   String? get address => (_$data['address'] as String?);
 
   double get lat => (_$data['lat'] as double);
@@ -138685,6 +149372,28 @@ class Input$StoresInsertInput {
     }
     final l$name = name;
     result$data['name'] = l$name;
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$type);
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName;
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone;
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail;
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct;
+    }
     if (_$data.containsKey('address')) {
       final l$address = address;
       result$data['address'] = l$address;
@@ -138734,6 +149443,50 @@ class Input$StoresInsertInput {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
       return false;
     }
     final l$address = address;
@@ -138797,6 +149550,11 @@ class Input$StoresInsertInput {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
     final l$address = address;
     final l$lat = lat;
     final l$lng = lng;
@@ -138807,6 +149565,11 @@ class Input$StoresInsertInput {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       l$name,
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
       _$data.containsKey('address') ? l$address : const {},
       l$lat,
       l$lng,
@@ -138830,6 +149593,11 @@ abstract class CopyWith$Input$StoresInsertInput<TRes> {
   TRes call({
     String? id,
     String? name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     double? lat,
     double? lng,
@@ -138853,6 +149621,11 @@ class _CopyWithImpl$Input$StoresInsertInput<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
     Object? address = _undefined,
     Object? lat = _undefined,
     Object? lng = _undefined,
@@ -138865,6 +149638,11 @@ class _CopyWithImpl$Input$StoresInsertInput<TRes>
       ..._instance._$data,
       if (id != _undefined) 'id': (id as String?),
       if (name != _undefined && name != null) 'name': (name as String),
+      if (type != _undefined) 'type': (type as Enum$StoresTypeEnum?),
+      if (partnerName != _undefined) 'partnerName': (partnerName as String?),
+      if (contactPhone != _undefined) 'contactPhone': (contactPhone as String?),
+      if (contactEmail != _undefined) 'contactEmail': (contactEmail as String?),
+      if (commissionPct != _undefined) 'commissionPct': (commissionPct as int?),
       if (address != _undefined) 'address': (address as String?),
       if (lat != _undefined && lat != null) 'lat': (lat as double),
       if (lng != _undefined && lng != null) 'lng': (lng as double),
@@ -138886,6 +149664,11 @@ class _CopyWithStubImpl$Input$StoresInsertInput<TRes>
   call({
     String? id,
     String? name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     double? lat,
     double? lng,
@@ -138900,6 +149683,11 @@ class Input$StoresUpdateInput {
   factory Input$StoresUpdateInput({
     String? id,
     String? name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     double? lat,
     double? lng,
@@ -138910,6 +149698,11 @@ class Input$StoresUpdateInput {
   }) => Input$StoresUpdateInput._({
     if (id != null) r'id': id,
     if (name != null) r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
     if (address != null) r'address': address,
     if (lat != null) r'lat': lat,
     if (lng != null) r'lng': lng,
@@ -138930,6 +149723,28 @@ class Input$StoresUpdateInput {
     if (data.containsKey('name')) {
       final l$name = data['name'];
       result$data['name'] = (l$name as String?);
+    }
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$type as String));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = (l$partnerName as String?);
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = (l$contactPhone as String?);
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = (l$contactEmail as String?);
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = (l$commissionPct as int?);
     }
     if (data.containsKey('address')) {
       final l$address = data['address'];
@@ -138968,6 +149783,16 @@ class Input$StoresUpdateInput {
 
   String? get name => (_$data['name'] as String?);
 
+  Enum$StoresTypeEnum? get type => (_$data['type'] as Enum$StoresTypeEnum?);
+
+  String? get partnerName => (_$data['partnerName'] as String?);
+
+  String? get contactPhone => (_$data['contactPhone'] as String?);
+
+  String? get contactEmail => (_$data['contactEmail'] as String?);
+
+  int? get commissionPct => (_$data['commissionPct'] as int?);
+
   String? get address => (_$data['address'] as String?);
 
   double? get lat => (_$data['lat'] as double?);
@@ -138991,6 +149816,28 @@ class Input$StoresUpdateInput {
     if (_$data.containsKey('name')) {
       final l$name = name;
       result$data['name'] = l$name;
+    }
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$type);
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName;
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone;
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail;
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct;
     }
     if (_$data.containsKey('address')) {
       final l$address = address;
@@ -139048,6 +149895,50 @@ class Input$StoresUpdateInput {
       return false;
     }
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
       return false;
     }
     final l$address = address;
@@ -139117,6 +150008,11 @@ class Input$StoresUpdateInput {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
     final l$address = address;
     final l$lat = lat;
     final l$lng = lng;
@@ -139127,6 +150023,11 @@ class Input$StoresUpdateInput {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
       _$data.containsKey('address') ? l$address : const {},
       _$data.containsKey('lat') ? l$lat : const {},
       _$data.containsKey('lng') ? l$lng : const {},
@@ -139150,6 +150051,11 @@ abstract class CopyWith$Input$StoresUpdateInput<TRes> {
   TRes call({
     String? id,
     String? name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     double? lat,
     double? lng,
@@ -139173,6 +150079,11 @@ class _CopyWithImpl$Input$StoresUpdateInput<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
     Object? address = _undefined,
     Object? lat = _undefined,
     Object? lng = _undefined,
@@ -139185,6 +150096,11 @@ class _CopyWithImpl$Input$StoresUpdateInput<TRes>
       ..._instance._$data,
       if (id != _undefined) 'id': (id as String?),
       if (name != _undefined) 'name': (name as String?),
+      if (type != _undefined) 'type': (type as Enum$StoresTypeEnum?),
+      if (partnerName != _undefined) 'partnerName': (partnerName as String?),
+      if (contactPhone != _undefined) 'contactPhone': (contactPhone as String?),
+      if (contactEmail != _undefined) 'contactEmail': (contactEmail as String?),
+      if (commissionPct != _undefined) 'commissionPct': (commissionPct as int?),
       if (address != _undefined) 'address': (address as String?),
       if (lat != _undefined) 'lat': (lat as double?),
       if (lng != _undefined) 'lng': (lng as double?),
@@ -139206,6 +150122,11 @@ class _CopyWithStubImpl$Input$StoresUpdateInput<TRes>
   call({
     String? id,
     String? name,
+    Enum$StoresTypeEnum? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
     String? address,
     double? lat,
     double? lng,
@@ -139220,6 +150141,11 @@ class Input$StoresFilters {
   factory Input$StoresFilters({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -139231,6 +150157,11 @@ class Input$StoresFilters {
   }) => Input$StoresFilters._({
     if (id != null) r'id': id,
     if (name != null) r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
     if (address != null) r'address': address,
     if (lat != null) r'lat': lat,
     if (lng != null) r'lng': lng,
@@ -139256,6 +150187,44 @@ class Input$StoresFilters {
       result$data['name'] = l$name == null
           ? null
           : Input$StoresNameFilters.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : Input$StoresTypeFilters.fromJson((l$type as Map<String, dynamic>));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = l$partnerName == null
+          ? null
+          : Input$StoresPartnerNameFilters.fromJson(
+              (l$partnerName as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = l$contactPhone == null
+          ? null
+          : Input$StoresContactPhoneFilters.fromJson(
+              (l$contactPhone as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = l$contactEmail == null
+          ? null
+          : Input$StoresContactEmailFilters.fromJson(
+              (l$contactEmail as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = l$commissionPct == null
+          ? null
+          : Input$StoresCommissionPctFilters.fromJson(
+              (l$commissionPct as Map<String, dynamic>),
+            );
     }
     if (data.containsKey('address')) {
       final l$address = data['address'];
@@ -139327,6 +150296,21 @@ class Input$StoresFilters {
   Input$StoresNameFilters? get name =>
       (_$data['name'] as Input$StoresNameFilters?);
 
+  Input$StoresTypeFilters? get type =>
+      (_$data['type'] as Input$StoresTypeFilters?);
+
+  Input$StoresPartnerNameFilters? get partnerName =>
+      (_$data['partnerName'] as Input$StoresPartnerNameFilters?);
+
+  Input$StoresContactPhoneFilters? get contactPhone =>
+      (_$data['contactPhone'] as Input$StoresContactPhoneFilters?);
+
+  Input$StoresContactEmailFilters? get contactEmail =>
+      (_$data['contactEmail'] as Input$StoresContactEmailFilters?);
+
+  Input$StoresCommissionPctFilters? get commissionPct =>
+      (_$data['commissionPct'] as Input$StoresCommissionPctFilters?);
+
   Input$StoresAddressFilters? get address =>
       (_$data['address'] as Input$StoresAddressFilters?);
 
@@ -139358,6 +150342,26 @@ class Input$StoresFilters {
     if (_$data.containsKey('name')) {
       final l$name = name;
       result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type?.toJson();
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName?.toJson();
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone?.toJson();
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail?.toJson();
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct?.toJson();
     }
     if (_$data.containsKey('address')) {
       final l$address = address;
@@ -139419,6 +150423,50 @@ class Input$StoresFilters {
       return false;
     }
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
       return false;
     }
     final l$address = address;
@@ -139507,6 +150555,11 @@ class Input$StoresFilters {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
     final l$address = address;
     final l$lat = lat;
     final l$lng = lng;
@@ -139518,6 +150571,11 @@ class Input$StoresFilters {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
       _$data.containsKey('address') ? l$address : const {},
       _$data.containsKey('lat') ? l$lat : const {},
       _$data.containsKey('lng') ? l$lng : const {},
@@ -139546,6 +150604,11 @@ abstract class CopyWith$Input$StoresFilters<TRes> {
   TRes call({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -139557,6 +150620,11 @@ abstract class CopyWith$Input$StoresFilters<TRes> {
   });
   CopyWith$Input$StoresIdFilters<TRes> get id;
   CopyWith$Input$StoresNameFilters<TRes> get name;
+  CopyWith$Input$StoresTypeFilters<TRes> get type;
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName;
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone;
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail;
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct;
   CopyWith$Input$StoresAddressFilters<TRes> get address;
   CopyWith$Input$StoresLatFilters<TRes> get lat;
   CopyWith$Input$StoresLngFilters<TRes> get lng;
@@ -139585,6 +150653,11 @@ class _CopyWithImpl$Input$StoresFilters<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
     Object? address = _undefined,
     Object? lat = _undefined,
     Object? lng = _undefined,
@@ -139598,6 +150671,15 @@ class _CopyWithImpl$Input$StoresFilters<TRes>
       ..._instance._$data,
       if (id != _undefined) 'id': (id as Input$StoresIdFilters?),
       if (name != _undefined) 'name': (name as Input$StoresNameFilters?),
+      if (type != _undefined) 'type': (type as Input$StoresTypeFilters?),
+      if (partnerName != _undefined)
+        'partnerName': (partnerName as Input$StoresPartnerNameFilters?),
+      if (contactPhone != _undefined)
+        'contactPhone': (contactPhone as Input$StoresContactPhoneFilters?),
+      if (contactEmail != _undefined)
+        'contactEmail': (contactEmail as Input$StoresContactEmailFilters?),
+      if (commissionPct != _undefined)
+        'commissionPct': (commissionPct as Input$StoresCommissionPctFilters?),
       if (address != _undefined)
         'address': (address as Input$StoresAddressFilters?),
       if (lat != _undefined) 'lat': (lat as Input$StoresLatFilters?),
@@ -139627,6 +150709,53 @@ class _CopyWithImpl$Input$StoresFilters<TRes>
     return local$name == null
         ? CopyWith$Input$StoresNameFilters.stub(_then(_instance))
         : CopyWith$Input$StoresNameFilters(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StoresTypeFilters<TRes> get type {
+    final local$type = _instance.type;
+    return local$type == null
+        ? CopyWith$Input$StoresTypeFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresTypeFilters(local$type, (e) => call(type: e));
+  }
+
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName {
+    final local$partnerName = _instance.partnerName;
+    return local$partnerName == null
+        ? CopyWith$Input$StoresPartnerNameFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresPartnerNameFilters(
+            local$partnerName,
+            (e) => call(partnerName: e),
+          );
+  }
+
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone {
+    final local$contactPhone = _instance.contactPhone;
+    return local$contactPhone == null
+        ? CopyWith$Input$StoresContactPhoneFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresContactPhoneFilters(
+            local$contactPhone,
+            (e) => call(contactPhone: e),
+          );
+  }
+
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail {
+    final local$contactEmail = _instance.contactEmail;
+    return local$contactEmail == null
+        ? CopyWith$Input$StoresContactEmailFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresContactEmailFilters(
+            local$contactEmail,
+            (e) => call(contactEmail: e),
+          );
+  }
+
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct {
+    final local$commissionPct = _instance.commissionPct;
+    return local$commissionPct == null
+        ? CopyWith$Input$StoresCommissionPctFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresCommissionPctFilters(
+            local$commissionPct,
+            (e) => call(commissionPct: e),
+          );
   }
 
   CopyWith$Input$StoresAddressFilters<TRes> get address {
@@ -139714,6 +150843,11 @@ class _CopyWithStubImpl$Input$StoresFilters<TRes>
   call({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -139729,6 +150863,21 @@ class _CopyWithStubImpl$Input$StoresFilters<TRes>
 
   CopyWith$Input$StoresNameFilters<TRes> get name =>
       CopyWith$Input$StoresNameFilters.stub(_res);
+
+  CopyWith$Input$StoresTypeFilters<TRes> get type =>
+      CopyWith$Input$StoresTypeFilters.stub(_res);
+
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName =>
+      CopyWith$Input$StoresPartnerNameFilters.stub(_res);
+
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone =>
+      CopyWith$Input$StoresContactPhoneFilters.stub(_res);
+
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail =>
+      CopyWith$Input$StoresContactEmailFilters.stub(_res);
+
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct =>
+      CopyWith$Input$StoresCommissionPctFilters.stub(_res);
 
   CopyWith$Input$StoresAddressFilters<TRes> get address =>
       CopyWith$Input$StoresAddressFilters.stub(_res);
@@ -141810,6 +152959,5285 @@ class _CopyWithStubImpl$Input$StoresNamefiltersOr<TRes>
     String? notIlike,
     List<String>? inArray,
     List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$StoresTypeFilters {
+  factory Input$StoresTypeFilters({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresTypefiltersOr>? OR,
+  }) => Input$StoresTypeFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$StoresTypeFilters._(this._$data);
+
+  factory Input$StoresTypeFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$StoresTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$StoresTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) =>
+                Input$StoresTypefiltersOr.fromJson((e as Map<String, dynamic>)),
+          )
+          .toList();
+    }
+    return Input$StoresTypeFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$StoresTypeEnum? get eq => (_$data['eq'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get ne => (_$data['ne'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get lt => (_$data['lt'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get lte => (_$data['lte'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get gt => (_$data['gt'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get gte => (_$data['gte'] as Enum$StoresTypeEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$StoresTypeEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$StoresTypeEnum>?);
+
+  List<Enum$StoresTypeEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$StoresTypeEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$StoresTypefiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$StoresTypefiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$StoresTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$StoresTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresTypeFilters<Input$StoresTypeFilters> get copyWith =>
+      CopyWith$Input$StoresTypeFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresTypeFilters || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresTypeFilters<TRes> {
+  factory CopyWith$Input$StoresTypeFilters(
+    Input$StoresTypeFilters instance,
+    TRes Function(Input$StoresTypeFilters) then,
+  ) = _CopyWithImpl$Input$StoresTypeFilters;
+
+  factory CopyWith$Input$StoresTypeFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresTypeFilters;
+
+  TRes call({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresTypefiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$StoresTypefiltersOr>? Function(
+      Iterable<CopyWith$Input$StoresTypefiltersOr<Input$StoresTypefiltersOr>>?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$StoresTypeFilters<TRes>
+    implements CopyWith$Input$StoresTypeFilters<TRes> {
+  _CopyWithImpl$Input$StoresTypeFilters(this._instance, this._then);
+
+  final Input$StoresTypeFilters _instance;
+
+  final TRes Function(Input$StoresTypeFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$StoresTypeFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$StoresTypeEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$StoresTypeEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$StoresTypeEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$StoresTypeEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$StoresTypeEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$StoresTypeEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$StoresTypeEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$StoresTypeEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined) 'OR': (OR as List<Input$StoresTypefiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$StoresTypefiltersOr>? Function(
+      Iterable<CopyWith$Input$StoresTypefiltersOr<Input$StoresTypefiltersOr>>?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map((e) => CopyWith$Input$StoresTypefiltersOr(e, (i) => i)),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresTypeFilters<TRes>
+    implements CopyWith$Input$StoresTypeFilters<TRes> {
+  _CopyWithStubImpl$Input$StoresTypeFilters(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresTypefiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$StoresTypefiltersOr {
+  factory Input$StoresTypefiltersOr({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$StoresTypefiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$StoresTypefiltersOr._(this._$data);
+
+  factory Input$StoresTypefiltersOr.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$StoresTypeEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$StoresTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$StoresTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$StoresTypefiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$StoresTypeEnum? get eq => (_$data['eq'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get ne => (_$data['ne'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get lt => (_$data['lt'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get lte => (_$data['lte'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get gt => (_$data['gt'] as Enum$StoresTypeEnum?);
+
+  Enum$StoresTypeEnum? get gte => (_$data['gte'] as Enum$StoresTypeEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$StoresTypeEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$StoresTypeEnum>?);
+
+  List<Enum$StoresTypeEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$StoresTypeEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$StoresTypeEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$StoresTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$StoresTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresTypefiltersOr<Input$StoresTypefiltersOr> get copyWith =>
+      CopyWith$Input$StoresTypefiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresTypefiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresTypefiltersOr<TRes> {
+  factory CopyWith$Input$StoresTypefiltersOr(
+    Input$StoresTypefiltersOr instance,
+    TRes Function(Input$StoresTypefiltersOr) then,
+  ) = _CopyWithImpl$Input$StoresTypefiltersOr;
+
+  factory CopyWith$Input$StoresTypefiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresTypefiltersOr;
+
+  TRes call({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$StoresTypefiltersOr<TRes>
+    implements CopyWith$Input$StoresTypefiltersOr<TRes> {
+  _CopyWithImpl$Input$StoresTypefiltersOr(this._instance, this._then);
+
+  final Input$StoresTypefiltersOr _instance;
+
+  final TRes Function(Input$StoresTypefiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$StoresTypefiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$StoresTypeEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$StoresTypeEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$StoresTypeEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$StoresTypeEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$StoresTypeEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$StoresTypeEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$StoresTypeEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$StoresTypeEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresTypefiltersOr<TRes>
+    implements CopyWith$Input$StoresTypefiltersOr<TRes> {
+  _CopyWithStubImpl$Input$StoresTypefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$StoresTypeEnum? eq,
+    Enum$StoresTypeEnum? ne,
+    Enum$StoresTypeEnum? lt,
+    Enum$StoresTypeEnum? lte,
+    Enum$StoresTypeEnum? gt,
+    Enum$StoresTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$StoresTypeEnum>? inArray,
+    List<Enum$StoresTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$StoresPartnerNameFilters {
+  factory Input$StoresPartnerNameFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresPartnerNamefiltersOr>? OR,
+  }) => Input$StoresPartnerNameFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$StoresPartnerNameFilters._(this._$data);
+
+  factory Input$StoresPartnerNameFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$StoresPartnerNamefiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$StoresPartnerNameFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$StoresPartnerNamefiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$StoresPartnerNamefiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresPartnerNameFilters<Input$StoresPartnerNameFilters>
+  get copyWith => CopyWith$Input$StoresPartnerNameFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresPartnerNameFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresPartnerNameFilters<TRes> {
+  factory CopyWith$Input$StoresPartnerNameFilters(
+    Input$StoresPartnerNameFilters instance,
+    TRes Function(Input$StoresPartnerNameFilters) then,
+  ) = _CopyWithImpl$Input$StoresPartnerNameFilters;
+
+  factory CopyWith$Input$StoresPartnerNameFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresPartnerNameFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresPartnerNamefiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$StoresPartnerNamefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresPartnerNamefiltersOr<
+          Input$StoresPartnerNamefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$StoresPartnerNameFilters<TRes>
+    implements CopyWith$Input$StoresPartnerNameFilters<TRes> {
+  _CopyWithImpl$Input$StoresPartnerNameFilters(this._instance, this._then);
+
+  final Input$StoresPartnerNameFilters _instance;
+
+  final TRes Function(Input$StoresPartnerNameFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$StoresPartnerNameFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$StoresPartnerNamefiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$StoresPartnerNamefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresPartnerNamefiltersOr<
+          Input$StoresPartnerNamefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$StoresPartnerNamefiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresPartnerNameFilters<TRes>
+    implements CopyWith$Input$StoresPartnerNameFilters<TRes> {
+  _CopyWithStubImpl$Input$StoresPartnerNameFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresPartnerNamefiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$StoresPartnerNamefiltersOr {
+  factory Input$StoresPartnerNamefiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$StoresPartnerNamefiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$StoresPartnerNamefiltersOr._(this._$data);
+
+  factory Input$StoresPartnerNamefiltersOr.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$StoresPartnerNamefiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresPartnerNamefiltersOr<Input$StoresPartnerNamefiltersOr>
+  get copyWith => CopyWith$Input$StoresPartnerNamefiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresPartnerNamefiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresPartnerNamefiltersOr<TRes> {
+  factory CopyWith$Input$StoresPartnerNamefiltersOr(
+    Input$StoresPartnerNamefiltersOr instance,
+    TRes Function(Input$StoresPartnerNamefiltersOr) then,
+  ) = _CopyWithImpl$Input$StoresPartnerNamefiltersOr;
+
+  factory CopyWith$Input$StoresPartnerNamefiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresPartnerNamefiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$StoresPartnerNamefiltersOr<TRes>
+    implements CopyWith$Input$StoresPartnerNamefiltersOr<TRes> {
+  _CopyWithImpl$Input$StoresPartnerNamefiltersOr(this._instance, this._then);
+
+  final Input$StoresPartnerNamefiltersOr _instance;
+
+  final TRes Function(Input$StoresPartnerNamefiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$StoresPartnerNamefiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresPartnerNamefiltersOr<TRes>
+    implements CopyWith$Input$StoresPartnerNamefiltersOr<TRes> {
+  _CopyWithStubImpl$Input$StoresPartnerNamefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$StoresContactPhoneFilters {
+  factory Input$StoresContactPhoneFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactPhonefiltersOr>? OR,
+  }) => Input$StoresContactPhoneFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$StoresContactPhoneFilters._(this._$data);
+
+  factory Input$StoresContactPhoneFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$StoresContactPhonefiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$StoresContactPhoneFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$StoresContactPhonefiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$StoresContactPhonefiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresContactPhoneFilters<Input$StoresContactPhoneFilters>
+  get copyWith => CopyWith$Input$StoresContactPhoneFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresContactPhoneFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresContactPhoneFilters<TRes> {
+  factory CopyWith$Input$StoresContactPhoneFilters(
+    Input$StoresContactPhoneFilters instance,
+    TRes Function(Input$StoresContactPhoneFilters) then,
+  ) = _CopyWithImpl$Input$StoresContactPhoneFilters;
+
+  factory CopyWith$Input$StoresContactPhoneFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresContactPhoneFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactPhonefiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$StoresContactPhonefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresContactPhonefiltersOr<
+          Input$StoresContactPhonefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$StoresContactPhoneFilters<TRes>
+    implements CopyWith$Input$StoresContactPhoneFilters<TRes> {
+  _CopyWithImpl$Input$StoresContactPhoneFilters(this._instance, this._then);
+
+  final Input$StoresContactPhoneFilters _instance;
+
+  final TRes Function(Input$StoresContactPhoneFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$StoresContactPhoneFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$StoresContactPhonefiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$StoresContactPhonefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresContactPhonefiltersOr<
+          Input$StoresContactPhonefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$StoresContactPhonefiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresContactPhoneFilters<TRes>
+    implements CopyWith$Input$StoresContactPhoneFilters<TRes> {
+  _CopyWithStubImpl$Input$StoresContactPhoneFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactPhonefiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$StoresContactPhonefiltersOr {
+  factory Input$StoresContactPhonefiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$StoresContactPhonefiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$StoresContactPhonefiltersOr._(this._$data);
+
+  factory Input$StoresContactPhonefiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$StoresContactPhonefiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresContactPhonefiltersOr<Input$StoresContactPhonefiltersOr>
+  get copyWith => CopyWith$Input$StoresContactPhonefiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresContactPhonefiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresContactPhonefiltersOr<TRes> {
+  factory CopyWith$Input$StoresContactPhonefiltersOr(
+    Input$StoresContactPhonefiltersOr instance,
+    TRes Function(Input$StoresContactPhonefiltersOr) then,
+  ) = _CopyWithImpl$Input$StoresContactPhonefiltersOr;
+
+  factory CopyWith$Input$StoresContactPhonefiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresContactPhonefiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$StoresContactPhonefiltersOr<TRes>
+    implements CopyWith$Input$StoresContactPhonefiltersOr<TRes> {
+  _CopyWithImpl$Input$StoresContactPhonefiltersOr(this._instance, this._then);
+
+  final Input$StoresContactPhonefiltersOr _instance;
+
+  final TRes Function(Input$StoresContactPhonefiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$StoresContactPhonefiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresContactPhonefiltersOr<TRes>
+    implements CopyWith$Input$StoresContactPhonefiltersOr<TRes> {
+  _CopyWithStubImpl$Input$StoresContactPhonefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$StoresContactEmailFilters {
+  factory Input$StoresContactEmailFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactEmailfiltersOr>? OR,
+  }) => Input$StoresContactEmailFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$StoresContactEmailFilters._(this._$data);
+
+  factory Input$StoresContactEmailFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$StoresContactEmailfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$StoresContactEmailFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$StoresContactEmailfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$StoresContactEmailfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresContactEmailFilters<Input$StoresContactEmailFilters>
+  get copyWith => CopyWith$Input$StoresContactEmailFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresContactEmailFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresContactEmailFilters<TRes> {
+  factory CopyWith$Input$StoresContactEmailFilters(
+    Input$StoresContactEmailFilters instance,
+    TRes Function(Input$StoresContactEmailFilters) then,
+  ) = _CopyWithImpl$Input$StoresContactEmailFilters;
+
+  factory CopyWith$Input$StoresContactEmailFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresContactEmailFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactEmailfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$StoresContactEmailfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresContactEmailfiltersOr<
+          Input$StoresContactEmailfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$StoresContactEmailFilters<TRes>
+    implements CopyWith$Input$StoresContactEmailFilters<TRes> {
+  _CopyWithImpl$Input$StoresContactEmailFilters(this._instance, this._then);
+
+  final Input$StoresContactEmailFilters _instance;
+
+  final TRes Function(Input$StoresContactEmailFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$StoresContactEmailFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$StoresContactEmailfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$StoresContactEmailfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresContactEmailfiltersOr<
+          Input$StoresContactEmailfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$StoresContactEmailfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresContactEmailFilters<TRes>
+    implements CopyWith$Input$StoresContactEmailFilters<TRes> {
+  _CopyWithStubImpl$Input$StoresContactEmailFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresContactEmailfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$StoresContactEmailfiltersOr {
+  factory Input$StoresContactEmailfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$StoresContactEmailfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$StoresContactEmailfiltersOr._(this._$data);
+
+  factory Input$StoresContactEmailfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$StoresContactEmailfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresContactEmailfiltersOr<Input$StoresContactEmailfiltersOr>
+  get copyWith => CopyWith$Input$StoresContactEmailfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresContactEmailfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresContactEmailfiltersOr<TRes> {
+  factory CopyWith$Input$StoresContactEmailfiltersOr(
+    Input$StoresContactEmailfiltersOr instance,
+    TRes Function(Input$StoresContactEmailfiltersOr) then,
+  ) = _CopyWithImpl$Input$StoresContactEmailfiltersOr;
+
+  factory CopyWith$Input$StoresContactEmailfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresContactEmailfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$StoresContactEmailfiltersOr<TRes>
+    implements CopyWith$Input$StoresContactEmailfiltersOr<TRes> {
+  _CopyWithImpl$Input$StoresContactEmailfiltersOr(this._instance, this._then);
+
+  final Input$StoresContactEmailfiltersOr _instance;
+
+  final TRes Function(Input$StoresContactEmailfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$StoresContactEmailfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresContactEmailfiltersOr<TRes>
+    implements CopyWith$Input$StoresContactEmailfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$StoresContactEmailfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$StoresCommissionPctFilters {
+  factory Input$StoresCommissionPctFilters({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresCommissionPctfiltersOr>? OR,
+  }) => Input$StoresCommissionPctFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$StoresCommissionPctFilters._(this._$data);
+
+  factory Input$StoresCommissionPctFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$StoresCommissionPctfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$StoresCommissionPctFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$StoresCommissionPctfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$StoresCommissionPctfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresCommissionPctFilters<Input$StoresCommissionPctFilters>
+  get copyWith => CopyWith$Input$StoresCommissionPctFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresCommissionPctFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresCommissionPctFilters<TRes> {
+  factory CopyWith$Input$StoresCommissionPctFilters(
+    Input$StoresCommissionPctFilters instance,
+    TRes Function(Input$StoresCommissionPctFilters) then,
+  ) = _CopyWithImpl$Input$StoresCommissionPctFilters;
+
+  factory CopyWith$Input$StoresCommissionPctFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresCommissionPctFilters;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresCommissionPctfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$StoresCommissionPctfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresCommissionPctfiltersOr<
+          Input$StoresCommissionPctfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$StoresCommissionPctFilters<TRes>
+    implements CopyWith$Input$StoresCommissionPctFilters<TRes> {
+  _CopyWithImpl$Input$StoresCommissionPctFilters(this._instance, this._then);
+
+  final Input$StoresCommissionPctFilters _instance;
+
+  final TRes Function(Input$StoresCommissionPctFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$StoresCommissionPctFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$StoresCommissionPctfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$StoresCommissionPctfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$StoresCommissionPctfiltersOr<
+          Input$StoresCommissionPctfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$StoresCommissionPctfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresCommissionPctFilters<TRes>
+    implements CopyWith$Input$StoresCommissionPctFilters<TRes> {
+  _CopyWithStubImpl$Input$StoresCommissionPctFilters(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$StoresCommissionPctfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$StoresCommissionPctfiltersOr {
+  factory Input$StoresCommissionPctfiltersOr({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$StoresCommissionPctfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$StoresCommissionPctfiltersOr._(this._$data);
+
+  factory Input$StoresCommissionPctfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$StoresCommissionPctfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$StoresCommissionPctfiltersOr<
+    Input$StoresCommissionPctfiltersOr
+  >
+  get copyWith => CopyWith$Input$StoresCommissionPctfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$StoresCommissionPctfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$StoresCommissionPctfiltersOr<TRes> {
+  factory CopyWith$Input$StoresCommissionPctfiltersOr(
+    Input$StoresCommissionPctfiltersOr instance,
+    TRes Function(Input$StoresCommissionPctfiltersOr) then,
+  ) = _CopyWithImpl$Input$StoresCommissionPctfiltersOr;
+
+  factory CopyWith$Input$StoresCommissionPctfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$StoresCommissionPctfiltersOr;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$StoresCommissionPctfiltersOr<TRes>
+    implements CopyWith$Input$StoresCommissionPctfiltersOr<TRes> {
+  _CopyWithImpl$Input$StoresCommissionPctfiltersOr(this._instance, this._then);
+
+  final Input$StoresCommissionPctfiltersOr _instance;
+
+  final TRes Function(Input$StoresCommissionPctfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$StoresCommissionPctfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$StoresCommissionPctfiltersOr<TRes>
+    implements CopyWith$Input$StoresCommissionPctfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$StoresCommissionPctfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
     bool? isNull,
     bool? isNotNull,
   }) => _res;
@@ -149087,6 +165515,11 @@ class Input$StoresFiltersOr {
   factory Input$StoresFiltersOr({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -149097,6 +165530,11 @@ class Input$StoresFiltersOr {
   }) => Input$StoresFiltersOr._({
     if (id != null) r'id': id,
     if (name != null) r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
     if (address != null) r'address': address,
     if (lat != null) r'lat': lat,
     if (lng != null) r'lng': lng,
@@ -149121,6 +165559,44 @@ class Input$StoresFiltersOr {
       result$data['name'] = l$name == null
           ? null
           : Input$StoresNameFilters.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : Input$StoresTypeFilters.fromJson((l$type as Map<String, dynamic>));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = l$partnerName == null
+          ? null
+          : Input$StoresPartnerNameFilters.fromJson(
+              (l$partnerName as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = l$contactPhone == null
+          ? null
+          : Input$StoresContactPhoneFilters.fromJson(
+              (l$contactPhone as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = l$contactEmail == null
+          ? null
+          : Input$StoresContactEmailFilters.fromJson(
+              (l$contactEmail as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = l$commissionPct == null
+          ? null
+          : Input$StoresCommissionPctFilters.fromJson(
+              (l$commissionPct as Map<String, dynamic>),
+            );
     }
     if (data.containsKey('address')) {
       final l$address = data['address'];
@@ -149184,6 +165660,21 @@ class Input$StoresFiltersOr {
   Input$StoresNameFilters? get name =>
       (_$data['name'] as Input$StoresNameFilters?);
 
+  Input$StoresTypeFilters? get type =>
+      (_$data['type'] as Input$StoresTypeFilters?);
+
+  Input$StoresPartnerNameFilters? get partnerName =>
+      (_$data['partnerName'] as Input$StoresPartnerNameFilters?);
+
+  Input$StoresContactPhoneFilters? get contactPhone =>
+      (_$data['contactPhone'] as Input$StoresContactPhoneFilters?);
+
+  Input$StoresContactEmailFilters? get contactEmail =>
+      (_$data['contactEmail'] as Input$StoresContactEmailFilters?);
+
+  Input$StoresCommissionPctFilters? get commissionPct =>
+      (_$data['commissionPct'] as Input$StoresCommissionPctFilters?);
+
   Input$StoresAddressFilters? get address =>
       (_$data['address'] as Input$StoresAddressFilters?);
 
@@ -149212,6 +165703,26 @@ class Input$StoresFiltersOr {
     if (_$data.containsKey('name')) {
       final l$name = name;
       result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type?.toJson();
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName?.toJson();
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone?.toJson();
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail?.toJson();
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct?.toJson();
     }
     if (_$data.containsKey('address')) {
       final l$address = address;
@@ -149269,6 +165780,50 @@ class Input$StoresFiltersOr {
       return false;
     }
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
       return false;
     }
     final l$address = address;
@@ -149338,6 +165893,11 @@ class Input$StoresFiltersOr {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
     final l$address = address;
     final l$lat = lat;
     final l$lng = lng;
@@ -149348,6 +165908,11 @@ class Input$StoresFiltersOr {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
       _$data.containsKey('address') ? l$address : const {},
       _$data.containsKey('lat') ? l$lat : const {},
       _$data.containsKey('lng') ? l$lng : const {},
@@ -149371,6 +165936,11 @@ abstract class CopyWith$Input$StoresFiltersOr<TRes> {
   TRes call({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -149381,6 +165951,11 @@ abstract class CopyWith$Input$StoresFiltersOr<TRes> {
   });
   CopyWith$Input$StoresIdFilters<TRes> get id;
   CopyWith$Input$StoresNameFilters<TRes> get name;
+  CopyWith$Input$StoresTypeFilters<TRes> get type;
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName;
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone;
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail;
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct;
   CopyWith$Input$StoresAddressFilters<TRes> get address;
   CopyWith$Input$StoresLatFilters<TRes> get lat;
   CopyWith$Input$StoresLngFilters<TRes> get lng;
@@ -149403,6 +165978,11 @@ class _CopyWithImpl$Input$StoresFiltersOr<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
     Object? address = _undefined,
     Object? lat = _undefined,
     Object? lng = _undefined,
@@ -149415,6 +165995,15 @@ class _CopyWithImpl$Input$StoresFiltersOr<TRes>
       ..._instance._$data,
       if (id != _undefined) 'id': (id as Input$StoresIdFilters?),
       if (name != _undefined) 'name': (name as Input$StoresNameFilters?),
+      if (type != _undefined) 'type': (type as Input$StoresTypeFilters?),
+      if (partnerName != _undefined)
+        'partnerName': (partnerName as Input$StoresPartnerNameFilters?),
+      if (contactPhone != _undefined)
+        'contactPhone': (contactPhone as Input$StoresContactPhoneFilters?),
+      if (contactEmail != _undefined)
+        'contactEmail': (contactEmail as Input$StoresContactEmailFilters?),
+      if (commissionPct != _undefined)
+        'commissionPct': (commissionPct as Input$StoresCommissionPctFilters?),
       if (address != _undefined)
         'address': (address as Input$StoresAddressFilters?),
       if (lat != _undefined) 'lat': (lat as Input$StoresLatFilters?),
@@ -149443,6 +166032,53 @@ class _CopyWithImpl$Input$StoresFiltersOr<TRes>
     return local$name == null
         ? CopyWith$Input$StoresNameFilters.stub(_then(_instance))
         : CopyWith$Input$StoresNameFilters(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$StoresTypeFilters<TRes> get type {
+    final local$type = _instance.type;
+    return local$type == null
+        ? CopyWith$Input$StoresTypeFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresTypeFilters(local$type, (e) => call(type: e));
+  }
+
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName {
+    final local$partnerName = _instance.partnerName;
+    return local$partnerName == null
+        ? CopyWith$Input$StoresPartnerNameFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresPartnerNameFilters(
+            local$partnerName,
+            (e) => call(partnerName: e),
+          );
+  }
+
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone {
+    final local$contactPhone = _instance.contactPhone;
+    return local$contactPhone == null
+        ? CopyWith$Input$StoresContactPhoneFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresContactPhoneFilters(
+            local$contactPhone,
+            (e) => call(contactPhone: e),
+          );
+  }
+
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail {
+    final local$contactEmail = _instance.contactEmail;
+    return local$contactEmail == null
+        ? CopyWith$Input$StoresContactEmailFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresContactEmailFilters(
+            local$contactEmail,
+            (e) => call(contactEmail: e),
+          );
+  }
+
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct {
+    final local$commissionPct = _instance.commissionPct;
+    return local$commissionPct == null
+        ? CopyWith$Input$StoresCommissionPctFilters.stub(_then(_instance))
+        : CopyWith$Input$StoresCommissionPctFilters(
+            local$commissionPct,
+            (e) => call(commissionPct: e),
+          );
   }
 
   CopyWith$Input$StoresAddressFilters<TRes> get address {
@@ -149519,6 +166155,11 @@ class _CopyWithStubImpl$Input$StoresFiltersOr<TRes>
   call({
     Input$StoresIdFilters? id,
     Input$StoresNameFilters? name,
+    Input$StoresTypeFilters? type,
+    Input$StoresPartnerNameFilters? partnerName,
+    Input$StoresContactPhoneFilters? contactPhone,
+    Input$StoresContactEmailFilters? contactEmail,
+    Input$StoresCommissionPctFilters? commissionPct,
     Input$StoresAddressFilters? address,
     Input$StoresLatFilters? lat,
     Input$StoresLngFilters? lng,
@@ -149533,6 +166174,21 @@ class _CopyWithStubImpl$Input$StoresFiltersOr<TRes>
 
   CopyWith$Input$StoresNameFilters<TRes> get name =>
       CopyWith$Input$StoresNameFilters.stub(_res);
+
+  CopyWith$Input$StoresTypeFilters<TRes> get type =>
+      CopyWith$Input$StoresTypeFilters.stub(_res);
+
+  CopyWith$Input$StoresPartnerNameFilters<TRes> get partnerName =>
+      CopyWith$Input$StoresPartnerNameFilters.stub(_res);
+
+  CopyWith$Input$StoresContactPhoneFilters<TRes> get contactPhone =>
+      CopyWith$Input$StoresContactPhoneFilters.stub(_res);
+
+  CopyWith$Input$StoresContactEmailFilters<TRes> get contactEmail =>
+      CopyWith$Input$StoresContactEmailFilters.stub(_res);
+
+  CopyWith$Input$StoresCommissionPctFilters<TRes> get commissionPct =>
+      CopyWith$Input$StoresCommissionPctFilters.stub(_res);
 
   CopyWith$Input$StoresAddressFilters<TRes> get address =>
       CopyWith$Input$StoresAddressFilters.stub(_res);
@@ -149560,6 +166216,11 @@ class Input$StoresOrderBy {
   factory Input$StoresOrderBy({
     Input$InnerOrder? id,
     Input$InnerOrder? name,
+    Input$InnerOrder? type,
+    Input$InnerOrder? partnerName,
+    Input$InnerOrder? contactPhone,
+    Input$InnerOrder? contactEmail,
+    Input$InnerOrder? commissionPct,
     Input$InnerOrder? address,
     Input$InnerOrder? lat,
     Input$InnerOrder? lng,
@@ -149570,6 +166231,11 @@ class Input$StoresOrderBy {
   }) => Input$StoresOrderBy._({
     if (id != null) r'id': id,
     if (name != null) r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
     if (address != null) r'address': address,
     if (lat != null) r'lat': lat,
     if (lng != null) r'lng': lng,
@@ -149594,6 +166260,38 @@ class Input$StoresOrderBy {
       result$data['name'] = l$name == null
           ? null
           : Input$InnerOrder.fromJson((l$name as Map<String, dynamic>));
+    }
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : Input$InnerOrder.fromJson((l$type as Map<String, dynamic>));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = l$partnerName == null
+          ? null
+          : Input$InnerOrder.fromJson((l$partnerName as Map<String, dynamic>));
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = l$contactPhone == null
+          ? null
+          : Input$InnerOrder.fromJson((l$contactPhone as Map<String, dynamic>));
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = l$contactEmail == null
+          ? null
+          : Input$InnerOrder.fromJson((l$contactEmail as Map<String, dynamic>));
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = l$commissionPct == null
+          ? null
+          : Input$InnerOrder.fromJson(
+              (l$commissionPct as Map<String, dynamic>),
+            );
     }
     if (data.containsKey('address')) {
       final l$address = data['address'];
@@ -149648,6 +166346,20 @@ class Input$StoresOrderBy {
 
   Input$InnerOrder? get name => (_$data['name'] as Input$InnerOrder?);
 
+  Input$InnerOrder? get type => (_$data['type'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get partnerName =>
+      (_$data['partnerName'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get contactPhone =>
+      (_$data['contactPhone'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get contactEmail =>
+      (_$data['contactEmail'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get commissionPct =>
+      (_$data['commissionPct'] as Input$InnerOrder?);
+
   Input$InnerOrder? get address => (_$data['address'] as Input$InnerOrder?);
 
   Input$InnerOrder? get lat => (_$data['lat'] as Input$InnerOrder?);
@@ -149672,6 +166384,26 @@ class Input$StoresOrderBy {
     if (_$data.containsKey('name')) {
       final l$name = name;
       result$data['name'] = l$name?.toJson();
+    }
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type?.toJson();
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName?.toJson();
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone?.toJson();
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail?.toJson();
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct?.toJson();
     }
     if (_$data.containsKey('address')) {
       final l$address = address;
@@ -149729,6 +166461,50 @@ class Input$StoresOrderBy {
       return false;
     }
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
       return false;
     }
     final l$address = address;
@@ -149798,6 +166574,11 @@ class Input$StoresOrderBy {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
     final l$address = address;
     final l$lat = lat;
     final l$lng = lng;
@@ -149808,6 +166589,11 @@ class Input$StoresOrderBy {
     return Object.hashAll([
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('name') ? l$name : const {},
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
       _$data.containsKey('address') ? l$address : const {},
       _$data.containsKey('lat') ? l$lat : const {},
       _$data.containsKey('lng') ? l$lng : const {},
@@ -149831,6 +166617,11 @@ abstract class CopyWith$Input$StoresOrderBy<TRes> {
   TRes call({
     Input$InnerOrder? id,
     Input$InnerOrder? name,
+    Input$InnerOrder? type,
+    Input$InnerOrder? partnerName,
+    Input$InnerOrder? contactPhone,
+    Input$InnerOrder? contactEmail,
+    Input$InnerOrder? commissionPct,
     Input$InnerOrder? address,
     Input$InnerOrder? lat,
     Input$InnerOrder? lng,
@@ -149841,6 +166632,11 @@ abstract class CopyWith$Input$StoresOrderBy<TRes> {
   });
   CopyWith$Input$InnerOrder<TRes> get id;
   CopyWith$Input$InnerOrder<TRes> get name;
+  CopyWith$Input$InnerOrder<TRes> get type;
+  CopyWith$Input$InnerOrder<TRes> get partnerName;
+  CopyWith$Input$InnerOrder<TRes> get contactPhone;
+  CopyWith$Input$InnerOrder<TRes> get contactEmail;
+  CopyWith$Input$InnerOrder<TRes> get commissionPct;
   CopyWith$Input$InnerOrder<TRes> get address;
   CopyWith$Input$InnerOrder<TRes> get lat;
   CopyWith$Input$InnerOrder<TRes> get lng;
@@ -149863,6 +166659,11 @@ class _CopyWithImpl$Input$StoresOrderBy<TRes>
   TRes call({
     Object? id = _undefined,
     Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
     Object? address = _undefined,
     Object? lat = _undefined,
     Object? lng = _undefined,
@@ -149875,6 +166676,15 @@ class _CopyWithImpl$Input$StoresOrderBy<TRes>
       ..._instance._$data,
       if (id != _undefined) 'id': (id as Input$InnerOrder?),
       if (name != _undefined) 'name': (name as Input$InnerOrder?),
+      if (type != _undefined) 'type': (type as Input$InnerOrder?),
+      if (partnerName != _undefined)
+        'partnerName': (partnerName as Input$InnerOrder?),
+      if (contactPhone != _undefined)
+        'contactPhone': (contactPhone as Input$InnerOrder?),
+      if (contactEmail != _undefined)
+        'contactEmail': (contactEmail as Input$InnerOrder?),
+      if (commissionPct != _undefined)
+        'commissionPct': (commissionPct as Input$InnerOrder?),
       if (address != _undefined) 'address': (address as Input$InnerOrder?),
       if (lat != _undefined) 'lat': (lat as Input$InnerOrder?),
       if (lng != _undefined) 'lng': (lng as Input$InnerOrder?),
@@ -149900,6 +166710,53 @@ class _CopyWithImpl$Input$StoresOrderBy<TRes>
     return local$name == null
         ? CopyWith$Input$InnerOrder.stub(_then(_instance))
         : CopyWith$Input$InnerOrder(local$name, (e) => call(name: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get type {
+    final local$type = _instance.type;
+    return local$type == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$type, (e) => call(type: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get partnerName {
+    final local$partnerName = _instance.partnerName;
+    return local$partnerName == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$partnerName,
+            (e) => call(partnerName: e),
+          );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get contactPhone {
+    final local$contactPhone = _instance.contactPhone;
+    return local$contactPhone == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$contactPhone,
+            (e) => call(contactPhone: e),
+          );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get contactEmail {
+    final local$contactEmail = _instance.contactEmail;
+    return local$contactEmail == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$contactEmail,
+            (e) => call(contactEmail: e),
+          );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get commissionPct {
+    final local$commissionPct = _instance.commissionPct;
+    return local$commissionPct == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$commissionPct,
+            (e) => call(commissionPct: e),
+          );
   }
 
   CopyWith$Input$InnerOrder<TRes> get address {
@@ -149964,6 +166821,11 @@ class _CopyWithStubImpl$Input$StoresOrderBy<TRes>
   call({
     Input$InnerOrder? id,
     Input$InnerOrder? name,
+    Input$InnerOrder? type,
+    Input$InnerOrder? partnerName,
+    Input$InnerOrder? contactPhone,
+    Input$InnerOrder? contactEmail,
+    Input$InnerOrder? commissionPct,
     Input$InnerOrder? address,
     Input$InnerOrder? lat,
     Input$InnerOrder? lng,
@@ -149977,6 +166839,21 @@ class _CopyWithStubImpl$Input$StoresOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get name =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get type =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get partnerName =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get contactPhone =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get contactEmail =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get commissionPct =>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get address =>
@@ -158982,6 +175859,357 @@ class _CopyWithStubImpl$Input$UsersOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 }
 
+class Input$AdminStoreInput {
+  factory Input$AdminStoreInput({
+    required String name,
+    Enum$AdminStoreType? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
+    required String address,
+    required double lat,
+    required double lng,
+    int? serviceRadiusM,
+    bool? isActive,
+  }) => Input$AdminStoreInput._({
+    r'name': name,
+    if (type != null) r'type': type,
+    if (partnerName != null) r'partnerName': partnerName,
+    if (contactPhone != null) r'contactPhone': contactPhone,
+    if (contactEmail != null) r'contactEmail': contactEmail,
+    if (commissionPct != null) r'commissionPct': commissionPct,
+    r'address': address,
+    r'lat': lat,
+    r'lng': lng,
+    if (serviceRadiusM != null) r'serviceRadiusM': serviceRadiusM,
+    if (isActive != null) r'isActive': isActive,
+  });
+
+  Input$AdminStoreInput._(this._$data);
+
+  factory Input$AdminStoreInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$name = data['name'];
+    result$data['name'] = (l$name as String);
+    if (data.containsKey('type')) {
+      final l$type = data['type'];
+      result$data['type'] = l$type == null
+          ? null
+          : fromJson$Enum$AdminStoreType((l$type as String));
+    }
+    if (data.containsKey('partnerName')) {
+      final l$partnerName = data['partnerName'];
+      result$data['partnerName'] = (l$partnerName as String?);
+    }
+    if (data.containsKey('contactPhone')) {
+      final l$contactPhone = data['contactPhone'];
+      result$data['contactPhone'] = (l$contactPhone as String?);
+    }
+    if (data.containsKey('contactEmail')) {
+      final l$contactEmail = data['contactEmail'];
+      result$data['contactEmail'] = (l$contactEmail as String?);
+    }
+    if (data.containsKey('commissionPct')) {
+      final l$commissionPct = data['commissionPct'];
+      result$data['commissionPct'] = (l$commissionPct as int?);
+    }
+    final l$address = data['address'];
+    result$data['address'] = (l$address as String);
+    final l$lat = data['lat'];
+    result$data['lat'] = (l$lat as num).toDouble();
+    final l$lng = data['lng'];
+    result$data['lng'] = (l$lng as num).toDouble();
+    if (data.containsKey('serviceRadiusM')) {
+      final l$serviceRadiusM = data['serviceRadiusM'];
+      result$data['serviceRadiusM'] = (l$serviceRadiusM as int?);
+    }
+    if (data.containsKey('isActive')) {
+      final l$isActive = data['isActive'];
+      result$data['isActive'] = (l$isActive as bool?);
+    }
+    return Input$AdminStoreInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get name => (_$data['name'] as String);
+
+  Enum$AdminStoreType? get type => (_$data['type'] as Enum$AdminStoreType?);
+
+  String? get partnerName => (_$data['partnerName'] as String?);
+
+  String? get contactPhone => (_$data['contactPhone'] as String?);
+
+  String? get contactEmail => (_$data['contactEmail'] as String?);
+
+  int? get commissionPct => (_$data['commissionPct'] as int?);
+
+  String get address => (_$data['address'] as String);
+
+  double get lat => (_$data['lat'] as double);
+
+  double get lng => (_$data['lng'] as double);
+
+  int? get serviceRadiusM => (_$data['serviceRadiusM'] as int?);
+
+  bool? get isActive => (_$data['isActive'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$name = name;
+    result$data['name'] = l$name;
+    if (_$data.containsKey('type')) {
+      final l$type = type;
+      result$data['type'] = l$type == null
+          ? null
+          : toJson$Enum$AdminStoreType(l$type);
+    }
+    if (_$data.containsKey('partnerName')) {
+      final l$partnerName = partnerName;
+      result$data['partnerName'] = l$partnerName;
+    }
+    if (_$data.containsKey('contactPhone')) {
+      final l$contactPhone = contactPhone;
+      result$data['contactPhone'] = l$contactPhone;
+    }
+    if (_$data.containsKey('contactEmail')) {
+      final l$contactEmail = contactEmail;
+      result$data['contactEmail'] = l$contactEmail;
+    }
+    if (_$data.containsKey('commissionPct')) {
+      final l$commissionPct = commissionPct;
+      result$data['commissionPct'] = l$commissionPct;
+    }
+    final l$address = address;
+    result$data['address'] = l$address;
+    final l$lat = lat;
+    result$data['lat'] = l$lat;
+    final l$lng = lng;
+    result$data['lng'] = l$lng;
+    if (_$data.containsKey('serviceRadiusM')) {
+      final l$serviceRadiusM = serviceRadiusM;
+      result$data['serviceRadiusM'] = l$serviceRadiusM;
+    }
+    if (_$data.containsKey('isActive')) {
+      final l$isActive = isActive;
+      result$data['isActive'] = l$isActive;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$AdminStoreInput<Input$AdminStoreInput> get copyWith =>
+      CopyWith$Input$AdminStoreInput(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$AdminStoreInput || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (_$data.containsKey('type') != other._$data.containsKey('type')) {
+      return false;
+    }
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$partnerName = partnerName;
+    final lOther$partnerName = other.partnerName;
+    if (_$data.containsKey('partnerName') !=
+        other._$data.containsKey('partnerName')) {
+      return false;
+    }
+    if (l$partnerName != lOther$partnerName) {
+      return false;
+    }
+    final l$contactPhone = contactPhone;
+    final lOther$contactPhone = other.contactPhone;
+    if (_$data.containsKey('contactPhone') !=
+        other._$data.containsKey('contactPhone')) {
+      return false;
+    }
+    if (l$contactPhone != lOther$contactPhone) {
+      return false;
+    }
+    final l$contactEmail = contactEmail;
+    final lOther$contactEmail = other.contactEmail;
+    if (_$data.containsKey('contactEmail') !=
+        other._$data.containsKey('contactEmail')) {
+      return false;
+    }
+    if (l$contactEmail != lOther$contactEmail) {
+      return false;
+    }
+    final l$commissionPct = commissionPct;
+    final lOther$commissionPct = other.commissionPct;
+    if (_$data.containsKey('commissionPct') !=
+        other._$data.containsKey('commissionPct')) {
+      return false;
+    }
+    if (l$commissionPct != lOther$commissionPct) {
+      return false;
+    }
+    final l$address = address;
+    final lOther$address = other.address;
+    if (l$address != lOther$address) {
+      return false;
+    }
+    final l$lat = lat;
+    final lOther$lat = other.lat;
+    if (l$lat != lOther$lat) {
+      return false;
+    }
+    final l$lng = lng;
+    final lOther$lng = other.lng;
+    if (l$lng != lOther$lng) {
+      return false;
+    }
+    final l$serviceRadiusM = serviceRadiusM;
+    final lOther$serviceRadiusM = other.serviceRadiusM;
+    if (_$data.containsKey('serviceRadiusM') !=
+        other._$data.containsKey('serviceRadiusM')) {
+      return false;
+    }
+    if (l$serviceRadiusM != lOther$serviceRadiusM) {
+      return false;
+    }
+    final l$isActive = isActive;
+    final lOther$isActive = other.isActive;
+    if (_$data.containsKey('isActive') !=
+        other._$data.containsKey('isActive')) {
+      return false;
+    }
+    if (l$isActive != lOther$isActive) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$name = name;
+    final l$type = type;
+    final l$partnerName = partnerName;
+    final l$contactPhone = contactPhone;
+    final l$contactEmail = contactEmail;
+    final l$commissionPct = commissionPct;
+    final l$address = address;
+    final l$lat = lat;
+    final l$lng = lng;
+    final l$serviceRadiusM = serviceRadiusM;
+    final l$isActive = isActive;
+    return Object.hashAll([
+      l$name,
+      _$data.containsKey('type') ? l$type : const {},
+      _$data.containsKey('partnerName') ? l$partnerName : const {},
+      _$data.containsKey('contactPhone') ? l$contactPhone : const {},
+      _$data.containsKey('contactEmail') ? l$contactEmail : const {},
+      _$data.containsKey('commissionPct') ? l$commissionPct : const {},
+      l$address,
+      l$lat,
+      l$lng,
+      _$data.containsKey('serviceRadiusM') ? l$serviceRadiusM : const {},
+      _$data.containsKey('isActive') ? l$isActive : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$AdminStoreInput<TRes> {
+  factory CopyWith$Input$AdminStoreInput(
+    Input$AdminStoreInput instance,
+    TRes Function(Input$AdminStoreInput) then,
+  ) = _CopyWithImpl$Input$AdminStoreInput;
+
+  factory CopyWith$Input$AdminStoreInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$AdminStoreInput;
+
+  TRes call({
+    String? name,
+    Enum$AdminStoreType? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
+    String? address,
+    double? lat,
+    double? lng,
+    int? serviceRadiusM,
+    bool? isActive,
+  });
+}
+
+class _CopyWithImpl$Input$AdminStoreInput<TRes>
+    implements CopyWith$Input$AdminStoreInput<TRes> {
+  _CopyWithImpl$Input$AdminStoreInput(this._instance, this._then);
+
+  final Input$AdminStoreInput _instance;
+
+  final TRes Function(Input$AdminStoreInput) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? name = _undefined,
+    Object? type = _undefined,
+    Object? partnerName = _undefined,
+    Object? contactPhone = _undefined,
+    Object? contactEmail = _undefined,
+    Object? commissionPct = _undefined,
+    Object? address = _undefined,
+    Object? lat = _undefined,
+    Object? lng = _undefined,
+    Object? serviceRadiusM = _undefined,
+    Object? isActive = _undefined,
+  }) => _then(
+    Input$AdminStoreInput._({
+      ..._instance._$data,
+      if (name != _undefined && name != null) 'name': (name as String),
+      if (type != _undefined) 'type': (type as Enum$AdminStoreType?),
+      if (partnerName != _undefined) 'partnerName': (partnerName as String?),
+      if (contactPhone != _undefined) 'contactPhone': (contactPhone as String?),
+      if (contactEmail != _undefined) 'contactEmail': (contactEmail as String?),
+      if (commissionPct != _undefined) 'commissionPct': (commissionPct as int?),
+      if (address != _undefined && address != null)
+        'address': (address as String),
+      if (lat != _undefined && lat != null) 'lat': (lat as double),
+      if (lng != _undefined && lng != null) 'lng': (lng as double),
+      if (serviceRadiusM != _undefined)
+        'serviceRadiusM': (serviceRadiusM as int?),
+      if (isActive != _undefined) 'isActive': (isActive as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$AdminStoreInput<TRes>
+    implements CopyWith$Input$AdminStoreInput<TRes> {
+  _CopyWithStubImpl$Input$AdminStoreInput(this._res);
+
+  TRes _res;
+
+  call({
+    String? name,
+    Enum$AdminStoreType? type,
+    String? partnerName,
+    String? contactPhone,
+    String? contactEmail,
+    int? commissionPct,
+    String? address,
+    double? lat,
+    double? lng,
+    int? serviceRadiusM,
+    bool? isActive,
+  }) => _res;
+}
+
 enum Enum$UsersRoleEnum {
   customer,
   admin,
@@ -159012,6 +176240,117 @@ Enum$UsersRoleEnum fromJson$Enum$UsersRoleEnum(String value) {
       return Enum$UsersRoleEnum.admin;
     default:
       return Enum$UsersRoleEnum.$unknown;
+  }
+}
+
+enum Enum$StoresTypeEnum {
+  DARK_STORE,
+  THIRD_PARTY,
+  $unknown;
+
+  factory Enum$StoresTypeEnum.fromJson(String value) =>
+      fromJson$Enum$StoresTypeEnum(value);
+
+  String toJson() => toJson$Enum$StoresTypeEnum(this);
+}
+
+String toJson$Enum$StoresTypeEnum(Enum$StoresTypeEnum e) {
+  switch (e) {
+    case Enum$StoresTypeEnum.DARK_STORE:
+      return r'DARK_STORE';
+    case Enum$StoresTypeEnum.THIRD_PARTY:
+      return r'THIRD_PARTY';
+    case Enum$StoresTypeEnum.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$StoresTypeEnum fromJson$Enum$StoresTypeEnum(String value) {
+  switch (value) {
+    case r'DARK_STORE':
+      return Enum$StoresTypeEnum.DARK_STORE;
+    case r'THIRD_PARTY':
+      return Enum$StoresTypeEnum.THIRD_PARTY;
+    default:
+      return Enum$StoresTypeEnum.$unknown;
+  }
+}
+
+enum Enum$DeviceRegistrationsKindEnum {
+  FID,
+  TOKEN,
+  $unknown;
+
+  factory Enum$DeviceRegistrationsKindEnum.fromJson(String value) =>
+      fromJson$Enum$DeviceRegistrationsKindEnum(value);
+
+  String toJson() => toJson$Enum$DeviceRegistrationsKindEnum(this);
+}
+
+String toJson$Enum$DeviceRegistrationsKindEnum(
+  Enum$DeviceRegistrationsKindEnum e,
+) {
+  switch (e) {
+    case Enum$DeviceRegistrationsKindEnum.FID:
+      return r'FID';
+    case Enum$DeviceRegistrationsKindEnum.TOKEN:
+      return r'TOKEN';
+    case Enum$DeviceRegistrationsKindEnum.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$DeviceRegistrationsKindEnum fromJson$Enum$DeviceRegistrationsKindEnum(
+  String value,
+) {
+  switch (value) {
+    case r'FID':
+      return Enum$DeviceRegistrationsKindEnum.FID;
+    case r'TOKEN':
+      return Enum$DeviceRegistrationsKindEnum.TOKEN;
+    default:
+      return Enum$DeviceRegistrationsKindEnum.$unknown;
+  }
+}
+
+enum Enum$DeviceRegistrationsPlatformEnum {
+  web,
+  android,
+  ios,
+  $unknown;
+
+  factory Enum$DeviceRegistrationsPlatformEnum.fromJson(String value) =>
+      fromJson$Enum$DeviceRegistrationsPlatformEnum(value);
+
+  String toJson() => toJson$Enum$DeviceRegistrationsPlatformEnum(this);
+}
+
+String toJson$Enum$DeviceRegistrationsPlatformEnum(
+  Enum$DeviceRegistrationsPlatformEnum e,
+) {
+  switch (e) {
+    case Enum$DeviceRegistrationsPlatformEnum.web:
+      return r'web';
+    case Enum$DeviceRegistrationsPlatformEnum.android:
+      return r'android';
+    case Enum$DeviceRegistrationsPlatformEnum.ios:
+      return r'ios';
+    case Enum$DeviceRegistrationsPlatformEnum.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$DeviceRegistrationsPlatformEnum
+fromJson$Enum$DeviceRegistrationsPlatformEnum(String value) {
+  switch (value) {
+    case r'web':
+      return Enum$DeviceRegistrationsPlatformEnum.web;
+    case r'android':
+      return Enum$DeviceRegistrationsPlatformEnum.android;
+    case r'ios':
+      return Enum$DeviceRegistrationsPlatformEnum.ios;
+    default:
+      return Enum$DeviceRegistrationsPlatformEnum.$unknown;
   }
 }
 
@@ -159233,6 +176572,39 @@ Enum$TimeBoundSectionId fromJson$Enum$TimeBoundSectionId(String value) {
       return Enum$TimeBoundSectionId.DINNER;
     default:
       return Enum$TimeBoundSectionId.$unknown;
+  }
+}
+
+enum Enum$AdminStoreType {
+  DARK_STORE,
+  THIRD_PARTY,
+  $unknown;
+
+  factory Enum$AdminStoreType.fromJson(String value) =>
+      fromJson$Enum$AdminStoreType(value);
+
+  String toJson() => toJson$Enum$AdminStoreType(this);
+}
+
+String toJson$Enum$AdminStoreType(Enum$AdminStoreType e) {
+  switch (e) {
+    case Enum$AdminStoreType.DARK_STORE:
+      return r'DARK_STORE';
+    case Enum$AdminStoreType.THIRD_PARTY:
+      return r'THIRD_PARTY';
+    case Enum$AdminStoreType.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$AdminStoreType fromJson$Enum$AdminStoreType(String value) {
+  switch (value) {
+    case r'DARK_STORE':
+      return Enum$AdminStoreType.DARK_STORE;
+    case r'THIRD_PARTY':
+      return Enum$AdminStoreType.THIRD_PARTY;
+    default:
+      return Enum$AdminStoreType.$unknown;
   }
 }
 

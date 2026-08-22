@@ -1314,10 +1314,13 @@ export type AdminProduct = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<MarkupType>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<TimeBoundSectionId>;
+  timeBoundSections: Array<TimeBoundSectionId>;
   unit: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
 };
@@ -1656,10 +1659,14 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelation =
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -1707,10 +1714,14 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCa
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2038,10 +2049,14 @@ export type CartItemsProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<CartItemsProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2089,10 +2104,14 @@ export type CartItemsProductRelationCategoryRelationProductsRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2131,10 +2150,14 @@ export type CartItemsProductRelationInventoryRelationProductRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2480,10 +2503,14 @@ export type CartsItemsRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<CartsItemsRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2531,10 +2558,14 @@ export type CartsItemsRelationProductRelationCategoryRelationProductsRelation = 
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2573,10 +2604,14 @@ export type CartsItemsRelationProductRelationInventoryRelationProductRelation = 
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2765,10 +2800,14 @@ export type CartsStoreRelationInventoryRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<CartsStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2816,10 +2855,14 @@ export type CartsStoreRelationInventoryRelationProductRelationCategoryRelationPr
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3240,10 +3283,14 @@ export type CategoriesProductsRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<CategoriesProductsRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3305,10 +3352,14 @@ export type CategoriesProductsRelationInventoryRelationProductRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4280,10 +4331,14 @@ export type InventoryAdjustmentsInventoryRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<InventoryAdjustmentsInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4331,10 +4386,14 @@ export type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4760,10 +4819,14 @@ export type InventoryProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<InventoryProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4811,10 +4874,14 @@ export type InventoryProductRelationCategoryRelationProductsRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5033,6 +5100,10 @@ export type InventoryUpdatedAtfiltersOr = {
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type MarkupType =
+  | 'AMOUNT'
+  | 'PERCENTAGE';
+
 export type Mutation = {
   __typename?: 'Mutation';
   addAddress: AppAddress;
@@ -5137,10 +5208,13 @@ export type MutationCreateAdminProductArgs = {
   emoji?: InputMaybe<Scalars['String']['input']>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<MarkupType>;
   mrp: Scalars['Int']['input'];
   name: Scalars['String']['input'];
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price: Scalars['Int']['input'];
-  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
+  timeBoundSections?: InputMaybe<Array<TimeBoundSectionId>>;
   unit: Scalars['String']['input'];
 };
 
@@ -5230,10 +5304,13 @@ export type MutationUpdateAdminProductArgs = {
   id: Scalars['String']['input'];
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<MarkupType>;
   mrp?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
-  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
+  timeBoundSections?: InputMaybe<Array<TimeBoundSectionId>>;
   unit?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -5726,10 +5803,14 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5777,10 +5858,14 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5967,10 +6052,14 @@ export type OrderItemsProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrderItemsProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6018,10 +6107,14 @@ export type OrderItemsProductRelationCategoryRelationProductsRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6060,10 +6153,14 @@ export type OrderItemsProductRelationInventoryRelationProductRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6744,10 +6841,14 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6795,10 +6896,14 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryR
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6837,10 +6942,14 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6950,10 +7059,14 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7001,10 +7114,14 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7848,10 +7965,14 @@ export type OrdersItemsRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrdersItemsRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7899,10 +8020,14 @@ export type OrdersItemsRelationProductRelationCategoryRelationProductsRelation =
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7941,10 +8066,14 @@ export type OrdersItemsRelationProductRelationInventoryRelationProductRelation =
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8299,10 +8428,14 @@ export type OrdersStoreRelationInventoryRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<OrdersStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8350,10 +8483,14 @@ export type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationP
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9093,10 +9230,14 @@ export type ProductsCategoryRelationProductsRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9240,10 +9381,13 @@ export type ProductsFilters = {
   id?: InputMaybe<ProductsIdFilters>;
   imageUrl?: InputMaybe<ProductsImageUrlFilters>;
   isActive?: InputMaybe<ProductsIsActiveFilters>;
+  markup?: InputMaybe<ProductsMarkupFilters>;
+  markupType?: InputMaybe<ProductsMarkupTypeFilters>;
   mrp?: InputMaybe<ProductsMrpFilters>;
   name?: InputMaybe<ProductsNameFilters>;
+  originalPrice?: InputMaybe<ProductsOriginalPriceFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
-  timeBoundSection?: InputMaybe<ProductsTimeBoundSectionFilters>;
+  timeBoundSections?: InputMaybe<ProductsTimeBoundSectionsFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -9256,10 +9400,13 @@ export type ProductsFiltersOr = {
   id?: InputMaybe<ProductsIdFilters>;
   imageUrl?: InputMaybe<ProductsImageUrlFilters>;
   isActive?: InputMaybe<ProductsIsActiveFilters>;
+  markup?: InputMaybe<ProductsMarkupFilters>;
+  markupType?: InputMaybe<ProductsMarkupTypeFilters>;
   mrp?: InputMaybe<ProductsMrpFilters>;
   name?: InputMaybe<ProductsNameFilters>;
+  originalPrice?: InputMaybe<ProductsOriginalPriceFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
-  timeBoundSection?: InputMaybe<ProductsTimeBoundSectionFilters>;
+  timeBoundSections?: InputMaybe<ProductsTimeBoundSectionsFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -9351,10 +9498,14 @@ export type ProductsInsertInput = {
   id?: InputMaybe<Scalars['String']['input']>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['input'];
   name: Scalars['String']['input'];
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price: Scalars['Int']['input'];
-  timeBoundSection?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
+  timeBoundSections?: InputMaybe<Scalars['String']['input']>;
   unit: Scalars['String']['input'];
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -9393,10 +9544,14 @@ export type ProductsInventoryRelationProductRelation = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9491,13 +9646,101 @@ export type ProductsItem = {
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
+};
+
+export type ProductsMarkupFilters = {
+  OR?: InputMaybe<Array<ProductsMarkupfiltersOr>>;
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsMarkupTypeEnum =
+  /** Value: AMOUNT */
+  | 'AMOUNT'
+  /** Value: PERCENTAGE */
+  | 'PERCENTAGE';
+
+export type ProductsMarkupTypeFilters = {
+  OR?: InputMaybe<Array<ProductsMarkupTypefiltersOr>>;
+  eq?: InputMaybe<ProductsMarkupTypeEnum>;
+  gt?: InputMaybe<ProductsMarkupTypeEnum>;
+  gte?: InputMaybe<ProductsMarkupTypeEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<ProductsMarkupTypeEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<ProductsMarkupTypeEnum>;
+  lte?: InputMaybe<ProductsMarkupTypeEnum>;
+  ne?: InputMaybe<ProductsMarkupTypeEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<ProductsMarkupTypeEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsMarkupTypefiltersOr = {
+  eq?: InputMaybe<ProductsMarkupTypeEnum>;
+  gt?: InputMaybe<ProductsMarkupTypeEnum>;
+  gte?: InputMaybe<ProductsMarkupTypeEnum>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<ProductsMarkupTypeEnum>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<ProductsMarkupTypeEnum>;
+  lte?: InputMaybe<ProductsMarkupTypeEnum>;
+  ne?: InputMaybe<ProductsMarkupTypeEnum>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<ProductsMarkupTypeEnum>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsMarkupfiltersOr = {
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductsMrpFilters = {
@@ -9586,12 +9829,54 @@ export type ProductsOrderBy = {
   id?: InputMaybe<InnerOrder>;
   imageUrl?: InputMaybe<InnerOrder>;
   isActive?: InputMaybe<InnerOrder>;
+  markup?: InputMaybe<InnerOrder>;
+  markupType?: InputMaybe<InnerOrder>;
   mrp?: InputMaybe<InnerOrder>;
   name?: InputMaybe<InnerOrder>;
+  originalPrice?: InputMaybe<InnerOrder>;
   price?: InputMaybe<InnerOrder>;
-  timeBoundSection?: InputMaybe<InnerOrder>;
+  timeBoundSections?: InputMaybe<InnerOrder>;
   unit?: InputMaybe<InnerOrder>;
   updatedAt?: InputMaybe<InnerOrder>;
+};
+
+export type ProductsOriginalPriceFilters = {
+  OR?: InputMaybe<Array<ProductsOriginalPricefiltersOr>>;
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsOriginalPricefiltersOr = {
+  eq?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  ne?: InputMaybe<Scalars['Int']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Int']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductsPriceFilters = {
@@ -9645,10 +9930,14 @@ export type ProductsSelectItem = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<ProductsInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9667,41 +9956,53 @@ export type ProductsSelectItemInventoryArgs = {
   where?: InputMaybe<InventoryFilters>;
 };
 
-export type ProductsTimeBoundSectionFilters = {
-  OR?: InputMaybe<Array<ProductsTimeBoundSectionfiltersOr>>;
+export type ProductsTimeBoundSectionsFilters = {
+  OR?: InputMaybe<Array<ProductsTimeBoundSectionsfiltersOr>>;
+  /** JSON */
   eq?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   gt?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   gte?: InputMaybe<Scalars['String']['input']>;
   ilike?: InputMaybe<Scalars['String']['input']>;
-  /** Array<undefined> */
+  /** Array<JSON> */
   inArray?: InputMaybe<Array<Scalars['String']['input']>>;
   isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
   isNull?: InputMaybe<Scalars['Boolean']['input']>;
   like?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   lt?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   lte?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   ne?: InputMaybe<Scalars['String']['input']>;
   notIlike?: InputMaybe<Scalars['String']['input']>;
-  /** Array<undefined> */
+  /** Array<JSON> */
   notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ProductsTimeBoundSectionfiltersOr = {
+export type ProductsTimeBoundSectionsfiltersOr = {
+  /** JSON */
   eq?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   gt?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   gte?: InputMaybe<Scalars['String']['input']>;
   ilike?: InputMaybe<Scalars['String']['input']>;
-  /** Array<undefined> */
+  /** Array<JSON> */
   inArray?: InputMaybe<Array<Scalars['String']['input']>>;
   isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
   isNull?: InputMaybe<Scalars['Boolean']['input']>;
   like?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   lt?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   lte?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
   ne?: InputMaybe<Scalars['String']['input']>;
   notIlike?: InputMaybe<Scalars['String']['input']>;
-  /** Array<undefined> */
+  /** Array<JSON> */
   notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
@@ -9754,10 +10055,14 @@ export type ProductsUpdateInput = {
   id?: InputMaybe<Scalars['String']['input']>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<ProductsMarkupTypeEnum>;
   mrp?: InputMaybe<Scalars['Int']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
-  timeBoundSection?: InputMaybe<Scalars['String']['input']>;
+  /** JSON */
+  timeBoundSections?: InputMaybe<Scalars['String']['input']>;
   unit?: InputMaybe<Scalars['String']['input']>;
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -10755,10 +11060,14 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<StoreSlotConfigStoreRelationInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -10806,10 +11115,14 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategory
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11192,10 +11505,14 @@ export type StoresInventoryRelationProductRelation = {
   imageUrl?: Maybe<Scalars['String']['output']>;
   inventory: Array<StoresInventoryRelationProductRelationInventoryRelation>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11243,10 +11560,14 @@ export type StoresInventoryRelationProductRelationCategoryRelationProductsRelati
   id: Scalars['String']['output'];
   imageUrl?: Maybe<Scalars['String']['output']>;
   isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
   mrp: Scalars['Int']['output'];
   name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
-  timeBoundSection?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -12229,14 +12550,14 @@ export type AdminProductsQueryVariables = Exact<{
 }>;
 
 
-export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, timeBoundSection?: TimeBoundSectionId | null, isActive: boolean, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
+export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, isActive: boolean, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
 
 export type AdminProductQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
 
-export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, imageUrl?: string | null, timeBoundSection?: TimeBoundSectionId | null, isActive: boolean, categoryId: string, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
+export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, isActive: boolean, categoryId: string, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
 
 export type TimeBoundSectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -12255,8 +12576,11 @@ export type CreateAdminProductMutationVariables = Exact<{
   unit: Scalars['String']['input'];
   mrp: Scalars['Int']['input'];
   price: Scalars['Int']['input'];
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<MarkupType>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
-  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
+  timeBoundSections?: InputMaybe<Array<TimeBoundSectionId> | TimeBoundSectionId>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
@@ -12271,8 +12595,11 @@ export type UpdateAdminProductMutationVariables = Exact<{
   unit?: InputMaybe<Scalars['String']['input']>;
   mrp?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
+  originalPrice?: InputMaybe<Scalars['Int']['input']>;
+  markup?: InputMaybe<Scalars['Int']['input']>;
+  markupType?: InputMaybe<MarkupType>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
-  timeBoundSection?: InputMaybe<TimeBoundSectionId>;
+  timeBoundSections?: InputMaybe<Array<TimeBoundSectionId> | TimeBoundSectionId>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
@@ -12447,12 +12774,12 @@ export const AdminSetupDocument = {"kind":"Document","definitions":[{"kind":"Ope
 export const AdminLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"role"}}]}},{"kind":"Field","name":{"kind":"Name","value":"expiresAt"}}]}}]}}]} as unknown as DocumentNode<AdminLoginMutation, AdminLoginMutationVariables>;
 export const AdminLogoutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogout"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogout"}}]}}]} as unknown as DocumentNode<AdminLogoutMutation, AdminLogoutMutationVariables>;
 export const AdminDashboardDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todaysOrders"}},{"kind":"Field","name":{"kind":"Name","value":"placedOrders"}},{"kind":"Field","name":{"kind":"Name","value":"processingOrders"}},{"kind":"Field","name":{"kind":"Name","value":"lowStockItems"}}]}}]}}]} as unknown as DocumentNode<AdminDashboardQuery, AdminDashboardQueryVariables>;
-export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSection"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
-export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSection"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
+export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
+export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
 export const TimeBoundSectionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TimeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"window"}},{"kind":"Field","name":{"kind":"Name","value":"startHour"}},{"kind":"Field","name":{"kind":"Name","value":"endHour"}},{"kind":"Field","name":{"kind":"Name","value":"isNow"}}]}}]}}]} as unknown as DocumentNode<TimeBoundSectionsQuery, TimeBoundSectionsQueryVariables>;
 export const AdminCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"sortOrder"}}]}}]}}]} as unknown as DocumentNode<AdminCategoriesQuery, AdminCategoriesQueryVariables>;
-export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSection"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
-export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSection"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSection"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
+export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
+export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
 export const RegisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}},{"kind":"Argument","name":{"kind":"Name","value":"userAgent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}}}]}]}}]} as unknown as DocumentNode<RegisterAdminDeviceMutation, RegisterAdminDeviceMutationVariables>;
 export const UnregisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UnregisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unregisterAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}}]}]}}]} as unknown as DocumentNode<UnregisterAdminDeviceMutation, UnregisterAdminDeviceMutationVariables>;
 export const CreateAdminCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminCategory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"sortOrder"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminCategoryMutation, CreateAdminCategoryMutationVariables>;

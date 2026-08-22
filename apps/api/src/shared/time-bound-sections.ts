@@ -38,9 +38,9 @@ export const TIME_BOUND_SECTIONS: readonly TimeBoundSection[] = [
   {
     id: "DINNER",
     title: "Dinner staples",
-    window: "4 – 11 PM",
+    window: "4 – 9 PM",
     startHour: 16,
-    endHour: 23,
+    endHour: 21,
   },
 ] as const;
 

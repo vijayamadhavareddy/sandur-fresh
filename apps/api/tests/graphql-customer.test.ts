@@ -5,6 +5,7 @@ import { users } from "@sf/db/schema";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { graphql } from "graphql";
 import { graphqlSchema } from "../src/graphql/schema";
+import { MockOtpProvider } from "../src/modules/otp";
 import { usersRepo } from "../src/modules/users/users.repo";
 import { createUsersService } from "../src/modules/users/users.service";
 
@@ -31,7 +32,7 @@ const createTestDb = () => {
     );
     CREATE TABLE sessions (
       id TEXT PRIMARY KEY,
-      user_id TEXT NOT NULL,
+      user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       token TEXT NOT NULL UNIQUE,
       expires_at INTEGER NOT NULL,
       created_at INTEGER NOT NULL
@@ -59,7 +60,7 @@ const createTestDb = () => {
 describe("GraphQL customer resolvers", () => {
   test("requestOtp and verifyOtp mutations", async () => {
     const db = createTestDb();
-    const uService = createUsersService({ db, usersRepo });
+    const uService = createUsersService({ db, usersRepo, otpProvider: new MockOtpProvider() });
     const container = { users: uService };
 
     const reqResult = await graphql({
@@ -110,7 +111,7 @@ describe("GraphQL customer resolvers", () => {
 
   test("me and address queries and mutations", async () => {
     const db = createTestDb();
-    const uService = createUsersService({ db, usersRepo });
+    const uService = createUsersService({ db, usersRepo, otpProvider: new MockOtpProvider() });
     const container = { users: uService };
 
     const [user] = await db

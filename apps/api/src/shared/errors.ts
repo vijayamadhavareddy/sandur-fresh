@@ -7,6 +7,7 @@ export const ErrorCode = {
   OUT_OF_STOCK: "OUT_OF_STOCK",
   UNAUTHORIZED: "UNAUTHORIZED",
   FORBIDDEN: "FORBIDDEN",
+  RATE_LIMITED: "RATE_LIMITED",
   INTERNAL: "INTERNAL",
 } as const;
 
@@ -42,6 +43,9 @@ export const unauthorized = (message = "Unauthorized", details?: unknown): Domai
 export const forbidden = (message = "Forbidden", details?: unknown): DomainError =>
   domainError(ErrorCode.FORBIDDEN, message, details);
 
+export const rateLimited = (message = "Too many requests", details?: unknown): DomainError =>
+  domainError(ErrorCode.RATE_LIMITED, message, details);
+
 export const internal = (message = "Internal server error", details?: unknown): DomainError =>
   domainError(ErrorCode.INTERNAL, message, details);
 
@@ -52,6 +56,7 @@ const statusByCode: Record<ErrorCode, number> = {
   OUT_OF_STOCK: 409,
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
+  RATE_LIMITED: 429,
   INTERNAL: 500,
 };
 

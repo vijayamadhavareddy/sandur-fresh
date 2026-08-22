@@ -69,7 +69,7 @@ const cards = [
       <!-- Standard PageHeader + Custom Live Control Tower Action Bar -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800/80">
         <div>
-          <PageHeader title="Daily Overview" eyebrow="Live Control Tower" />
+          <PageHeader title="Daily Overview" eyebrow="" />
           <p class="text-sm text-slate-400 mt-1">Real-time hyperlocal dispatch, order flow, and dark store inventory intelligence.</p>
         </div>
 
