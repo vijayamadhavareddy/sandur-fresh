@@ -5,10 +5,13 @@ fileGroups:
   sources:
     - 'lib/**/*'
     - 'pubspec.yaml'
+    - 'config.*.json'
 
 tasks:
   run:
-    command: 'flutter run'
+    command: 'flutter run --dart-define-from-file=config.dev.json'
+  run-prod:
+    command: 'flutter run --dart-define-from-file=config.prod.json'
   get:
     command: 'flutter pub get'
     inputs: ['pubspec.yaml']
@@ -19,7 +22,11 @@ tasks:
     command: 'flutter test'
     inputs: ['@globs(sources)', 'test/**/*']
   build-apk:
-    command: 'flutter build apk --release'
+    command: 'flutter build apk --release --dart-define-from-file=config.prod.json'
+    inputs: ['@globs(sources)']
+    outputs: ['build/app/outputs']
+  build-apk-dev:
+    command: 'flutter build apk --debug --dart-define-from-file=config.dev.json'
     inputs: ['@globs(sources)']
     outputs: ['build/app/outputs']
   fastlane-android-bundle:
@@ -28,6 +35,9 @@ tasks:
     outputs: ['build/app/outputs/bundle']
   fastlane-android-beta:
     command: 'bundle exec fastlane android beta'
+    inputs: ['@globs(sources)', 'android/**/*', 'fastlane/**/*']
+  fastlane-android-firebase:
+    command: 'bundle exec fastlane android firebase_distribute'
     inputs: ['@globs(sources)', 'android/**/*', 'fastlane/**/*']
   fastlane-ios-beta:
     command: 'bundle exec fastlane ios beta'

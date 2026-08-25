@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Customer App (Dev)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file=config.dev.json"
+      ]
+    },
+    {
+      "name": "Customer App (Prod)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define-from-file=config.prod.json"
+      ]
+    }
+  ]
+}

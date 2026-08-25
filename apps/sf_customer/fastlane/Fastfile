@@ -15,19 +15,21 @@ platform :android do
   end
 
   desc "Build Android release APK"
-  lane :build_apk do
-    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build apk --release")
+  lane :build_apk do |options|
+    config = options[:config] || ENV.fetch("FLUTTER_CONFIG_FILE", "config.prod.json")
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build apk --release --dart-define-from-file=#{config}")
   end
 
   desc "Build Android release App Bundle (.aab)"
-  lane :build_bundle do
-    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build appbundle --release")
+  lane :build_bundle do |options|
+    config = options[:config] || ENV.fetch("FLUTTER_CONFIG_FILE", "config.prod.json")
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build appbundle --release --dart-define-from-file=#{config}")
   end
 
   desc "Build and upload App Bundle to Google Play Internal / Closed Track"
   lane :beta do |options|
     track = options[:track] || ENV.fetch("ANDROID_RELEASE_TRACK", "internal")
-    build_bundle
+    build_bundle(options)
 
     upload_to_play_store(
       track: track,
@@ -38,9 +40,25 @@ platform :android do
     )
   end
 
+  desc "Build APK and upload to Firebase App Distribution"
+  lane :firebase_distribute do |options|
+    app_id = options[:app] || ENV["FIREBASE_ANDROID_APP_ID"]
+    UI.user_error!("Missing FIREBASE_ANDROID_APP_ID. Please set it in fastlane/.env or pass app: '...'") unless app_id && !app_id.empty?
+
+    build_apk(options)
+
+    firebase_app_distribution(
+      app: app_id,
+      android_artifact_type: "APK",
+      android_artifact_path: File.join(ENV["FLUTTER_ROOT_DIR"], "build/app/outputs/flutter-apk/app-release.apk"),
+      groups: options[:groups] || ENV.fetch("FIREBASE_TESTER_GROUPS", "internal-testers"),
+      release_notes: options[:release_notes] || options[:notes] || ENV.fetch("FIREBASE_RELEASE_NOTES", "Internal test build")
+    )
+  end
+
   desc "Build and deploy to Google Play Production"
   lane :release do |options|
-    build_bundle
+    build_bundle(options)
 
     upload_to_play_store(
       track: "production",
@@ -59,13 +77,15 @@ platform :ios do
   end
 
   desc "Build iOS IPA"
-  lane :build_ipa do
-    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release --export-options-plist=ios/ExportOptions.plist")
+  lane :build_ipa do |options|
+    config = options[:config] || ENV.fetch("FLUTTER_CONFIG_FILE", "config.prod.json")
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=#{config}")
   end
 
   desc "Build and upload to TestFlight"
   lane :beta do |options|
-    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release")
+    config = options[:config] || ENV.fetch("FLUTTER_CONFIG_FILE", "config.prod.json")
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release --dart-define-from-file=#{config}")
 
     ipa_path = Dir.glob(File.join(ENV["FLUTTER_ROOT_DIR"], "build/ios/ipa/*.ipa")).first
 
@@ -91,7 +111,8 @@ platform :ios do
 
   desc "Build and submit to App Store"
   lane :release do |options|
-    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release")
+    config = options[:config] || ENV.fetch("FLUTTER_CONFIG_FILE", "config.prod.json")
+    sh("cd #{ENV['FLUTTER_ROOT_DIR']} && flutter build ipa --release --dart-define-from-file=#{config}")
 
     ipa_path = Dir.glob(File.join(ENV["FLUTTER_ROOT_DIR"], "build/ios/ipa/*.ipa")).first
 

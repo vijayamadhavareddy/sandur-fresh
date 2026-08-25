@@ -34,5 +34,5 @@
 - DB verification: `moon run db:lint`, then `moon run db:typecheck`; DB operations are `db:generate`, `db:migrate`, `db:push`, and `db:studio`.
 - Admin dev: `moon run admin:dev`; verify with `bun run --cwd apps/admin lint`, then `moon run admin:build` (`build` includes `vue-tsc`). Focused typecheck: `moon run admin:typecheck`.
 - Flutter setup: `moon run sf_consumer:get`; verify with `moon run sf_consumer:analyze`, then `moon run sf_consumer:test`. Do not combine these targets in one invocation because concurrent Flutter processes race on SDK/project ephemeral files. One file: `moon run sf_consumer:test -- test/widget_test.dart`.
-- Flutter run/release APK: `moon run sf_consumer:run` / `moon run sf_consumer:build-apk` / `moon run sf_consumer:fastlane-android-bundle` / `moon run sf_consumer:fastlane-android-beta` / `moon run sf_consumer:fastlane-ios-beta`.
+- Flutter run/release APK: `moon run sf_customer:run` / `moon run sf_customer:build-apk` / `moon run sf_customer:fastlane-android-bundle` / `moon run sf_customer:fastlane-android-beta` / `moon run sf_customer:fastlane-android-firebase` / `moon run sf_customer:fastlane-ios-beta`.
 - TypeScript formatting/lint rules are package-local Biome configs (100 columns, double quotes, semicolons). Do not format generated migration files.

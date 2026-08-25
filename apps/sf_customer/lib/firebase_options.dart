@@ -28,10 +28,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -45,38 +42,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB1apgW7qXTnvEjaSg1iUL0ZGI1VZkR9Ps',
-    appId: '1:402733687545:web:98338cc05965d99bbe3828',
-    messagingSenderId: '402733687545',
-    projectId: 'sandur-fresh',
-    authDomain: 'sandur-fresh.firebaseapp.com',
-    storageBucket: 'sandur-fresh.firebasestorage.app',
-    measurementId: 'G-E77S37SR63',
+    apiKey: 'AIzaSyBMvzgvmtGs6udBJ_HJTk7D99gFzc9rn2A',
+    appId: '1:238470682380:web:5e027cf079359000a9db29',
+    messagingSenderId: '238470682380',
+    projectId: 'sandur-fresh-2e53d',
+    authDomain: 'sandur-fresh-2e53d.firebaseapp.com',
+    storageBucket: 'sandur-fresh-2e53d.firebasestorage.app',
+    measurementId: 'G-GVDXM73F6Z',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC7RR73nIN-N7bm7AIB5eCXOiR3kYaeOz0',
-    appId: '1:402733687545:android:8a89f34a8be8cbf3be3828',
-    messagingSenderId: '402733687545',
-    projectId: 'sandur-fresh',
-    storageBucket: 'sandur-fresh.firebasestorage.app',
+    apiKey: 'AIzaSyCr_sJD1VhtP9tqUc3AO82O-V0qnZmVT_4',
+    appId: '1:238470682380:android:c14533ffcd129a8da9db29',
+    messagingSenderId: '238470682380',
+    projectId: 'sandur-fresh-2e53d',
+    storageBucket: 'sandur-fresh-2e53d.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAg7as7xClE0oF4YcwKYVJULxssIpcFY0U',
-    appId: '1:402733687545:ios:e485e967efeb1628be3828',
-    messagingSenderId: '402733687545',
-    projectId: 'sandur-fresh',
-    storageBucket: 'sandur-fresh.firebasestorage.app',
+    apiKey: 'AIzaSyDP8GVCdRQ8YfbG-6Phr6L2wpOLIYpnaM8',
+    appId: '1:238470682380:ios:405ec2be07242209a9db29',
+    messagingSenderId: '238470682380',
+    projectId: 'sandur-fresh-2e53d',
+    storageBucket: 'sandur-fresh-2e53d.firebasestorage.app',
     iosBundleId: 'com.example.sfCustomer',
   );
-
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAg7as7xClE0oF4YcwKYVJULxssIpcFY0U',
-    appId: '1:402733687545:ios:fa1950d906cdcd91be3828',
-    messagingSenderId: '402733687545',
-    projectId: 'sandur-fresh',
-    storageBucket: 'sandur-fresh.firebasestorage.app',
+    apiKey: 'AIzaSyDP8GVCdRQ8YfbG-6Phr6L2wpOLIYpnaM8',
+    appId: '1:238470682380:ios:52fe5fc65e3a3a92a9db29',
+    messagingSenderId: '238470682380',
+    projectId: 'sandur-fresh-2e53d',
+    storageBucket: 'sandur-fresh-2e53d.firebasestorage.app',
     iosBundleId: 'com.binyoga.smart',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBMvzgvmtGs6udBJ_HJTk7D99gFzc9rn2A',
+    appId: '1:238470682380:web:74f10f233709af4aa9db29',
+    messagingSenderId: '238470682380',
+    projectId: 'sandur-fresh-2e53d',
+    authDomain: 'sandur-fresh-2e53d.firebaseapp.com',
+    storageBucket: 'sandur-fresh-2e53d.firebasestorage.app',
+    measurementId: 'G-8XV7QCPC4X',
   );
 }
