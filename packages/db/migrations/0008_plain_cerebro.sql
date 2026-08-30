@@ -1,0 +1,1 @@
+ALTER TABLE `otp_challenges` ADD `session_id` text;

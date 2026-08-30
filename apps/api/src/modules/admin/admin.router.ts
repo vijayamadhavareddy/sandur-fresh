@@ -2,8 +2,9 @@ import type { Context } from "hono";
 import { Hono } from "hono";
 import { setCookie } from "hono/cookie";
 import { env, isProduction } from "../../config/env";
+import { getStorage as resolveStorage } from "../../shared/common";
 import { requireAdmin } from "../../shared/middleware/auth";
-import { LocalStorageService, R2StorageService, type StorageService } from "../../shared/storage";
+import type { StorageService } from "../../shared/storage";
 import type { AppEnv } from "../../types/hono";
 
 const extensions: Readonly<Record<string, string>> = {
@@ -26,12 +27,7 @@ const matchesImageType = (type: string, bytes: Uint8Array) => {
   );
 };
 
-const getStorage = (c: Context<AppEnv>): StorageService => {
-  const contextStorage = c.get("storage");
-  if (contextStorage) return contextStorage;
-  if (c.env?.BUCKET) return new R2StorageService(c.env.BUCKET);
-  return new LocalStorageService(env.UPLOAD_DIR);
-};
+const getStorage = (c: Context<AppEnv>): StorageService => c.get("storage") ?? resolveStorage(c.env);
 
 export const createAdminRouter = () => {
   const router = new Hono<AppEnv>();

@@ -21,7 +21,6 @@ class CheckoutController extends GetxController {
   final RxBool isLoading = false.obs;
 
   static const List<String> paymentMethods = ['COD', 'UPI', 'Card'];
-
   @override
   void onInit() {
     super.onInit();

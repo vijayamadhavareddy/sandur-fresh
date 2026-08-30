@@ -6,10 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Sandur Fresh: a quick-commerce (rapid grocery/essentials delivery) monorepo.
 
-- `apps/api` — Bun + Hono REST/GraphQL backend (source of truth for business logic)
+- `apps/api` — Hono REST/GraphQL backend (source of truth for business logic), runs on either Bun (local dev, `bun:sqlite`) or Cloudflare Workers (`wrangler`, D1 + R2)
 - `apps/admin` — Vue (RC) + Vite PWA admin console, talks to the API only via GraphQL
 - `apps/sf_customer` — standalone Flutter/GetX customer mobile app
-- `packages/db` — shared Drizzle ORM + `bun:sqlite` client and schema, published as `@sf/db`
+- `packages/db` — shared Drizzle ORM client and schema, published as `@sf/db`; supports both `bun:sqlite` (local) and Cloudflare D1 (deployed) backends behind one `Db` type
 
 This is a moonrepo workspace (`apps/*`, `packages/*`) backed by Bun workspaces. Install once from the root with `bun install`; never create npm/pnpm/yarn lockfiles. `.moon/toolchains.yml` syncs TypeScript project references/path aliases — keep `moon.yml` task inputs/outputs accurate when adding generated files or build steps.
 
@@ -38,6 +38,8 @@ bun run --cwd apps/api typecheck
 bun --cwd apps/api test                    # all tests
 bun --cwd apps/api test tests/pricing.test.ts   # single file
 bun run --cwd apps/api graphql:schema      # export apps/api/schema.graphql (needed before admin codegen)
+bun run --cwd apps/api worker:dev          # run against wrangler (D1/R2 bindings) instead of Bun+bun:sqlite
+bun run --cwd apps/api deploy              # wrangler deploy
 ```
 
 **Admin**
@@ -87,6 +89,14 @@ TypeScript packages use package-local Biome configs (100 columns, double quotes,
 ### Auth
 
 Phone/OTP flow (`POST /api/v1/auth/otp/request` then `/verify`); in non-production the `DEV_OTP` env var (default `000000`) always works. Auth middleware (`apps/api/src/shared/middleware/auth.ts`) resolves a user from either a `Bearer` token or the `ADMIN_SESSION_COOKIE` cookie — `optionalAuth` runs globally, `requireAuth`/`requireAdmin` gate specific routes/routers. The resolver function is injected at startup via `setAuthResolver` in `app.ts` rather than imported directly, to avoid a circular dependency between auth middleware and the users service.
+
+### Dual runtime: Bun (local) vs Cloudflare Workers (deployed)
+
+The API runs unmodified on both targets. `packages/db/src/client.ts#createDb` picks the backend: pass a `D1Database` binding to get `createD1Db` (Drizzle D1 driver, with a transaction fallback since D1 lacks real `BEGIN`), or call with no args to get `createBunDb` (`bun:sqlite`, using `DATABASE_PATH`). `apps/api/wrangler.jsonc` aliases `bun:sqlite` to `src/shims/bun-sqlite.ts` (a no-op stub) so the Bun-only code path still type-checks/bundles under `wrangler`. Cloudflare bindings (`DB`, `BUCKET`, env vars) are typed in `apps/api/src/types/hono.ts` (`CloudflareBindings`) and threaded into `container.ts#createContainer`. File storage abstracts the same way: `shared/common.ts#getStorage` returns an `R2StorageService` when `env.BUCKET` is present, else `LocalStorageService` (writes under `UPLOAD_DIR`). Never write code that assumes one runtime — go through `createDb`/`getStorage` rather than importing `bun:sqlite` or R2 directly outside those two files.
+
+### OTP providers and notifications
+
+`apps/api/src/modules/otp/` defines an `OtpProvider` interface (`sendOtp`/`verifyOtp` returning `Result`) with swappable implementations (`dev.provider.ts` always succeeds with `DEV_OTP`, `mock.provider.ts`, `two-factor.provider.ts` for the 2Factor SMS API); `otp.factory.ts#createOtpProvider` picks one from `OTP_PROVIDER`/`OTP_API_KEY` env vars, wired in `container.ts`. `apps/api/src/modules/notifications/` handles push notification delivery (`notifications.service.ts` + `shared/push.ts#sendPush`, injectable via `container.ts` for tests) and an SSE-style `events.router.ts` alongside the CRUD `notifications.router.ts`.
 
 ### Orders and money
 

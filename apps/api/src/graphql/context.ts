@@ -1,10 +1,12 @@
-import type { services } from "../container";
+import type { Db } from "@sf/db";
+import type { Services } from "../container";
 import type { AuthUser } from "../types/hono";
 
 export type GraphQLContext = {
   user: AuthUser | null;
   requestId: string;
-  services: typeof services;
+  services: Services;
+  db?: Db;
   sessionToken: string | null;
   responseHeaders: Headers;
 };

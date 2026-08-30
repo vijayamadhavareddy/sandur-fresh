@@ -1,36 +1,31 @@
-import { createD1Db, type Db, type DbOrTx, db } from "@sf/db";
+import { createDb, type Db, type DbOrTx } from "@sf/db";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { env, parseCorsOrigins } from "./config/env";
-import {
-  cartHandlers,
-  createContainer,
-  defaultContainer,
-  deliveryHandlers,
-  eventsRouter,
-  notificationsRouter,
-  ordersHandlers,
-  productsHandlers,
-  usersHandlers,
-  usersService,
-} from "./container";
+import { createContainer } from "./container";
 import { createAppYoga } from "./graphql/yoga";
 import { createAdminRouter, createUploadsRouter } from "./modules/admin/admin.router";
+import { createCartHandlers } from "./modules/cart/cart.handlers";
 import { createCartRouter } from "./modules/cart/cart.router";
+import { createDeliveryHandlers } from "./modules/delivery/delivery.handlers";
 import { createDeliveryRouter } from "./modules/delivery/delivery.router";
+import { createEventsRouter } from "./modules/notifications/events.router";
+import { createNotificationsRouter } from "./modules/notifications/notifications.router";
+import { createOrdersHandlers } from "./modules/orders/orders.handlers";
 import { createOrdersRouter } from "./modules/orders/orders.router";
+import { createProductsHandlers } from "./modules/products/products.handlers";
 import { createProductsRouter } from "./modules/products/products.router";
+import { createUsersHandlers } from "./modules/users/users.handlers";
 import { createUsersRouter } from "./modules/users/users.router";
-import { optionalAuth, setAuthResolver } from "./shared/middleware/auth";
+import { getStorage } from "./shared/common";
+import { optionalAuth } from "./shared/middleware/auth";
 import { globalErrorHandler } from "./shared/middleware/error-handler";
 import { loggerMiddleware } from "./shared/middleware/logger";
 import { requestIdMiddleware } from "./shared/middleware/request-id";
-import { LocalStorageService, R2StorageService, type StorageService } from "./shared/storage";
+import type { StorageService } from "./shared/storage";
 import type { AppEnv } from "./types/hono";
 
 export const createApp = () => {
-  setAuthResolver((token) => usersService.resolveUserFromToken(token));
-
   const app = new Hono<AppEnv>();
   app.onError(globalErrorHandler);
   app.use(
@@ -56,38 +51,23 @@ export const createApp = () => {
 
   // Runtime context middleware: detects Cloudflare D1/R2 bindings or falls back to local Bun
   app.use("*", async (c, next) => {
-    let currentDb: Db = db;
-    let storage: StorageService;
-    let container = defaultContainer;
-
-    if (c.env?.DB) {
-      currentDb = createD1Db(c.env.DB) as unknown as Db;
-      storage = c.env.BUCKET
-        ? new R2StorageService(c.env.BUCKET)
-        : new LocalStorageService(
-            typeof c.env.UPLOAD_DIR === "string" ? c.env.UPLOAD_DIR : env.UPLOAD_DIR,
-          );
-      container = createContainer(currentDb as DbOrTx);
-    } else {
-      storage = new LocalStorageService(env.UPLOAD_DIR);
-    }
+    const currentDb: Db = createDb(c.env?.DB);
+    const storage: StorageService = getStorage(c.env);
+    const container = createContainer(currentDb as DbOrTx, c.env);
 
     c.set("db", currentDb);
     c.set("storage", storage);
     c.set("services", container.services);
-    await next();
+
+    return await next();
   });
 
   app.use("*", optionalAuth);
 
   app.get("/health", async (c) => {
+    const db = c.get("db");
     try {
-      if (c.env?.DB) {
-        await c.env.DB.prepare("SELECT 1").run();
-      } else {
-        // biome-ignore lint/suspicious/noExplicitAny: fallback for bun:sqlite client reflection
-        (db as any).$client?.query?.("select 1")?.get?.();
-      }
+      db?.run("SELECT 1");
       return c.json({ data: { status: "ok" } });
     } catch {
       return c.json(
@@ -103,12 +83,16 @@ export const createApp = () => {
     }
   });
 
-  const { authRouter, meRouter } = createUsersRouter(usersHandlers);
-  const productsRouter = createProductsRouter(productsHandlers);
-  const cartRouter = createCartRouter(cartHandlers);
-  const ordersRouter = createOrdersRouter(ordersHandlers);
-  const deliveryRouter = createDeliveryRouter(deliveryHandlers);
+  // Handlers resolve their service from the per-request `c.get("services")`
+  // context (set by the middleware above), so no service needs to be bound here.
+  const { authRouter, meRouter } = createUsersRouter(createUsersHandlers());
+  const productsRouter = createProductsRouter(createProductsHandlers());
+  const cartRouter = createCartRouter(createCartHandlers());
+  const ordersRouter = createOrdersRouter(createOrdersHandlers());
+  const deliveryRouter = createDeliveryRouter(createDeliveryHandlers());
   const adminRouter = createAdminRouter();
+  const notificationsRouter = createNotificationsRouter();
+  const eventsRouter = createEventsRouter();
 
   const v1 = new Hono<AppEnv>();
   v1.route("/auth", authRouter);
@@ -124,12 +108,16 @@ export const createApp = () => {
   app.route("/api/v1", v1);
   app.route("/uploads", createUploadsRouter());
 
-  const yoga = createAppYoga((token, s) => (s?.users ?? usersService).resolveUserFromToken(token));
   app.on(["GET", "POST"], "/graphql", async (c) => {
     const responseHeaders = new Headers();
+    const yoga = createAppYoga(
+      (token, s) => (s?.users ? s.users.resolveUserFromToken(token) : Promise.resolve(null)),
+      c.get("db") as DbOrTx,
+    );
     const response = await yoga.fetch(c.req.raw, {
       responseHeaders,
       services: c.get("services"),
+      db: c.get("db"),
       env: c.env,
     });
     const headers = new Headers(response.headers);

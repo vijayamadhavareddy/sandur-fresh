@@ -57,6 +57,13 @@
       "when": 1787664059953,
       "tag": "0007_add_original_price_and_markup",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1787833149366,
+      "tag": "0008_plain_cerebro",
+      "breakpoints": true
     }
   ]
 }

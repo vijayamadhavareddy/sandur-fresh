@@ -4,7 +4,7 @@ import * as schema from "@sf/db/schema";
 import { users } from "@sf/db/schema";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { graphql } from "graphql";
-import { graphqlSchema } from "../src/graphql/schema";
+import { getGraphqlSchema } from "../src/graphql/schema";
 import { MockOtpProvider } from "../src/modules/otp";
 import { usersRepo } from "../src/modules/users/users.repo";
 import { createUsersService } from "../src/modules/users/users.service";
@@ -26,6 +26,7 @@ const createTestDb = () => {
       id TEXT PRIMARY KEY,
       phone TEXT NOT NULL,
       code TEXT NOT NULL,
+      session_id TEXT,
       expires_at INTEGER NOT NULL,
       consumed_at INTEGER,
       created_at INTEGER NOT NULL
@@ -60,11 +61,12 @@ const createTestDb = () => {
 describe("GraphQL customer resolvers", () => {
   test("requestOtp and verifyOtp mutations", async () => {
     const db = createTestDb();
+    const schema = getGraphqlSchema(db);
     const uService = createUsersService({ db, usersRepo, otpProvider: new MockOtpProvider() });
     const container = { users: uService };
 
     const reqResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         mutation RequestOtp($phone: String!) {
           requestOtp(phone: $phone) {
@@ -81,7 +83,7 @@ describe("GraphQL customer resolvers", () => {
     expect(reqData?.message).toBe("OTP sent");
 
     const verifyResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         mutation VerifyOtp($phone: String!, $code: String!) {
           verifyOtp(phone: $phone, code: $code) {
@@ -111,6 +113,7 @@ describe("GraphQL customer resolvers", () => {
 
   test("me and address queries and mutations", async () => {
     const db = createTestDb();
+    const schema = getGraphqlSchema(db);
     const uService = createUsersService({ db, usersRepo, otpProvider: new MockOtpProvider() });
     const container = { users: uService };
 
@@ -123,7 +126,7 @@ describe("GraphQL customer resolvers", () => {
 
     // Query me
     const meResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         query Me {
           me {
@@ -142,7 +145,7 @@ describe("GraphQL customer resolvers", () => {
 
     // Add address
     const addAddrResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         mutation AddAddress($label: String!, $line1: String!, $city: String!, $pincode: String!, $phone: String!, $lat: Float!, $lng: Float!) {
           addAddress(label: $label, line1: $line1, city: $city, pincode: $pincode, phone: $phone, lat: $lat, lng: $lng) {
@@ -173,7 +176,7 @@ describe("GraphQL customer resolvers", () => {
 
     // Query myAddresses
     const myAddressesResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         query MyAddresses {
           myAddresses {
@@ -192,7 +195,7 @@ describe("GraphQL customer resolvers", () => {
 
     // Delete address
     const delResult = await graphql({
-      schema: graphqlSchema,
+      schema,
       source: `
         mutation DeleteAddress($id: String!) {
           deleteAddress(id: $id)

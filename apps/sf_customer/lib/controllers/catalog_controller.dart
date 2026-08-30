@@ -38,6 +38,7 @@ class CatalogController extends GetxController {
 
   @override
   void onInit() {
+    debugPrint('dgdfgdf');
     super.onInit();
     fetchCatalog();
   }

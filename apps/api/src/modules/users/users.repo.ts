@@ -46,7 +46,7 @@ export const updateUser = async (
 
 export const createOtpChallenge = async (
   db: DbOrTx,
-  input: { phone: string; code: string; expiresAt: Date },
+  input: { phone: string; code: string; sessionId?: string | null; expiresAt: Date },
 ) => {
   const rows = await db.insert(otpChallenges).values(input).returning();
   return rows[0]!;
@@ -57,6 +57,22 @@ export const findLatestOtpChallenge = async (db: DbOrTx, phone: string) => {
     .select()
     .from(otpChallenges)
     .where(eq(otpChallenges.phone, phone))
+    .orderBy(desc(otpChallenges.createdAt))
+    .limit(1);
+  return rows[0] ?? null;
+};
+
+export const findActiveOtpChallenge = async (db: DbOrTx, phone: string, now: Date) => {
+  const rows = await db
+    .select()
+    .from(otpChallenges)
+    .where(
+      and(
+        eq(otpChallenges.phone, phone),
+        isNull(otpChallenges.consumedAt),
+        gt(otpChallenges.expiresAt, now),
+      ),
+    )
     .orderBy(desc(otpChallenges.createdAt))
     .limit(1);
   return rows[0] ?? null;
@@ -181,6 +197,7 @@ export const usersRepo = {
   updateUser,
   createOtpChallenge,
   findLatestOtpChallenge,
+  findActiveOtpChallenge,
   findValidOtp,
   consumeOtp,
   createSession,

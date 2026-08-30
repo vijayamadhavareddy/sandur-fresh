@@ -6,6 +6,11 @@ import { jsonError } from "../http";
 
 export type ResolveUser = (token: string) => Promise<AuthUser | null>;
 
+// Fallback used only if optionalAuth/requireAuth run before the per-request
+// `c.get("services").users` is set (should never happen given app.ts's
+// middleware order). "Unauthenticated" is the safe answer here rather than
+// resolving against some other db via setAuthResolver, since no env/db is
+// available outside a request to build one from.
 let resolveUser: ResolveUser = async () => null;
 
 const decodeCookieValue = (value: string) => {

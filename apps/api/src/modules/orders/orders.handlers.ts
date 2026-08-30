@@ -5,7 +5,9 @@ import type { AppEnv } from "../../types/hono";
 import type { CheckoutInput, ListOrdersQuery, UpdateOrderStatusInput } from "./orders.schemas";
 import type { OrdersService } from "./orders.service";
 
-export const createOrdersHandlers = (ordersService: OrdersService) => {
+export const createOrdersHandlers = (ordersService?: OrdersService) => {
+  const getService = (c: Context<AppEnv>) => c.get("services")?.orders ?? ordersService!;
+
   const checkout = async (c: Context<AppEnv>) => {
     const user = c.get("user");
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
@@ -17,7 +19,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
         error: validationError("Idempotency-Key header is required"),
       });
     }
-    const result = await ordersService.checkout(user.id, body, idempotencyKey);
+    const result = await getService(c).checkout(user.id, body, idempotencyKey);
     return fromResult(c, result, 201);
   };
 
@@ -25,7 +27,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
     const user = c.get("user");
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const query = valid<ListOrdersQuery>(c, "query");
-    const result = await ordersService.listMyOrders(user.id, query);
+    const result = await getService(c).listMyOrders(user.id, query);
     if (!result.ok) return fromResult(c, result);
     return jsonList(c, result.value.items, result.value.meta);
   };
@@ -34,7 +36,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
     const user = c.get("user");
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
-    const result = await ordersService.getOrder(user.id, id, user.role === "admin");
+    const result = await getService(c).getOrder(user.id, id, user.role === "admin");
     return fromResult(c, result);
   };
 
@@ -42,7 +44,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
     const user = c.get("user");
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
-    const result = await ordersService.cancelOrder(user.id, id, user.role === "admin");
+    const result = await getService(c).cancelOrder(user.id, id, user.role === "admin");
     return fromResult(c, result);
   };
 
@@ -51,7 +53,7 @@ export const createOrdersHandlers = (ordersService: OrdersService) => {
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
     const body = valid<UpdateOrderStatusInput>(c, "json");
-    const result = await ordersService.updateStatus(id, body.status, user.id);
+    const result = await getService(c).updateStatus(id, body.status, user.id);
     return fromResult(c, result);
   };
 

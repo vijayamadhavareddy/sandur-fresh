@@ -8,7 +8,7 @@ const firebaseConfig = {
   storageBucket: "sandur-fresh-2e53d.firebasestorage.app",
   messagingSenderId: "238470682380",
   appId: "1:238470682380:web:5e027cf079359000a9db29",
-  measurementId: "G-GVDXM73F6Z"
+  measurementId: "G-GVDXM73F6Z",
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);

@@ -1,10 +1,12 @@
 export class Database {
-  constructor() {
-    throw new Error("bun:sqlite is not available in Cloudflare Workers");
-  }
-  run() {}
-  query() {
-    return { all: () => [], get: () => null };
+  run(_query?: string) {}
+  query(_query?: string) {
+    return {
+      all: () => [],
+      get: () => null,
+      run: () => ({ changes: 0, lastInsertRowid: 0 }),
+      values: () => [],
+    };
   }
 }
 

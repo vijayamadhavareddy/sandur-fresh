@@ -1,22 +1,25 @@
+import type { Db } from "@sf/db";
 import { createYoga } from "graphql-yoga";
 import { env, isProduction } from "../config/env";
-import { services as defaultServices, type Services } from "../container";
+import type { Services } from "../container";
 import type { AuthUser, CloudflareBindings } from "../types/hono";
 import type { GraphQLContext, YogaInitialContext } from "./context";
-import { graphqlSchema } from "./schema";
+import { getGraphqlSchema } from "./schema";
 
 const introspectionEnabled = env.GRAPHQL_INTROSPECTION || !isProduction;
 
 export type YogaServerContext = Pick<YogaInitialContext, "responseHeaders"> & {
   services?: Services;
+  db?: Db;
   env?: CloudflareBindings;
 };
 
 export const createAppYoga = (
   getUser: (token: string, services?: Services) => Promise<AuthUser | null>,
+  db: Db,
 ) =>
   createYoga<YogaServerContext, GraphQLContext>({
-    schema: graphqlSchema,
+    schema: getGraphqlSchema(db),
     graphqlEndpoint: "/graphql",
     graphiql: introspectionEnabled,
     landingPage: false,
@@ -24,7 +27,14 @@ export const createAppYoga = (
     context: async (initialContext) => {
       const { request, responseHeaders } = initialContext;
       const extra = initialContext as unknown as YogaServerContext;
-      const activeServices = extra.services ?? defaultServices;
+      const activeServices = extra.services;
+      if (!activeServices) {
+        // app.ts always passes the per-request `c.get("services")` here; a
+        // missing value means the request middleware didn't run, not a case
+        // to paper over with some other db's services.
+        throw new Error("GraphQL context is missing per-request services");
+      }
+      const activeDb = extra.db ?? db;
       const cookieName = extra.env?.ADMIN_SESSION_COOKIE ?? env.ADMIN_SESSION_COOKIE;
 
       let user: AuthUser | null = null;
@@ -58,6 +68,7 @@ export const createAppYoga = (
         responseHeaders,
         requestId: request.headers.get("x-request-id") ?? crypto.randomUUID(),
         services: activeServices,
+        db: activeDb,
       };
     },
   });

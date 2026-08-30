@@ -18,6 +18,8 @@ import 'services/push_service.dart';
 import 'theme/app_theme.dart';
 
 void main() async {
+  const apiUrl = String.fromEnvironment('API_URL', defaultValue: "test_url");
+  debugPrint('API_URL=$apiUrl');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform

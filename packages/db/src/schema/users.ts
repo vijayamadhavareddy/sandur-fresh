@@ -40,6 +40,7 @@ export const otpChallenges = sqliteTable("otp_challenges", {
   id: id(),
   phone: text("phone").notNull(),
   code: text("code").notNull(),
+  sessionId: text("session_id"),
   expiresAt: integer("expires_at", { mode: "timestamp_ms" }).notNull(),
   consumedAt: integer("consumed_at", { mode: "timestamp_ms" }),
   createdAt: createdAt(),

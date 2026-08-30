@@ -16,10 +16,16 @@ export type CloudflareBindings = {
   BUCKET?: R2Bucket;
   RUNTIME?: string;
   NODE_ENV?: string;
+  LOG_LEVEL?: string;
   DATABASE_PATH?: string;
   UPLOAD_DIR?: string;
   UPLOAD_MAX_BYTES?: string | number;
   DEV_OTP?: string;
+  OTP_PROVIDER?: string;
+  OTP_API_KEY?: string;
+  TWO_FACTOR_API_KEY?: string;
+  OTP_TEMPLATE?: string;
+  OTP_SENDER_ID?: string;
   ADMIN_SESSION_COOKIE?: string;
   ADMIN_SETUP_SECRET?: string;
   FIREBASE_SERVICE_ACCOUNT?: string;

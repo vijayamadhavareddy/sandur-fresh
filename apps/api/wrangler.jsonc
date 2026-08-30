@@ -19,12 +19,25 @@
       "migrations_dir": "../../packages/db/migrations"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "product-images"
+    }
+  ],
   "vars": {
     "RUNTIME": "cloudflare",
+    "NODE_ENV": "production",
+    "LOG_LEVEL": "info",
     "GRAPHQL_INTROSPECTION": "true",
     "ADMIN_SESSION_COOKIE": "sf_admin_session",
     "ADMIN_SETUP_SECRET": "sandur-admin-setup-secret",
-    "DEV_OTP": "0000",
+    "DEV_OTP": "000000",
+    "OTP_PROVIDER": "dev",
+    "OTP_API_KEY": "e41d4ff5-2be9-11eb-83d4-0200cd936042",
+    "OTP_TEMPLATE": "",
+    "OTP_SENDER_ID": "",
+    "UPLOAD_MAX_BYTES": "5242880",
     "CORS_ORIGIN": "http://localhost:5173,http://localhost:4173,http://localhost:8788,https://sandur-fresh-admin.pages.dev,https://aloha.binyoga.com"
   },
   "observability": {

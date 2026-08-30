@@ -38,11 +38,6 @@ export type UsersServiceDeps = {
   otpProvider: OtpProvider;
 };
 
-const generateOtpCode = (providerName: string): string => {
-  if (!isProduction && providerName === "dev") return env.DEV_OTP;
-  return String(Math.floor(100000 + Math.random() * 900000));
-};
-
 export const createUsersService = (deps: UsersServiceDeps) => {
   const requestOtp = async (
     input: RequestOtpInput,
@@ -60,17 +55,8 @@ export const createUsersService = (deps: UsersServiceDeps) => {
       }
     }
 
-    const code = generateOtpCode(deps.otpProvider.name);
-    const expiresAt = new Date(Date.now() + OTP_TTL_MS);
-    await deps.usersRepo.createOtpChallenge(deps.db, {
-      phone: input.phone,
-      code,
-      expiresAt,
-    });
-
     const sendResult = await deps.otpProvider.sendOtp({
       phone: input.phone,
-      otp: code,
       template: env.OTP_TEMPLATE,
       senderId: env.OTP_SENDER_ID,
     });
@@ -79,6 +65,14 @@ export const createUsersService = (deps: UsersServiceDeps) => {
       return sendResult;
     }
 
+    const expiresAt = new Date(Date.now() + OTP_TTL_MS);
+    await deps.usersRepo.createOtpChallenge(deps.db, {
+      phone: input.phone,
+      code: sendResult.value.code,
+      sessionId: sendResult.value.sessionId ?? null,
+      expiresAt,
+    });
+
     return ok({ message: "OTP sent" });
   };
 
@@ -86,11 +80,30 @@ export const createUsersService = (deps: UsersServiceDeps) => {
     input: VerifyOtpInput,
   ): Promise<Result<{ token: string; user: ReturnType<typeof publicUser> }, DomainError>> => {
     const now = new Date();
-    const challenge = await deps.usersRepo.findValidOtp(deps.db, input.phone, input.code, now);
+    const challenge = await deps.usersRepo.findActiveOtpChallenge(deps.db, input.phone, now);
     const devBypass = !isProduction && input.code === env.DEV_OTP;
+
     if (!challenge && !devBypass) {
       return err(unauthorized("Invalid or expired OTP"));
     }
+
+    if (!devBypass) {
+      const verifyResult = await deps.otpProvider.verifyOtp({
+        phone: input.phone,
+        code: input.code,
+        sessionId: challenge?.sessionId ?? undefined,
+        expectedCode: challenge?.code,
+      });
+
+      if (!verifyResult.ok) {
+        return verifyResult;
+      }
+
+      if (!verifyResult.value.valid) {
+        return err(unauthorized(verifyResult.value.message || "Invalid or expired OTP"));
+      }
+    }
+
     if (challenge) {
       await deps.usersRepo.consumeOtp(deps.db, challenge.id, now);
     }

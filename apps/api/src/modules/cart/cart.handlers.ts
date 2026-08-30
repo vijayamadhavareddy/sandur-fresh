@@ -5,20 +5,21 @@ import type { AppEnv } from "../../types/hono";
 import type { AddCartItemInput, UpdateCartItemInput } from "./cart.schemas";
 import type { CartService } from "./cart.service";
 
-export const createCartHandlers = (cartService: CartService) => {
+export const createCartHandlers = (cartService?: CartService) => {
+  const getService = (c: Context<AppEnv>) => c.get("services")?.cart ?? cartService!;
   const requireUser = (c: Context<AppEnv>) => c.get("user");
 
   const getCart = async (c: Context<AppEnv>) => {
     const user = requireUser(c);
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
-    return fromResult(c, await cartService.getCart(user.id));
+    return fromResult(c, await getService(c).getCart(user.id));
   };
 
   const addItem = async (c: Context<AppEnv>) => {
     const user = requireUser(c);
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const body = valid<AddCartItemInput>(c, "json");
-    return fromResult(c, await cartService.addItem(user.id, body));
+    return fromResult(c, await getService(c).addItem(user.id, body));
   };
 
   const updateItem = async (c: Context<AppEnv>) => {
@@ -26,20 +27,20 @@ export const createCartHandlers = (cartService: CartService) => {
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
     const body = valid<UpdateCartItemInput>(c, "json");
-    return fromResult(c, await cartService.updateItem(user.id, id, body));
+    return fromResult(c, await getService(c).updateItem(user.id, id, body));
   };
 
   const removeItem = async (c: Context<AppEnv>) => {
     const user = requireUser(c);
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
     const { id } = valid<{ id: string }>(c, "param");
-    return fromResult(c, await cartService.removeItem(user.id, id));
+    return fromResult(c, await getService(c).removeItem(user.id, id));
   };
 
   const clearCart = async (c: Context<AppEnv>) => {
     const user = requireUser(c);
     if (!user) return fromResult(c, { ok: false as const, error: unauthorized() });
-    return fromResult(c, await cartService.clearCart(user.id));
+    return fromResult(c, await getService(c).clearCart(user.id));
   };
 
   return { getCart, addItem, updateItem, removeItem, clearCart };
