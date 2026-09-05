@@ -19,6 +19,8 @@ import 'package:sandur_fresh/screens/checkout_screen.dart';
 import 'package:sandur_fresh/screens/home_screen.dart';
 import 'package:sandur_fresh/screens/login_screen.dart';
 import 'package:sandur_fresh/widgets/product_card.dart';
+import 'package:sandur_fresh/widgets/quantity_stepper.dart';
+import 'package:sandur_fresh/widgets/veggie_bento_card.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -671,12 +673,13 @@ void main() {
       );
       const item2 = Product(
         id: 'p2',
-        name: 'Organic Farm Tomatoes Premium',
+        name: 'Organic Farm Tomatoes Premium Long Name',
         category: 'Dairy',
         price: 45,
         mrp: 60,
         unit: '1 kg',
         emoji: '🍅',
+        storeName: 'Sandur Organic Mart',
       );
 
       catalog.fetchedProducts.assignAll([item1, item2]);
@@ -687,6 +690,140 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(tester.takeException(), isNull);
+
+      // Add both items to cart to activate QuantityStepper
+      final cart = Get.find<CartController>();
+      await cart.add(item1);
+      await cart.add(item2);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets(
+        'ProductCard dynamic layout with additional info and quantity stepper renders without overflow',
+        (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() => tester.view.resetPhysicalSize());
+
+      final cart = Get.put(CartController());
+      const productWithExtraInfo = Product(
+        id: 'p-extra',
+        name: 'Extra Delicious Butter Chicken Masala Special Biriyani',
+        category: 'Food',
+        price: 220,
+        mrp: 260,
+        unit: '1 plate (500 g)',
+        emoji: '🍛',
+        storeName: 'Sandur Royal Kitchen',
+      );
+
+      await tester.pumpWidget(
+        GetMaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 150,
+              height: 230,
+              child: ProductCard(product: productWithExtraInfo),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.text('by Sandur Royal Kitchen'), findsOneWidget);
+
+      // Add to cart to activate stepper
+      await cart.add(productWithExtraInfo);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.byType(QuantityStepper), findsOneWidget);
+    });
+
+    testWidgets(
+        'VeggieBentoCard renders origin badge, dynamic middle content, and network image',
+        (tester) async {
+      Get.put(CartController());
+      const veggieProduct = Product(
+        id: 'v1',
+        name: 'Fresh Hydroponic Coriander Leaves',
+        category: 'Vegetables',
+        price: 15,
+        mrp: 20,
+        unit: '1 bunch (100 g)',
+        emoji: '🌿',
+        storeName: 'Green Valley Farms',
+        imageUrl: 'https://example.com/coriander.jpg',
+      );
+
+      await tester.pumpWidget(
+        const GetMaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 158,
+              height: 236,
+              child: VeggieBentoCard(product: veggieProduct),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.text('Sandur farms'), findsOneWidget);
+      expect(find.text('Fresh Hydroponic Coriander Leaves'), findsOneWidget);
+      expect(find.text('by Green Valley Farms'), findsOneWidget);
+      expect(find.text('1 bunch (100 g)'), findsOneWidget);
+      expect(find.text('₹15'), findsOneWidget);
+      expect(find.text('₹20'), findsOneWidget);
+      expect(find.text('25% OFF'), findsOneWidget);
+      expect(find.text('ADD'), findsOneWidget);
+    });
+
+    testWidgets(
+        'VeggieBentoCard dynamic layout with stepper renders without overflow on compact height',
+        (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() => tester.view.resetPhysicalSize());
+
+      final cart = Get.put(CartController());
+      const veggieProduct = Product(
+        id: 'v2',
+        name: 'Fresh Hydroponic Coriander Leaves Extra Long Name Greenery',
+        category: 'Vegetables',
+        price: 18,
+        mrp: 25,
+        unit: '1 bunch',
+        emoji: '🌿',
+        storeName: 'Local Organic Farms',
+      );
+
+      await tester.pumpWidget(
+        GetMaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 158,
+              height: 236,
+              child: VeggieBentoCard(product: veggieProduct),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.text('by Local Organic Farms'), findsOneWidget);
+
+      // Add to cart to activate stepper
+      await cart.add(veggieProduct);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.byType(QuantityStepper), findsOneWidget);
     });
   });
 

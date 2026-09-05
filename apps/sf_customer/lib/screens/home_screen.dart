@@ -246,10 +246,16 @@ class _ResultsSection extends GetView<CatalogController> {
                 controller.searchQuery.value = '';
                 controller.setCategory(null);
               },
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
               child: const Text('Clear'),
             ),
           ],
         ),
+        const SizedBox(height: AppSpacing.md),
         if (results.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxl),
@@ -269,10 +275,11 @@ class _ResultsSection extends GetView<CatalogController> {
           GridView.count(
             crossAxisCount: 2,
             shrinkWrap: true,
+            padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.58,
+            childAspectRatio: 0.82,
             children: results.map((p) => ProductCard(product: p)).toList(),
           ),
       ],
@@ -288,7 +295,7 @@ class _HorizontalShelf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 264,
+      height: 236,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: children.length,
@@ -358,7 +365,7 @@ class _Shelves extends GetView<CatalogController> {
           ),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
-            height: 264,
+            height: 236,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: veggies.length,
@@ -440,7 +447,7 @@ class _Shelves extends GetView<CatalogController> {
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.58,
+            childAspectRatio: 0.82,
             children: snacks.map((p) => ProductCard(product: p)).toList(),
           ),
           const SizedBox(height: AppSpacing.xl),

@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 88,
+                    height: 100,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: AppColors.surfaceVariant,
@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 6),
-              // Pack size
+              // Text block: sized to its content, not stretched to fill.
               Text(
                 product.unit,
                 style: textTheme.bodySmall?.copyWith(fontSize: 11),
@@ -89,16 +89,21 @@ class ProductCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 2),
-              // Name
-              Text(
-                product.name,
-                style: textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                    ) ??
-                    textTheme.titleLarge,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              // Fixed to a 2-line height so 1-line names don't leave a
+              // bigger leftover gap below the card than 2-line names do.
+              SizedBox(
+                height: 32,
+                child: Text(
+                  product.name,
+                  style: textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13.5,
+                        height: 1.15,
+                      ) ??
+                      textTheme.titleLarge,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               if (product.storeName != null && product.storeName!.isNotEmpty) ...[
                 const SizedBox(height: 1),
@@ -113,66 +118,60 @@ class ProductCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
-              const SizedBox(height: 2),
-              // Price row
+              const SizedBox(height: 8),
+              // Bottom Action Row: Price on left, ADD / Stepper on right
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                    child: Text(
-                      formatPrice(product.price),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 14.5,
-                      ),
-                    ),
-                  ),
-                  if (product.hasDiscount) ...[
-                    const SizedBox(width: AppSpacing.xs),
-                    Flexible(
-                      child: Text(
-                        formatPrice(product.mrp),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTheme.bodySmall?.copyWith(
-                          decoration: TextDecoration.lineThrough,
-                          fontSize: 11.5,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-              const Spacer(),
-              // ADD / stepper
-              SizedBox(
-                height: 32,
-                child: !product.inStock
-                    ? Center(
-                        child: Text(
-                          'Out of stock',
-                          style: textTheme.bodySmall?.copyWith(
-                            color: AppColors.error,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 11,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          formatPrice(product.price),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14.5,
                           ),
                         ),
-                      )
-                    : Obx(() {
-                        final qty = cart.quantityOf(product.id);
-                        if (qty > 0) {
-                          return Align(
-                            alignment: Alignment.centerRight,
-                            child: QuantityStepper(
+                        if (product.hasDiscount)
+                          Text(
+                            formatPrice(product.mrp),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.bodySmall?.copyWith(
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  !product.inStock
+                      ? Center(
+                          child: Text(
+                            'Out of stock',
+                            style: textTheme.bodySmall?.copyWith(
+                              color: AppColors.error,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 11,
+                            ),
+                          ),
+                        )
+                      : Obx(() {
+                          final qty = cart.quantityOf(product.id);
+                          if (qty > 0) {
+                            return QuantityStepper(
                               product: product,
                               height: 30,
-                            ),
-                          );
-                        }
-                        return Align(
-                          alignment: Alignment.centerRight,
-                          child: InkWell(
+                            );
+                          }
+                          return InkWell(
                             onTap: () {
                               cart.add(product);
                             },
@@ -197,9 +196,9 @@ class ProductCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                ],
               ),
             ],
           ),
