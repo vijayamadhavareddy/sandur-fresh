@@ -80,7 +80,7 @@ class ProductCard extends StatelessWidget {
                     ),
                 ],
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               // Text block: sized to its content, not stretched to fill.
               Text(
                 product.unit,
@@ -105,20 +105,25 @@ class ProductCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              if (product.storeName != null && product.storeName!.isNotEmpty) ...[
-                const SizedBox(height: 1),
-                Text(
-                  'by ${product.storeName}',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 10,
-                    color: AppColors.textSecondary,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-              const SizedBox(height: 8),
+              // Always reserved (blank when there's no store) so every card
+              // in a grid row keeps the same height, whether or not it has
+              // a store subtitle.
+              SizedBox(
+                height: 15,
+                child: (product.storeName != null && product.storeName!.isNotEmpty)
+                    ? Text(
+                        'by ${product.storeName}',
+                        style: textTheme.bodySmall?.copyWith(
+                          fontSize: 10,
+                          color: AppColors.textSecondary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    : null,
+              ),
+              const SizedBox(height: 4),
               // Bottom Action Row: Price on left, ADD / Stepper on right
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

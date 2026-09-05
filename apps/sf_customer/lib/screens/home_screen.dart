@@ -279,7 +279,7 @@ class _ResultsSection extends GetView<CatalogController> {
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.82,
+            childAspectRatio: 0.79,
             children: results.map((p) => ProductCard(product: p)).toList(),
           ),
       ],
@@ -325,7 +325,7 @@ class _Shelves extends GetView<CatalogController> {
           const SectionHeader(title: 'Buy again'),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
-            height: 144,
+            height: 152,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: buyAgain.length,
@@ -447,7 +447,7 @@ class _Shelves extends GetView<CatalogController> {
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.82,
+            childAspectRatio: 0.79,
             children: snacks.map((p) => ProductCard(product: p)).toList(),
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -522,7 +522,7 @@ class _BuyAgainTile extends StatelessWidget {
                     )
                   : Text(product.emoji, style: const TextStyle(fontSize: 30)),
             ),
-            const SizedBox(height: AppSpacing.xs),
+            const SizedBox(height: 3),
             Text(
               product.name,
               maxLines: 1,
@@ -530,7 +530,25 @@ class _BuyAgainTile extends StatelessWidget {
               style: textTheme.bodyMedium
                   ?.copyWith(fontWeight: FontWeight.w700, fontSize: 12.5),
             ),
-            const SizedBox(height: AppSpacing.xs),
+            // Always reserved (blank when there's no store) so every tile
+            // in the shelf keeps the same height, whether or not it has a
+            // store subtitle.
+            SizedBox(
+              height: 13,
+              child: (product.storeName != null && product.storeName!.isNotEmpty)
+                  ? Text(
+                      'by ${product.storeName}',
+                      style: textTheme.bodySmall?.copyWith(
+                        fontSize: 9.5,
+                        color: AppColors.textSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  : null,
+            ),
+            const SizedBox(height: 3),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

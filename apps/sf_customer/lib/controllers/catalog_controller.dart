@@ -75,6 +75,8 @@ class CatalogController extends GetxController {
           emoji: p.emoji ?? '🛒',
           imageUrl: p.imageUrl,
           inStock: p.isActive,
+          storeId: p.store?.id,
+          storeName: p.store?.name,
           timeBoundSections: (p.timeBoundSections as List?)?.map((e) => e.toString()).toList() ?? const [],
         );
       }).toList();
