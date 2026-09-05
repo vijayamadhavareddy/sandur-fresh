@@ -72,6 +72,12 @@ query AdminProducts($page: Int!, $limit: Int!, $query: String) {
       markupType
       imageUrl
       timeBoundSections
+      trackInventory
+      storeId
+      store {
+        id
+        name
+      }
       isActive
       category {
         id
@@ -93,6 +99,12 @@ query AdminProduct($id: String!) {
     markupType
     imageUrl
     timeBoundSections
+    trackInventory
+    storeId
+    store {
+      id
+      name
+    }
     isActive
     categoryId
     category {
@@ -131,6 +143,8 @@ mutation CreateAdminProduct(
   $markupType: MarkupType
   $imageUrl: String
   $timeBoundSections: [TimeBoundSectionId!]
+  $trackInventory: Boolean
+  $storeId: String
   $isActive: Boolean
 ) {
   createAdminProduct(
@@ -145,6 +159,8 @@ mutation CreateAdminProduct(
     markupType: $markupType
     imageUrl: $imageUrl
     timeBoundSections: $timeBoundSections
+    trackInventory: $trackInventory
+    storeId: $storeId
     isActive: $isActive
   ) {
     id
@@ -163,6 +179,8 @@ mutation UpdateAdminProduct(
   $markupType: MarkupType
   $imageUrl: String
   $timeBoundSections: [TimeBoundSectionId!]
+  $trackInventory: Boolean
+  $storeId: String
   $isActive: Boolean
 ) {
   updateAdminProduct(
@@ -178,6 +196,8 @@ mutation UpdateAdminProduct(
     markupType: $markupType
     imageUrl: $imageUrl
     timeBoundSections: $timeBoundSections
+    trackInventory: $trackInventory
+    storeId: $storeId
     isActive: $isActive
   ) {
     id

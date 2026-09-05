@@ -9,6 +9,7 @@ import {
   fetchProduct,
   fetchTimeBoundSections,
 } from "@/features/products/queries";
+import { fetchStores } from "@/features/stores/queries";
 
 const route = useRoute();
 const router = useRouter();
@@ -16,6 +17,7 @@ const id = computed(() => (typeof route.params.id === "string" ? route.params.id
 const editing = computed(() => Boolean(id.value));
 const categories = useQuery({ queryKey: ["categories"], queryFn: fetchCategories });
 const sections = useQuery({ queryKey: ["timeBoundSections"], queryFn: fetchTimeBoundSections });
+const stores = useQuery({ queryKey: ["stores"], queryFn: () => fetchStores() });
 const product = useQuery({
   queryKey: computed(() => ["product", id.value]),
   queryFn: () => fetchProduct(id.value),
@@ -39,12 +41,12 @@ const product = useQuery({
       </div>
 
       <!-- Loading State -->
-      <div v-if="categories.isPending.value || sections.isPending.value || (editing && product.isPending.value)" class="p-12 text-center text-slate-400 animate-pulse">
+      <div v-if="categories.isPending.value || sections.isPending.value || stores.isPending.value || (editing && product.isPending.value)" class="p-12 text-center text-slate-400 animate-pulse">
         <p class="text-sm font-semibold">Loading product editor form...</p>
       </div>
 
       <!-- Error State -->
-      <div v-else-if="categories.isError.value || sections.isError.value || product.isError.value" class="p-8 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-300 text-xs">
+      <div v-else-if="categories.isError.value || sections.isError.value || stores.isError.value || product.isError.value" class="p-8 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-300 text-xs">
         <p>Could not load the product form. Please refresh or try again.</p>
       </div>
 
@@ -55,6 +57,7 @@ const product = useQuery({
         :product="product.data.value?.adminProduct ?? undefined"
         :categories="categories.data.value?.adminCategories ?? []"
         :sections="sections.data.value?.timeBoundSections ?? []"
+        :stores="stores.data.value?.adminStores ?? []"
         @saved="router.push('/catalog/products')"
         @cancel="router.push('/catalog/products')"
       />

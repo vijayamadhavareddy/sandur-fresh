@@ -14,6 +14,8 @@ const productFormSchema = z
     categoryId: z.string().min(1),
     imageUrl: z.string().optional(),
     timeBoundSections: z.array(z.enum(["BREAKFAST", "LUNCH", "DINNER"])),
+    trackInventory: z.boolean(),
+    storeId: z.string().optional(),
     isActive: z.boolean(),
   })
   .refine((value) => value.price <= value.mrp, {

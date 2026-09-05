@@ -343,6 +343,7 @@ type CartItemsCartRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationProductsRelation!]!
 }
 
 enum StoresTypeEnum {
@@ -403,6 +404,8 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -411,6 +414,7 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -449,6 +453,29 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryR
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -464,6 +491,156 @@ type CartItemsCartRelationStoreRelationInventoryRelationProductRelationInventory
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartItemsCartRelationStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): CartItemsCartRelationStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -498,6 +675,8 @@ type CartItemsProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -506,6 +685,7 @@ type CartItemsProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): CartItemsProductRelationCategoryRelation
+  store(where: StoresFilters): CartItemsProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsProductRelationInventoryRelation!]!
 }
 
@@ -536,6 +716,119 @@ type CartItemsProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsProductRelationStoreRelationProductsRelation!]!
+}
+
+type CartItemsProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartItemsProductRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartItemsProductRelationStoreRelationInventoryRelationProductRelation
+}
+
+type CartItemsProductRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -578,6 +871,7 @@ type CartItemsProductRelationInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartItemsProductRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
@@ -586,6 +880,33 @@ type CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartItemsProductRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -607,6 +928,8 @@ type CartItemsProductRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -742,6 +1065,7 @@ type CartsStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsStoreRelationProductsRelation!]!
 }
 
 type CartsStoreRelationInventoryRelation {
@@ -794,6 +1118,8 @@ type CartsStoreRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -802,6 +1128,7 @@ type CartsStoreRelationInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): CartsStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): CartsStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -832,6 +1159,29 @@ type CartsStoreRelationInventoryRelationProductRelationCategoryRelationProductsR
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -847,6 +1197,156 @@ type CartsStoreRelationInventoryRelationProductRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): CartsStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): CartsStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type CartsStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type CartsStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartsStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartsStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type CartsStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -895,6 +1395,8 @@ type CartsItemsRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -903,6 +1405,7 @@ type CartsItemsRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): CartsItemsRelationProductRelationCategoryRelation
+  store(where: StoresFilters): CartsItemsRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationInventoryRelation!]!
 }
 
@@ -933,6 +1436,119 @@ type CartsItemsRelationProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationStoreRelationProductsRelation!]!
+}
+
+type CartsItemsRelationProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CartsItemsRelationProductRelationStoreRelationInventoryRelationProductRelation
+}
+
+type CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -975,6 +1591,7 @@ type CartsItemsRelationProductRelationInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
@@ -983,6 +1600,33 @@ type CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRel
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -1004,6 +1648,8 @@ type CartsItemsRelationProductRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1052,6 +1698,8 @@ type CategoriesProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1060,6 +1708,7 @@ type CategoriesProductsRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): CategoriesProductsRelationCategoryRelation
+  store(where: StoresFilters): CategoriesProductsRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationInventoryRelation!]!
 }
 
@@ -1071,6 +1720,117 @@ type CategoriesProductsRelationCategoryRelation {
 
   """Date"""
   createdAt: String!
+}
+
+type CategoriesProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationStoreRelationProductsRelation!]!
+}
+
+type CategoriesProductsRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): CategoriesProductsRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): CategoriesProductsRelationStoreRelationInventoryRelationProductRelation
+}
+
+type CategoriesProductsRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesProductsRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesProductsRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
 }
 
 type CategoriesProductsRelationInventoryRelation {
@@ -1106,6 +1866,7 @@ type CategoriesProductsRelationInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [CategoriesProductsRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation {
@@ -1114,6 +1875,33 @@ type CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type CategoriesProductsRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -1135,6 +1923,8 @@ type CategoriesProductsRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1315,9 +2105,110 @@ type InventoryStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryStoreRelationProductsRelation!]!
 }
 
 type InventoryStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): InventoryStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): InventoryStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type InventoryStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type InventoryStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryStoreRelationProductsRelationInventoryRelation {
   id: String!
   storeId: String!
   productId: String!
@@ -1344,6 +2235,8 @@ type InventoryProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1352,6 +2245,7 @@ type InventoryProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): InventoryProductRelationCategoryRelation
+  store(where: StoresFilters): InventoryProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryProductRelationInventoryRelation!]!
 }
 
@@ -1382,6 +2276,69 @@ type InventoryProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryProductRelationStoreRelationProductsRelation!]!
+}
+
+type InventoryProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1459,9 +2416,110 @@ type InventoryAdjustmentsInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryRelation {
   id: String!
   storeId: String!
   productId: String!
@@ -1488,6 +2546,8 @@ type InventoryAdjustmentsInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1496,6 +2556,7 @@ type InventoryAdjustmentsInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): InventoryAdjustmentsInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -1526,6 +2587,69 @@ type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelationProduct
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsRelation!]!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1790,6 +2914,7 @@ type OrderItemsOrderRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationProductsRelation!]!
 }
 
 type OrderItemsOrderRelationStoreRelationInventoryRelation {
@@ -1842,6 +2967,8 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -1850,6 +2977,7 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -1880,6 +3008,29 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategor
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -1895,6 +3046,156 @@ type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationInvento
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): OrderItemsOrderRelationStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -2011,6 +3312,8 @@ type OrderItemsProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2019,6 +3322,7 @@ type OrderItemsProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrderItemsProductRelationCategoryRelation
+  store(where: StoresFilters): OrderItemsProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationInventoryRelation!]!
 }
 
@@ -2049,6 +3353,119 @@ type OrderItemsProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationStoreRelationProductsRelation!]!
+}
+
+type OrderItemsProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderItemsProductRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderItemsProductRelationStoreRelationInventoryRelationProductRelation
+}
+
+type OrderItemsProductRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2091,6 +3508,7 @@ type OrderItemsProductRelationInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderItemsProductRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
@@ -2099,6 +3517,33 @@ type OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderItemsProductRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -2120,6 +3565,8 @@ type OrderItemsProductRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2313,6 +3760,7 @@ type OrderStatusHistoryOrderRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationProductsRelation!]!
 }
 
 type OrderStatusHistoryOrderRelationStoreRelationInventoryRelation {
@@ -2365,6 +3813,8 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2373,6 +3823,7 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -2403,6 +3854,29 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -2418,6 +3892,156 @@ type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelatio
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -2559,6 +4183,8 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2567,6 +4193,7 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelation!]!
 }
 
@@ -2597,6 +4224,119 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsRelation!]!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductRelation
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2639,6 +4379,7 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
@@ -2647,6 +4388,33 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -2668,6 +4436,8 @@ type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelatio
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2892,6 +4662,7 @@ type OrdersStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersStoreRelationProductsRelation!]!
 }
 
 type OrdersStoreRelationInventoryRelation {
@@ -2944,6 +4715,8 @@ type OrdersStoreRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -2952,6 +4725,7 @@ type OrdersStoreRelationInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrdersStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): OrdersStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -2982,6 +4756,29 @@ type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationProducts
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -2997,6 +4794,156 @@ type OrdersStoreRelationInventoryRelationProductRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): OrdersStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): OrdersStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type OrdersStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type OrdersStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrdersStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrdersStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type OrdersStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -3138,6 +5085,8 @@ type OrdersItemsRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3146,6 +5095,7 @@ type OrdersItemsRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): OrdersItemsRelationProductRelationCategoryRelation
+  store(where: StoresFilters): OrdersItemsRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationInventoryRelation!]!
 }
 
@@ -3176,6 +5126,119 @@ type OrdersItemsRelationProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationStoreRelationProductsRelation!]!
+}
+
+type OrdersItemsRelationProductRelationStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductRelation
+}
+
+type OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3218,6 +5281,7 @@ type OrdersItemsRelationProductRelationInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation {
@@ -3226,6 +5290,33 @@ type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRe
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -3247,6 +5338,8 @@ type OrdersItemsRelationProductRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3283,6 +5376,7 @@ type OtpChallengesSelectItem {
   id: String!
   phone: String!
   code: String!
+  sessionId: String
 
   """Date"""
   expiresAt: String!
@@ -3298,6 +5392,7 @@ type OtpChallengesItem {
   id: String!
   phone: String!
   code: String!
+  sessionId: String
 
   """Date"""
   expiresAt: String!
@@ -3324,7 +5419,9 @@ type ProductsSelectItem {
   imageUrl: String
 
   """JSON"""
-  timeBoundSections: String!
+  timeBoundSections: [TimeBoundSectionId!]!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3333,7 +5430,14 @@ type ProductsSelectItem {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): ProductsCategoryRelation
+  store(where: StoresFilters): ProductsStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [ProductsInventoryRelation!]!
+}
+
+enum TimeBoundSectionId {
+  BREAKFAST
+  LUNCH
+  DINNER
 }
 
 type ProductsCategoryRelation {
@@ -3363,6 +5467,119 @@ type ProductsCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [ProductsStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [ProductsStoreRelationProductsRelation!]!
+}
+
+type ProductsStoreRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): ProductsStoreRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): ProductsStoreRelationInventoryRelationProductRelation
+}
+
+type ProductsStoreRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsStoreRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3405,6 +5622,7 @@ type ProductsInventoryRelationStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [ProductsInventoryRelationStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [ProductsInventoryRelationStoreRelationProductsRelation!]!
 }
 
 type ProductsInventoryRelationStoreRelationInventoryRelation {
@@ -3413,6 +5631,33 @@ type ProductsInventoryRelationStoreRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type ProductsInventoryRelationStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -3434,6 +5679,8 @@ type ProductsInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3458,7 +5705,9 @@ type ProductsItem {
   imageUrl: String
 
   """JSON"""
-  timeBoundSections: String!
+  timeBoundSections: [TimeBoundSectionId!]!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3589,6 +5838,7 @@ type StoreSlotConfigStoreRelation {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationProductsRelation!]!
 }
 
 type StoreSlotConfigStoreRelationInventoryRelation {
@@ -3641,6 +5891,8 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3649,6 +5901,7 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -3679,6 +5932,29 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelatio
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -3694,6 +5970,156 @@ type StoreSlotConfigStoreRelationInventoryRelationProductRelationInventoryRelati
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): StoreSlotConfigStoreRelationProductsRelationCategoryRelation
+  store(where: StoresFilters): StoreSlotConfigStoreRelationProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationProductsRelationInventoryRelation!]!
+}
+
+type StoreSlotConfigStoreRelationProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductRelation
+}
+
+type StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -3731,6 +6157,7 @@ type StoresSelectItem {
   """Date"""
   updatedAt: String!
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoresInventoryRelation!]!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoresProductsRelation!]!
 }
 
 type StoresInventoryRelation {
@@ -3783,6 +6210,8 @@ type StoresInventoryRelationProductRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
   isActive: Boolean!
 
   """Date"""
@@ -3791,6 +6220,7 @@ type StoresInventoryRelationProductRelation {
   """Date"""
   updatedAt: String!
   category(where: CategoriesFilters): StoresInventoryRelationProductRelationCategoryRelation
+  store(where: StoresFilters): StoresInventoryRelationProductRelationStoreRelation
   inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoresInventoryRelationProductRelationInventoryRelation!]!
 }
 
@@ -3821,6 +6251,29 @@ type StoresInventoryRelationProductRelationCategoryRelationProductsRelation {
 
   """JSON"""
   timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresInventoryRelationProductRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
   isActive: Boolean!
 
   """Date"""
@@ -3836,6 +6289,156 @@ type StoresInventoryRelationProductRelationInventoryRelation {
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+  category(where: CategoriesFilters): StoresProductsRelationCategoryRelation
+  store(where: StoresFilters): StoresProductsRelationStoreRelation
+  inventory(where: InventoryFilters, orderBy: InventoryOrderBy, offset: Int, limit: Int): [StoresProductsRelationInventoryRelation!]!
+}
+
+type StoresProductsRelationCategoryRelation {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+
+  """Date"""
+  createdAt: String!
+  products(where: ProductsFilters, orderBy: ProductsOrderBy, offset: Int, limit: Int): [StoresProductsRelationCategoryRelationProductsRelation!]!
+}
+
+type StoresProductsRelationCategoryRelationProductsRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresProductsRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresProductsRelationInventoryRelation {
+  id: String!
+  storeId: String!
+  productId: String!
+  stockQty: Int!
+  lowStockThreshold: Int!
+
+  """Date"""
+  updatedAt: String!
+  store(where: StoresFilters): StoresProductsRelationInventoryRelationStoreRelation
+  product(where: ProductsFilters): StoresProductsRelationInventoryRelationProductRelation
+}
+
+type StoresProductsRelationInventoryRelationStoreRelation {
+  id: String!
+  name: String!
+  type: StoresTypeEnum!
+  partnerName: String
+  contactPhone: String
+  contactEmail: String
+  commissionPct: Int
+  address: String!
+  lat: Float!
+  lng: Float!
+  serviceRadiusM: Int!
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
+
+  """Date"""
+  updatedAt: String!
+}
+
+type StoresProductsRelationInventoryRelationProductRelation {
+  id: String!
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: ProductsMarkupTypeEnum
+  emoji: String
+  imageUrl: String
+
+  """JSON"""
+  timeBoundSections: String!
+  trackInventory: Boolean!
+  storeId: String
+  isActive: Boolean!
+
+  """Date"""
+  createdAt: String!
 
   """Date"""
   updatedAt: String!
@@ -8624,6 +11227,7 @@ input OtpChallengesInsertInput {
   id: String
   phone: String!
   code: String!
+  sessionId: String
 
   """Date"""
   expiresAt: String!
@@ -8639,6 +11243,7 @@ input OtpChallengesUpdateInput {
   id: String
   phone: String
   code: String
+  sessionId: String
 
   """Date"""
   expiresAt: String
@@ -8654,6 +11259,7 @@ input OtpChallengesFilters {
   id: OtpChallengesIdFilters
   phone: OtpChallengesPhoneFilters
   code: OtpChallengesCodeFilters
+  sessionId: OtpChallengesSessionIdFilters
   expiresAt: OtpChallengesExpiresAtFilters
   consumedAt: OtpChallengesConsumedAtFilters
   createdAt: OtpChallengesCreatedAtFilters
@@ -8769,6 +11375,49 @@ input OtpChallengesCodeFilters {
 }
 
 input OtpChallengesCodefiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input OtpChallengesSessionIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [OtpChallengesSessionIdfiltersOr!]
+}
+
+input OtpChallengesSessionIdfiltersOr {
   eq: String
   ne: String
   lt: String
@@ -8988,6 +11637,7 @@ input OtpChallengesFiltersOr {
   id: OtpChallengesIdFilters
   phone: OtpChallengesPhoneFilters
   code: OtpChallengesCodeFilters
+  sessionId: OtpChallengesSessionIdFilters
   expiresAt: OtpChallengesExpiresAtFilters
   consumedAt: OtpChallengesConsumedAtFilters
   createdAt: OtpChallengesCreatedAtFilters
@@ -8997,6 +11647,7 @@ input OtpChallengesOrderBy {
   id: InnerOrder
   phone: InnerOrder
   code: InnerOrder
+  sessionId: InnerOrder
   expiresAt: InnerOrder
   consumedAt: InnerOrder
   createdAt: InnerOrder
@@ -9018,6 +11669,8 @@ input ProductsInsertInput {
 
   """JSON"""
   timeBoundSections: String
+  trackInventory: Boolean
+  storeId: String
   isActive: Boolean
 
   """Date"""
@@ -9043,6 +11696,8 @@ input ProductsUpdateInput {
 
   """JSON"""
   timeBoundSections: String
+  trackInventory: Boolean
+  storeId: String
   isActive: Boolean
 
   """Date"""
@@ -9066,6 +11721,8 @@ input ProductsFilters {
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
   timeBoundSections: ProductsTimeBoundSectionsFilters
+  trackInventory: ProductsTrackInventoryFilters
+  storeId: ProductsStoreIdFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -9653,6 +12310,92 @@ input ProductsTimeBoundSectionsfiltersOr {
   isNotNull: Boolean
 }
 
+input ProductsTrackInventoryFilters {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsTrackInventoryfiltersOr!]
+}
+
+input ProductsTrackInventoryfiltersOr {
+  eq: Boolean
+  ne: Boolean
+  lt: Boolean
+  lte: Boolean
+  gt: Boolean
+  gte: Boolean
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [Boolean!]
+
+  """Array<undefined>"""
+  notInArray: [Boolean!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
+input ProductsStoreIdFilters {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+  OR: [ProductsStoreIdfiltersOr!]
+}
+
+input ProductsStoreIdfiltersOr {
+  eq: String
+  ne: String
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  like: String
+  notLike: String
+  ilike: String
+  notIlike: String
+
+  """Array<undefined>"""
+  inArray: [String!]
+
+  """Array<undefined>"""
+  notInArray: [String!]
+  isNull: Boolean
+  isNotNull: Boolean
+}
+
 input ProductsIsActiveFilters {
   eq: Boolean
   ne: Boolean
@@ -9840,6 +12583,8 @@ input ProductsFiltersOr {
   emoji: ProductsEmojiFilters
   imageUrl: ProductsImageUrlFilters
   timeBoundSections: ProductsTimeBoundSectionsFilters
+  trackInventory: ProductsTrackInventoryFilters
+  storeId: ProductsStoreIdFilters
   isActive: ProductsIsActiveFilters
   createdAt: ProductsCreatedAtFilters
   updatedAt: ProductsUpdatedAtFilters
@@ -9859,6 +12604,8 @@ input ProductsOrderBy {
   emoji: InnerOrder
   imageUrl: InnerOrder
   timeBoundSections: InnerOrder
+  trackInventory: InnerOrder
+  storeId: InnerOrder
   isActive: InnerOrder
   createdAt: InnerOrder
   updatedAt: InnerOrder
@@ -11732,12 +14479,6 @@ type TimeBoundSection {
   isNow: Boolean!
 }
 
-enum TimeBoundSectionId {
-  BREAKFAST
-  LUNCH
-  DINNER
-}
-
 type AdminSetupStatus {
   isRequired: Boolean!
 }
@@ -11785,6 +14526,9 @@ type AdminProduct {
   emoji: String
   imageUrl: String
   timeBoundSections: [TimeBoundSectionId!]!
+  trackInventory: Boolean!
+  storeId: String
+  store: AdminStore
   isActive: Boolean!
   category: AdminCategory!
   createdAt: String!
@@ -11794,14 +14538,6 @@ type AdminProduct {
 enum MarkupType {
   PERCENTAGE
   AMOUNT
-}
-
-type AdminCategory {
-  id: String!
-  name: String!
-  slug: String!
-  sortOrder: Int!
-  createdAt: String!
 }
 
 type AdminStore {
@@ -11824,6 +14560,14 @@ type AdminStore {
 enum AdminStoreType {
   DARK_STORE
   THIRD_PARTY
+}
+
+type AdminCategory {
+  id: String!
+  name: String!
+  slug: String!
+  sortOrder: Int!
+  createdAt: String!
 }
 
 type AdminInventoryPage {
@@ -12022,8 +14766,8 @@ type Mutation {
   adminLogout: Boolean!
   registerAdminDevice(fid: String!, userAgent: String): Boolean!
   unregisterAdminDevice(fid: String!): Boolean!
-  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], isActive: Boolean): AdminProduct!
-  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], isActive: Boolean): AdminProduct!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, storeId: String, isActive: Boolean): AdminProduct!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, storeId: String, isActive: Boolean): AdminProduct!
   createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
   updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
   createAdminStore(name: String!, type: AdminStoreType, partnerName: String, contactPhone: String, contactEmail: String, commissionPct: Int, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!

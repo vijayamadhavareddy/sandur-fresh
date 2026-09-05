@@ -27,7 +27,8 @@ const matchesImageType = (type: string, bytes: Uint8Array) => {
   );
 };
 
-const getStorage = (c: Context<AppEnv>): StorageService => c.get("storage") ?? resolveStorage(c.env);
+const getStorage = (c: Context<AppEnv>): StorageService =>
+  c.get("storage") ?? resolveStorage(c.env);
 
 export const createAdminRouter = () => {
   const router = new Hono<AppEnv>();

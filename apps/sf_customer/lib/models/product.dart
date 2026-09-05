@@ -9,6 +9,9 @@ class Product {
   final String unit;
   final String emoji;
   final bool inStock;
+  final bool trackInventory;
+  final String? storeId;
+  final String? storeName;
 
   /// Time-bound shelf tags set in admin (e.g. ['BREAKFAST', 'LUNCH']), or empty
   /// when the product isn't tagged to any shelf.
@@ -23,6 +26,9 @@ class Product {
     required this.unit,
     required this.emoji,
     this.inStock = true,
+    this.trackInventory = false,
+    this.storeId,
+    this.storeName,
     this.timeBoundSections = const [],
   });
 
@@ -37,6 +43,10 @@ class Product {
         ? rawSections.map((e) => e.toString()).toList()
         : (rawSections is String && rawSections.isNotEmpty ? [rawSections] : const []);
 
+    final storeObj = json['store'];
+    final storeNameVal = storeObj is Map ? (storeObj['name'] as String?) : null;
+    final storeIdVal = json['storeId'] as String? ?? (storeObj is Map ? (storeObj['id'] as String?) : null);
+
     return Product(
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
@@ -46,6 +56,9 @@ class Product {
       unit: json['unit'] as String? ?? '1 unit',
       emoji: json['emoji'] as String? ?? '🛒',
       inStock: json['isActive'] as bool? ?? json['inStock'] as bool? ?? true,
+      trackInventory: json['trackInventory'] as bool? ?? false,
+      storeId: storeIdVal,
+      storeName: storeNameVal,
       timeBoundSections: sections,
     );
   }

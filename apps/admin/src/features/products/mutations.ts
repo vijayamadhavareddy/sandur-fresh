@@ -5,6 +5,7 @@ import type { ProductFormValues } from "./validation";
 const toVariables = (input: ProductFormValues) => ({
   ...input,
   timeBoundSections: input.timeBoundSections ?? [],
+  storeId: input.storeId ? input.storeId : null,
 });
 
 export const createProduct = (input: ProductFormValues) =>

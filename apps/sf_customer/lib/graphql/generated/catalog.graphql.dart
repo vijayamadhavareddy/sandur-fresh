@@ -13,6 +13,9 @@ class Fragment$ProductFields {
     this.emoji,
     this.imageUrl,
     required this.timeBoundSections,
+    required this.trackInventory,
+    this.storeId,
+    this.store,
     required this.isActive,
     this.$__typename = 'ProductsSelectItem',
   });
@@ -28,6 +31,9 @@ class Fragment$ProductFields {
     final l$emoji = json['emoji'];
     final l$imageUrl = json['imageUrl'];
     final l$timeBoundSections = json['timeBoundSections'];
+    final l$trackInventory = json['trackInventory'];
+    final l$storeId = json['storeId'];
+    final l$store = json['store'];
     final l$isActive = json['isActive'];
     final l$$__typename = json['__typename'];
     return Fragment$ProductFields(
@@ -40,7 +46,16 @@ class Fragment$ProductFields {
       price: (l$price as int),
       emoji: (l$emoji as String?),
       imageUrl: (l$imageUrl as String?),
-      timeBoundSections: (l$timeBoundSections as String),
+      timeBoundSections: (l$timeBoundSections as List<dynamic>)
+          .map((e) => fromJson$Enum$TimeBoundSectionId((e as String)))
+          .toList(),
+      trackInventory: (l$trackInventory as bool),
+      storeId: (l$storeId as String?),
+      store: l$store == null
+          ? null
+          : Fragment$ProductFields$store.fromJson(
+              (l$store as Map<String, dynamic>),
+            ),
       isActive: (l$isActive as bool),
       $__typename: (l$$__typename as String),
     );
@@ -64,7 +79,13 @@ class Fragment$ProductFields {
 
   final String? imageUrl;
 
-  final String timeBoundSections;
+  final List<Enum$TimeBoundSectionId> timeBoundSections;
+
+  final bool trackInventory;
+
+  final String? storeId;
+
+  final Fragment$ProductFields$store? store;
 
   final bool isActive;
 
@@ -91,7 +112,15 @@ class Fragment$ProductFields {
     final l$imageUrl = imageUrl;
     _resultData['imageUrl'] = l$imageUrl;
     final l$timeBoundSections = timeBoundSections;
-    _resultData['timeBoundSections'] = l$timeBoundSections;
+    _resultData['timeBoundSections'] = l$timeBoundSections
+        .map((e) => toJson$Enum$TimeBoundSectionId(e))
+        .toList();
+    final l$trackInventory = trackInventory;
+    _resultData['trackInventory'] = l$trackInventory;
+    final l$storeId = storeId;
+    _resultData['storeId'] = l$storeId;
+    final l$store = store;
+    _resultData['store'] = l$store?.toJson();
     final l$isActive = isActive;
     _resultData['isActive'] = l$isActive;
     final l$$__typename = $__typename;
@@ -111,6 +140,9 @@ class Fragment$ProductFields {
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
+    final l$store = store;
     final l$isActive = isActive;
     final l$$__typename = $__typename;
     return Object.hashAll([
@@ -123,7 +155,10 @@ class Fragment$ProductFields {
       l$price,
       l$emoji,
       l$imageUrl,
-      l$timeBoundSections,
+      Object.hashAll(l$timeBoundSections.map((v) => v)),
+      l$trackInventory,
+      l$storeId,
+      l$store,
       l$isActive,
       l$$__typename,
     ]);
@@ -184,7 +219,29 @@ class Fragment$ProductFields {
     }
     final l$timeBoundSections = timeBoundSections;
     final lOther$timeBoundSections = other.timeBoundSections;
-    if (l$timeBoundSections != lOther$timeBoundSections) {
+    if (l$timeBoundSections.length != lOther$timeBoundSections.length) {
+      return false;
+    }
+    for (int i = 0; i < l$timeBoundSections.length; i++) {
+      final l$timeBoundSections$entry = l$timeBoundSections[i];
+      final lOther$timeBoundSections$entry = lOther$timeBoundSections[i];
+      if (l$timeBoundSections$entry != lOther$timeBoundSections$entry) {
+        return false;
+      }
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (l$storeId != lOther$storeId) {
+      return false;
+    }
+    final l$store = store;
+    final lOther$store = other.store;
+    if (l$store != lOther$store) {
       return false;
     }
     final l$isActive = isActive;
@@ -225,10 +282,14 @@ abstract class CopyWith$Fragment$ProductFields<TRes> {
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSections,
+    List<Enum$TimeBoundSectionId>? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
+    Fragment$ProductFields$store? store,
     bool? isActive,
     String? $__typename,
   });
+  CopyWith$Fragment$ProductFields$store<TRes> get store;
 }
 
 class _CopyWithImpl$Fragment$ProductFields<TRes>
@@ -252,6 +313,9 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
+    Object? store = _undefined,
     Object? isActive = _undefined,
     Object? $__typename = _undefined,
   }) => _then(
@@ -280,7 +344,14 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
       timeBoundSections:
           timeBoundSections == _undefined || timeBoundSections == null
           ? _instance.timeBoundSections
-          : (timeBoundSections as String),
+          : (timeBoundSections as List<Enum$TimeBoundSectionId>),
+      trackInventory: trackInventory == _undefined || trackInventory == null
+          ? _instance.trackInventory
+          : (trackInventory as bool),
+      storeId: storeId == _undefined ? _instance.storeId : (storeId as String?),
+      store: store == _undefined
+          ? _instance.store
+          : (store as Fragment$ProductFields$store?),
       isActive: isActive == _undefined || isActive == null
           ? _instance.isActive
           : (isActive as bool),
@@ -289,6 +360,16 @@ class _CopyWithImpl$Fragment$ProductFields<TRes>
           : ($__typename as String),
     ),
   );
+
+  CopyWith$Fragment$ProductFields$store<TRes> get store {
+    final local$store = _instance.store;
+    return local$store == null
+        ? CopyWith$Fragment$ProductFields$store.stub(_then(_instance))
+        : CopyWith$Fragment$ProductFields$store(
+            local$store,
+            (e) => call(store: e),
+          );
+  }
 }
 
 class _CopyWithStubImpl$Fragment$ProductFields<TRes>
@@ -307,10 +388,16 @@ class _CopyWithStubImpl$Fragment$ProductFields<TRes>
     int? price,
     String? emoji,
     String? imageUrl,
-    String? timeBoundSections,
+    List<Enum$TimeBoundSectionId>? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
+    Fragment$ProductFields$store? store,
     bool? isActive,
     String? $__typename,
   }) => _res;
+
+  CopyWith$Fragment$ProductFields$store<TRes> get store =>
+      CopyWith$Fragment$ProductFields$store.stub(_res);
 }
 
 const fragmentDefinitionProductFields = FragmentDefinitionNode(
@@ -395,6 +482,51 @@ const fragmentDefinitionProductFields = FragmentDefinitionNode(
         selectionSet: null,
       ),
       FieldNode(
+        name: NameNode(value: 'trackInventory'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'storeId'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+      FieldNode(
+        name: NameNode(value: 'store'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(
+          selections: [
+            FieldNode(
+              name: NameNode(value: 'id'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: 'name'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+            FieldNode(
+              name: NameNode(value: '__typename'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: null,
+            ),
+          ],
+        ),
+      ),
+      FieldNode(
         name: NameNode(value: 'isActive'),
         alias: null,
         arguments: [],
@@ -414,6 +546,131 @@ const fragmentDefinitionProductFields = FragmentDefinitionNode(
 const documentNodeFragmentProductFields = DocumentNode(
   definitions: [fragmentDefinitionProductFields],
 );
+
+class Fragment$ProductFields$store {
+  Fragment$ProductFields$store({
+    required this.id,
+    required this.name,
+    this.$__typename = 'ProductsStoreRelation',
+  });
+
+  factory Fragment$ProductFields$store.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$ProductFields$store(
+      id: (l$id as String),
+      name: (l$name as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String name;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$name, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Fragment$ProductFields$store ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$ProductFields$store
+    on Fragment$ProductFields$store {
+  CopyWith$Fragment$ProductFields$store<Fragment$ProductFields$store>
+  get copyWith => CopyWith$Fragment$ProductFields$store(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$ProductFields$store<TRes> {
+  factory CopyWith$Fragment$ProductFields$store(
+    Fragment$ProductFields$store instance,
+    TRes Function(Fragment$ProductFields$store) then,
+  ) = _CopyWithImpl$Fragment$ProductFields$store;
+
+  factory CopyWith$Fragment$ProductFields$store.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$ProductFields$store;
+
+  TRes call({String? id, String? name, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$ProductFields$store<TRes>
+    implements CopyWith$Fragment$ProductFields$store<TRes> {
+  _CopyWithImpl$Fragment$ProductFields$store(this._instance, this._then);
+
+  final Fragment$ProductFields$store _instance;
+
+  final TRes Function(Fragment$ProductFields$store) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? $__typename = _undefined,
+  }) => _then(
+    Fragment$ProductFields$store(
+      id: id == _undefined || id == null ? _instance.id : (id as String),
+      name: name == _undefined || name == null
+          ? _instance.name
+          : (name as String),
+      $__typename: $__typename == _undefined || $__typename == null
+          ? _instance.$__typename
+          : ($__typename as String),
+    ),
+  );
+}
+
+class _CopyWithStubImpl$Fragment$ProductFields$store<TRes>
+    implements CopyWith$Fragment$ProductFields$store<TRes> {
+  _CopyWithStubImpl$Fragment$ProductFields$store(this._res);
+
+  TRes _res;
+
+  call({String? id, String? name, String? $__typename}) => _res;
+}
 
 class Fragment$CategoryFields {
   Fragment$CategoryFields({

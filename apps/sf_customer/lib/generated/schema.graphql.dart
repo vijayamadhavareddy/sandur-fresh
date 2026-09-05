@@ -109136,6 +109136,7 @@ class Input$OtpChallengesInsertInput {
     String? id,
     required String phone,
     required String code,
+    String? sessionId,
     required String expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109143,6 +109144,7 @@ class Input$OtpChallengesInsertInput {
     if (id != null) r'id': id,
     r'phone': phone,
     r'code': code,
+    if (sessionId != null) r'sessionId': sessionId,
     r'expiresAt': expiresAt,
     if (consumedAt != null) r'consumedAt': consumedAt,
     if (createdAt != null) r'createdAt': createdAt,
@@ -109160,6 +109162,10 @@ class Input$OtpChallengesInsertInput {
     result$data['phone'] = (l$phone as String);
     final l$code = data['code'];
     result$data['code'] = (l$code as String);
+    if (data.containsKey('sessionId')) {
+      final l$sessionId = data['sessionId'];
+      result$data['sessionId'] = (l$sessionId as String?);
+    }
     final l$expiresAt = data['expiresAt'];
     result$data['expiresAt'] = (l$expiresAt as String);
     if (data.containsKey('consumedAt')) {
@@ -109181,6 +109187,8 @@ class Input$OtpChallengesInsertInput {
 
   String get code => (_$data['code'] as String);
 
+  String? get sessionId => (_$data['sessionId'] as String?);
+
   String get expiresAt => (_$data['expiresAt'] as String);
 
   String? get consumedAt => (_$data['consumedAt'] as String?);
@@ -109197,6 +109205,10 @@ class Input$OtpChallengesInsertInput {
     result$data['phone'] = l$phone;
     final l$code = code;
     result$data['code'] = l$code;
+    if (_$data.containsKey('sessionId')) {
+      final l$sessionId = sessionId;
+      result$data['sessionId'] = l$sessionId;
+    }
     final l$expiresAt = expiresAt;
     result$data['expiresAt'] = l$expiresAt;
     if (_$data.containsKey('consumedAt')) {
@@ -109240,6 +109252,15 @@ class Input$OtpChallengesInsertInput {
     if (l$code != lOther$code) {
       return false;
     }
+    final l$sessionId = sessionId;
+    final lOther$sessionId = other.sessionId;
+    if (_$data.containsKey('sessionId') !=
+        other._$data.containsKey('sessionId')) {
+      return false;
+    }
+    if (l$sessionId != lOther$sessionId) {
+      return false;
+    }
     final l$expiresAt = expiresAt;
     final lOther$expiresAt = other.expiresAt;
     if (l$expiresAt != lOther$expiresAt) {
@@ -109271,6 +109292,7 @@ class Input$OtpChallengesInsertInput {
     final l$id = id;
     final l$phone = phone;
     final l$code = code;
+    final l$sessionId = sessionId;
     final l$expiresAt = expiresAt;
     final l$consumedAt = consumedAt;
     final l$createdAt = createdAt;
@@ -109278,6 +109300,7 @@ class Input$OtpChallengesInsertInput {
       _$data.containsKey('id') ? l$id : const {},
       l$phone,
       l$code,
+      _$data.containsKey('sessionId') ? l$sessionId : const {},
       l$expiresAt,
       _$data.containsKey('consumedAt') ? l$consumedAt : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -109298,6 +109321,7 @@ abstract class CopyWith$Input$OtpChallengesInsertInput<TRes> {
     String? id,
     String? phone,
     String? code,
+    String? sessionId,
     String? expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109318,6 +109342,7 @@ class _CopyWithImpl$Input$OtpChallengesInsertInput<TRes>
     Object? id = _undefined,
     Object? phone = _undefined,
     Object? code = _undefined,
+    Object? sessionId = _undefined,
     Object? expiresAt = _undefined,
     Object? consumedAt = _undefined,
     Object? createdAt = _undefined,
@@ -109327,6 +109352,7 @@ class _CopyWithImpl$Input$OtpChallengesInsertInput<TRes>
       if (id != _undefined) 'id': (id as String?),
       if (phone != _undefined && phone != null) 'phone': (phone as String),
       if (code != _undefined && code != null) 'code': (code as String),
+      if (sessionId != _undefined) 'sessionId': (sessionId as String?),
       if (expiresAt != _undefined && expiresAt != null)
         'expiresAt': (expiresAt as String),
       if (consumedAt != _undefined) 'consumedAt': (consumedAt as String?),
@@ -109345,6 +109371,7 @@ class _CopyWithStubImpl$Input$OtpChallengesInsertInput<TRes>
     String? id,
     String? phone,
     String? code,
+    String? sessionId,
     String? expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109356,6 +109383,7 @@ class Input$OtpChallengesUpdateInput {
     String? id,
     String? phone,
     String? code,
+    String? sessionId,
     String? expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109363,6 +109391,7 @@ class Input$OtpChallengesUpdateInput {
     if (id != null) r'id': id,
     if (phone != null) r'phone': phone,
     if (code != null) r'code': code,
+    if (sessionId != null) r'sessionId': sessionId,
     if (expiresAt != null) r'expiresAt': expiresAt,
     if (consumedAt != null) r'consumedAt': consumedAt,
     if (createdAt != null) r'createdAt': createdAt,
@@ -109383,6 +109412,10 @@ class Input$OtpChallengesUpdateInput {
     if (data.containsKey('code')) {
       final l$code = data['code'];
       result$data['code'] = (l$code as String?);
+    }
+    if (data.containsKey('sessionId')) {
+      final l$sessionId = data['sessionId'];
+      result$data['sessionId'] = (l$sessionId as String?);
     }
     if (data.containsKey('expiresAt')) {
       final l$expiresAt = data['expiresAt'];
@@ -109407,6 +109440,8 @@ class Input$OtpChallengesUpdateInput {
 
   String? get code => (_$data['code'] as String?);
 
+  String? get sessionId => (_$data['sessionId'] as String?);
+
   String? get expiresAt => (_$data['expiresAt'] as String?);
 
   String? get consumedAt => (_$data['consumedAt'] as String?);
@@ -109426,6 +109461,10 @@ class Input$OtpChallengesUpdateInput {
     if (_$data.containsKey('code')) {
       final l$code = code;
       result$data['code'] = l$code;
+    }
+    if (_$data.containsKey('sessionId')) {
+      final l$sessionId = sessionId;
+      result$data['sessionId'] = l$sessionId;
     }
     if (_$data.containsKey('expiresAt')) {
       final l$expiresAt = expiresAt;
@@ -109478,6 +109517,15 @@ class Input$OtpChallengesUpdateInput {
     if (l$code != lOther$code) {
       return false;
     }
+    final l$sessionId = sessionId;
+    final lOther$sessionId = other.sessionId;
+    if (_$data.containsKey('sessionId') !=
+        other._$data.containsKey('sessionId')) {
+      return false;
+    }
+    if (l$sessionId != lOther$sessionId) {
+      return false;
+    }
     final l$expiresAt = expiresAt;
     final lOther$expiresAt = other.expiresAt;
     if (_$data.containsKey('expiresAt') !=
@@ -109513,6 +109561,7 @@ class Input$OtpChallengesUpdateInput {
     final l$id = id;
     final l$phone = phone;
     final l$code = code;
+    final l$sessionId = sessionId;
     final l$expiresAt = expiresAt;
     final l$consumedAt = consumedAt;
     final l$createdAt = createdAt;
@@ -109520,6 +109569,7 @@ class Input$OtpChallengesUpdateInput {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('phone') ? l$phone : const {},
       _$data.containsKey('code') ? l$code : const {},
+      _$data.containsKey('sessionId') ? l$sessionId : const {},
       _$data.containsKey('expiresAt') ? l$expiresAt : const {},
       _$data.containsKey('consumedAt') ? l$consumedAt : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -109540,6 +109590,7 @@ abstract class CopyWith$Input$OtpChallengesUpdateInput<TRes> {
     String? id,
     String? phone,
     String? code,
+    String? sessionId,
     String? expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109560,6 +109611,7 @@ class _CopyWithImpl$Input$OtpChallengesUpdateInput<TRes>
     Object? id = _undefined,
     Object? phone = _undefined,
     Object? code = _undefined,
+    Object? sessionId = _undefined,
     Object? expiresAt = _undefined,
     Object? consumedAt = _undefined,
     Object? createdAt = _undefined,
@@ -109569,6 +109621,7 @@ class _CopyWithImpl$Input$OtpChallengesUpdateInput<TRes>
       if (id != _undefined) 'id': (id as String?),
       if (phone != _undefined) 'phone': (phone as String?),
       if (code != _undefined) 'code': (code as String?),
+      if (sessionId != _undefined) 'sessionId': (sessionId as String?),
       if (expiresAt != _undefined) 'expiresAt': (expiresAt as String?),
       if (consumedAt != _undefined) 'consumedAt': (consumedAt as String?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
@@ -109586,6 +109639,7 @@ class _CopyWithStubImpl$Input$OtpChallengesUpdateInput<TRes>
     String? id,
     String? phone,
     String? code,
+    String? sessionId,
     String? expiresAt,
     String? consumedAt,
     String? createdAt,
@@ -109597,6 +109651,7 @@ class Input$OtpChallengesFilters {
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -109605,6 +109660,7 @@ class Input$OtpChallengesFilters {
     if (id != null) r'id': id,
     if (phone != null) r'phone': phone,
     if (code != null) r'code': code,
+    if (sessionId != null) r'sessionId': sessionId,
     if (expiresAt != null) r'expiresAt': expiresAt,
     if (consumedAt != null) r'consumedAt': consumedAt,
     if (createdAt != null) r'createdAt': createdAt,
@@ -109637,6 +109693,14 @@ class Input$OtpChallengesFilters {
           ? null
           : Input$OtpChallengesCodeFilters.fromJson(
               (l$code as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('sessionId')) {
+      final l$sessionId = data['sessionId'];
+      result$data['sessionId'] = l$sessionId == null
+          ? null
+          : Input$OtpChallengesSessionIdFilters.fromJson(
+              (l$sessionId as Map<String, dynamic>),
             );
     }
     if (data.containsKey('expiresAt')) {
@@ -109687,6 +109751,9 @@ class Input$OtpChallengesFilters {
   Input$OtpChallengesCodeFilters? get code =>
       (_$data['code'] as Input$OtpChallengesCodeFilters?);
 
+  Input$OtpChallengesSessionIdFilters? get sessionId =>
+      (_$data['sessionId'] as Input$OtpChallengesSessionIdFilters?);
+
   Input$OtpChallengesExpiresAtFilters? get expiresAt =>
       (_$data['expiresAt'] as Input$OtpChallengesExpiresAtFilters?);
 
@@ -109712,6 +109779,10 @@ class Input$OtpChallengesFilters {
     if (_$data.containsKey('code')) {
       final l$code = code;
       result$data['code'] = l$code?.toJson();
+    }
+    if (_$data.containsKey('sessionId')) {
+      final l$sessionId = sessionId;
+      result$data['sessionId'] = l$sessionId?.toJson();
     }
     if (_$data.containsKey('expiresAt')) {
       final l$expiresAt = expiresAt;
@@ -109768,6 +109839,15 @@ class Input$OtpChallengesFilters {
     if (l$code != lOther$code) {
       return false;
     }
+    final l$sessionId = sessionId;
+    final lOther$sessionId = other.sessionId;
+    if (_$data.containsKey('sessionId') !=
+        other._$data.containsKey('sessionId')) {
+      return false;
+    }
+    if (l$sessionId != lOther$sessionId) {
+      return false;
+    }
     final l$expiresAt = expiresAt;
     final lOther$expiresAt = other.expiresAt;
     if (_$data.containsKey('expiresAt') !=
@@ -109822,6 +109902,7 @@ class Input$OtpChallengesFilters {
     final l$id = id;
     final l$phone = phone;
     final l$code = code;
+    final l$sessionId = sessionId;
     final l$expiresAt = expiresAt;
     final l$consumedAt = consumedAt;
     final l$createdAt = createdAt;
@@ -109830,6 +109911,7 @@ class Input$OtpChallengesFilters {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('phone') ? l$phone : const {},
       _$data.containsKey('code') ? l$code : const {},
+      _$data.containsKey('sessionId') ? l$sessionId : const {},
       _$data.containsKey('expiresAt') ? l$expiresAt : const {},
       _$data.containsKey('consumedAt') ? l$consumedAt : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -109855,6 +109937,7 @@ abstract class CopyWith$Input$OtpChallengesFilters<TRes> {
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -109863,6 +109946,7 @@ abstract class CopyWith$Input$OtpChallengesFilters<TRes> {
   CopyWith$Input$OtpChallengesIdFilters<TRes> get id;
   CopyWith$Input$OtpChallengesPhoneFilters<TRes> get phone;
   CopyWith$Input$OtpChallengesCodeFilters<TRes> get code;
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId;
   CopyWith$Input$OtpChallengesExpiresAtFilters<TRes> get expiresAt;
   CopyWith$Input$OtpChallengesConsumedAtFilters<TRes> get consumedAt;
   CopyWith$Input$OtpChallengesCreatedAtFilters<TRes> get createdAt;
@@ -109890,6 +109974,7 @@ class _CopyWithImpl$Input$OtpChallengesFilters<TRes>
     Object? id = _undefined,
     Object? phone = _undefined,
     Object? code = _undefined,
+    Object? sessionId = _undefined,
     Object? expiresAt = _undefined,
     Object? consumedAt = _undefined,
     Object? createdAt = _undefined,
@@ -109901,6 +109986,8 @@ class _CopyWithImpl$Input$OtpChallengesFilters<TRes>
       if (phone != _undefined)
         'phone': (phone as Input$OtpChallengesPhoneFilters?),
       if (code != _undefined) 'code': (code as Input$OtpChallengesCodeFilters?),
+      if (sessionId != _undefined)
+        'sessionId': (sessionId as Input$OtpChallengesSessionIdFilters?),
       if (expiresAt != _undefined)
         'expiresAt': (expiresAt as Input$OtpChallengesExpiresAtFilters?),
       if (consumedAt != _undefined)
@@ -109935,6 +110022,16 @@ class _CopyWithImpl$Input$OtpChallengesFilters<TRes>
         : CopyWith$Input$OtpChallengesCodeFilters(
             local$code,
             (e) => call(code: e),
+          );
+  }
+
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId {
+    final local$sessionId = _instance.sessionId;
+    return local$sessionId == null
+        ? CopyWith$Input$OtpChallengesSessionIdFilters.stub(_then(_instance))
+        : CopyWith$Input$OtpChallengesSessionIdFilters(
+            local$sessionId,
+            (e) => call(sessionId: e),
           );
   }
 
@@ -109994,6 +110091,7 @@ class _CopyWithStubImpl$Input$OtpChallengesFilters<TRes>
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -110008,6 +110106,9 @@ class _CopyWithStubImpl$Input$OtpChallengesFilters<TRes>
 
   CopyWith$Input$OtpChallengesCodeFilters<TRes> get code =>
       CopyWith$Input$OtpChallengesCodeFilters.stub(_res);
+
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId =>
+      CopyWith$Input$OtpChallengesSessionIdFilters.stub(_res);
 
   CopyWith$Input$OtpChallengesExpiresAtFilters<TRes> get expiresAt =>
       CopyWith$Input$OtpChallengesExpiresAtFilters.stub(_res);
@@ -113129,6 +113230,1062 @@ class _CopyWithImpl$Input$OtpChallengesCodefiltersOr<TRes>
 class _CopyWithStubImpl$Input$OtpChallengesCodefiltersOr<TRes>
     implements CopyWith$Input$OtpChallengesCodefiltersOr<TRes> {
   _CopyWithStubImpl$Input$OtpChallengesCodefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$OtpChallengesSessionIdFilters {
+  factory Input$OtpChallengesSessionIdFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$OtpChallengesSessionIdfiltersOr>? OR,
+  }) => Input$OtpChallengesSessionIdFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$OtpChallengesSessionIdFilters._(this._$data);
+
+  factory Input$OtpChallengesSessionIdFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$OtpChallengesSessionIdfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$OtpChallengesSessionIdFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$OtpChallengesSessionIdfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$OtpChallengesSessionIdfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OtpChallengesSessionIdFilters<
+    Input$OtpChallengesSessionIdFilters
+  >
+  get copyWith => CopyWith$Input$OtpChallengesSessionIdFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OtpChallengesSessionIdFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OtpChallengesSessionIdFilters<TRes> {
+  factory CopyWith$Input$OtpChallengesSessionIdFilters(
+    Input$OtpChallengesSessionIdFilters instance,
+    TRes Function(Input$OtpChallengesSessionIdFilters) then,
+  ) = _CopyWithImpl$Input$OtpChallengesSessionIdFilters;
+
+  factory CopyWith$Input$OtpChallengesSessionIdFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$OtpChallengesSessionIdFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$OtpChallengesSessionIdfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$OtpChallengesSessionIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$OtpChallengesSessionIdfiltersOr<
+          Input$OtpChallengesSessionIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$OtpChallengesSessionIdFilters<TRes>
+    implements CopyWith$Input$OtpChallengesSessionIdFilters<TRes> {
+  _CopyWithImpl$Input$OtpChallengesSessionIdFilters(this._instance, this._then);
+
+  final Input$OtpChallengesSessionIdFilters _instance;
+
+  final TRes Function(Input$OtpChallengesSessionIdFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$OtpChallengesSessionIdFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$OtpChallengesSessionIdfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$OtpChallengesSessionIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$OtpChallengesSessionIdfiltersOr<
+          Input$OtpChallengesSessionIdfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$OtpChallengesSessionIdfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$OtpChallengesSessionIdFilters<TRes>
+    implements CopyWith$Input$OtpChallengesSessionIdFilters<TRes> {
+  _CopyWithStubImpl$Input$OtpChallengesSessionIdFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$OtpChallengesSessionIdfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$OtpChallengesSessionIdfiltersOr {
+  factory Input$OtpChallengesSessionIdfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$OtpChallengesSessionIdfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$OtpChallengesSessionIdfiltersOr._(this._$data);
+
+  factory Input$OtpChallengesSessionIdfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$OtpChallengesSessionIdfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$OtpChallengesSessionIdfiltersOr<
+    Input$OtpChallengesSessionIdfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$OtpChallengesSessionIdfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$OtpChallengesSessionIdfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$OtpChallengesSessionIdfiltersOr<TRes> {
+  factory CopyWith$Input$OtpChallengesSessionIdfiltersOr(
+    Input$OtpChallengesSessionIdfiltersOr instance,
+    TRes Function(Input$OtpChallengesSessionIdfiltersOr) then,
+  ) = _CopyWithImpl$Input$OtpChallengesSessionIdfiltersOr;
+
+  factory CopyWith$Input$OtpChallengesSessionIdfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$OtpChallengesSessionIdfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$OtpChallengesSessionIdfiltersOr<TRes>
+    implements CopyWith$Input$OtpChallengesSessionIdfiltersOr<TRes> {
+  _CopyWithImpl$Input$OtpChallengesSessionIdfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$OtpChallengesSessionIdfiltersOr _instance;
+
+  final TRes Function(Input$OtpChallengesSessionIdfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$OtpChallengesSessionIdfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$OtpChallengesSessionIdfiltersOr<TRes>
+    implements CopyWith$Input$OtpChallengesSessionIdfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$OtpChallengesSessionIdfiltersOr(this._res);
 
   TRes _res;
 
@@ -116326,6 +117483,7 @@ class Input$OtpChallengesFiltersOr {
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -116333,6 +117491,7 @@ class Input$OtpChallengesFiltersOr {
     if (id != null) r'id': id,
     if (phone != null) r'phone': phone,
     if (code != null) r'code': code,
+    if (sessionId != null) r'sessionId': sessionId,
     if (expiresAt != null) r'expiresAt': expiresAt,
     if (consumedAt != null) r'consumedAt': consumedAt,
     if (createdAt != null) r'createdAt': createdAt,
@@ -116364,6 +117523,14 @@ class Input$OtpChallengesFiltersOr {
           ? null
           : Input$OtpChallengesCodeFilters.fromJson(
               (l$code as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('sessionId')) {
+      final l$sessionId = data['sessionId'];
+      result$data['sessionId'] = l$sessionId == null
+          ? null
+          : Input$OtpChallengesSessionIdFilters.fromJson(
+              (l$sessionId as Map<String, dynamic>),
             );
     }
     if (data.containsKey('expiresAt')) {
@@ -116404,6 +117571,9 @@ class Input$OtpChallengesFiltersOr {
   Input$OtpChallengesCodeFilters? get code =>
       (_$data['code'] as Input$OtpChallengesCodeFilters?);
 
+  Input$OtpChallengesSessionIdFilters? get sessionId =>
+      (_$data['sessionId'] as Input$OtpChallengesSessionIdFilters?);
+
   Input$OtpChallengesExpiresAtFilters? get expiresAt =>
       (_$data['expiresAt'] as Input$OtpChallengesExpiresAtFilters?);
 
@@ -116426,6 +117596,10 @@ class Input$OtpChallengesFiltersOr {
     if (_$data.containsKey('code')) {
       final l$code = code;
       result$data['code'] = l$code?.toJson();
+    }
+    if (_$data.containsKey('sessionId')) {
+      final l$sessionId = sessionId;
+      result$data['sessionId'] = l$sessionId?.toJson();
     }
     if (_$data.containsKey('expiresAt')) {
       final l$expiresAt = expiresAt;
@@ -116478,6 +117652,15 @@ class Input$OtpChallengesFiltersOr {
     if (l$code != lOther$code) {
       return false;
     }
+    final l$sessionId = sessionId;
+    final lOther$sessionId = other.sessionId;
+    if (_$data.containsKey('sessionId') !=
+        other._$data.containsKey('sessionId')) {
+      return false;
+    }
+    if (l$sessionId != lOther$sessionId) {
+      return false;
+    }
     final l$expiresAt = expiresAt;
     final lOther$expiresAt = other.expiresAt;
     if (_$data.containsKey('expiresAt') !=
@@ -116513,6 +117696,7 @@ class Input$OtpChallengesFiltersOr {
     final l$id = id;
     final l$phone = phone;
     final l$code = code;
+    final l$sessionId = sessionId;
     final l$expiresAt = expiresAt;
     final l$consumedAt = consumedAt;
     final l$createdAt = createdAt;
@@ -116520,6 +117704,7 @@ class Input$OtpChallengesFiltersOr {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('phone') ? l$phone : const {},
       _$data.containsKey('code') ? l$code : const {},
+      _$data.containsKey('sessionId') ? l$sessionId : const {},
       _$data.containsKey('expiresAt') ? l$expiresAt : const {},
       _$data.containsKey('consumedAt') ? l$consumedAt : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -116540,6 +117725,7 @@ abstract class CopyWith$Input$OtpChallengesFiltersOr<TRes> {
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -116547,6 +117733,7 @@ abstract class CopyWith$Input$OtpChallengesFiltersOr<TRes> {
   CopyWith$Input$OtpChallengesIdFilters<TRes> get id;
   CopyWith$Input$OtpChallengesPhoneFilters<TRes> get phone;
   CopyWith$Input$OtpChallengesCodeFilters<TRes> get code;
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId;
   CopyWith$Input$OtpChallengesExpiresAtFilters<TRes> get expiresAt;
   CopyWith$Input$OtpChallengesConsumedAtFilters<TRes> get consumedAt;
   CopyWith$Input$OtpChallengesCreatedAtFilters<TRes> get createdAt;
@@ -116566,6 +117753,7 @@ class _CopyWithImpl$Input$OtpChallengesFiltersOr<TRes>
     Object? id = _undefined,
     Object? phone = _undefined,
     Object? code = _undefined,
+    Object? sessionId = _undefined,
     Object? expiresAt = _undefined,
     Object? consumedAt = _undefined,
     Object? createdAt = _undefined,
@@ -116576,6 +117764,8 @@ class _CopyWithImpl$Input$OtpChallengesFiltersOr<TRes>
       if (phone != _undefined)
         'phone': (phone as Input$OtpChallengesPhoneFilters?),
       if (code != _undefined) 'code': (code as Input$OtpChallengesCodeFilters?),
+      if (sessionId != _undefined)
+        'sessionId': (sessionId as Input$OtpChallengesSessionIdFilters?),
       if (expiresAt != _undefined)
         'expiresAt': (expiresAt as Input$OtpChallengesExpiresAtFilters?),
       if (consumedAt != _undefined)
@@ -116609,6 +117799,16 @@ class _CopyWithImpl$Input$OtpChallengesFiltersOr<TRes>
         : CopyWith$Input$OtpChallengesCodeFilters(
             local$code,
             (e) => call(code: e),
+          );
+  }
+
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId {
+    final local$sessionId = _instance.sessionId;
+    return local$sessionId == null
+        ? CopyWith$Input$OtpChallengesSessionIdFilters.stub(_then(_instance))
+        : CopyWith$Input$OtpChallengesSessionIdFilters(
+            local$sessionId,
+            (e) => call(sessionId: e),
           );
   }
 
@@ -116653,6 +117853,7 @@ class _CopyWithStubImpl$Input$OtpChallengesFiltersOr<TRes>
     Input$OtpChallengesIdFilters? id,
     Input$OtpChallengesPhoneFilters? phone,
     Input$OtpChallengesCodeFilters? code,
+    Input$OtpChallengesSessionIdFilters? sessionId,
     Input$OtpChallengesExpiresAtFilters? expiresAt,
     Input$OtpChallengesConsumedAtFilters? consumedAt,
     Input$OtpChallengesCreatedAtFilters? createdAt,
@@ -116666,6 +117867,9 @@ class _CopyWithStubImpl$Input$OtpChallengesFiltersOr<TRes>
 
   CopyWith$Input$OtpChallengesCodeFilters<TRes> get code =>
       CopyWith$Input$OtpChallengesCodeFilters.stub(_res);
+
+  CopyWith$Input$OtpChallengesSessionIdFilters<TRes> get sessionId =>
+      CopyWith$Input$OtpChallengesSessionIdFilters.stub(_res);
 
   CopyWith$Input$OtpChallengesExpiresAtFilters<TRes> get expiresAt =>
       CopyWith$Input$OtpChallengesExpiresAtFilters.stub(_res);
@@ -116682,6 +117886,7 @@ class Input$OtpChallengesOrderBy {
     Input$InnerOrder? id,
     Input$InnerOrder? phone,
     Input$InnerOrder? code,
+    Input$InnerOrder? sessionId,
     Input$InnerOrder? expiresAt,
     Input$InnerOrder? consumedAt,
     Input$InnerOrder? createdAt,
@@ -116689,6 +117894,7 @@ class Input$OtpChallengesOrderBy {
     if (id != null) r'id': id,
     if (phone != null) r'phone': phone,
     if (code != null) r'code': code,
+    if (sessionId != null) r'sessionId': sessionId,
     if (expiresAt != null) r'expiresAt': expiresAt,
     if (consumedAt != null) r'consumedAt': consumedAt,
     if (createdAt != null) r'createdAt': createdAt,
@@ -116715,6 +117921,12 @@ class Input$OtpChallengesOrderBy {
       result$data['code'] = l$code == null
           ? null
           : Input$InnerOrder.fromJson((l$code as Map<String, dynamic>));
+    }
+    if (data.containsKey('sessionId')) {
+      final l$sessionId = data['sessionId'];
+      result$data['sessionId'] = l$sessionId == null
+          ? null
+          : Input$InnerOrder.fromJson((l$sessionId as Map<String, dynamic>));
     }
     if (data.containsKey('expiresAt')) {
       final l$expiresAt = data['expiresAt'];
@@ -116745,6 +117957,8 @@ class Input$OtpChallengesOrderBy {
 
   Input$InnerOrder? get code => (_$data['code'] as Input$InnerOrder?);
 
+  Input$InnerOrder? get sessionId => (_$data['sessionId'] as Input$InnerOrder?);
+
   Input$InnerOrder? get expiresAt => (_$data['expiresAt'] as Input$InnerOrder?);
 
   Input$InnerOrder? get consumedAt =>
@@ -116765,6 +117979,10 @@ class Input$OtpChallengesOrderBy {
     if (_$data.containsKey('code')) {
       final l$code = code;
       result$data['code'] = l$code?.toJson();
+    }
+    if (_$data.containsKey('sessionId')) {
+      final l$sessionId = sessionId;
+      result$data['sessionId'] = l$sessionId?.toJson();
     }
     if (_$data.containsKey('expiresAt')) {
       final l$expiresAt = expiresAt;
@@ -116817,6 +118035,15 @@ class Input$OtpChallengesOrderBy {
     if (l$code != lOther$code) {
       return false;
     }
+    final l$sessionId = sessionId;
+    final lOther$sessionId = other.sessionId;
+    if (_$data.containsKey('sessionId') !=
+        other._$data.containsKey('sessionId')) {
+      return false;
+    }
+    if (l$sessionId != lOther$sessionId) {
+      return false;
+    }
     final l$expiresAt = expiresAt;
     final lOther$expiresAt = other.expiresAt;
     if (_$data.containsKey('expiresAt') !=
@@ -116852,6 +118079,7 @@ class Input$OtpChallengesOrderBy {
     final l$id = id;
     final l$phone = phone;
     final l$code = code;
+    final l$sessionId = sessionId;
     final l$expiresAt = expiresAt;
     final l$consumedAt = consumedAt;
     final l$createdAt = createdAt;
@@ -116859,6 +118087,7 @@ class Input$OtpChallengesOrderBy {
       _$data.containsKey('id') ? l$id : const {},
       _$data.containsKey('phone') ? l$phone : const {},
       _$data.containsKey('code') ? l$code : const {},
+      _$data.containsKey('sessionId') ? l$sessionId : const {},
       _$data.containsKey('expiresAt') ? l$expiresAt : const {},
       _$data.containsKey('consumedAt') ? l$consumedAt : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
@@ -116879,6 +118108,7 @@ abstract class CopyWith$Input$OtpChallengesOrderBy<TRes> {
     Input$InnerOrder? id,
     Input$InnerOrder? phone,
     Input$InnerOrder? code,
+    Input$InnerOrder? sessionId,
     Input$InnerOrder? expiresAt,
     Input$InnerOrder? consumedAt,
     Input$InnerOrder? createdAt,
@@ -116886,6 +118116,7 @@ abstract class CopyWith$Input$OtpChallengesOrderBy<TRes> {
   CopyWith$Input$InnerOrder<TRes> get id;
   CopyWith$Input$InnerOrder<TRes> get phone;
   CopyWith$Input$InnerOrder<TRes> get code;
+  CopyWith$Input$InnerOrder<TRes> get sessionId;
   CopyWith$Input$InnerOrder<TRes> get expiresAt;
   CopyWith$Input$InnerOrder<TRes> get consumedAt;
   CopyWith$Input$InnerOrder<TRes> get createdAt;
@@ -116905,6 +118136,7 @@ class _CopyWithImpl$Input$OtpChallengesOrderBy<TRes>
     Object? id = _undefined,
     Object? phone = _undefined,
     Object? code = _undefined,
+    Object? sessionId = _undefined,
     Object? expiresAt = _undefined,
     Object? consumedAt = _undefined,
     Object? createdAt = _undefined,
@@ -116914,6 +118146,8 @@ class _CopyWithImpl$Input$OtpChallengesOrderBy<TRes>
       if (id != _undefined) 'id': (id as Input$InnerOrder?),
       if (phone != _undefined) 'phone': (phone as Input$InnerOrder?),
       if (code != _undefined) 'code': (code as Input$InnerOrder?),
+      if (sessionId != _undefined)
+        'sessionId': (sessionId as Input$InnerOrder?),
       if (expiresAt != _undefined)
         'expiresAt': (expiresAt as Input$InnerOrder?),
       if (consumedAt != _undefined)
@@ -116942,6 +118176,13 @@ class _CopyWithImpl$Input$OtpChallengesOrderBy<TRes>
     return local$code == null
         ? CopyWith$Input$InnerOrder.stub(_then(_instance))
         : CopyWith$Input$InnerOrder(local$code, (e) => call(code: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get sessionId {
+    final local$sessionId = _instance.sessionId;
+    return local$sessionId == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$sessionId, (e) => call(sessionId: e));
   }
 
   CopyWith$Input$InnerOrder<TRes> get expiresAt {
@@ -116979,6 +118220,7 @@ class _CopyWithStubImpl$Input$OtpChallengesOrderBy<TRes>
     Input$InnerOrder? id,
     Input$InnerOrder? phone,
     Input$InnerOrder? code,
+    Input$InnerOrder? sessionId,
     Input$InnerOrder? expiresAt,
     Input$InnerOrder? consumedAt,
     Input$InnerOrder? createdAt,
@@ -116991,6 +118233,9 @@ class _CopyWithStubImpl$Input$OtpChallengesOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get code =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get sessionId =>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get expiresAt =>
@@ -117012,9 +118257,14 @@ class Input$ProductsInsertInput {
     required String unit,
     required int mrp,
     required int price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117026,9 +118276,14 @@ class Input$ProductsInsertInput {
     r'unit': unit,
     r'mrp': mrp,
     r'price': price,
+    if (originalPrice != null) r'originalPrice': originalPrice,
+    if (markup != null) r'markup': markup,
+    if (markupType != null) r'markupType': markupType,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
     if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
+    if (trackInventory != null) r'trackInventory': trackInventory,
+    if (storeId != null) r'storeId': storeId,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -117056,6 +118311,20 @@ class Input$ProductsInsertInput {
     result$data['mrp'] = (l$mrp as int);
     final l$price = data['price'];
     result$data['price'] = (l$price as int);
+    if (data.containsKey('originalPrice')) {
+      final l$originalPrice = data['originalPrice'];
+      result$data['originalPrice'] = (l$originalPrice as int?);
+    }
+    if (data.containsKey('markup')) {
+      final l$markup = data['markup'];
+      result$data['markup'] = (l$markup as int?);
+    }
+    if (data.containsKey('markupType')) {
+      final l$markupType = data['markupType'];
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$markupType as String));
+    }
     if (data.containsKey('emoji')) {
       final l$emoji = data['emoji'];
       result$data['emoji'] = (l$emoji as String?);
@@ -117067,6 +118336,14 @@ class Input$ProductsInsertInput {
     if (data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = data['timeBoundSections'];
       result$data['timeBoundSections'] = (l$timeBoundSections as String?);
+    }
+    if (data.containsKey('trackInventory')) {
+      final l$trackInventory = data['trackInventory'];
+      result$data['trackInventory'] = (l$trackInventory as bool?);
+    }
+    if (data.containsKey('storeId')) {
+      final l$storeId = data['storeId'];
+      result$data['storeId'] = (l$storeId as String?);
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -117099,11 +118376,22 @@ class Input$ProductsInsertInput {
 
   int get price => (_$data['price'] as int);
 
+  int? get originalPrice => (_$data['originalPrice'] as int?);
+
+  int? get markup => (_$data['markup'] as int?);
+
+  Enum$ProductsMarkupTypeEnum? get markupType =>
+      (_$data['markupType'] as Enum$ProductsMarkupTypeEnum?);
+
   String? get emoji => (_$data['emoji'] as String?);
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
   String? get timeBoundSections => (_$data['timeBoundSections'] as String?);
+
+  bool? get trackInventory => (_$data['trackInventory'] as bool?);
+
+  String? get storeId => (_$data['storeId'] as String?);
 
   bool? get isActive => (_$data['isActive'] as bool?);
 
@@ -117131,6 +118419,20 @@ class Input$ProductsInsertInput {
     result$data['mrp'] = l$mrp;
     final l$price = price;
     result$data['price'] = l$price;
+    if (_$data.containsKey('originalPrice')) {
+      final l$originalPrice = originalPrice;
+      result$data['originalPrice'] = l$originalPrice;
+    }
+    if (_$data.containsKey('markup')) {
+      final l$markup = markup;
+      result$data['markup'] = l$markup;
+    }
+    if (_$data.containsKey('markupType')) {
+      final l$markupType = markupType;
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$markupType);
+    }
     if (_$data.containsKey('emoji')) {
       final l$emoji = emoji;
       result$data['emoji'] = l$emoji;
@@ -117142,6 +118444,14 @@ class Input$ProductsInsertInput {
     if (_$data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = timeBoundSections;
       result$data['timeBoundSections'] = l$timeBoundSections;
+    }
+    if (_$data.containsKey('trackInventory')) {
+      final l$trackInventory = trackInventory;
+      result$data['trackInventory'] = l$trackInventory;
+    }
+    if (_$data.containsKey('storeId')) {
+      final l$storeId = storeId;
+      result$data['storeId'] = l$storeId;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -117212,6 +118522,32 @@ class Input$ProductsInsertInput {
     if (l$price != lOther$price) {
       return false;
     }
+    final l$originalPrice = originalPrice;
+    final lOther$originalPrice = other.originalPrice;
+    if (_$data.containsKey('originalPrice') !=
+        other._$data.containsKey('originalPrice')) {
+      return false;
+    }
+    if (l$originalPrice != lOther$originalPrice) {
+      return false;
+    }
+    final l$markup = markup;
+    final lOther$markup = other.markup;
+    if (_$data.containsKey('markup') != other._$data.containsKey('markup')) {
+      return false;
+    }
+    if (l$markup != lOther$markup) {
+      return false;
+    }
+    final l$markupType = markupType;
+    final lOther$markupType = other.markupType;
+    if (_$data.containsKey('markupType') !=
+        other._$data.containsKey('markupType')) {
+      return false;
+    }
+    if (l$markupType != lOther$markupType) {
+      return false;
+    }
     final l$emoji = emoji;
     final lOther$emoji = other.emoji;
     if (_$data.containsKey('emoji') != other._$data.containsKey('emoji')) {
@@ -117236,6 +118572,23 @@ class Input$ProductsInsertInput {
       return false;
     }
     if (l$timeBoundSections != lOther$timeBoundSections) {
+      return false;
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (_$data.containsKey('trackInventory') !=
+        other._$data.containsKey('trackInventory')) {
+      return false;
+    }
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (_$data.containsKey('storeId') != other._$data.containsKey('storeId')) {
+      return false;
+    }
+    if (l$storeId != lOther$storeId) {
       return false;
     }
     final l$isActive = isActive;
@@ -117277,9 +118630,14 @@ class Input$ProductsInsertInput {
     final l$unit = unit;
     final l$mrp = mrp;
     final l$price = price;
+    final l$originalPrice = originalPrice;
+    final l$markup = markup;
+    final l$markupType = markupType;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -117291,9 +118649,14 @@ class Input$ProductsInsertInput {
       l$unit,
       l$mrp,
       l$price,
+      _$data.containsKey('originalPrice') ? l$originalPrice : const {},
+      _$data.containsKey('markup') ? l$markup : const {},
+      _$data.containsKey('markupType') ? l$markupType : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
+      _$data.containsKey('trackInventory') ? l$trackInventory : const {},
+      _$data.containsKey('storeId') ? l$storeId : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -117318,9 +118681,14 @@ abstract class CopyWith$Input$ProductsInsertInput<TRes> {
     String? unit,
     int? mrp,
     int? price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117345,9 +118713,14 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
     Object? unit = _undefined,
     Object? mrp = _undefined,
     Object? price = _undefined,
+    Object? originalPrice = _undefined,
+    Object? markup = _undefined,
+    Object? markupType = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -117362,10 +118735,17 @@ class _CopyWithImpl$Input$ProductsInsertInput<TRes>
       if (unit != _undefined && unit != null) 'unit': (unit as String),
       if (mrp != _undefined && mrp != null) 'mrp': (mrp as int),
       if (price != _undefined && price != null) 'price': (price as int),
+      if (originalPrice != _undefined) 'originalPrice': (originalPrice as int?),
+      if (markup != _undefined) 'markup': (markup as int?),
+      if (markupType != _undefined)
+        'markupType': (markupType as Enum$ProductsMarkupTypeEnum?),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
       if (timeBoundSections != _undefined)
         'timeBoundSections': (timeBoundSections as String?),
+      if (trackInventory != _undefined)
+        'trackInventory': (trackInventory as bool?),
+      if (storeId != _undefined) 'storeId': (storeId as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -117387,9 +118767,14 @@ class _CopyWithStubImpl$Input$ProductsInsertInput<TRes>
     String? unit,
     int? mrp,
     int? price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117405,9 +118790,14 @@ class Input$ProductsUpdateInput {
     String? unit,
     int? mrp,
     int? price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117419,9 +118809,14 @@ class Input$ProductsUpdateInput {
     if (unit != null) r'unit': unit,
     if (mrp != null) r'mrp': mrp,
     if (price != null) r'price': price,
+    if (originalPrice != null) r'originalPrice': originalPrice,
+    if (markup != null) r'markup': markup,
+    if (markupType != null) r'markupType': markupType,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
     if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
+    if (trackInventory != null) r'trackInventory': trackInventory,
+    if (storeId != null) r'storeId': storeId,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -117459,6 +118854,20 @@ class Input$ProductsUpdateInput {
       final l$price = data['price'];
       result$data['price'] = (l$price as int?);
     }
+    if (data.containsKey('originalPrice')) {
+      final l$originalPrice = data['originalPrice'];
+      result$data['originalPrice'] = (l$originalPrice as int?);
+    }
+    if (data.containsKey('markup')) {
+      final l$markup = data['markup'];
+      result$data['markup'] = (l$markup as int?);
+    }
+    if (data.containsKey('markupType')) {
+      final l$markupType = data['markupType'];
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$markupType as String));
+    }
     if (data.containsKey('emoji')) {
       final l$emoji = data['emoji'];
       result$data['emoji'] = (l$emoji as String?);
@@ -117470,6 +118879,14 @@ class Input$ProductsUpdateInput {
     if (data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = data['timeBoundSections'];
       result$data['timeBoundSections'] = (l$timeBoundSections as String?);
+    }
+    if (data.containsKey('trackInventory')) {
+      final l$trackInventory = data['trackInventory'];
+      result$data['trackInventory'] = (l$trackInventory as bool?);
+    }
+    if (data.containsKey('storeId')) {
+      final l$storeId = data['storeId'];
+      result$data['storeId'] = (l$storeId as String?);
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -117502,11 +118919,22 @@ class Input$ProductsUpdateInput {
 
   int? get price => (_$data['price'] as int?);
 
+  int? get originalPrice => (_$data['originalPrice'] as int?);
+
+  int? get markup => (_$data['markup'] as int?);
+
+  Enum$ProductsMarkupTypeEnum? get markupType =>
+      (_$data['markupType'] as Enum$ProductsMarkupTypeEnum?);
+
   String? get emoji => (_$data['emoji'] as String?);
 
   String? get imageUrl => (_$data['imageUrl'] as String?);
 
   String? get timeBoundSections => (_$data['timeBoundSections'] as String?);
+
+  bool? get trackInventory => (_$data['trackInventory'] as bool?);
+
+  String? get storeId => (_$data['storeId'] as String?);
 
   bool? get isActive => (_$data['isActive'] as bool?);
 
@@ -117544,6 +118972,20 @@ class Input$ProductsUpdateInput {
       final l$price = price;
       result$data['price'] = l$price;
     }
+    if (_$data.containsKey('originalPrice')) {
+      final l$originalPrice = originalPrice;
+      result$data['originalPrice'] = l$originalPrice;
+    }
+    if (_$data.containsKey('markup')) {
+      final l$markup = markup;
+      result$data['markup'] = l$markup;
+    }
+    if (_$data.containsKey('markupType')) {
+      final l$markupType = markupType;
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$markupType);
+    }
     if (_$data.containsKey('emoji')) {
       final l$emoji = emoji;
       result$data['emoji'] = l$emoji;
@@ -117555,6 +118997,14 @@ class Input$ProductsUpdateInput {
     if (_$data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = timeBoundSections;
       result$data['timeBoundSections'] = l$timeBoundSections;
+    }
+    if (_$data.containsKey('trackInventory')) {
+      final l$trackInventory = trackInventory;
+      result$data['trackInventory'] = l$trackInventory;
+    }
+    if (_$data.containsKey('storeId')) {
+      final l$storeId = storeId;
+      result$data['storeId'] = l$storeId;
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -117641,6 +119091,32 @@ class Input$ProductsUpdateInput {
     if (l$price != lOther$price) {
       return false;
     }
+    final l$originalPrice = originalPrice;
+    final lOther$originalPrice = other.originalPrice;
+    if (_$data.containsKey('originalPrice') !=
+        other._$data.containsKey('originalPrice')) {
+      return false;
+    }
+    if (l$originalPrice != lOther$originalPrice) {
+      return false;
+    }
+    final l$markup = markup;
+    final lOther$markup = other.markup;
+    if (_$data.containsKey('markup') != other._$data.containsKey('markup')) {
+      return false;
+    }
+    if (l$markup != lOther$markup) {
+      return false;
+    }
+    final l$markupType = markupType;
+    final lOther$markupType = other.markupType;
+    if (_$data.containsKey('markupType') !=
+        other._$data.containsKey('markupType')) {
+      return false;
+    }
+    if (l$markupType != lOther$markupType) {
+      return false;
+    }
     final l$emoji = emoji;
     final lOther$emoji = other.emoji;
     if (_$data.containsKey('emoji') != other._$data.containsKey('emoji')) {
@@ -117665,6 +119141,23 @@ class Input$ProductsUpdateInput {
       return false;
     }
     if (l$timeBoundSections != lOther$timeBoundSections) {
+      return false;
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (_$data.containsKey('trackInventory') !=
+        other._$data.containsKey('trackInventory')) {
+      return false;
+    }
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (_$data.containsKey('storeId') != other._$data.containsKey('storeId')) {
+      return false;
+    }
+    if (l$storeId != lOther$storeId) {
       return false;
     }
     final l$isActive = isActive;
@@ -117706,9 +119199,14 @@ class Input$ProductsUpdateInput {
     final l$unit = unit;
     final l$mrp = mrp;
     final l$price = price;
+    final l$originalPrice = originalPrice;
+    final l$markup = markup;
+    final l$markupType = markupType;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -117720,9 +119218,14 @@ class Input$ProductsUpdateInput {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('mrp') ? l$mrp : const {},
       _$data.containsKey('price') ? l$price : const {},
+      _$data.containsKey('originalPrice') ? l$originalPrice : const {},
+      _$data.containsKey('markup') ? l$markup : const {},
+      _$data.containsKey('markupType') ? l$markupType : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
+      _$data.containsKey('trackInventory') ? l$trackInventory : const {},
+      _$data.containsKey('storeId') ? l$storeId : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -117747,9 +119250,14 @@ abstract class CopyWith$Input$ProductsUpdateInput<TRes> {
     String? unit,
     int? mrp,
     int? price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117774,9 +119282,14 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
     Object? unit = _undefined,
     Object? mrp = _undefined,
     Object? price = _undefined,
+    Object? originalPrice = _undefined,
+    Object? markup = _undefined,
+    Object? markupType = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -117790,10 +119303,17 @@ class _CopyWithImpl$Input$ProductsUpdateInput<TRes>
       if (unit != _undefined) 'unit': (unit as String?),
       if (mrp != _undefined) 'mrp': (mrp as int?),
       if (price != _undefined) 'price': (price as int?),
+      if (originalPrice != _undefined) 'originalPrice': (originalPrice as int?),
+      if (markup != _undefined) 'markup': (markup as int?),
+      if (markupType != _undefined)
+        'markupType': (markupType as Enum$ProductsMarkupTypeEnum?),
       if (emoji != _undefined) 'emoji': (emoji as String?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as String?),
       if (timeBoundSections != _undefined)
         'timeBoundSections': (timeBoundSections as String?),
+      if (trackInventory != _undefined)
+        'trackInventory': (trackInventory as bool?),
+      if (storeId != _undefined) 'storeId': (storeId as String?),
       if (isActive != _undefined) 'isActive': (isActive as bool?),
       if (createdAt != _undefined) 'createdAt': (createdAt as String?),
       if (updatedAt != _undefined) 'updatedAt': (updatedAt as String?),
@@ -117815,9 +119335,14 @@ class _CopyWithStubImpl$Input$ProductsUpdateInput<TRes>
     String? unit,
     int? mrp,
     int? price,
+    int? originalPrice,
+    int? markup,
+    Enum$ProductsMarkupTypeEnum? markupType,
     String? emoji,
     String? imageUrl,
     String? timeBoundSections,
+    bool? trackInventory,
+    String? storeId,
     bool? isActive,
     String? createdAt,
     String? updatedAt,
@@ -117833,9 +119358,14 @@ class Input$ProductsFilters {
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -117848,9 +119378,14 @@ class Input$ProductsFilters {
     if (unit != null) r'unit': unit,
     if (mrp != null) r'mrp': mrp,
     if (price != null) r'price': price,
+    if (originalPrice != null) r'originalPrice': originalPrice,
+    if (markup != null) r'markup': markup,
+    if (markupType != null) r'markupType': markupType,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
     if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
+    if (trackInventory != null) r'trackInventory': trackInventory,
+    if (storeId != null) r'storeId': storeId,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -117913,6 +119448,30 @@ class Input$ProductsFilters {
               (l$price as Map<String, dynamic>),
             );
     }
+    if (data.containsKey('originalPrice')) {
+      final l$originalPrice = data['originalPrice'];
+      result$data['originalPrice'] = l$originalPrice == null
+          ? null
+          : Input$ProductsOriginalPriceFilters.fromJson(
+              (l$originalPrice as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('markup')) {
+      final l$markup = data['markup'];
+      result$data['markup'] = l$markup == null
+          ? null
+          : Input$ProductsMarkupFilters.fromJson(
+              (l$markup as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('markupType')) {
+      final l$markupType = data['markupType'];
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : Input$ProductsMarkupTypeFilters.fromJson(
+              (l$markupType as Map<String, dynamic>),
+            );
+    }
     if (data.containsKey('emoji')) {
       final l$emoji = data['emoji'];
       result$data['emoji'] = l$emoji == null
@@ -117935,6 +119494,22 @@ class Input$ProductsFilters {
           ? null
           : Input$ProductsTimeBoundSectionsFilters.fromJson(
               (l$timeBoundSections as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('trackInventory')) {
+      final l$trackInventory = data['trackInventory'];
+      result$data['trackInventory'] = l$trackInventory == null
+          ? null
+          : Input$ProductsTrackInventoryFilters.fromJson(
+              (l$trackInventory as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('storeId')) {
+      final l$storeId = data['storeId'];
+      result$data['storeId'] = l$storeId == null
+          ? null
+          : Input$ProductsStoreIdFilters.fromJson(
+              (l$storeId as Map<String, dynamic>),
             );
     }
     if (data.containsKey('isActive')) {
@@ -117995,6 +119570,15 @@ class Input$ProductsFilters {
   Input$ProductsPriceFilters? get price =>
       (_$data['price'] as Input$ProductsPriceFilters?);
 
+  Input$ProductsOriginalPriceFilters? get originalPrice =>
+      (_$data['originalPrice'] as Input$ProductsOriginalPriceFilters?);
+
+  Input$ProductsMarkupFilters? get markup =>
+      (_$data['markup'] as Input$ProductsMarkupFilters?);
+
+  Input$ProductsMarkupTypeFilters? get markupType =>
+      (_$data['markupType'] as Input$ProductsMarkupTypeFilters?);
+
   Input$ProductsEmojiFilters? get emoji =>
       (_$data['emoji'] as Input$ProductsEmojiFilters?);
 
@@ -118003,6 +119587,12 @@ class Input$ProductsFilters {
 
   Input$ProductsTimeBoundSectionsFilters? get timeBoundSections =>
       (_$data['timeBoundSections'] as Input$ProductsTimeBoundSectionsFilters?);
+
+  Input$ProductsTrackInventoryFilters? get trackInventory =>
+      (_$data['trackInventory'] as Input$ProductsTrackInventoryFilters?);
+
+  Input$ProductsStoreIdFilters? get storeId =>
+      (_$data['storeId'] as Input$ProductsStoreIdFilters?);
 
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
@@ -118046,6 +119636,18 @@ class Input$ProductsFilters {
       final l$price = price;
       result$data['price'] = l$price?.toJson();
     }
+    if (_$data.containsKey('originalPrice')) {
+      final l$originalPrice = originalPrice;
+      result$data['originalPrice'] = l$originalPrice?.toJson();
+    }
+    if (_$data.containsKey('markup')) {
+      final l$markup = markup;
+      result$data['markup'] = l$markup?.toJson();
+    }
+    if (_$data.containsKey('markupType')) {
+      final l$markupType = markupType;
+      result$data['markupType'] = l$markupType?.toJson();
+    }
     if (_$data.containsKey('emoji')) {
       final l$emoji = emoji;
       result$data['emoji'] = l$emoji?.toJson();
@@ -118057,6 +119659,14 @@ class Input$ProductsFilters {
     if (_$data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = timeBoundSections;
       result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
+    }
+    if (_$data.containsKey('trackInventory')) {
+      final l$trackInventory = trackInventory;
+      result$data['trackInventory'] = l$trackInventory?.toJson();
+    }
+    if (_$data.containsKey('storeId')) {
+      final l$storeId = storeId;
+      result$data['storeId'] = l$storeId?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -118146,6 +119756,32 @@ class Input$ProductsFilters {
     if (l$price != lOther$price) {
       return false;
     }
+    final l$originalPrice = originalPrice;
+    final lOther$originalPrice = other.originalPrice;
+    if (_$data.containsKey('originalPrice') !=
+        other._$data.containsKey('originalPrice')) {
+      return false;
+    }
+    if (l$originalPrice != lOther$originalPrice) {
+      return false;
+    }
+    final l$markup = markup;
+    final lOther$markup = other.markup;
+    if (_$data.containsKey('markup') != other._$data.containsKey('markup')) {
+      return false;
+    }
+    if (l$markup != lOther$markup) {
+      return false;
+    }
+    final l$markupType = markupType;
+    final lOther$markupType = other.markupType;
+    if (_$data.containsKey('markupType') !=
+        other._$data.containsKey('markupType')) {
+      return false;
+    }
+    if (l$markupType != lOther$markupType) {
+      return false;
+    }
     final l$emoji = emoji;
     final lOther$emoji = other.emoji;
     if (_$data.containsKey('emoji') != other._$data.containsKey('emoji')) {
@@ -118170,6 +119806,23 @@ class Input$ProductsFilters {
       return false;
     }
     if (l$timeBoundSections != lOther$timeBoundSections) {
+      return false;
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (_$data.containsKey('trackInventory') !=
+        other._$data.containsKey('trackInventory')) {
+      return false;
+    }
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (_$data.containsKey('storeId') != other._$data.containsKey('storeId')) {
+      return false;
+    }
+    if (l$storeId != lOther$storeId) {
       return false;
     }
     final l$isActive = isActive;
@@ -118230,9 +119883,14 @@ class Input$ProductsFilters {
     final l$unit = unit;
     final l$mrp = mrp;
     final l$price = price;
+    final l$originalPrice = originalPrice;
+    final l$markup = markup;
+    final l$markupType = markupType;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -118245,9 +119903,14 @@ class Input$ProductsFilters {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('mrp') ? l$mrp : const {},
       _$data.containsKey('price') ? l$price : const {},
+      _$data.containsKey('originalPrice') ? l$originalPrice : const {},
+      _$data.containsKey('markup') ? l$markup : const {},
+      _$data.containsKey('markupType') ? l$markupType : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
+      _$data.containsKey('trackInventory') ? l$trackInventory : const {},
+      _$data.containsKey('storeId') ? l$storeId : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -118277,9 +119940,14 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -118292,9 +119960,14 @@ abstract class CopyWith$Input$ProductsFilters<TRes> {
   CopyWith$Input$ProductsUnitFilters<TRes> get unit;
   CopyWith$Input$ProductsMrpFilters<TRes> get mrp;
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice;
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup;
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
   CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections;
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory;
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -118324,9 +119997,14 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
     Object? unit = _undefined,
     Object? mrp = _undefined,
     Object? price = _undefined,
+    Object? originalPrice = _undefined,
+    Object? markup = _undefined,
+    Object? markupType = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -118343,12 +120021,23 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
       if (unit != _undefined) 'unit': (unit as Input$ProductsUnitFilters?),
       if (mrp != _undefined) 'mrp': (mrp as Input$ProductsMrpFilters?),
       if (price != _undefined) 'price': (price as Input$ProductsPriceFilters?),
+      if (originalPrice != _undefined)
+        'originalPrice': (originalPrice as Input$ProductsOriginalPriceFilters?),
+      if (markup != _undefined)
+        'markup': (markup as Input$ProductsMarkupFilters?),
+      if (markupType != _undefined)
+        'markupType': (markupType as Input$ProductsMarkupTypeFilters?),
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
       if (timeBoundSections != _undefined)
         'timeBoundSections':
             (timeBoundSections as Input$ProductsTimeBoundSectionsFilters?),
+      if (trackInventory != _undefined)
+        'trackInventory':
+            (trackInventory as Input$ProductsTrackInventoryFilters?),
+      if (storeId != _undefined)
+        'storeId': (storeId as Input$ProductsStoreIdFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -118417,6 +120106,36 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
           );
   }
 
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice {
+    final local$originalPrice = _instance.originalPrice;
+    return local$originalPrice == null
+        ? CopyWith$Input$ProductsOriginalPriceFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsOriginalPriceFilters(
+            local$originalPrice,
+            (e) => call(originalPrice: e),
+          );
+  }
+
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup {
+    final local$markup = _instance.markup;
+    return local$markup == null
+        ? CopyWith$Input$ProductsMarkupFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsMarkupFilters(
+            local$markup,
+            (e) => call(markup: e),
+          );
+  }
+
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType {
+    final local$markupType = _instance.markupType;
+    return local$markupType == null
+        ? CopyWith$Input$ProductsMarkupTypeFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsMarkupTypeFilters(
+            local$markupType,
+            (e) => call(markupType: e),
+          );
+  }
+
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji {
     final local$emoji = _instance.emoji;
     return local$emoji == null
@@ -118444,6 +120163,26 @@ class _CopyWithImpl$Input$ProductsFilters<TRes>
         : CopyWith$Input$ProductsTimeBoundSectionsFilters(
             local$timeBoundSections,
             (e) => call(timeBoundSections: e),
+          );
+  }
+
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory {
+    final local$trackInventory = _instance.trackInventory;
+    return local$trackInventory == null
+        ? CopyWith$Input$ProductsTrackInventoryFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTrackInventoryFilters(
+            local$trackInventory,
+            (e) => call(trackInventory: e),
+          );
+  }
+
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId {
+    final local$storeId = _instance.storeId;
+    return local$storeId == null
+        ? CopyWith$Input$ProductsStoreIdFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsStoreIdFilters(
+            local$storeId,
+            (e) => call(storeId: e),
           );
   }
 
@@ -118503,9 +120242,14 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -118533,6 +120277,15 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
   CopyWith$Input$ProductsPriceFilters<TRes> get price =>
       CopyWith$Input$ProductsPriceFilters.stub(_res);
 
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice =>
+      CopyWith$Input$ProductsOriginalPriceFilters.stub(_res);
+
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup =>
+      CopyWith$Input$ProductsMarkupFilters.stub(_res);
+
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType =>
+      CopyWith$Input$ProductsMarkupTypeFilters.stub(_res);
+
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji =>
       CopyWith$Input$ProductsEmojiFilters.stub(_res);
 
@@ -118541,6 +120294,12 @@ class _CopyWithStubImpl$Input$ProductsFilters<TRes>
 
   CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections =>
       CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_res);
+
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory =>
+      CopyWith$Input$ProductsTrackInventoryFilters.stub(_res);
+
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId =>
+      CopyWith$Input$ProductsStoreIdFilters.stub(_res);
 
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
@@ -125835,6 +127594,3222 @@ class _CopyWithStubImpl$Input$ProductsPricefiltersOr<TRes>
   }) => _res;
 }
 
+class Input$ProductsOriginalPriceFilters {
+  factory Input$ProductsOriginalPriceFilters({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsOriginalPricefiltersOr>? OR,
+  }) => Input$ProductsOriginalPriceFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsOriginalPriceFilters._(this._$data);
+
+  factory Input$ProductsOriginalPriceFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsOriginalPricefiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsOriginalPriceFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsOriginalPricefiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsOriginalPricefiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsOriginalPriceFilters<
+    Input$ProductsOriginalPriceFilters
+  >
+  get copyWith => CopyWith$Input$ProductsOriginalPriceFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsOriginalPriceFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsOriginalPriceFilters<TRes> {
+  factory CopyWith$Input$ProductsOriginalPriceFilters(
+    Input$ProductsOriginalPriceFilters instance,
+    TRes Function(Input$ProductsOriginalPriceFilters) then,
+  ) = _CopyWithImpl$Input$ProductsOriginalPriceFilters;
+
+  factory CopyWith$Input$ProductsOriginalPriceFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsOriginalPriceFilters;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsOriginalPricefiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsOriginalPricefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsOriginalPricefiltersOr<
+          Input$ProductsOriginalPricefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsOriginalPriceFilters<TRes>
+    implements CopyWith$Input$ProductsOriginalPriceFilters<TRes> {
+  _CopyWithImpl$Input$ProductsOriginalPriceFilters(this._instance, this._then);
+
+  final Input$ProductsOriginalPriceFilters _instance;
+
+  final TRes Function(Input$ProductsOriginalPriceFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsOriginalPriceFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$ProductsOriginalPricefiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsOriginalPricefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsOriginalPricefiltersOr<
+          Input$ProductsOriginalPricefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsOriginalPricefiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsOriginalPriceFilters<TRes>
+    implements CopyWith$Input$ProductsOriginalPriceFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsOriginalPriceFilters(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsOriginalPricefiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsOriginalPricefiltersOr {
+  factory Input$ProductsOriginalPricefiltersOr({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsOriginalPricefiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsOriginalPricefiltersOr._(this._$data);
+
+  factory Input$ProductsOriginalPricefiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsOriginalPricefiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsOriginalPricefiltersOr<
+    Input$ProductsOriginalPricefiltersOr
+  >
+  get copyWith => CopyWith$Input$ProductsOriginalPricefiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsOriginalPricefiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsOriginalPricefiltersOr<TRes> {
+  factory CopyWith$Input$ProductsOriginalPricefiltersOr(
+    Input$ProductsOriginalPricefiltersOr instance,
+    TRes Function(Input$ProductsOriginalPricefiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsOriginalPricefiltersOr;
+
+  factory CopyWith$Input$ProductsOriginalPricefiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsOriginalPricefiltersOr;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsOriginalPricefiltersOr<TRes>
+    implements CopyWith$Input$ProductsOriginalPricefiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsOriginalPricefiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductsOriginalPricefiltersOr _instance;
+
+  final TRes Function(Input$ProductsOriginalPricefiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsOriginalPricefiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsOriginalPricefiltersOr<TRes>
+    implements CopyWith$Input$ProductsOriginalPricefiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsOriginalPricefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$ProductsMarkupFilters {
+  factory Input$ProductsMarkupFilters({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupfiltersOr>? OR,
+  }) => Input$ProductsMarkupFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsMarkupFilters._(this._$data);
+
+  factory Input$ProductsMarkupFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsMarkupfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsMarkupFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsMarkupfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsMarkupfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsMarkupFilters<Input$ProductsMarkupFilters>
+  get copyWith => CopyWith$Input$ProductsMarkupFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsMarkupFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsMarkupFilters<TRes> {
+  factory CopyWith$Input$ProductsMarkupFilters(
+    Input$ProductsMarkupFilters instance,
+    TRes Function(Input$ProductsMarkupFilters) then,
+  ) = _CopyWithImpl$Input$ProductsMarkupFilters;
+
+  factory CopyWith$Input$ProductsMarkupFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsMarkupFilters;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsMarkupfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsMarkupfiltersOr<Input$ProductsMarkupfiltersOr>
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsMarkupFilters<TRes>
+    implements CopyWith$Input$ProductsMarkupFilters<TRes> {
+  _CopyWithImpl$Input$ProductsMarkupFilters(this._instance, this._then);
+
+  final Input$ProductsMarkupFilters _instance;
+
+  final TRes Function(Input$ProductsMarkupFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsMarkupFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined) 'OR': (OR as List<Input$ProductsMarkupfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsMarkupfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsMarkupfiltersOr<Input$ProductsMarkupfiltersOr>
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsMarkupfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsMarkupFilters<TRes>
+    implements CopyWith$Input$ProductsMarkupFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsMarkupFilters(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsMarkupfiltersOr {
+  factory Input$ProductsMarkupfiltersOr({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsMarkupfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsMarkupfiltersOr._(this._$data);
+
+  factory Input$ProductsMarkupfiltersOr.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as int?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as int?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as int?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as int?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as int?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as int?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as int))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsMarkupfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get eq => (_$data['eq'] as int?);
+
+  int? get ne => (_$data['ne'] as int?);
+
+  int? get lt => (_$data['lt'] as int?);
+
+  int? get lte => (_$data['lte'] as int?);
+
+  int? get gt => (_$data['gt'] as int?);
+
+  int? get gte => (_$data['gte'] as int?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<int>? get inArray => (_$data['inArray'] as List<int>?);
+
+  List<int>? get notInArray => (_$data['notInArray'] as List<int>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsMarkupfiltersOr<Input$ProductsMarkupfiltersOr>
+  get copyWith => CopyWith$Input$ProductsMarkupfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsMarkupfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsMarkupfiltersOr<TRes> {
+  factory CopyWith$Input$ProductsMarkupfiltersOr(
+    Input$ProductsMarkupfiltersOr instance,
+    TRes Function(Input$ProductsMarkupfiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsMarkupfiltersOr;
+
+  factory CopyWith$Input$ProductsMarkupfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsMarkupfiltersOr;
+
+  TRes call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsMarkupfiltersOr<TRes>
+    implements CopyWith$Input$ProductsMarkupfiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsMarkupfiltersOr(this._instance, this._then);
+
+  final Input$ProductsMarkupfiltersOr _instance;
+
+  final TRes Function(Input$ProductsMarkupfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsMarkupfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as int?),
+      if (ne != _undefined) 'ne': (ne as int?),
+      if (lt != _undefined) 'lt': (lt as int?),
+      if (lte != _undefined) 'lte': (lte as int?),
+      if (gt != _undefined) 'gt': (gt as int?),
+      if (gte != _undefined) 'gte': (gte as int?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<int>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<int>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsMarkupfiltersOr<TRes>
+    implements CopyWith$Input$ProductsMarkupfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsMarkupfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    int? eq,
+    int? ne,
+    int? lt,
+    int? lte,
+    int? gt,
+    int? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<int>? inArray,
+    List<int>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$ProductsMarkupTypeFilters {
+  factory Input$ProductsMarkupTypeFilters({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupTypefiltersOr>? OR,
+  }) => Input$ProductsMarkupTypeFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsMarkupTypeFilters._(this._$data);
+
+  factory Input$ProductsMarkupTypeFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$ProductsMarkupTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$ProductsMarkupTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsMarkupTypefiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsMarkupTypeFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$ProductsMarkupTypeEnum? get eq =>
+      (_$data['eq'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get ne =>
+      (_$data['ne'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get lt =>
+      (_$data['lt'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get lte =>
+      (_$data['lte'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get gt =>
+      (_$data['gt'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get gte =>
+      (_$data['gte'] as Enum$ProductsMarkupTypeEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$ProductsMarkupTypeEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$ProductsMarkupTypeEnum>?);
+
+  List<Enum$ProductsMarkupTypeEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$ProductsMarkupTypeEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsMarkupTypefiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsMarkupTypefiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$ProductsMarkupTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$ProductsMarkupTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsMarkupTypeFilters<Input$ProductsMarkupTypeFilters>
+  get copyWith => CopyWith$Input$ProductsMarkupTypeFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsMarkupTypeFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsMarkupTypeFilters<TRes> {
+  factory CopyWith$Input$ProductsMarkupTypeFilters(
+    Input$ProductsMarkupTypeFilters instance,
+    TRes Function(Input$ProductsMarkupTypeFilters) then,
+  ) = _CopyWithImpl$Input$ProductsMarkupTypeFilters;
+
+  factory CopyWith$Input$ProductsMarkupTypeFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsMarkupTypeFilters;
+
+  TRes call({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupTypefiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsMarkupTypefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsMarkupTypefiltersOr<
+          Input$ProductsMarkupTypefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsMarkupTypeFilters<TRes>
+    implements CopyWith$Input$ProductsMarkupTypeFilters<TRes> {
+  _CopyWithImpl$Input$ProductsMarkupTypeFilters(this._instance, this._then);
+
+  final Input$ProductsMarkupTypeFilters _instance;
+
+  final TRes Function(Input$ProductsMarkupTypeFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsMarkupTypeFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$ProductsMarkupTypeEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$ProductsMarkupTypeEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$ProductsMarkupTypeEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$ProductsMarkupTypeEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$ProductsMarkupTypeEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$ProductsMarkupTypeEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$ProductsMarkupTypeEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$ProductsMarkupTypeEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$ProductsMarkupTypefiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsMarkupTypefiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsMarkupTypefiltersOr<
+          Input$ProductsMarkupTypefiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsMarkupTypefiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsMarkupTypeFilters<TRes>
+    implements CopyWith$Input$ProductsMarkupTypeFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsMarkupTypeFilters(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsMarkupTypefiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsMarkupTypefiltersOr {
+  factory Input$ProductsMarkupTypefiltersOr({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsMarkupTypefiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsMarkupTypefiltersOr._(this._$data);
+
+  factory Input$ProductsMarkupTypefiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = l$eq == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$eq as String));
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = l$ne == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$ne as String));
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = l$lt == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$lt as String));
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = l$lte == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$lte as String));
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = l$gt == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$gt as String));
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = l$gte == null
+          ? null
+          : fromJson$Enum$ProductsMarkupTypeEnum((l$gte as String));
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$ProductsMarkupTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => fromJson$Enum$ProductsMarkupTypeEnum((e as String)))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsMarkupTypefiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$ProductsMarkupTypeEnum? get eq =>
+      (_$data['eq'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get ne =>
+      (_$data['ne'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get lt =>
+      (_$data['lt'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get lte =>
+      (_$data['lte'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get gt =>
+      (_$data['gt'] as Enum$ProductsMarkupTypeEnum?);
+
+  Enum$ProductsMarkupTypeEnum? get gte =>
+      (_$data['gte'] as Enum$ProductsMarkupTypeEnum?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<Enum$ProductsMarkupTypeEnum>? get inArray =>
+      (_$data['inArray'] as List<Enum$ProductsMarkupTypeEnum>?);
+
+  List<Enum$ProductsMarkupTypeEnum>? get notInArray =>
+      (_$data['notInArray'] as List<Enum$ProductsMarkupTypeEnum>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$eq);
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$ne);
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$lt);
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$lte);
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$gt);
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte == null
+          ? null
+          : toJson$Enum$ProductsMarkupTypeEnum(l$gte);
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray
+          ?.map((e) => toJson$Enum$ProductsMarkupTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray
+          ?.map((e) => toJson$Enum$ProductsMarkupTypeEnum(e))
+          .toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsMarkupTypefiltersOr<Input$ProductsMarkupTypefiltersOr>
+  get copyWith => CopyWith$Input$ProductsMarkupTypefiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsMarkupTypefiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsMarkupTypefiltersOr<TRes> {
+  factory CopyWith$Input$ProductsMarkupTypefiltersOr(
+    Input$ProductsMarkupTypefiltersOr instance,
+    TRes Function(Input$ProductsMarkupTypefiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsMarkupTypefiltersOr;
+
+  factory CopyWith$Input$ProductsMarkupTypefiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsMarkupTypefiltersOr;
+
+  TRes call({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsMarkupTypefiltersOr<TRes>
+    implements CopyWith$Input$ProductsMarkupTypefiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsMarkupTypefiltersOr(this._instance, this._then);
+
+  final Input$ProductsMarkupTypefiltersOr _instance;
+
+  final TRes Function(Input$ProductsMarkupTypefiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsMarkupTypefiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as Enum$ProductsMarkupTypeEnum?),
+      if (ne != _undefined) 'ne': (ne as Enum$ProductsMarkupTypeEnum?),
+      if (lt != _undefined) 'lt': (lt as Enum$ProductsMarkupTypeEnum?),
+      if (lte != _undefined) 'lte': (lte as Enum$ProductsMarkupTypeEnum?),
+      if (gt != _undefined) 'gt': (gt as Enum$ProductsMarkupTypeEnum?),
+      if (gte != _undefined) 'gte': (gte as Enum$ProductsMarkupTypeEnum?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined)
+        'inArray': (inArray as List<Enum$ProductsMarkupTypeEnum>?),
+      if (notInArray != _undefined)
+        'notInArray': (notInArray as List<Enum$ProductsMarkupTypeEnum>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsMarkupTypefiltersOr<TRes>
+    implements CopyWith$Input$ProductsMarkupTypefiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsMarkupTypefiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    Enum$ProductsMarkupTypeEnum? eq,
+    Enum$ProductsMarkupTypeEnum? ne,
+    Enum$ProductsMarkupTypeEnum? lt,
+    Enum$ProductsMarkupTypeEnum? lte,
+    Enum$ProductsMarkupTypeEnum? gt,
+    Enum$ProductsMarkupTypeEnum? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<Enum$ProductsMarkupTypeEnum>? inArray,
+    List<Enum$ProductsMarkupTypeEnum>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
 class Input$ProductsEmojiFilters {
   factory Input$ProductsEmojiFilters({
     String? eq,
@@ -128957,6 +133932,2101 @@ class _CopyWithImpl$Input$ProductsTimeBoundSectionsfiltersOr<TRes>
 class _CopyWithStubImpl$Input$ProductsTimeBoundSectionsfiltersOr<TRes>
     implements CopyWith$Input$ProductsTimeBoundSectionsfiltersOr<TRes> {
   _CopyWithStubImpl$Input$ProductsTimeBoundSectionsfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$ProductsTrackInventoryFilters {
+  factory Input$ProductsTrackInventoryFilters({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTrackInventoryfiltersOr>? OR,
+  }) => Input$ProductsTrackInventoryFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsTrackInventoryFilters._(this._$data);
+
+  factory Input$ProductsTrackInventoryFilters.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as bool?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as bool?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as bool?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as bool?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as bool?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as bool?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as bool))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as bool))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsTrackInventoryfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsTrackInventoryFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  bool? get eq => (_$data['eq'] as bool?);
+
+  bool? get ne => (_$data['ne'] as bool?);
+
+  bool? get lt => (_$data['lt'] as bool?);
+
+  bool? get lte => (_$data['lte'] as bool?);
+
+  bool? get gt => (_$data['gt'] as bool?);
+
+  bool? get gte => (_$data['gte'] as bool?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<bool>? get inArray => (_$data['inArray'] as List<bool>?);
+
+  List<bool>? get notInArray => (_$data['notInArray'] as List<bool>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsTrackInventoryfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsTrackInventoryfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsTrackInventoryFilters<
+    Input$ProductsTrackInventoryFilters
+  >
+  get copyWith => CopyWith$Input$ProductsTrackInventoryFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsTrackInventoryFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsTrackInventoryFilters<TRes> {
+  factory CopyWith$Input$ProductsTrackInventoryFilters(
+    Input$ProductsTrackInventoryFilters instance,
+    TRes Function(Input$ProductsTrackInventoryFilters) then,
+  ) = _CopyWithImpl$Input$ProductsTrackInventoryFilters;
+
+  factory CopyWith$Input$ProductsTrackInventoryFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTrackInventoryFilters;
+
+  TRes call({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTrackInventoryfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsTrackInventoryfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsTrackInventoryfiltersOr<
+          Input$ProductsTrackInventoryfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsTrackInventoryFilters<TRes>
+    implements CopyWith$Input$ProductsTrackInventoryFilters<TRes> {
+  _CopyWithImpl$Input$ProductsTrackInventoryFilters(this._instance, this._then);
+
+  final Input$ProductsTrackInventoryFilters _instance;
+
+  final TRes Function(Input$ProductsTrackInventoryFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsTrackInventoryFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as bool?),
+      if (ne != _undefined) 'ne': (ne as bool?),
+      if (lt != _undefined) 'lt': (lt as bool?),
+      if (lte != _undefined) 'lte': (lte as bool?),
+      if (gt != _undefined) 'gt': (gt as bool?),
+      if (gte != _undefined) 'gte': (gte as bool?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<bool>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<bool>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined)
+        'OR': (OR as List<Input$ProductsTrackInventoryfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsTrackInventoryfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsTrackInventoryfiltersOr<
+          Input$ProductsTrackInventoryfiltersOr
+        >
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsTrackInventoryfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsTrackInventoryFilters<TRes>
+    implements CopyWith$Input$ProductsTrackInventoryFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsTrackInventoryFilters(this._res);
+
+  TRes _res;
+
+  call({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsTrackInventoryfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsTrackInventoryfiltersOr {
+  factory Input$ProductsTrackInventoryfiltersOr({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsTrackInventoryfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsTrackInventoryfiltersOr._(this._$data);
+
+  factory Input$ProductsTrackInventoryfiltersOr.fromJson(
+    Map<String, dynamic> data,
+  ) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as bool?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as bool?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as bool?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as bool?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as bool?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as bool?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as bool))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as bool))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsTrackInventoryfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  bool? get eq => (_$data['eq'] as bool?);
+
+  bool? get ne => (_$data['ne'] as bool?);
+
+  bool? get lt => (_$data['lt'] as bool?);
+
+  bool? get lte => (_$data['lte'] as bool?);
+
+  bool? get gt => (_$data['gt'] as bool?);
+
+  bool? get gte => (_$data['gte'] as bool?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<bool>? get inArray => (_$data['inArray'] as List<bool>?);
+
+  List<bool>? get notInArray => (_$data['notInArray'] as List<bool>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsTrackInventoryfiltersOr<
+    Input$ProductsTrackInventoryfiltersOr
+  >
+  get copyWith =>
+      CopyWith$Input$ProductsTrackInventoryfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsTrackInventoryfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsTrackInventoryfiltersOr<TRes> {
+  factory CopyWith$Input$ProductsTrackInventoryfiltersOr(
+    Input$ProductsTrackInventoryfiltersOr instance,
+    TRes Function(Input$ProductsTrackInventoryfiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsTrackInventoryfiltersOr;
+
+  factory CopyWith$Input$ProductsTrackInventoryfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsTrackInventoryfiltersOr;
+
+  TRes call({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsTrackInventoryfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTrackInventoryfiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsTrackInventoryfiltersOr(
+    this._instance,
+    this._then,
+  );
+
+  final Input$ProductsTrackInventoryfiltersOr _instance;
+
+  final TRes Function(Input$ProductsTrackInventoryfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsTrackInventoryfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as bool?),
+      if (ne != _undefined) 'ne': (ne as bool?),
+      if (lt != _undefined) 'lt': (lt as bool?),
+      if (lte != _undefined) 'lte': (lte as bool?),
+      if (gt != _undefined) 'gt': (gt as bool?),
+      if (gte != _undefined) 'gte': (gte as bool?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<bool>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<bool>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsTrackInventoryfiltersOr<TRes>
+    implements CopyWith$Input$ProductsTrackInventoryfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsTrackInventoryfiltersOr(this._res);
+
+  TRes _res;
+
+  call({
+    bool? eq,
+    bool? ne,
+    bool? lt,
+    bool? lte,
+    bool? gt,
+    bool? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<bool>? inArray,
+    List<bool>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => _res;
+}
+
+class Input$ProductsStoreIdFilters {
+  factory Input$ProductsStoreIdFilters({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsStoreIdfiltersOr>? OR,
+  }) => Input$ProductsStoreIdFilters._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+    if (OR != null) r'OR': OR,
+  });
+
+  Input$ProductsStoreIdFilters._(this._$data);
+
+  factory Input$ProductsStoreIdFilters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    if (data.containsKey('OR')) {
+      final l$OR = data['OR'];
+      result$data['OR'] = (l$OR as List<dynamic>?)
+          ?.map(
+            (e) => Input$ProductsStoreIdfiltersOr.fromJson(
+              (e as Map<String, dynamic>),
+            ),
+          )
+          .toList();
+    }
+    return Input$ProductsStoreIdFilters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  List<Input$ProductsStoreIdfiltersOr>? get OR =>
+      (_$data['OR'] as List<Input$ProductsStoreIdfiltersOr>?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    if (_$data.containsKey('OR')) {
+      final l$OR = OR;
+      result$data['OR'] = l$OR?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsStoreIdFilters<Input$ProductsStoreIdFilters>
+  get copyWith => CopyWith$Input$ProductsStoreIdFilters(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsStoreIdFilters ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    final l$OR = OR;
+    final lOther$OR = other.OR;
+    if (_$data.containsKey('OR') != other._$data.containsKey('OR')) {
+      return false;
+    }
+    if (l$OR != null && lOther$OR != null) {
+      if (l$OR.length != lOther$OR.length) {
+        return false;
+      }
+      for (int i = 0; i < l$OR.length; i++) {
+        final l$OR$entry = l$OR[i];
+        final lOther$OR$entry = lOther$OR[i];
+        if (l$OR$entry != lOther$OR$entry) {
+          return false;
+        }
+      }
+    } else if (l$OR != lOther$OR) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    final l$OR = OR;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+      _$data.containsKey('OR')
+          ? l$OR == null
+                ? null
+                : Object.hashAll(l$OR.map((v) => v))
+          : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsStoreIdFilters<TRes> {
+  factory CopyWith$Input$ProductsStoreIdFilters(
+    Input$ProductsStoreIdFilters instance,
+    TRes Function(Input$ProductsStoreIdFilters) then,
+  ) = _CopyWithImpl$Input$ProductsStoreIdFilters;
+
+  factory CopyWith$Input$ProductsStoreIdFilters.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsStoreIdFilters;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsStoreIdfiltersOr>? OR,
+  });
+  TRes OR(
+    Iterable<Input$ProductsStoreIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsStoreIdfiltersOr<Input$ProductsStoreIdfiltersOr>
+      >?,
+    )
+    _fn,
+  );
+}
+
+class _CopyWithImpl$Input$ProductsStoreIdFilters<TRes>
+    implements CopyWith$Input$ProductsStoreIdFilters<TRes> {
+  _CopyWithImpl$Input$ProductsStoreIdFilters(this._instance, this._then);
+
+  final Input$ProductsStoreIdFilters _instance;
+
+  final TRes Function(Input$ProductsStoreIdFilters) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+    Object? OR = _undefined,
+  }) => _then(
+    Input$ProductsStoreIdFilters._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+      if (OR != _undefined) 'OR': (OR as List<Input$ProductsStoreIdfiltersOr>?),
+    }),
+  );
+
+  TRes OR(
+    Iterable<Input$ProductsStoreIdfiltersOr>? Function(
+      Iterable<
+        CopyWith$Input$ProductsStoreIdfiltersOr<Input$ProductsStoreIdfiltersOr>
+      >?,
+    )
+    _fn,
+  ) => call(
+    OR: _fn(
+      _instance.OR?.map(
+        (e) => CopyWith$Input$ProductsStoreIdfiltersOr(e, (i) => i),
+      ),
+    )?.toList(),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsStoreIdFilters<TRes>
+    implements CopyWith$Input$ProductsStoreIdFilters<TRes> {
+  _CopyWithStubImpl$Input$ProductsStoreIdFilters(this._res);
+
+  TRes _res;
+
+  call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+    List<Input$ProductsStoreIdfiltersOr>? OR,
+  }) => _res;
+
+  OR(_fn) => _res;
+}
+
+class Input$ProductsStoreIdfiltersOr {
+  factory Input$ProductsStoreIdfiltersOr({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  }) => Input$ProductsStoreIdfiltersOr._({
+    if (eq != null) r'eq': eq,
+    if (ne != null) r'ne': ne,
+    if (lt != null) r'lt': lt,
+    if (lte != null) r'lte': lte,
+    if (gt != null) r'gt': gt,
+    if (gte != null) r'gte': gte,
+    if (like != null) r'like': like,
+    if (notLike != null) r'notLike': notLike,
+    if (ilike != null) r'ilike': ilike,
+    if (notIlike != null) r'notIlike': notIlike,
+    if (inArray != null) r'inArray': inArray,
+    if (notInArray != null) r'notInArray': notInArray,
+    if (isNull != null) r'isNull': isNull,
+    if (isNotNull != null) r'isNotNull': isNotNull,
+  });
+
+  Input$ProductsStoreIdfiltersOr._(this._$data);
+
+  factory Input$ProductsStoreIdfiltersOr.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('eq')) {
+      final l$eq = data['eq'];
+      result$data['eq'] = (l$eq as String?);
+    }
+    if (data.containsKey('ne')) {
+      final l$ne = data['ne'];
+      result$data['ne'] = (l$ne as String?);
+    }
+    if (data.containsKey('lt')) {
+      final l$lt = data['lt'];
+      result$data['lt'] = (l$lt as String?);
+    }
+    if (data.containsKey('lte')) {
+      final l$lte = data['lte'];
+      result$data['lte'] = (l$lte as String?);
+    }
+    if (data.containsKey('gt')) {
+      final l$gt = data['gt'];
+      result$data['gt'] = (l$gt as String?);
+    }
+    if (data.containsKey('gte')) {
+      final l$gte = data['gte'];
+      result$data['gte'] = (l$gte as String?);
+    }
+    if (data.containsKey('like')) {
+      final l$like = data['like'];
+      result$data['like'] = (l$like as String?);
+    }
+    if (data.containsKey('notLike')) {
+      final l$notLike = data['notLike'];
+      result$data['notLike'] = (l$notLike as String?);
+    }
+    if (data.containsKey('ilike')) {
+      final l$ilike = data['ilike'];
+      result$data['ilike'] = (l$ilike as String?);
+    }
+    if (data.containsKey('notIlike')) {
+      final l$notIlike = data['notIlike'];
+      result$data['notIlike'] = (l$notIlike as String?);
+    }
+    if (data.containsKey('inArray')) {
+      final l$inArray = data['inArray'];
+      result$data['inArray'] = (l$inArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('notInArray')) {
+      final l$notInArray = data['notInArray'];
+      result$data['notInArray'] = (l$notInArray as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('isNull')) {
+      final l$isNull = data['isNull'];
+      result$data['isNull'] = (l$isNull as bool?);
+    }
+    if (data.containsKey('isNotNull')) {
+      final l$isNotNull = data['isNotNull'];
+      result$data['isNotNull'] = (l$isNotNull as bool?);
+    }
+    return Input$ProductsStoreIdfiltersOr._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get eq => (_$data['eq'] as String?);
+
+  String? get ne => (_$data['ne'] as String?);
+
+  String? get lt => (_$data['lt'] as String?);
+
+  String? get lte => (_$data['lte'] as String?);
+
+  String? get gt => (_$data['gt'] as String?);
+
+  String? get gte => (_$data['gte'] as String?);
+
+  String? get like => (_$data['like'] as String?);
+
+  String? get notLike => (_$data['notLike'] as String?);
+
+  String? get ilike => (_$data['ilike'] as String?);
+
+  String? get notIlike => (_$data['notIlike'] as String?);
+
+  List<String>? get inArray => (_$data['inArray'] as List<String>?);
+
+  List<String>? get notInArray => (_$data['notInArray'] as List<String>?);
+
+  bool? get isNull => (_$data['isNull'] as bool?);
+
+  bool? get isNotNull => (_$data['isNotNull'] as bool?);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('eq')) {
+      final l$eq = eq;
+      result$data['eq'] = l$eq;
+    }
+    if (_$data.containsKey('ne')) {
+      final l$ne = ne;
+      result$data['ne'] = l$ne;
+    }
+    if (_$data.containsKey('lt')) {
+      final l$lt = lt;
+      result$data['lt'] = l$lt;
+    }
+    if (_$data.containsKey('lte')) {
+      final l$lte = lte;
+      result$data['lte'] = l$lte;
+    }
+    if (_$data.containsKey('gt')) {
+      final l$gt = gt;
+      result$data['gt'] = l$gt;
+    }
+    if (_$data.containsKey('gte')) {
+      final l$gte = gte;
+      result$data['gte'] = l$gte;
+    }
+    if (_$data.containsKey('like')) {
+      final l$like = like;
+      result$data['like'] = l$like;
+    }
+    if (_$data.containsKey('notLike')) {
+      final l$notLike = notLike;
+      result$data['notLike'] = l$notLike;
+    }
+    if (_$data.containsKey('ilike')) {
+      final l$ilike = ilike;
+      result$data['ilike'] = l$ilike;
+    }
+    if (_$data.containsKey('notIlike')) {
+      final l$notIlike = notIlike;
+      result$data['notIlike'] = l$notIlike;
+    }
+    if (_$data.containsKey('inArray')) {
+      final l$inArray = inArray;
+      result$data['inArray'] = l$inArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('notInArray')) {
+      final l$notInArray = notInArray;
+      result$data['notInArray'] = l$notInArray?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('isNull')) {
+      final l$isNull = isNull;
+      result$data['isNull'] = l$isNull;
+    }
+    if (_$data.containsKey('isNotNull')) {
+      final l$isNotNull = isNotNull;
+      result$data['isNotNull'] = l$isNotNull;
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$ProductsStoreIdfiltersOr<Input$ProductsStoreIdfiltersOr>
+  get copyWith => CopyWith$Input$ProductsStoreIdfiltersOr(this, (i) => i);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Input$ProductsStoreIdfiltersOr ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$eq = eq;
+    final lOther$eq = other.eq;
+    if (_$data.containsKey('eq') != other._$data.containsKey('eq')) {
+      return false;
+    }
+    if (l$eq != lOther$eq) {
+      return false;
+    }
+    final l$ne = ne;
+    final lOther$ne = other.ne;
+    if (_$data.containsKey('ne') != other._$data.containsKey('ne')) {
+      return false;
+    }
+    if (l$ne != lOther$ne) {
+      return false;
+    }
+    final l$lt = lt;
+    final lOther$lt = other.lt;
+    if (_$data.containsKey('lt') != other._$data.containsKey('lt')) {
+      return false;
+    }
+    if (l$lt != lOther$lt) {
+      return false;
+    }
+    final l$lte = lte;
+    final lOther$lte = other.lte;
+    if (_$data.containsKey('lte') != other._$data.containsKey('lte')) {
+      return false;
+    }
+    if (l$lte != lOther$lte) {
+      return false;
+    }
+    final l$gt = gt;
+    final lOther$gt = other.gt;
+    if (_$data.containsKey('gt') != other._$data.containsKey('gt')) {
+      return false;
+    }
+    if (l$gt != lOther$gt) {
+      return false;
+    }
+    final l$gte = gte;
+    final lOther$gte = other.gte;
+    if (_$data.containsKey('gte') != other._$data.containsKey('gte')) {
+      return false;
+    }
+    if (l$gte != lOther$gte) {
+      return false;
+    }
+    final l$like = like;
+    final lOther$like = other.like;
+    if (_$data.containsKey('like') != other._$data.containsKey('like')) {
+      return false;
+    }
+    if (l$like != lOther$like) {
+      return false;
+    }
+    final l$notLike = notLike;
+    final lOther$notLike = other.notLike;
+    if (_$data.containsKey('notLike') != other._$data.containsKey('notLike')) {
+      return false;
+    }
+    if (l$notLike != lOther$notLike) {
+      return false;
+    }
+    final l$ilike = ilike;
+    final lOther$ilike = other.ilike;
+    if (_$data.containsKey('ilike') != other._$data.containsKey('ilike')) {
+      return false;
+    }
+    if (l$ilike != lOther$ilike) {
+      return false;
+    }
+    final l$notIlike = notIlike;
+    final lOther$notIlike = other.notIlike;
+    if (_$data.containsKey('notIlike') !=
+        other._$data.containsKey('notIlike')) {
+      return false;
+    }
+    if (l$notIlike != lOther$notIlike) {
+      return false;
+    }
+    final l$inArray = inArray;
+    final lOther$inArray = other.inArray;
+    if (_$data.containsKey('inArray') != other._$data.containsKey('inArray')) {
+      return false;
+    }
+    if (l$inArray != null && lOther$inArray != null) {
+      if (l$inArray.length != lOther$inArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$inArray.length; i++) {
+        final l$inArray$entry = l$inArray[i];
+        final lOther$inArray$entry = lOther$inArray[i];
+        if (l$inArray$entry != lOther$inArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$inArray != lOther$inArray) {
+      return false;
+    }
+    final l$notInArray = notInArray;
+    final lOther$notInArray = other.notInArray;
+    if (_$data.containsKey('notInArray') !=
+        other._$data.containsKey('notInArray')) {
+      return false;
+    }
+    if (l$notInArray != null && lOther$notInArray != null) {
+      if (l$notInArray.length != lOther$notInArray.length) {
+        return false;
+      }
+      for (int i = 0; i < l$notInArray.length; i++) {
+        final l$notInArray$entry = l$notInArray[i];
+        final lOther$notInArray$entry = lOther$notInArray[i];
+        if (l$notInArray$entry != lOther$notInArray$entry) {
+          return false;
+        }
+      }
+    } else if (l$notInArray != lOther$notInArray) {
+      return false;
+    }
+    final l$isNull = isNull;
+    final lOther$isNull = other.isNull;
+    if (_$data.containsKey('isNull') != other._$data.containsKey('isNull')) {
+      return false;
+    }
+    if (l$isNull != lOther$isNull) {
+      return false;
+    }
+    final l$isNotNull = isNotNull;
+    final lOther$isNotNull = other.isNotNull;
+    if (_$data.containsKey('isNotNull') !=
+        other._$data.containsKey('isNotNull')) {
+      return false;
+    }
+    if (l$isNotNull != lOther$isNotNull) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$eq = eq;
+    final l$ne = ne;
+    final l$lt = lt;
+    final l$lte = lte;
+    final l$gt = gt;
+    final l$gte = gte;
+    final l$like = like;
+    final l$notLike = notLike;
+    final l$ilike = ilike;
+    final l$notIlike = notIlike;
+    final l$inArray = inArray;
+    final l$notInArray = notInArray;
+    final l$isNull = isNull;
+    final l$isNotNull = isNotNull;
+    return Object.hashAll([
+      _$data.containsKey('eq') ? l$eq : const {},
+      _$data.containsKey('ne') ? l$ne : const {},
+      _$data.containsKey('lt') ? l$lt : const {},
+      _$data.containsKey('lte') ? l$lte : const {},
+      _$data.containsKey('gt') ? l$gt : const {},
+      _$data.containsKey('gte') ? l$gte : const {},
+      _$data.containsKey('like') ? l$like : const {},
+      _$data.containsKey('notLike') ? l$notLike : const {},
+      _$data.containsKey('ilike') ? l$ilike : const {},
+      _$data.containsKey('notIlike') ? l$notIlike : const {},
+      _$data.containsKey('inArray')
+          ? l$inArray == null
+                ? null
+                : Object.hashAll(l$inArray.map((v) => v))
+          : const {},
+      _$data.containsKey('notInArray')
+          ? l$notInArray == null
+                ? null
+                : Object.hashAll(l$notInArray.map((v) => v))
+          : const {},
+      _$data.containsKey('isNull') ? l$isNull : const {},
+      _$data.containsKey('isNotNull') ? l$isNotNull : const {},
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$ProductsStoreIdfiltersOr<TRes> {
+  factory CopyWith$Input$ProductsStoreIdfiltersOr(
+    Input$ProductsStoreIdfiltersOr instance,
+    TRes Function(Input$ProductsStoreIdfiltersOr) then,
+  ) = _CopyWithImpl$Input$ProductsStoreIdfiltersOr;
+
+  factory CopyWith$Input$ProductsStoreIdfiltersOr.stub(TRes res) =
+      _CopyWithStubImpl$Input$ProductsStoreIdfiltersOr;
+
+  TRes call({
+    String? eq,
+    String? ne,
+    String? lt,
+    String? lte,
+    String? gt,
+    String? gte,
+    String? like,
+    String? notLike,
+    String? ilike,
+    String? notIlike,
+    List<String>? inArray,
+    List<String>? notInArray,
+    bool? isNull,
+    bool? isNotNull,
+  });
+}
+
+class _CopyWithImpl$Input$ProductsStoreIdfiltersOr<TRes>
+    implements CopyWith$Input$ProductsStoreIdfiltersOr<TRes> {
+  _CopyWithImpl$Input$ProductsStoreIdfiltersOr(this._instance, this._then);
+
+  final Input$ProductsStoreIdfiltersOr _instance;
+
+  final TRes Function(Input$ProductsStoreIdfiltersOr) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? eq = _undefined,
+    Object? ne = _undefined,
+    Object? lt = _undefined,
+    Object? lte = _undefined,
+    Object? gt = _undefined,
+    Object? gte = _undefined,
+    Object? like = _undefined,
+    Object? notLike = _undefined,
+    Object? ilike = _undefined,
+    Object? notIlike = _undefined,
+    Object? inArray = _undefined,
+    Object? notInArray = _undefined,
+    Object? isNull = _undefined,
+    Object? isNotNull = _undefined,
+  }) => _then(
+    Input$ProductsStoreIdfiltersOr._({
+      ..._instance._$data,
+      if (eq != _undefined) 'eq': (eq as String?),
+      if (ne != _undefined) 'ne': (ne as String?),
+      if (lt != _undefined) 'lt': (lt as String?),
+      if (lte != _undefined) 'lte': (lte as String?),
+      if (gt != _undefined) 'gt': (gt as String?),
+      if (gte != _undefined) 'gte': (gte as String?),
+      if (like != _undefined) 'like': (like as String?),
+      if (notLike != _undefined) 'notLike': (notLike as String?),
+      if (ilike != _undefined) 'ilike': (ilike as String?),
+      if (notIlike != _undefined) 'notIlike': (notIlike as String?),
+      if (inArray != _undefined) 'inArray': (inArray as List<String>?),
+      if (notInArray != _undefined) 'notInArray': (notInArray as List<String>?),
+      if (isNull != _undefined) 'isNull': (isNull as bool?),
+      if (isNotNull != _undefined) 'isNotNull': (isNotNull as bool?),
+    }),
+  );
+}
+
+class _CopyWithStubImpl$Input$ProductsStoreIdfiltersOr<TRes>
+    implements CopyWith$Input$ProductsStoreIdfiltersOr<TRes> {
+  _CopyWithStubImpl$Input$ProductsStoreIdfiltersOr(this._res);
 
   TRes _res;
 
@@ -132119,9 +139189,14 @@ class Input$ProductsFiltersOr {
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -132133,9 +139208,14 @@ class Input$ProductsFiltersOr {
     if (unit != null) r'unit': unit,
     if (mrp != null) r'mrp': mrp,
     if (price != null) r'price': price,
+    if (originalPrice != null) r'originalPrice': originalPrice,
+    if (markup != null) r'markup': markup,
+    if (markupType != null) r'markupType': markupType,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
     if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
+    if (trackInventory != null) r'trackInventory': trackInventory,
+    if (storeId != null) r'storeId': storeId,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -132197,6 +139277,30 @@ class Input$ProductsFiltersOr {
               (l$price as Map<String, dynamic>),
             );
     }
+    if (data.containsKey('originalPrice')) {
+      final l$originalPrice = data['originalPrice'];
+      result$data['originalPrice'] = l$originalPrice == null
+          ? null
+          : Input$ProductsOriginalPriceFilters.fromJson(
+              (l$originalPrice as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('markup')) {
+      final l$markup = data['markup'];
+      result$data['markup'] = l$markup == null
+          ? null
+          : Input$ProductsMarkupFilters.fromJson(
+              (l$markup as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('markupType')) {
+      final l$markupType = data['markupType'];
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : Input$ProductsMarkupTypeFilters.fromJson(
+              (l$markupType as Map<String, dynamic>),
+            );
+    }
     if (data.containsKey('emoji')) {
       final l$emoji = data['emoji'];
       result$data['emoji'] = l$emoji == null
@@ -132219,6 +139323,22 @@ class Input$ProductsFiltersOr {
           ? null
           : Input$ProductsTimeBoundSectionsFilters.fromJson(
               (l$timeBoundSections as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('trackInventory')) {
+      final l$trackInventory = data['trackInventory'];
+      result$data['trackInventory'] = l$trackInventory == null
+          ? null
+          : Input$ProductsTrackInventoryFilters.fromJson(
+              (l$trackInventory as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('storeId')) {
+      final l$storeId = data['storeId'];
+      result$data['storeId'] = l$storeId == null
+          ? null
+          : Input$ProductsStoreIdFilters.fromJson(
+              (l$storeId as Map<String, dynamic>),
             );
     }
     if (data.containsKey('isActive')) {
@@ -132270,6 +139390,15 @@ class Input$ProductsFiltersOr {
   Input$ProductsPriceFilters? get price =>
       (_$data['price'] as Input$ProductsPriceFilters?);
 
+  Input$ProductsOriginalPriceFilters? get originalPrice =>
+      (_$data['originalPrice'] as Input$ProductsOriginalPriceFilters?);
+
+  Input$ProductsMarkupFilters? get markup =>
+      (_$data['markup'] as Input$ProductsMarkupFilters?);
+
+  Input$ProductsMarkupTypeFilters? get markupType =>
+      (_$data['markupType'] as Input$ProductsMarkupTypeFilters?);
+
   Input$ProductsEmojiFilters? get emoji =>
       (_$data['emoji'] as Input$ProductsEmojiFilters?);
 
@@ -132278,6 +139407,12 @@ class Input$ProductsFiltersOr {
 
   Input$ProductsTimeBoundSectionsFilters? get timeBoundSections =>
       (_$data['timeBoundSections'] as Input$ProductsTimeBoundSectionsFilters?);
+
+  Input$ProductsTrackInventoryFilters? get trackInventory =>
+      (_$data['trackInventory'] as Input$ProductsTrackInventoryFilters?);
+
+  Input$ProductsStoreIdFilters? get storeId =>
+      (_$data['storeId'] as Input$ProductsStoreIdFilters?);
 
   Input$ProductsIsActiveFilters? get isActive =>
       (_$data['isActive'] as Input$ProductsIsActiveFilters?);
@@ -132318,6 +139453,18 @@ class Input$ProductsFiltersOr {
       final l$price = price;
       result$data['price'] = l$price?.toJson();
     }
+    if (_$data.containsKey('originalPrice')) {
+      final l$originalPrice = originalPrice;
+      result$data['originalPrice'] = l$originalPrice?.toJson();
+    }
+    if (_$data.containsKey('markup')) {
+      final l$markup = markup;
+      result$data['markup'] = l$markup?.toJson();
+    }
+    if (_$data.containsKey('markupType')) {
+      final l$markupType = markupType;
+      result$data['markupType'] = l$markupType?.toJson();
+    }
     if (_$data.containsKey('emoji')) {
       final l$emoji = emoji;
       result$data['emoji'] = l$emoji?.toJson();
@@ -132329,6 +139476,14 @@ class Input$ProductsFiltersOr {
     if (_$data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = timeBoundSections;
       result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
+    }
+    if (_$data.containsKey('trackInventory')) {
+      final l$trackInventory = trackInventory;
+      result$data['trackInventory'] = l$trackInventory?.toJson();
+    }
+    if (_$data.containsKey('storeId')) {
+      final l$storeId = storeId;
+      result$data['storeId'] = l$storeId?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -132414,6 +139569,32 @@ class Input$ProductsFiltersOr {
     if (l$price != lOther$price) {
       return false;
     }
+    final l$originalPrice = originalPrice;
+    final lOther$originalPrice = other.originalPrice;
+    if (_$data.containsKey('originalPrice') !=
+        other._$data.containsKey('originalPrice')) {
+      return false;
+    }
+    if (l$originalPrice != lOther$originalPrice) {
+      return false;
+    }
+    final l$markup = markup;
+    final lOther$markup = other.markup;
+    if (_$data.containsKey('markup') != other._$data.containsKey('markup')) {
+      return false;
+    }
+    if (l$markup != lOther$markup) {
+      return false;
+    }
+    final l$markupType = markupType;
+    final lOther$markupType = other.markupType;
+    if (_$data.containsKey('markupType') !=
+        other._$data.containsKey('markupType')) {
+      return false;
+    }
+    if (l$markupType != lOther$markupType) {
+      return false;
+    }
     final l$emoji = emoji;
     final lOther$emoji = other.emoji;
     if (_$data.containsKey('emoji') != other._$data.containsKey('emoji')) {
@@ -132438,6 +139619,23 @@ class Input$ProductsFiltersOr {
       return false;
     }
     if (l$timeBoundSections != lOther$timeBoundSections) {
+      return false;
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (_$data.containsKey('trackInventory') !=
+        other._$data.containsKey('trackInventory')) {
+      return false;
+    }
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (_$data.containsKey('storeId') != other._$data.containsKey('storeId')) {
+      return false;
+    }
+    if (l$storeId != lOther$storeId) {
       return false;
     }
     final l$isActive = isActive;
@@ -132479,9 +139677,14 @@ class Input$ProductsFiltersOr {
     final l$unit = unit;
     final l$mrp = mrp;
     final l$price = price;
+    final l$originalPrice = originalPrice;
+    final l$markup = markup;
+    final l$markupType = markupType;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -132493,9 +139696,14 @@ class Input$ProductsFiltersOr {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('mrp') ? l$mrp : const {},
       _$data.containsKey('price') ? l$price : const {},
+      _$data.containsKey('originalPrice') ? l$originalPrice : const {},
+      _$data.containsKey('markup') ? l$markup : const {},
+      _$data.containsKey('markupType') ? l$markupType : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
+      _$data.containsKey('trackInventory') ? l$trackInventory : const {},
+      _$data.containsKey('storeId') ? l$storeId : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -132520,9 +139728,14 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -132534,9 +139747,14 @@ abstract class CopyWith$Input$ProductsFiltersOr<TRes> {
   CopyWith$Input$ProductsUnitFilters<TRes> get unit;
   CopyWith$Input$ProductsMrpFilters<TRes> get mrp;
   CopyWith$Input$ProductsPriceFilters<TRes> get price;
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice;
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup;
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType;
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji;
   CopyWith$Input$ProductsImageUrlFilters<TRes> get imageUrl;
   CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections;
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory;
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId;
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive;
   CopyWith$Input$ProductsCreatedAtFilters<TRes> get createdAt;
   CopyWith$Input$ProductsUpdatedAtFilters<TRes> get updatedAt;
@@ -132560,9 +139778,14 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
     Object? unit = _undefined,
     Object? mrp = _undefined,
     Object? price = _undefined,
+    Object? originalPrice = _undefined,
+    Object? markup = _undefined,
+    Object? markupType = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -132578,12 +139801,23 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
       if (unit != _undefined) 'unit': (unit as Input$ProductsUnitFilters?),
       if (mrp != _undefined) 'mrp': (mrp as Input$ProductsMrpFilters?),
       if (price != _undefined) 'price': (price as Input$ProductsPriceFilters?),
+      if (originalPrice != _undefined)
+        'originalPrice': (originalPrice as Input$ProductsOriginalPriceFilters?),
+      if (markup != _undefined)
+        'markup': (markup as Input$ProductsMarkupFilters?),
+      if (markupType != _undefined)
+        'markupType': (markupType as Input$ProductsMarkupTypeFilters?),
       if (emoji != _undefined) 'emoji': (emoji as Input$ProductsEmojiFilters?),
       if (imageUrl != _undefined)
         'imageUrl': (imageUrl as Input$ProductsImageUrlFilters?),
       if (timeBoundSections != _undefined)
         'timeBoundSections':
             (timeBoundSections as Input$ProductsTimeBoundSectionsFilters?),
+      if (trackInventory != _undefined)
+        'trackInventory':
+            (trackInventory as Input$ProductsTrackInventoryFilters?),
+      if (storeId != _undefined)
+        'storeId': (storeId as Input$ProductsStoreIdFilters?),
       if (isActive != _undefined)
         'isActive': (isActive as Input$ProductsIsActiveFilters?),
       if (createdAt != _undefined)
@@ -132651,6 +139885,36 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
           );
   }
 
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice {
+    final local$originalPrice = _instance.originalPrice;
+    return local$originalPrice == null
+        ? CopyWith$Input$ProductsOriginalPriceFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsOriginalPriceFilters(
+            local$originalPrice,
+            (e) => call(originalPrice: e),
+          );
+  }
+
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup {
+    final local$markup = _instance.markup;
+    return local$markup == null
+        ? CopyWith$Input$ProductsMarkupFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsMarkupFilters(
+            local$markup,
+            (e) => call(markup: e),
+          );
+  }
+
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType {
+    final local$markupType = _instance.markupType;
+    return local$markupType == null
+        ? CopyWith$Input$ProductsMarkupTypeFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsMarkupTypeFilters(
+            local$markupType,
+            (e) => call(markupType: e),
+          );
+  }
+
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji {
     final local$emoji = _instance.emoji;
     return local$emoji == null
@@ -132678,6 +139942,26 @@ class _CopyWithImpl$Input$ProductsFiltersOr<TRes>
         : CopyWith$Input$ProductsTimeBoundSectionsFilters(
             local$timeBoundSections,
             (e) => call(timeBoundSections: e),
+          );
+  }
+
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory {
+    final local$trackInventory = _instance.trackInventory;
+    return local$trackInventory == null
+        ? CopyWith$Input$ProductsTrackInventoryFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsTrackInventoryFilters(
+            local$trackInventory,
+            (e) => call(trackInventory: e),
+          );
+  }
+
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId {
+    final local$storeId = _instance.storeId;
+    return local$storeId == null
+        ? CopyWith$Input$ProductsStoreIdFilters.stub(_then(_instance))
+        : CopyWith$Input$ProductsStoreIdFilters(
+            local$storeId,
+            (e) => call(storeId: e),
           );
   }
 
@@ -132726,9 +140010,14 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
     Input$ProductsUnitFilters? unit,
     Input$ProductsMrpFilters? mrp,
     Input$ProductsPriceFilters? price,
+    Input$ProductsOriginalPriceFilters? originalPrice,
+    Input$ProductsMarkupFilters? markup,
+    Input$ProductsMarkupTypeFilters? markupType,
     Input$ProductsEmojiFilters? emoji,
     Input$ProductsImageUrlFilters? imageUrl,
     Input$ProductsTimeBoundSectionsFilters? timeBoundSections,
+    Input$ProductsTrackInventoryFilters? trackInventory,
+    Input$ProductsStoreIdFilters? storeId,
     Input$ProductsIsActiveFilters? isActive,
     Input$ProductsCreatedAtFilters? createdAt,
     Input$ProductsUpdatedAtFilters? updatedAt,
@@ -132755,6 +140044,15 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
   CopyWith$Input$ProductsPriceFilters<TRes> get price =>
       CopyWith$Input$ProductsPriceFilters.stub(_res);
 
+  CopyWith$Input$ProductsOriginalPriceFilters<TRes> get originalPrice =>
+      CopyWith$Input$ProductsOriginalPriceFilters.stub(_res);
+
+  CopyWith$Input$ProductsMarkupFilters<TRes> get markup =>
+      CopyWith$Input$ProductsMarkupFilters.stub(_res);
+
+  CopyWith$Input$ProductsMarkupTypeFilters<TRes> get markupType =>
+      CopyWith$Input$ProductsMarkupTypeFilters.stub(_res);
+
   CopyWith$Input$ProductsEmojiFilters<TRes> get emoji =>
       CopyWith$Input$ProductsEmojiFilters.stub(_res);
 
@@ -132763,6 +140061,12 @@ class _CopyWithStubImpl$Input$ProductsFiltersOr<TRes>
 
   CopyWith$Input$ProductsTimeBoundSectionsFilters<TRes> get timeBoundSections =>
       CopyWith$Input$ProductsTimeBoundSectionsFilters.stub(_res);
+
+  CopyWith$Input$ProductsTrackInventoryFilters<TRes> get trackInventory =>
+      CopyWith$Input$ProductsTrackInventoryFilters.stub(_res);
+
+  CopyWith$Input$ProductsStoreIdFilters<TRes> get storeId =>
+      CopyWith$Input$ProductsStoreIdFilters.stub(_res);
 
   CopyWith$Input$ProductsIsActiveFilters<TRes> get isActive =>
       CopyWith$Input$ProductsIsActiveFilters.stub(_res);
@@ -132783,9 +140087,14 @@ class Input$ProductsOrderBy {
     Input$InnerOrder? unit,
     Input$InnerOrder? mrp,
     Input$InnerOrder? price,
+    Input$InnerOrder? originalPrice,
+    Input$InnerOrder? markup,
+    Input$InnerOrder? markupType,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
     Input$InnerOrder? timeBoundSections,
+    Input$InnerOrder? trackInventory,
+    Input$InnerOrder? storeId,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -132797,9 +140106,14 @@ class Input$ProductsOrderBy {
     if (unit != null) r'unit': unit,
     if (mrp != null) r'mrp': mrp,
     if (price != null) r'price': price,
+    if (originalPrice != null) r'originalPrice': originalPrice,
+    if (markup != null) r'markup': markup,
+    if (markupType != null) r'markupType': markupType,
     if (emoji != null) r'emoji': emoji,
     if (imageUrl != null) r'imageUrl': imageUrl,
     if (timeBoundSections != null) r'timeBoundSections': timeBoundSections,
+    if (trackInventory != null) r'trackInventory': trackInventory,
+    if (storeId != null) r'storeId': storeId,
     if (isActive != null) r'isActive': isActive,
     if (createdAt != null) r'createdAt': createdAt,
     if (updatedAt != null) r'updatedAt': updatedAt,
@@ -132851,6 +140165,26 @@ class Input$ProductsOrderBy {
           ? null
           : Input$InnerOrder.fromJson((l$price as Map<String, dynamic>));
     }
+    if (data.containsKey('originalPrice')) {
+      final l$originalPrice = data['originalPrice'];
+      result$data['originalPrice'] = l$originalPrice == null
+          ? null
+          : Input$InnerOrder.fromJson(
+              (l$originalPrice as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('markup')) {
+      final l$markup = data['markup'];
+      result$data['markup'] = l$markup == null
+          ? null
+          : Input$InnerOrder.fromJson((l$markup as Map<String, dynamic>));
+    }
+    if (data.containsKey('markupType')) {
+      final l$markupType = data['markupType'];
+      result$data['markupType'] = l$markupType == null
+          ? null
+          : Input$InnerOrder.fromJson((l$markupType as Map<String, dynamic>));
+    }
     if (data.containsKey('emoji')) {
       final l$emoji = data['emoji'];
       result$data['emoji'] = l$emoji == null
@@ -132870,6 +140204,20 @@ class Input$ProductsOrderBy {
           : Input$InnerOrder.fromJson(
               (l$timeBoundSections as Map<String, dynamic>),
             );
+    }
+    if (data.containsKey('trackInventory')) {
+      final l$trackInventory = data['trackInventory'];
+      result$data['trackInventory'] = l$trackInventory == null
+          ? null
+          : Input$InnerOrder.fromJson(
+              (l$trackInventory as Map<String, dynamic>),
+            );
+    }
+    if (data.containsKey('storeId')) {
+      final l$storeId = data['storeId'];
+      result$data['storeId'] = l$storeId == null
+          ? null
+          : Input$InnerOrder.fromJson((l$storeId as Map<String, dynamic>));
     }
     if (data.containsKey('isActive')) {
       final l$isActive = data['isActive'];
@@ -132910,12 +140258,25 @@ class Input$ProductsOrderBy {
 
   Input$InnerOrder? get price => (_$data['price'] as Input$InnerOrder?);
 
+  Input$InnerOrder? get originalPrice =>
+      (_$data['originalPrice'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get markup => (_$data['markup'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get markupType =>
+      (_$data['markupType'] as Input$InnerOrder?);
+
   Input$InnerOrder? get emoji => (_$data['emoji'] as Input$InnerOrder?);
 
   Input$InnerOrder? get imageUrl => (_$data['imageUrl'] as Input$InnerOrder?);
 
   Input$InnerOrder? get timeBoundSections =>
       (_$data['timeBoundSections'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get trackInventory =>
+      (_$data['trackInventory'] as Input$InnerOrder?);
+
+  Input$InnerOrder? get storeId => (_$data['storeId'] as Input$InnerOrder?);
 
   Input$InnerOrder? get isActive => (_$data['isActive'] as Input$InnerOrder?);
 
@@ -132953,6 +140314,18 @@ class Input$ProductsOrderBy {
       final l$price = price;
       result$data['price'] = l$price?.toJson();
     }
+    if (_$data.containsKey('originalPrice')) {
+      final l$originalPrice = originalPrice;
+      result$data['originalPrice'] = l$originalPrice?.toJson();
+    }
+    if (_$data.containsKey('markup')) {
+      final l$markup = markup;
+      result$data['markup'] = l$markup?.toJson();
+    }
+    if (_$data.containsKey('markupType')) {
+      final l$markupType = markupType;
+      result$data['markupType'] = l$markupType?.toJson();
+    }
     if (_$data.containsKey('emoji')) {
       final l$emoji = emoji;
       result$data['emoji'] = l$emoji?.toJson();
@@ -132964,6 +140337,14 @@ class Input$ProductsOrderBy {
     if (_$data.containsKey('timeBoundSections')) {
       final l$timeBoundSections = timeBoundSections;
       result$data['timeBoundSections'] = l$timeBoundSections?.toJson();
+    }
+    if (_$data.containsKey('trackInventory')) {
+      final l$trackInventory = trackInventory;
+      result$data['trackInventory'] = l$trackInventory?.toJson();
+    }
+    if (_$data.containsKey('storeId')) {
+      final l$storeId = storeId;
+      result$data['storeId'] = l$storeId?.toJson();
     }
     if (_$data.containsKey('isActive')) {
       final l$isActive = isActive;
@@ -133049,6 +140430,32 @@ class Input$ProductsOrderBy {
     if (l$price != lOther$price) {
       return false;
     }
+    final l$originalPrice = originalPrice;
+    final lOther$originalPrice = other.originalPrice;
+    if (_$data.containsKey('originalPrice') !=
+        other._$data.containsKey('originalPrice')) {
+      return false;
+    }
+    if (l$originalPrice != lOther$originalPrice) {
+      return false;
+    }
+    final l$markup = markup;
+    final lOther$markup = other.markup;
+    if (_$data.containsKey('markup') != other._$data.containsKey('markup')) {
+      return false;
+    }
+    if (l$markup != lOther$markup) {
+      return false;
+    }
+    final l$markupType = markupType;
+    final lOther$markupType = other.markupType;
+    if (_$data.containsKey('markupType') !=
+        other._$data.containsKey('markupType')) {
+      return false;
+    }
+    if (l$markupType != lOther$markupType) {
+      return false;
+    }
     final l$emoji = emoji;
     final lOther$emoji = other.emoji;
     if (_$data.containsKey('emoji') != other._$data.containsKey('emoji')) {
@@ -133073,6 +140480,23 @@ class Input$ProductsOrderBy {
       return false;
     }
     if (l$timeBoundSections != lOther$timeBoundSections) {
+      return false;
+    }
+    final l$trackInventory = trackInventory;
+    final lOther$trackInventory = other.trackInventory;
+    if (_$data.containsKey('trackInventory') !=
+        other._$data.containsKey('trackInventory')) {
+      return false;
+    }
+    if (l$trackInventory != lOther$trackInventory) {
+      return false;
+    }
+    final l$storeId = storeId;
+    final lOther$storeId = other.storeId;
+    if (_$data.containsKey('storeId') != other._$data.containsKey('storeId')) {
+      return false;
+    }
+    if (l$storeId != lOther$storeId) {
       return false;
     }
     final l$isActive = isActive;
@@ -133114,9 +140538,14 @@ class Input$ProductsOrderBy {
     final l$unit = unit;
     final l$mrp = mrp;
     final l$price = price;
+    final l$originalPrice = originalPrice;
+    final l$markup = markup;
+    final l$markupType = markupType;
     final l$emoji = emoji;
     final l$imageUrl = imageUrl;
     final l$timeBoundSections = timeBoundSections;
+    final l$trackInventory = trackInventory;
+    final l$storeId = storeId;
     final l$isActive = isActive;
     final l$createdAt = createdAt;
     final l$updatedAt = updatedAt;
@@ -133128,9 +140557,14 @@ class Input$ProductsOrderBy {
       _$data.containsKey('unit') ? l$unit : const {},
       _$data.containsKey('mrp') ? l$mrp : const {},
       _$data.containsKey('price') ? l$price : const {},
+      _$data.containsKey('originalPrice') ? l$originalPrice : const {},
+      _$data.containsKey('markup') ? l$markup : const {},
+      _$data.containsKey('markupType') ? l$markupType : const {},
       _$data.containsKey('emoji') ? l$emoji : const {},
       _$data.containsKey('imageUrl') ? l$imageUrl : const {},
       _$data.containsKey('timeBoundSections') ? l$timeBoundSections : const {},
+      _$data.containsKey('trackInventory') ? l$trackInventory : const {},
+      _$data.containsKey('storeId') ? l$storeId : const {},
       _$data.containsKey('isActive') ? l$isActive : const {},
       _$data.containsKey('createdAt') ? l$createdAt : const {},
       _$data.containsKey('updatedAt') ? l$updatedAt : const {},
@@ -133155,9 +140589,14 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
     Input$InnerOrder? unit,
     Input$InnerOrder? mrp,
     Input$InnerOrder? price,
+    Input$InnerOrder? originalPrice,
+    Input$InnerOrder? markup,
+    Input$InnerOrder? markupType,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
     Input$InnerOrder? timeBoundSections,
+    Input$InnerOrder? trackInventory,
+    Input$InnerOrder? storeId,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -133169,9 +140608,14 @@ abstract class CopyWith$Input$ProductsOrderBy<TRes> {
   CopyWith$Input$InnerOrder<TRes> get unit;
   CopyWith$Input$InnerOrder<TRes> get mrp;
   CopyWith$Input$InnerOrder<TRes> get price;
+  CopyWith$Input$InnerOrder<TRes> get originalPrice;
+  CopyWith$Input$InnerOrder<TRes> get markup;
+  CopyWith$Input$InnerOrder<TRes> get markupType;
   CopyWith$Input$InnerOrder<TRes> get emoji;
   CopyWith$Input$InnerOrder<TRes> get imageUrl;
   CopyWith$Input$InnerOrder<TRes> get timeBoundSections;
+  CopyWith$Input$InnerOrder<TRes> get trackInventory;
+  CopyWith$Input$InnerOrder<TRes> get storeId;
   CopyWith$Input$InnerOrder<TRes> get isActive;
   CopyWith$Input$InnerOrder<TRes> get createdAt;
   CopyWith$Input$InnerOrder<TRes> get updatedAt;
@@ -133195,9 +140639,14 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
     Object? unit = _undefined,
     Object? mrp = _undefined,
     Object? price = _undefined,
+    Object? originalPrice = _undefined,
+    Object? markup = _undefined,
+    Object? markupType = _undefined,
     Object? emoji = _undefined,
     Object? imageUrl = _undefined,
     Object? timeBoundSections = _undefined,
+    Object? trackInventory = _undefined,
+    Object? storeId = _undefined,
     Object? isActive = _undefined,
     Object? createdAt = _undefined,
     Object? updatedAt = _undefined,
@@ -133213,10 +140662,18 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
       if (unit != _undefined) 'unit': (unit as Input$InnerOrder?),
       if (mrp != _undefined) 'mrp': (mrp as Input$InnerOrder?),
       if (price != _undefined) 'price': (price as Input$InnerOrder?),
+      if (originalPrice != _undefined)
+        'originalPrice': (originalPrice as Input$InnerOrder?),
+      if (markup != _undefined) 'markup': (markup as Input$InnerOrder?),
+      if (markupType != _undefined)
+        'markupType': (markupType as Input$InnerOrder?),
       if (emoji != _undefined) 'emoji': (emoji as Input$InnerOrder?),
       if (imageUrl != _undefined) 'imageUrl': (imageUrl as Input$InnerOrder?),
       if (timeBoundSections != _undefined)
         'timeBoundSections': (timeBoundSections as Input$InnerOrder?),
+      if (trackInventory != _undefined)
+        'trackInventory': (trackInventory as Input$InnerOrder?),
+      if (storeId != _undefined) 'storeId': (storeId as Input$InnerOrder?),
       if (isActive != _undefined) 'isActive': (isActive as Input$InnerOrder?),
       if (createdAt != _undefined)
         'createdAt': (createdAt as Input$InnerOrder?),
@@ -133280,6 +140737,33 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
         : CopyWith$Input$InnerOrder(local$price, (e) => call(price: e));
   }
 
+  CopyWith$Input$InnerOrder<TRes> get originalPrice {
+    final local$originalPrice = _instance.originalPrice;
+    return local$originalPrice == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$originalPrice,
+            (e) => call(originalPrice: e),
+          );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get markup {
+    final local$markup = _instance.markup;
+    return local$markup == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$markup, (e) => call(markup: e));
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get markupType {
+    final local$markupType = _instance.markupType;
+    return local$markupType == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$markupType,
+            (e) => call(markupType: e),
+          );
+  }
+
   CopyWith$Input$InnerOrder<TRes> get emoji {
     final local$emoji = _instance.emoji;
     return local$emoji == null
@@ -133302,6 +140786,23 @@ class _CopyWithImpl$Input$ProductsOrderBy<TRes>
             local$timeBoundSections,
             (e) => call(timeBoundSections: e),
           );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get trackInventory {
+    final local$trackInventory = _instance.trackInventory;
+    return local$trackInventory == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(
+            local$trackInventory,
+            (e) => call(trackInventory: e),
+          );
+  }
+
+  CopyWith$Input$InnerOrder<TRes> get storeId {
+    final local$storeId = _instance.storeId;
+    return local$storeId == null
+        ? CopyWith$Input$InnerOrder.stub(_then(_instance))
+        : CopyWith$Input$InnerOrder(local$storeId, (e) => call(storeId: e));
   }
 
   CopyWith$Input$InnerOrder<TRes> get isActive {
@@ -133340,9 +140841,14 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
     Input$InnerOrder? unit,
     Input$InnerOrder? mrp,
     Input$InnerOrder? price,
+    Input$InnerOrder? originalPrice,
+    Input$InnerOrder? markup,
+    Input$InnerOrder? markupType,
     Input$InnerOrder? emoji,
     Input$InnerOrder? imageUrl,
     Input$InnerOrder? timeBoundSections,
+    Input$InnerOrder? trackInventory,
+    Input$InnerOrder? storeId,
     Input$InnerOrder? isActive,
     Input$InnerOrder? createdAt,
     Input$InnerOrder? updatedAt,
@@ -133369,6 +140875,15 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
   CopyWith$Input$InnerOrder<TRes> get price =>
       CopyWith$Input$InnerOrder.stub(_res);
 
+  CopyWith$Input$InnerOrder<TRes> get originalPrice =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get markup =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get markupType =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
   CopyWith$Input$InnerOrder<TRes> get emoji =>
       CopyWith$Input$InnerOrder.stub(_res);
 
@@ -133376,6 +140891,12 @@ class _CopyWithStubImpl$Input$ProductsOrderBy<TRes>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get timeBoundSections =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get trackInventory =>
+      CopyWith$Input$InnerOrder.stub(_res);
+
+  CopyWith$Input$InnerOrder<TRes> get storeId =>
       CopyWith$Input$InnerOrder.stub(_res);
 
   CopyWith$Input$InnerOrder<TRes> get isActive =>
@@ -176276,6 +183797,39 @@ Enum$StoresTypeEnum fromJson$Enum$StoresTypeEnum(String value) {
   }
 }
 
+enum Enum$ProductsMarkupTypeEnum {
+  PERCENTAGE,
+  AMOUNT,
+  $unknown;
+
+  factory Enum$ProductsMarkupTypeEnum.fromJson(String value) =>
+      fromJson$Enum$ProductsMarkupTypeEnum(value);
+
+  String toJson() => toJson$Enum$ProductsMarkupTypeEnum(this);
+}
+
+String toJson$Enum$ProductsMarkupTypeEnum(Enum$ProductsMarkupTypeEnum e) {
+  switch (e) {
+    case Enum$ProductsMarkupTypeEnum.PERCENTAGE:
+      return r'PERCENTAGE';
+    case Enum$ProductsMarkupTypeEnum.AMOUNT:
+      return r'AMOUNT';
+    case Enum$ProductsMarkupTypeEnum.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$ProductsMarkupTypeEnum fromJson$Enum$ProductsMarkupTypeEnum(String value) {
+  switch (value) {
+    case r'PERCENTAGE':
+      return Enum$ProductsMarkupTypeEnum.PERCENTAGE;
+    case r'AMOUNT':
+      return Enum$ProductsMarkupTypeEnum.AMOUNT;
+    default:
+      return Enum$ProductsMarkupTypeEnum.$unknown;
+  }
+}
+
 enum Enum$DeviceRegistrationsKindEnum {
   FID,
   TOKEN,
@@ -176504,39 +184058,6 @@ fromJson$Enum$OrderStatusHistoryToStatusEnum(String value) {
   }
 }
 
-enum Enum$OrderDirection {
-  asc,
-  desc,
-  $unknown;
-
-  factory Enum$OrderDirection.fromJson(String value) =>
-      fromJson$Enum$OrderDirection(value);
-
-  String toJson() => toJson$Enum$OrderDirection(this);
-}
-
-String toJson$Enum$OrderDirection(Enum$OrderDirection e) {
-  switch (e) {
-    case Enum$OrderDirection.asc:
-      return r'asc';
-    case Enum$OrderDirection.desc:
-      return r'desc';
-    case Enum$OrderDirection.$unknown:
-      return r'$unknown';
-  }
-}
-
-Enum$OrderDirection fromJson$Enum$OrderDirection(String value) {
-  switch (value) {
-    case r'asc':
-      return Enum$OrderDirection.asc;
-    case r'desc':
-      return Enum$OrderDirection.desc;
-    default:
-      return Enum$OrderDirection.$unknown;
-  }
-}
-
 enum Enum$TimeBoundSectionId {
   BREAKFAST,
   LUNCH,
@@ -176572,6 +184093,72 @@ Enum$TimeBoundSectionId fromJson$Enum$TimeBoundSectionId(String value) {
       return Enum$TimeBoundSectionId.DINNER;
     default:
       return Enum$TimeBoundSectionId.$unknown;
+  }
+}
+
+enum Enum$OrderDirection {
+  asc,
+  desc,
+  $unknown;
+
+  factory Enum$OrderDirection.fromJson(String value) =>
+      fromJson$Enum$OrderDirection(value);
+
+  String toJson() => toJson$Enum$OrderDirection(this);
+}
+
+String toJson$Enum$OrderDirection(Enum$OrderDirection e) {
+  switch (e) {
+    case Enum$OrderDirection.asc:
+      return r'asc';
+    case Enum$OrderDirection.desc:
+      return r'desc';
+    case Enum$OrderDirection.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$OrderDirection fromJson$Enum$OrderDirection(String value) {
+  switch (value) {
+    case r'asc':
+      return Enum$OrderDirection.asc;
+    case r'desc':
+      return Enum$OrderDirection.desc;
+    default:
+      return Enum$OrderDirection.$unknown;
+  }
+}
+
+enum Enum$MarkupType {
+  PERCENTAGE,
+  AMOUNT,
+  $unknown;
+
+  factory Enum$MarkupType.fromJson(String value) =>
+      fromJson$Enum$MarkupType(value);
+
+  String toJson() => toJson$Enum$MarkupType(this);
+}
+
+String toJson$Enum$MarkupType(Enum$MarkupType e) {
+  switch (e) {
+    case Enum$MarkupType.PERCENTAGE:
+      return r'PERCENTAGE';
+    case Enum$MarkupType.AMOUNT:
+      return r'AMOUNT';
+    case Enum$MarkupType.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$MarkupType fromJson$Enum$MarkupType(String value) {
+  switch (value) {
+    case r'PERCENTAGE':
+      return Enum$MarkupType.PERCENTAGE;
+    case r'AMOUNT':
+      return Enum$MarkupType.AMOUNT;
+    default:
+      return Enum$MarkupType.$unknown;
   }
 }
 

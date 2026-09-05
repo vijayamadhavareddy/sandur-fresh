@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../graphql/generated/orders.graphql.dart';
 import '../models/order.dart';
 import '../models/product.dart';
@@ -21,15 +22,51 @@ class CheckoutController extends GetxController {
   final RxBool isLoading = false.obs;
 
   static const List<String> paymentMethods = ['COD', 'UPI', 'Card'];
+
   @override
   void onInit() {
     super.onInit();
-    phoneController.text = Get.find<AuthController>().phone.value;
+    loadUserInfo();
+  }
+
+  void loadUserInfo() {
+    final box = GetStorage();
+    final storedPhone = box.read<String>(AuthController.keyPhone);
+    final storedName = box.read<String>(AuthController.keyName);
+    final auth = Get.isRegistered<AuthController>() ? Get.find<AuthController>() : null;
+
+    if (phoneController.text.isEmpty) {
+      if (storedPhone != null && storedPhone.isNotEmpty) {
+        phoneController.text = storedPhone;
+      } else if (auth != null && auth.phone.value.isNotEmpty) {
+        phoneController.text = auth.phone.value;
+      }
+    }
+
+    if (nameController.text.isEmpty) {
+      if (storedName != null && storedName.isNotEmpty) {
+        nameController.text = storedName;
+      } else if (auth != null && auth.name.value.isNotEmpty) {
+        nameController.text = auth.name.value;
+      }
+    }
   }
 
   void setPaymentMethod(String method) => paymentMethod.value = method;
 
   Future<void> placeOrder() async {
+    final phone = phoneController.text.trim();
+    if (phone.isNotEmpty && !RegExp(r'^\d{10}$').hasMatch(phone)) {
+      Get.snackbar(
+        'Invalid phone number',
+        'Enter a valid 10-digit mobile number',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.error,
+        colorText: AppColors.surface,
+      );
+      return;
+    }
+
     final address = Get.find<AddressController>().selected;
     if (address == null) {
       Get.snackbar(
@@ -58,6 +95,9 @@ class CheckoutController extends GetxController {
     final idempotencyKey = 'sf-idemp-${DateTime.now().millisecondsSinceEpoch}';
 
     try {
+      // Ensure all local cart items are synced to server cart in database
+      await cart.syncToServer();
+
       final res = await gqlProvider.execute(
         document: documentNodeMutationCheckout,
         fromJson: Mutation$Checkout.fromJson,

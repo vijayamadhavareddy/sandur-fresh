@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,51 +8,81 @@ import 'app_colors.dart';
 class AppTheme {
   AppTheme._();
 
+  static TextStyle _font({
+    required bool isTest,
+    required double fontSize,
+    required FontWeight fontWeight,
+    Color? color,
+  }) {
+    if (isTest) {
+      return TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+      );
+    }
+    return GoogleFonts.manrope(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+    );
+  }
+
   static ThemeData get light {
     final base = ThemeData(useMaterial3: true);
-    final textTheme =
-        GoogleFonts.manropeTextTheme(base.textTheme).copyWith(
-      displayLarge: GoogleFonts.manrope(
-        fontSize: 32,
-        fontWeight: FontWeight.w800,
-        color: AppColors.textPrimary,
-      ),
-      displayMedium: GoogleFonts.manrope(
-        fontSize: 26,
-        fontWeight: FontWeight.w800,
-        color: AppColors.textPrimary,
-      ),
-      headlineLarge: GoogleFonts.manrope(
-        fontSize: 22,
-        fontWeight: FontWeight.w700,
-        color: AppColors.textPrimary,
-      ),
-      headlineMedium: GoogleFonts.manrope(
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: AppColors.textPrimary,
-      ),
-      titleLarge: GoogleFonts.manrope(
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        color: AppColors.textPrimary,
-      ),
-      bodyLarge: GoogleFonts.manrope(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimary,
-      ),
-      bodyMedium: GoogleFonts.manrope(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimary,
-      ),
-      bodySmall: GoogleFonts.manrope(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textSecondary,
-      ),
-    );
+    final isTest = !kIsWeb && Platform.environment.containsKey('FLUTTER_TEST');
+    final textTheme = isTest
+        ? base.textTheme
+        : GoogleFonts.manropeTextTheme(base.textTheme).copyWith(
+            displayLarge: _font(
+              isTest: isTest,
+              fontSize: 32,
+              fontWeight: FontWeight.w800,
+              color: AppColors.textPrimary,
+            ),
+            displayMedium: _font(
+              isTest: isTest,
+              fontSize: 26,
+              fontWeight: FontWeight.w800,
+              color: AppColors.textPrimary,
+            ),
+            headlineLarge: _font(
+              isTest: isTest,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: AppColors.textPrimary,
+            ),
+            headlineMedium: _font(
+              isTest: isTest,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppColors.textPrimary,
+            ),
+            titleLarge: _font(
+              isTest: isTest,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: AppColors.textPrimary,
+            ),
+            bodyLarge: _font(
+              isTest: isTest,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textPrimary,
+            ),
+            bodyMedium: _font(
+              isTest: isTest,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textPrimary,
+            ),
+            bodySmall: _font(
+              isTest: isTest,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: AppColors.textSecondary,
+            ),
+          );
 
     return ThemeData(
       useMaterial3: true,
@@ -98,7 +130,8 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
           ),
-          textStyle: GoogleFonts.manrope(
+          textStyle: _font(
+            isTest: isTest,
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
@@ -126,7 +159,8 @@ class AppTheme {
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surface,
         selectedColor: AppColors.primaryContainer,
-        labelStyle: GoogleFonts.manrope(
+        labelStyle: _font(
+          isTest: isTest,
           fontSize: 13,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
@@ -142,11 +176,13 @@ class AppTheme {
         backgroundColor: AppColors.surface,
         selectedItemColor: AppColors.primaryDark,
         unselectedItemColor: AppColors.textSecondary,
-        selectedLabelStyle: GoogleFonts.manrope(
+        selectedLabelStyle: _font(
+          isTest: isTest,
           fontSize: 12,
           fontWeight: FontWeight.w700,
         ),
-        unselectedLabelStyle: GoogleFonts.manrope(
+        unselectedLabelStyle: _font(
+          isTest: isTest,
           fontSize: 12,
           fontWeight: FontWeight.w500,
         ),

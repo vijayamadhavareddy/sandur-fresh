@@ -85,7 +85,7 @@ const MarkupTypeEnum = new GraphQLEnumType({
 
 const ProductType = new GraphQLObjectType({
   name: "AdminProduct",
-  fields: {
+  fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
     categoryId: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: new GraphQLNonNull(GraphQLString) },
@@ -101,11 +101,14 @@ const ProductType = new GraphQLObjectType({
     timeBoundSections: {
       type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType))),
     },
+    trackInventory: { type: new GraphQLNonNull(GraphQLBoolean) },
+    storeId: { type: GraphQLString },
+    store: { type: StoreType },
     isActive: { type: new GraphQLNonNull(GraphQLBoolean) },
     category: { type: new GraphQLNonNull(CategoryType) },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
-  },
+  }),
 });
 
 const AdminStoreTypeEnum = new GraphQLEnumType({
@@ -284,13 +287,25 @@ const serializeProduct = <
     createdAt: Date;
     updatedAt: Date;
     category: { createdAt: Date };
+    store?: { createdAt: Date; updatedAt: Date } | null;
     timeBoundSections?: string[] | null;
+    trackInventory?: boolean | null;
+    storeId?: string | null;
   },
 >(
   value: T,
 ) => ({
   ...value,
   timeBoundSections: value.timeBoundSections ?? [],
+  trackInventory: Boolean(value.trackInventory),
+  storeId: value.storeId ?? null,
+  store: value.store
+    ? {
+        ...value.store,
+        createdAt: iso(value.store.createdAt),
+        updatedAt: iso(value.store.updatedAt),
+      }
+    : null,
   category: { ...value.category, createdAt: iso(value.category.createdAt) },
   createdAt: iso(value.createdAt),
   updatedAt: iso(value.updatedAt),
@@ -473,6 +488,8 @@ const productArgs = {
   timeBoundSections: {
     type: new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType)),
   },
+  trackInventory: { type: GraphQLBoolean },
+  storeId: { type: GraphQLString },
   isActive: { type: GraphQLBoolean },
 };
 

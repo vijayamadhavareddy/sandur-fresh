@@ -41,6 +41,32 @@ class Address {
 
   String get summary => '$line, $city — $pincode';
 
+  factory Address.fromJson(Map<String, dynamic> json) {
+    return Address(
+      id: json['id'] as String? ?? '',
+      label: json['label'] as String? ?? 'Home',
+      line: json['line'] as String? ?? '',
+      city: json['city'] as String? ?? '',
+      pincode: json['pincode'] as String? ?? '',
+      phone: json['phone'] as String? ?? '',
+      lat: (json['lat'] as num?)?.toDouble() ?? 15.0821,
+      lng: (json['lng'] as num?)?.toDouble() ?? 76.5492,
+      isDefault: json['isDefault'] as bool? ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'label': label,
+        'line': line,
+        'city': city,
+        'pincode': pincode,
+        'phone': phone,
+        'lat': lat,
+        'lng': lng,
+        'isDefault': isDefault,
+      };
+
   Address copyWith({
     String? label,
     String? line,

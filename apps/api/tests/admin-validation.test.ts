@@ -207,6 +207,39 @@ describe("admin validation", () => {
     expect(createAdminProductSchema.safeParse(invalidMarkupType).success).toBe(false);
   });
 
+  test("validates trackInventory boolean", () => {
+    const base = {
+      categoryId: "cat",
+      name: "Butter",
+      unit: "500 g",
+      mrp: 6000,
+      price: 5500,
+    };
+    const defaultTrack = createAdminProductSchema.parse(base);
+    expect(defaultTrack.trackInventory).toBe(false);
+
+    const explicitTrack = createAdminProductSchema.parse({ ...base, trackInventory: true });
+    expect(explicitTrack.trackInventory).toBe(true);
+  });
+
+  test("validates optional storeId", () => {
+    const base = {
+      categoryId: "cat",
+      name: "Special Tea",
+      unit: "250 g",
+      mrp: 15000,
+      price: 13000,
+    };
+    const withoutStore = createAdminProductSchema.parse(base);
+    expect(withoutStore.storeId).toBeUndefined();
+
+    const withStore = createAdminProductSchema.parse({ ...base, storeId: "store-123" });
+    expect(withStore.storeId).toBe("store-123");
+
+    const withNullStore = createAdminProductSchema.parse({ ...base, storeId: null });
+    expect(withNullStore.storeId).toBeNull();
+  });
+
   test("rejects zero inventory adjustments", () => {
     expect(
       adjustInventorySchema.safeParse({ inventoryId: "inventory", delta: 0, reason: "count" })

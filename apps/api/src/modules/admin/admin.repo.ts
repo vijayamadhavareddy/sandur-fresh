@@ -94,7 +94,13 @@ export const dashboard = async (db: DbOrTx) => {
     db
       .select({ value: count() })
       .from(inventory)
-      .where(lte(inventory.stockQty, inventory.lowStockThreshold)),
+      .innerJoin(products, eq(inventory.productId, products.id))
+      .where(
+        and(
+          lte(inventory.stockQty, inventory.lowStockThreshold),
+          eq(products.trackInventory, true),
+        ),
+      ),
   ]);
   return {
     todaysOrders: today[0]?.value ?? 0,
@@ -113,24 +119,29 @@ export const listProducts = async (
     : undefined;
   const total = (await db.select({ value: count() }).from(products).where(where))[0]?.value ?? 0;
   const items = await db
-    .select({ product: products, category: categories })
+    .select({ product: products, category: categories, store: stores })
     .from(products)
     .innerJoin(categories, eq(products.categoryId, categories.id))
+    .leftJoin(stores, eq(products.storeId, stores.id))
     .where(where)
     .orderBy(products.name)
     .limit(input.limit)
     .offset((input.page - 1) * input.limit);
-  return { items: items.map(({ product, category }) => ({ ...product, category })), total };
+  return {
+    items: items.map(({ product, category, store }) => ({ ...product, category, store })),
+    total,
+  };
 };
 
 export const findProduct = async (db: DbOrTx, id: string) => {
   const rows = await db
-    .select({ product: products, category: categories })
+    .select({ product: products, category: categories, store: stores })
     .from(products)
     .innerJoin(categories, eq(products.categoryId, categories.id))
+    .leftJoin(stores, eq(products.storeId, stores.id))
     .where(eq(products.id, id))
     .limit(1);
-  return rows[0] ? { ...rows[0].product, category: rows[0].category } : null;
+  return rows[0] ? { ...rows[0].product, category: rows[0].category, store: rows[0].store } : null;
 };
 
 export const listCategories = (db: DbOrTx) =>
@@ -146,7 +157,7 @@ export const listInventory = async (
   db: DbOrTx,
   input: { storeId: string; page: number; limit: number; query?: string; lowStockOnly: boolean },
 ) => {
-  const filters = [eq(inventory.storeId, input.storeId)];
+  const filters = [eq(inventory.storeId, input.storeId), eq(products.trackInventory, true)];
   if (input.query) filters.push(like(products.name, `%${input.query}%`));
   if (input.lowStockOnly) filters.push(lte(inventory.stockQty, inventory.lowStockThreshold));
   const where = and(...filters);
@@ -178,29 +189,63 @@ export const listInventory = async (
 
 export const createProduct = async (db: DbOrTx, input: CreateAdminProductInput) => {
   const product = (await db.insert(products).values(input).returning())[0]!;
-  const storeRows = await db.select({ id: stores.id }).from(stores);
-  if (storeRows.length > 0) {
-    await db
-      .insert(inventory)
-      .values(storeRows.map((store) => ({ storeId: store.id, productId: product.id })));
+  if (product.trackInventory) {
+    if (product.storeId) {
+      await db
+        .insert(inventory)
+        .values({ storeId: product.storeId, productId: product.id })
+        .onConflictDoNothing();
+    } else {
+      const storeRows = await db.select({ id: stores.id }).from(stores);
+      if (storeRows.length > 0) {
+        await db
+          .insert(inventory)
+          .values(storeRows.map((store) => ({ storeId: store.id, productId: product.id })))
+          .onConflictDoNothing();
+      }
+    }
   }
   return product;
 };
-export const updateProduct = async (db: DbOrTx, id: string, patch: UpdateAdminProductInput) =>
-  (
-    await db
-      .update(products)
-      .set({ ...patch, updatedAt: new Date() })
-      .where(eq(products.id, id))
-      .returning()
-  )[0] ?? null;
+export const updateProduct = async (db: DbOrTx, id: string, patch: UpdateAdminProductInput) => {
+  const updated =
+    (
+      await db
+        .update(products)
+        .set({ ...patch, updatedAt: new Date() })
+        .where(eq(products.id, id))
+        .returning()
+    )[0] ?? null;
+
+  if (updated?.trackInventory) {
+    if (updated.storeId) {
+      await db
+        .insert(inventory)
+        .values({ storeId: updated.storeId, productId: updated.id })
+        .onConflictDoNothing();
+    } else {
+      const storeRows = await db.select({ id: stores.id }).from(stores);
+      if (storeRows.length > 0) {
+        await db
+          .insert(inventory)
+          .values(storeRows.map((store) => ({ storeId: store.id, productId: updated.id })))
+          .onConflictDoNothing();
+      }
+    }
+  }
+
+  return updated;
+};
 export const createCategory = async (db: DbOrTx, input: AdminCategoryInput) =>
   (await db.insert(categories).values(input).returning())[0]!;
 export const updateCategory = async (db: DbOrTx, id: string, patch: UpdateAdminCategoryInput) =>
   (await db.update(categories).set(patch).where(eq(categories.id, id)).returning())[0] ?? null;
 export const createStore = async (db: DbOrTx, input: AdminStoreInput) => {
   const store = (await db.insert(stores).values(input).returning())[0]!;
-  const productRows = await db.select({ id: products.id }).from(products);
+  const productRows = await db
+    .select({ id: products.id })
+    .from(products)
+    .where(eq(products.trackInventory, true));
   if (productRows.length > 0) {
     await db
       .insert(inventory)
@@ -212,7 +257,10 @@ export const createStore = async (db: DbOrTx, input: AdminStoreInput) => {
 
 export const createStoresBulk = async (db: DbOrTx, inputs: AdminStoreInput[]) => {
   const createdStores = [];
-  const productRows = await db.select({ id: products.id }).from(products);
+  const productRows = await db
+    .select({ id: products.id })
+    .from(products)
+    .where(eq(products.trackInventory, true));
 
   for (const input of inputs) {
     const store = (await db.insert(stores).values(input).returning())[0]!;

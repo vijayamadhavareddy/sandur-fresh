@@ -1,0 +1,1 @@
+ALTER TABLE `products` ADD `store_id` text REFERENCES stores(id);

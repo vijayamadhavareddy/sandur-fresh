@@ -1,4 +1,7 @@
+import { createDb } from "@sf/db";
 import { printSchema } from "graphql";
-import { graphqlSchema } from "../src/graphql/schema";
+import { getGraphqlSchema } from "../src/graphql/schema";
 
-await Bun.write(new URL("../schema.graphql", import.meta.url), `${printSchema(graphqlSchema)}\n`);
+const db = createDb();
+const schema = getGraphqlSchema(db);
+await Bun.write(new URL("../schema.graphql", import.meta.url), `${printSchema(schema)}\n`);

@@ -17,6 +17,8 @@ class CheckoutScreen extends StatelessWidget {
     final addresses = Get.find<AddressController>();
     final textTheme = Theme.of(context).textTheme;
 
+    checkout.loadUserInfo();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Checkout')),
       body: ListView(
@@ -86,10 +88,12 @@ class CheckoutScreen extends StatelessWidget {
           const SizedBox(height: AppSpacing.md),
           TextField(
             controller: checkout.phoneController,
-            readOnly: true,
+            keyboardType: TextInputType.phone,
+            maxLength: 10,
             decoration: const InputDecoration(
               labelText: 'Phone number',
               prefixIcon: Icon(Icons.phone_outlined),
+              counterText: '',
             ),
           ),
           const SizedBox(height: AppSpacing.xl),

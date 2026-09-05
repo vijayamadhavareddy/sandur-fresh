@@ -1320,7 +1320,10 @@ export type AdminProduct = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<AdminStore>;
+  storeId?: Maybe<Scalars['String']['output']>;
   timeBoundSections: Array<TimeBoundSectionId>;
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
 };
@@ -1610,6 +1613,7 @@ export type CartItemsCartRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartItemsCartRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -1622,6 +1626,14 @@ export type CartItemsCartRelationStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type CartItemsCartRelationStoreRelationInventoryRelation = {
@@ -1665,8 +1677,11 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelation =
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -1683,6 +1698,11 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationIn
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -1720,8 +1740,10 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationCa
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -1738,8 +1760,206 @@ export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationIn
   updatedAt: Scalars['String']['output'];
 };
 
+export type CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type CartItemsCartRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'CartItemsCartRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelation';
+  category?: Maybe<CartItemsCartRelationStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<CartItemsCartRelationStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<CartItemsCartRelationStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsCartRelationStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'CartItemsCartRelationStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -2055,8 +2275,11 @@ export type CartItemsProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<CartItemsProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2073,6 +2296,11 @@ export type CartItemsProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartItemsProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type CartItemsProductRelationCategoryRelation = {
@@ -2110,8 +2338,10 @@ export type CartItemsProductRelationCategoryRelationProductsRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2156,8 +2386,10 @@ export type CartItemsProductRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2178,6 +2410,7 @@ export type CartItemsProductRelationInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartItemsProductRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -2192,6 +2425,14 @@ export type CartItemsProductRelationInventoryRelationStoreRelationInventoryArgs 
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type CartItemsProductRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'CartItemsProductRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -2199,6 +2440,162 @@ export type CartItemsProductRelationInventoryRelationStoreRelationInventoryRelat
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsProductRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'CartItemsProductRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsProductRelationStoreRelation = {
+  __typename?: 'CartItemsProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<CartItemsProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartItemsProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartItemsProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartItemsProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type CartItemsProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'CartItemsProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<CartItemsProductRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<CartItemsProductRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartItemsProductRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type CartItemsProductRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartItemsProductRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'CartItemsProductRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsProductRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'CartItemsProductRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartItemsProductRelationStoreRelationProductsRelation = {
+  __typename?: 'CartItemsProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -2509,8 +2906,11 @@ export type CartsItemsRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<CartsItemsRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2527,6 +2927,11 @@ export type CartsItemsRelationProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartsItemsRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type CartsItemsRelationProductRelationCategoryRelation = {
@@ -2564,8 +2969,10 @@ export type CartsItemsRelationProductRelationCategoryRelationProductsRelation = 
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2610,8 +3017,10 @@ export type CartsItemsRelationProductRelationInventoryRelationProductRelation = 
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2632,6 +3041,7 @@ export type CartsItemsRelationProductRelationInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -2646,6 +3056,14 @@ export type CartsItemsRelationProductRelationInventoryRelationStoreRelationInven
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'CartsItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -2653,6 +3071,162 @@ export type CartsItemsRelationProductRelationInventoryRelationStoreRelationInven
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'CartsItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsItemsRelationProductRelationStoreRelation = {
+  __typename?: 'CartsItemsRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<CartsItemsRelationProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartsItemsRelationProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartsItemsRelationProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'CartsItemsRelationProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<CartsItemsRelationProductRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'CartsItemsRelationProductRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'CartsItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsItemsRelationProductRelationStoreRelationProductsRelation = {
+  __typename?: 'CartsItemsRelationProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -2751,6 +3325,7 @@ export type CartsStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CartsStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -2763,6 +3338,14 @@ export type CartsStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartsStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type CartsStoreRelationInventoryRelation = {
@@ -2806,8 +3389,11 @@ export type CartsStoreRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<CartsStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2824,6 +3410,11 @@ export type CartsStoreRelationInventoryRelationProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartsStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type CartsStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -2861,8 +3452,10 @@ export type CartsStoreRelationInventoryRelationProductRelationCategoryRelationPr
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -2879,8 +3472,206 @@ export type CartsStoreRelationInventoryRelationProductRelationInventoryRelation 
   updatedAt: Scalars['String']['output'];
 };
 
+export type CartsStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'CartsStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type CartsStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'CartsStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsStoreRelationProductsRelation = {
+  __typename?: 'CartsStoreRelationProductsRelation';
+  category?: Maybe<CartsStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<CartsStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<CartsStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartsStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type CartsStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CartsStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartsStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<CartsStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type CartsStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type CartsStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<CartsStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<CartsStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CartsStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type CartsStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CartsStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CartsStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'CartsStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -3289,8 +4080,11 @@ export type CategoriesProductsRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<CategoriesProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3307,6 +4101,11 @@ export type CategoriesProductsRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CategoriesProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type CategoriesProductsRelationCategoryRelation = {
@@ -3358,8 +4157,10 @@ export type CategoriesProductsRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -3380,6 +4181,7 @@ export type CategoriesProductsRelationInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CategoriesProductsRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -3394,6 +4196,14 @@ export type CategoriesProductsRelationInventoryRelationStoreRelationInventoryArg
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type CategoriesProductsRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'CategoriesProductsRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -3401,6 +4211,162 @@ export type CategoriesProductsRelationInventoryRelationStoreRelationInventoryRel
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CategoriesProductsRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'CategoriesProductsRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CategoriesProductsRelationStoreRelation = {
+  __typename?: 'CategoriesProductsRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<CategoriesProductsRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<CategoriesProductsRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CategoriesProductsRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type CategoriesProductsRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type CategoriesProductsRelationStoreRelationInventoryRelation = {
+  __typename?: 'CategoriesProductsRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<CategoriesProductsRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<CategoriesProductsRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type CategoriesProductsRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type CategoriesProductsRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type CategoriesProductsRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'CategoriesProductsRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CategoriesProductsRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'CategoriesProductsRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type CategoriesProductsRelationStoreRelationProductsRelation = {
+  __typename?: 'CategoriesProductsRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4337,8 +5303,11 @@ export type InventoryAdjustmentsInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<InventoryAdjustmentsInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4355,6 +5324,11 @@ export type InventoryAdjustmentsInventoryRelationProductRelationInventoryArgs = 
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation = {
@@ -4392,8 +5366,10 @@ export type InventoryAdjustmentsInventoryRelationProductRelationCategoryRelation
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4406,6 +5382,80 @@ export type InventoryAdjustmentsInventoryRelationProductRelationInventoryRelatio
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4425,6 +5475,7 @@ export type InventoryAdjustmentsInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<InventoryAdjustmentsInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -4439,6 +5490,14 @@ export type InventoryAdjustmentsInventoryRelationStoreRelationInventoryArgs = {
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -4446,6 +5505,127 @@ export type InventoryAdjustmentsInventoryRelationStoreRelationInventoryRelation 
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationProductsRelation';
+  category?: Maybe<InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'InventoryAdjustmentsInventoryRelationStoreRelationProductsRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -4825,8 +6005,11 @@ export type InventoryProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<InventoryProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4843,6 +6026,11 @@ export type InventoryProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type InventoryProductRelationCategoryRelation = {
@@ -4880,8 +6068,10 @@ export type InventoryProductRelationCategoryRelationProductsRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -4894,6 +6084,80 @@ export type InventoryProductRelationInventoryRelation = {
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryProductRelationStoreRelation = {
+  __typename?: 'InventoryProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<InventoryProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<InventoryProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type InventoryProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type InventoryProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'InventoryProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryProductRelationStoreRelationProductsRelation = {
+  __typename?: 'InventoryProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -5014,6 +6278,7 @@ export type InventoryStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<InventoryStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -5028,6 +6293,14 @@ export type InventoryStoreRelationInventoryArgs = {
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type InventoryStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type InventoryStoreRelationInventoryRelation = {
   __typename?: 'InventoryStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -5035,6 +6308,127 @@ export type InventoryStoreRelationInventoryRelation = {
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryStoreRelationProductsRelation = {
+  __typename?: 'InventoryStoreRelationProductsRelation';
+  category?: Maybe<InventoryStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<InventoryStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<InventoryStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type InventoryStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type InventoryStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type InventoryStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type InventoryStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'InventoryStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<InventoryStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type InventoryStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type InventoryStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'InventoryStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'InventoryStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type InventoryStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'InventoryStoreRelationProductsRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -5214,7 +6608,9 @@ export type MutationCreateAdminProductArgs = {
   name: Scalars['String']['input'];
   originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price: Scalars['Int']['input'];
+  storeId?: InputMaybe<Scalars['String']['input']>;
   timeBoundSections?: InputMaybe<Array<TimeBoundSectionId>>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
   unit: Scalars['String']['input'];
 };
 
@@ -5310,7 +6706,9 @@ export type MutationUpdateAdminProductArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
   originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
+  storeId?: InputMaybe<Scalars['String']['input']>;
   timeBoundSections?: InputMaybe<Array<TimeBoundSectionId>>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
   unit?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -5754,6 +7152,7 @@ export type OrderItemsOrderRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderItemsOrderRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -5766,6 +7165,14 @@ export type OrderItemsOrderRelationStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type OrderItemsOrderRelationStoreRelationInventoryRelation = {
@@ -5809,8 +7216,11 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5827,6 +7237,11 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -5864,8 +7279,10 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -5882,8 +7299,206 @@ export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelation
   updatedAt: Scalars['String']['output'];
 };
 
+export type OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderItemsOrderRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelation';
+  category?: Maybe<OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<OrderItemsOrderRelationStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsOrderRelationStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'OrderItemsOrderRelationStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -6058,8 +7673,11 @@ export type OrderItemsProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrderItemsProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6076,6 +7694,11 @@ export type OrderItemsProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderItemsProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrderItemsProductRelationCategoryRelation = {
@@ -6113,8 +7736,10 @@ export type OrderItemsProductRelationCategoryRelationProductsRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6159,8 +7784,10 @@ export type OrderItemsProductRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6181,6 +7808,7 @@ export type OrderItemsProductRelationInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderItemsProductRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -6195,6 +7823,14 @@ export type OrderItemsProductRelationInventoryRelationStoreRelationInventoryArgs
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type OrderItemsProductRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'OrderItemsProductRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -6202,6 +7838,162 @@ export type OrderItemsProductRelationInventoryRelationStoreRelationInventoryRela
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsProductRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderItemsProductRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsProductRelationStoreRelation = {
+  __typename?: 'OrderItemsProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<OrderItemsProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderItemsProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderItemsProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderItemsProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrderItemsProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'OrderItemsProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrderItemsProductRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrderItemsProductRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderItemsProductRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrderItemsProductRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderItemsProductRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'OrderItemsProductRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsProductRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrderItemsProductRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderItemsProductRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderItemsProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -6847,8 +8639,11 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6865,6 +8660,11 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryRelation = {
@@ -6902,8 +8702,10 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationCategoryR
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6948,8 +8750,10 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -6970,6 +8774,7 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -6984,6 +8789,14 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -6991,6 +8804,162 @@ export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventory
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationItemsRelationProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -7010,6 +8979,7 @@ export type OrderStatusHistoryOrderRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrderStatusHistoryOrderRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -7022,6 +8992,14 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelation = {
@@ -7065,8 +9043,11 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7083,6 +9064,11 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -7120,8 +9106,10 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7138,8 +9126,206 @@ export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProduct
   updatedAt: Scalars['String']['output'];
 };
 
+export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrderStatusHistoryOrderRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelation';
+  category?: Maybe<OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'OrderStatusHistoryOrderRelationStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -7971,8 +10157,11 @@ export type OrdersItemsRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrdersItemsRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -7989,6 +10178,11 @@ export type OrdersItemsRelationProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrdersItemsRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrdersItemsRelationProductRelationCategoryRelation = {
@@ -8026,8 +10220,10 @@ export type OrdersItemsRelationProductRelationCategoryRelationProductsRelation =
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8072,8 +10268,10 @@ export type OrdersItemsRelationProductRelationInventoryRelationProductRelation =
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8094,6 +10292,7 @@ export type OrdersItemsRelationProductRelationInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -8108,6 +10307,14 @@ export type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInve
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'OrdersItemsRelationProductRelationInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -8115,6 +10322,162 @@ export type OrdersItemsRelationProductRelationInventoryRelationStoreRelationInve
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersItemsRelationProductRelationStoreRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<OrdersItemsRelationProductRelationStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrdersItemsRelationProductRelationStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrdersItemsRelationProductRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersItemsRelationProductRelationStoreRelationProductsRelation = {
+  __typename?: 'OrdersItemsRelationProductRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -8379,6 +10742,7 @@ export type OrdersStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<OrdersStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -8391,6 +10755,14 @@ export type OrdersStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrdersStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type OrdersStoreRelationInventoryRelation = {
@@ -8434,8 +10806,11 @@ export type OrdersStoreRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<OrdersStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8452,6 +10827,11 @@ export type OrdersStoreRelationInventoryRelationProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrdersStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type OrdersStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -8489,8 +10869,10 @@ export type OrdersStoreRelationInventoryRelationProductRelationCategoryRelationP
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -8507,8 +10889,206 @@ export type OrdersStoreRelationInventoryRelationProductRelationInventoryRelation
   updatedAt: Scalars['String']['output'];
 };
 
+export type OrdersStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'OrdersStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type OrdersStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'OrdersStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersStoreRelationProductsRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelation';
+  category?: Maybe<OrdersStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<OrdersStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<OrdersStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrdersStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type OrdersStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type OrdersStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrdersStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<OrdersStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type OrdersStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type OrdersStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<OrdersStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<OrdersStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type OrdersStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type OrdersStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type OrdersStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type OrdersStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'OrdersStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -9014,6 +11594,7 @@ export type OtpChallengesFilters = {
   expiresAt?: InputMaybe<OtpChallengesExpiresAtFilters>;
   id?: InputMaybe<OtpChallengesIdFilters>;
   phone?: InputMaybe<OtpChallengesPhoneFilters>;
+  sessionId?: InputMaybe<OtpChallengesSessionIdFilters>;
 };
 
 export type OtpChallengesFiltersOr = {
@@ -9023,6 +11604,7 @@ export type OtpChallengesFiltersOr = {
   expiresAt?: InputMaybe<OtpChallengesExpiresAtFilters>;
   id?: InputMaybe<OtpChallengesIdFilters>;
   phone?: InputMaybe<OtpChallengesPhoneFilters>;
+  sessionId?: InputMaybe<OtpChallengesSessionIdFilters>;
 };
 
 export type OtpChallengesIdFilters = {
@@ -9074,6 +11656,7 @@ export type OtpChallengesInsertInput = {
   expiresAt: Scalars['String']['input'];
   id?: InputMaybe<Scalars['String']['input']>;
   phone: Scalars['String']['input'];
+  sessionId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OtpChallengesItem = {
@@ -9087,6 +11670,7 @@ export type OtpChallengesItem = {
   expiresAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
   phone: Scalars['String']['output'];
+  sessionId?: Maybe<Scalars['String']['output']>;
 };
 
 export type OtpChallengesOrderBy = {
@@ -9096,6 +11680,7 @@ export type OtpChallengesOrderBy = {
   expiresAt?: InputMaybe<InnerOrder>;
   id?: InputMaybe<InnerOrder>;
   phone?: InputMaybe<InnerOrder>;
+  sessionId?: InputMaybe<InnerOrder>;
 };
 
 export type OtpChallengesPhoneFilters = {
@@ -9148,6 +11733,46 @@ export type OtpChallengesSelectItem = {
   expiresAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
   phone: Scalars['String']['output'];
+  sessionId?: Maybe<Scalars['String']['output']>;
+};
+
+export type OtpChallengesSessionIdFilters = {
+  OR?: InputMaybe<Array<OtpChallengesSessionIdfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OtpChallengesSessionIdfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OtpChallengesUpdateInput = {
@@ -9160,6 +11785,7 @@ export type OtpChallengesUpdateInput = {
   expiresAt?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   phone?: InputMaybe<Scalars['String']['input']>;
+  sessionId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ProductsCategoryIdFilters = {
@@ -9236,8 +11862,10 @@ export type ProductsCategoryRelationProductsRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9387,7 +12015,9 @@ export type ProductsFilters = {
   name?: InputMaybe<ProductsNameFilters>;
   originalPrice?: InputMaybe<ProductsOriginalPriceFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
+  storeId?: InputMaybe<ProductsStoreIdFilters>;
   timeBoundSections?: InputMaybe<ProductsTimeBoundSectionsFilters>;
+  trackInventory?: InputMaybe<ProductsTrackInventoryFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -9406,7 +12036,9 @@ export type ProductsFiltersOr = {
   name?: InputMaybe<ProductsNameFilters>;
   originalPrice?: InputMaybe<ProductsOriginalPriceFilters>;
   price?: InputMaybe<ProductsPriceFilters>;
+  storeId?: InputMaybe<ProductsStoreIdFilters>;
   timeBoundSections?: InputMaybe<ProductsTimeBoundSectionsFilters>;
+  trackInventory?: InputMaybe<ProductsTrackInventoryFilters>;
   unit?: InputMaybe<ProductsUnitFilters>;
   updatedAt?: InputMaybe<ProductsUpdatedAtFilters>;
 };
@@ -9504,8 +12136,10 @@ export type ProductsInsertInput = {
   name: Scalars['String']['input'];
   originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price: Scalars['Int']['input'];
+  storeId?: InputMaybe<Scalars['String']['input']>;
   /** JSON */
   timeBoundSections?: InputMaybe<Scalars['String']['input']>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
   unit: Scalars['String']['input'];
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -9550,8 +12184,10 @@ export type ProductsInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9572,6 +12208,7 @@ export type ProductsInventoryRelationStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<ProductsInventoryRelationStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -9586,6 +12223,14 @@ export type ProductsInventoryRelationStoreRelationInventoryArgs = {
   where?: InputMaybe<InventoryFilters>;
 };
 
+
+export type ProductsInventoryRelationStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
 export type ProductsInventoryRelationStoreRelationInventoryRelation = {
   __typename?: 'ProductsInventoryRelationStoreRelationInventoryRelation';
   id: Scalars['String']['output'];
@@ -9593,6 +12238,31 @@ export type ProductsInventoryRelationStoreRelationInventoryRelation = {
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type ProductsInventoryRelationStoreRelationProductsRelation = {
+  __typename?: 'ProductsInventoryRelationStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -9652,8 +12322,10 @@ export type ProductsItem = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
-  timeBoundSections: Scalars['String']['output'];
+  timeBoundSections: Array<TimeBoundSectionId>;
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9835,7 +12507,9 @@ export type ProductsOrderBy = {
   name?: InputMaybe<InnerOrder>;
   originalPrice?: InputMaybe<InnerOrder>;
   price?: InputMaybe<InnerOrder>;
+  storeId?: InputMaybe<InnerOrder>;
   timeBoundSections?: InputMaybe<InnerOrder>;
+  trackInventory?: InputMaybe<InnerOrder>;
   unit?: InputMaybe<InnerOrder>;
   updatedAt?: InputMaybe<InnerOrder>;
 };
@@ -9936,8 +12610,11 @@ export type ProductsSelectItem = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<ProductsStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
-  timeBoundSections: Scalars['String']['output'];
+  timeBoundSections: Array<TimeBoundSectionId>;
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -9954,6 +12631,181 @@ export type ProductsSelectItemInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type ProductsSelectItemStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type ProductsStoreIdFilters = {
+  OR?: InputMaybe<Array<ProductsStoreIdfiltersOr>>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsStoreIdfiltersOr = {
+  eq?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  ne?: InputMaybe<Scalars['String']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsStoreRelation = {
+  __typename?: 'ProductsStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  inventory: Array<ProductsStoreRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<ProductsStoreRelationProductsRelation>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type ProductsStoreRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type ProductsStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type ProductsStoreRelationInventoryRelation = {
+  __typename?: 'ProductsStoreRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<ProductsStoreRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<ProductsStoreRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type ProductsStoreRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type ProductsStoreRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type ProductsStoreRelationInventoryRelationProductRelation = {
+  __typename?: 'ProductsStoreRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type ProductsStoreRelationInventoryRelationStoreRelation = {
+  __typename?: 'ProductsStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type ProductsStoreRelationProductsRelation = {
+  __typename?: 'ProductsStoreRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
 };
 
 export type ProductsTimeBoundSectionsFilters = {
@@ -10004,6 +12856,45 @@ export type ProductsTimeBoundSectionsfiltersOr = {
   notIlike?: InputMaybe<Scalars['String']['input']>;
   /** Array<JSON> */
   notInArray?: InputMaybe<Array<Scalars['String']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsTrackInventoryFilters = {
+  OR?: InputMaybe<Array<ProductsTrackInventoryfiltersOr>>;
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  gt?: InputMaybe<Scalars['Boolean']['input']>;
+  gte?: InputMaybe<Scalars['Boolean']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Boolean']['input']>;
+  lte?: InputMaybe<Scalars['Boolean']['input']>;
+  ne?: InputMaybe<Scalars['Boolean']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  notLike?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProductsTrackInventoryfiltersOr = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  gt?: InputMaybe<Scalars['Boolean']['input']>;
+  gte?: InputMaybe<Scalars['Boolean']['input']>;
+  ilike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  inArray?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  isNotNull?: InputMaybe<Scalars['Boolean']['input']>;
+  isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  like?: InputMaybe<Scalars['String']['input']>;
+  lt?: InputMaybe<Scalars['Boolean']['input']>;
+  lte?: InputMaybe<Scalars['Boolean']['input']>;
+  ne?: InputMaybe<Scalars['Boolean']['input']>;
+  notIlike?: InputMaybe<Scalars['String']['input']>;
+  /** Array<undefined> */
+  notInArray?: InputMaybe<Array<Scalars['Boolean']['input']>>;
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -10061,8 +12952,10 @@ export type ProductsUpdateInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   originalPrice?: InputMaybe<Scalars['Int']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
+  storeId?: InputMaybe<Scalars['String']['input']>;
   /** JSON */
   timeBoundSections?: InputMaybe<Scalars['String']['input']>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
   unit?: InputMaybe<Scalars['String']['input']>;
   /** Date */
   updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -11011,6 +13904,7 @@ export type StoreSlotConfigStoreRelation = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<StoreSlotConfigStoreRelationProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -11023,6 +13917,14 @@ export type StoreSlotConfigStoreRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoreSlotConfigStoreRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type StoreSlotConfigStoreRelationInventoryRelation = {
@@ -11066,8 +13968,11 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11084,6 +13989,11 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationInventor
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategoryRelation = {
@@ -11121,8 +14031,10 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationCategory
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11139,8 +14051,206 @@ export type StoreSlotConfigStoreRelationInventoryRelationProductRelationInventor
   updatedAt: Scalars['String']['output'];
 };
 
+export type StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type StoreSlotConfigStoreRelationInventoryRelationStoreRelation = {
   __typename?: 'StoreSlotConfigStoreRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoreSlotConfigStoreRelationProductsRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelation';
+  category?: Maybe<StoreSlotConfigStoreRelationProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<StoreSlotConfigStoreRelationProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<StoreSlotConfigStoreRelationProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationCategoryRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoreSlotConfigStoreRelationProductsRelationStoreRelation = {
+  __typename?: 'StoreSlotConfigStoreRelationProductsRelationStoreRelation';
   address: Scalars['String']['output'];
   commissionPct?: Maybe<Scalars['Int']['output']>;
   contactEmail?: Maybe<Scalars['String']['output']>;
@@ -11511,8 +14621,11 @@ export type StoresInventoryRelationProductRelation = {
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  store?: Maybe<StoresInventoryRelationProductRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11529,6 +14642,11 @@ export type StoresInventoryRelationProductRelationInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoresInventoryRelationProductRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
 };
 
 export type StoresInventoryRelationProductRelationCategoryRelation = {
@@ -11566,8 +14684,10 @@ export type StoresInventoryRelationProductRelationCategoryRelationProductsRelati
   name: Scalars['String']['output'];
   originalPrice?: Maybe<Scalars['Int']['output']>;
   price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
   /** JSON */
   timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
   unit: Scalars['String']['output'];
   /** Date */
   updatedAt: Scalars['String']['output'];
@@ -11580,6 +14700,26 @@ export type StoresInventoryRelationProductRelationInventoryRelation = {
   productId: Scalars['String']['output'];
   stockQty: Scalars['Int']['output'];
   storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoresInventoryRelationProductRelationStoreRelation = {
+  __typename?: 'StoresInventoryRelationProductRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
   /** Date */
   updatedAt: Scalars['String']['output'];
 };
@@ -11836,6 +14976,184 @@ export type StoresPartnerNamefiltersOr = {
   notLike?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type StoresProductsRelation = {
+  __typename?: 'StoresProductsRelation';
+  category?: Maybe<StoresProductsRelationCategoryRelation>;
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  inventory: Array<StoresProductsRelationInventoryRelation>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  store?: Maybe<StoresProductsRelationStoreRelation>;
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type StoresProductsRelationCategoryArgs = {
+  where?: InputMaybe<CategoriesFilters>;
+};
+
+
+export type StoresProductsRelationInventoryArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<InventoryOrderBy>;
+  where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoresProductsRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type StoresProductsRelationCategoryRelation = {
+  __typename?: 'StoresProductsRelationCategoryRelation';
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  products: Array<StoresProductsRelationCategoryRelationProductsRelation>;
+  slug: Scalars['String']['output'];
+  sortOrder: Scalars['Int']['output'];
+};
+
+
+export type StoresProductsRelationCategoryRelationProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
+};
+
+export type StoresProductsRelationCategoryRelationProductsRelation = {
+  __typename?: 'StoresProductsRelationCategoryRelationProductsRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoresProductsRelationInventoryRelation = {
+  __typename?: 'StoresProductsRelationInventoryRelation';
+  id: Scalars['String']['output'];
+  lowStockThreshold: Scalars['Int']['output'];
+  product?: Maybe<StoresProductsRelationInventoryRelationProductRelation>;
+  productId: Scalars['String']['output'];
+  stockQty: Scalars['Int']['output'];
+  store?: Maybe<StoresProductsRelationInventoryRelationStoreRelation>;
+  storeId: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+
+export type StoresProductsRelationInventoryRelationProductArgs = {
+  where?: InputMaybe<ProductsFilters>;
+};
+
+
+export type StoresProductsRelationInventoryRelationStoreArgs = {
+  where?: InputMaybe<StoresFilters>;
+};
+
+export type StoresProductsRelationInventoryRelationProductRelation = {
+  __typename?: 'StoresProductsRelationInventoryRelationProductRelation';
+  categoryId: Scalars['String']['output'];
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  isActive: Scalars['Boolean']['output'];
+  markup?: Maybe<Scalars['Int']['output']>;
+  markupType?: Maybe<ProductsMarkupTypeEnum>;
+  mrp: Scalars['Int']['output'];
+  name: Scalars['String']['output'];
+  originalPrice?: Maybe<Scalars['Int']['output']>;
+  price: Scalars['Int']['output'];
+  storeId?: Maybe<Scalars['String']['output']>;
+  /** JSON */
+  timeBoundSections: Scalars['String']['output'];
+  trackInventory: Scalars['Boolean']['output'];
+  unit: Scalars['String']['output'];
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoresProductsRelationInventoryRelationStoreRelation = {
+  __typename?: 'StoresProductsRelationInventoryRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
+export type StoresProductsRelationStoreRelation = {
+  __typename?: 'StoresProductsRelationStoreRelation';
+  address: Scalars['String']['output'];
+  commissionPct?: Maybe<Scalars['Int']['output']>;
+  contactEmail?: Maybe<Scalars['String']['output']>;
+  contactPhone?: Maybe<Scalars['String']['output']>;
+  /** Date */
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isActive: Scalars['Boolean']['output'];
+  lat: Scalars['Float']['output'];
+  lng: Scalars['Float']['output'];
+  name: Scalars['String']['output'];
+  partnerName?: Maybe<Scalars['String']['output']>;
+  serviceRadiusM: Scalars['Int']['output'];
+  type: StoresTypeEnum;
+  /** Date */
+  updatedAt: Scalars['String']['output'];
+};
+
 export type StoresSelectItem = {
   __typename?: 'StoresSelectItem';
   address: Scalars['String']['output'];
@@ -11851,6 +15169,7 @@ export type StoresSelectItem = {
   lng: Scalars['Float']['output'];
   name: Scalars['String']['output'];
   partnerName?: Maybe<Scalars['String']['output']>;
+  products: Array<StoresProductsRelation>;
   serviceRadiusM: Scalars['Int']['output'];
   type: StoresTypeEnum;
   /** Date */
@@ -11863,6 +15182,14 @@ export type StoresSelectItemInventoryArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<InventoryOrderBy>;
   where?: InputMaybe<InventoryFilters>;
+};
+
+
+export type StoresSelectItemProductsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<ProductsOrderBy>;
+  where?: InputMaybe<ProductsFilters>;
 };
 
 export type StoresServiceRadiusMFilters = {
@@ -12550,14 +15877,14 @@ export type AdminProductsQueryVariables = Exact<{
 }>;
 
 
-export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, isActive: boolean, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
+export type AdminProductsQuery = { __typename?: 'Query', adminProducts: { __typename?: 'AdminProductsPage', page: number, total: number, items: Array<{ __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, trackInventory: boolean, storeId?: string | null, isActive: boolean, store?: { __typename?: 'AdminStore', id: string, name: string } | null, category: { __typename?: 'AdminCategory', id: string, name: string } }> } };
 
 export type AdminProductQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
 
-export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, isActive: boolean, categoryId: string, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
+export type AdminProductQuery = { __typename?: 'Query', adminProduct?: { __typename?: 'AdminProduct', id: string, name: string, description?: string | null, unit: string, mrp: number, price: number, originalPrice?: number | null, markup?: number | null, markupType?: MarkupType | null, imageUrl?: string | null, timeBoundSections: Array<TimeBoundSectionId>, trackInventory: boolean, storeId?: string | null, isActive: boolean, categoryId: string, store?: { __typename?: 'AdminStore', id: string, name: string } | null, category: { __typename?: 'AdminCategory', id: string, name: string } } | null };
 
 export type TimeBoundSectionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -12581,6 +15908,8 @@ export type CreateAdminProductMutationVariables = Exact<{
   markupType?: InputMaybe<MarkupType>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   timeBoundSections?: InputMaybe<Array<TimeBoundSectionId> | TimeBoundSectionId>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
+  storeId?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
@@ -12600,6 +15929,8 @@ export type UpdateAdminProductMutationVariables = Exact<{
   markupType?: InputMaybe<MarkupType>;
   imageUrl?: InputMaybe<Scalars['String']['input']>;
   timeBoundSections?: InputMaybe<Array<TimeBoundSectionId> | TimeBoundSectionId>;
+  trackInventory?: InputMaybe<Scalars['Boolean']['input']>;
+  storeId?: InputMaybe<Scalars['String']['input']>;
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
@@ -12774,12 +16105,12 @@ export const AdminSetupDocument = {"kind":"Document","definitions":[{"kind":"Ope
 export const AdminLoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogin"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"role"}}]}},{"kind":"Field","name":{"kind":"Name","value":"expiresAt"}}]}}]}}]} as unknown as DocumentNode<AdminLoginMutation, AdminLoginMutationVariables>;
 export const AdminLogoutDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AdminLogout"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminLogout"}}]}}]} as unknown as DocumentNode<AdminLogoutMutation, AdminLogoutMutationVariables>;
 export const AdminDashboardDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminDashboard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"todaysOrders"}},{"kind":"Field","name":{"kind":"Name","value":"placedOrders"}},{"kind":"Field","name":{"kind":"Name","value":"processingOrders"}},{"kind":"Field","name":{"kind":"Name","value":"lowStockItems"}}]}}]}}]} as unknown as DocumentNode<AdminDashboardQuery, AdminDashboardQueryVariables>;
-export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
-export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
+export const AdminProductsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProducts"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"page"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"query"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProducts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"Variable","name":{"kind":"Name","value":"page"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"query"},"value":{"kind":"Variable","name":{"kind":"Name","value":"query"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"trackInventory"}},{"kind":"Field","name":{"kind":"Name","value":"storeId"}},{"kind":"Field","name":{"kind":"Name","value":"store"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductsQuery, AdminProductsQueryVariables>;
+export const AdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"unit"}},{"kind":"Field","name":{"kind":"Name","value":"mrp"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"originalPrice"}},{"kind":"Field","name":{"kind":"Name","value":"markup"}},{"kind":"Field","name":{"kind":"Name","value":"markupType"}},{"kind":"Field","name":{"kind":"Name","value":"imageUrl"}},{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"}},{"kind":"Field","name":{"kind":"Name","value":"trackInventory"}},{"kind":"Field","name":{"kind":"Name","value":"storeId"}},{"kind":"Field","name":{"kind":"Name","value":"store"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"isActive"}},{"kind":"Field","name":{"kind":"Name","value":"categoryId"}},{"kind":"Field","name":{"kind":"Name","value":"category"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AdminProductQuery, AdminProductQueryVariables>;
 export const TimeBoundSectionsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TimeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timeBoundSections"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"window"}},{"kind":"Field","name":{"kind":"Name","value":"startHour"}},{"kind":"Field","name":{"kind":"Name","value":"endHour"}},{"kind":"Field","name":{"kind":"Name","value":"isNow"}}]}}]}}]} as unknown as DocumentNode<TimeBoundSectionsQuery, TimeBoundSectionsQueryVariables>;
 export const AdminCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AdminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"adminCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"sortOrder"}}]}}]}}]} as unknown as DocumentNode<AdminCategoriesQuery, AdminCategoriesQueryVariables>;
-export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
-export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
+export const CreateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"trackInventory"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"trackInventory"},"value":{"kind":"Variable","name":{"kind":"Name","value":"trackInventory"}}},{"kind":"Argument","name":{"kind":"Name","value":"storeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminProductMutation, CreateAdminProductMutationVariables>;
+export const UpdateAdminProductDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateAdminProduct"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"description"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"unit"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"price"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markup"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"MarkupType"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"TimeBoundSectionId"}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"trackInventory"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateAdminProduct"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"categoryId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"categoryId"}}},{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"description"},"value":{"kind":"Variable","name":{"kind":"Name","value":"description"}}},{"kind":"Argument","name":{"kind":"Name","value":"unit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"unit"}}},{"kind":"Argument","name":{"kind":"Name","value":"mrp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"mrp"}}},{"kind":"Argument","name":{"kind":"Name","value":"price"},"value":{"kind":"Variable","name":{"kind":"Name","value":"price"}}},{"kind":"Argument","name":{"kind":"Name","value":"originalPrice"},"value":{"kind":"Variable","name":{"kind":"Name","value":"originalPrice"}}},{"kind":"Argument","name":{"kind":"Name","value":"markup"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markup"}}},{"kind":"Argument","name":{"kind":"Name","value":"markupType"},"value":{"kind":"Variable","name":{"kind":"Name","value":"markupType"}}},{"kind":"Argument","name":{"kind":"Name","value":"imageUrl"},"value":{"kind":"Variable","name":{"kind":"Name","value":"imageUrl"}}},{"kind":"Argument","name":{"kind":"Name","value":"timeBoundSections"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timeBoundSections"}}},{"kind":"Argument","name":{"kind":"Name","value":"trackInventory"},"value":{"kind":"Variable","name":{"kind":"Name","value":"trackInventory"}}},{"kind":"Argument","name":{"kind":"Name","value":"storeId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"storeId"}}},{"kind":"Argument","name":{"kind":"Name","value":"isActive"},"value":{"kind":"Variable","name":{"kind":"Name","value":"isActive"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<UpdateAdminProductMutation, UpdateAdminProductMutationVariables>;
 export const RegisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"RegisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"registerAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}},{"kind":"Argument","name":{"kind":"Name","value":"userAgent"},"value":{"kind":"Variable","name":{"kind":"Name","value":"userAgent"}}}]}]}}]} as unknown as DocumentNode<RegisterAdminDeviceMutation, RegisterAdminDeviceMutationVariables>;
 export const UnregisterAdminDeviceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UnregisterAdminDevice"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fid"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"unregisterAdminDevice"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fid"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fid"}}}]}]}}]} as unknown as DocumentNode<UnregisterAdminDeviceMutation, UnregisterAdminDeviceMutationVariables>;
 export const CreateAdminCategoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateAdminCategory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createAdminCategory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}},{"kind":"Argument","name":{"kind":"Name","value":"sortOrder"},"value":{"kind":"Variable","name":{"kind":"Name","value":"sortOrder"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateAdminCategoryMutation, CreateAdminCategoryMutationVariables>;

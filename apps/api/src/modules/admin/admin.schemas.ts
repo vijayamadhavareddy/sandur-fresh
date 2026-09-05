@@ -36,6 +36,8 @@ const productFields = {
   imageUrl: z.string().max(2048).nullable().optional(),
   /** Empty array or omitted = untagged; otherwise list of time-bound shelf IDs. */
   timeBoundSections: z.array(z.enum(TIME_BOUND_SECTION_IDS)).optional().default([]),
+  trackInventory: z.boolean().optional().default(false),
+  storeId: z.string().trim().min(1).nullable().optional(),
   isActive: z.boolean().optional(),
 };
 

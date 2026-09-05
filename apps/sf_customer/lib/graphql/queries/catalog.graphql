@@ -9,6 +9,12 @@ fragment ProductFields on ProductsSelectItem {
   emoji
   imageUrl
   timeBoundSections
+  trackInventory
+  storeId
+  store {
+    id
+    name
+  }
   isActive
 }
 

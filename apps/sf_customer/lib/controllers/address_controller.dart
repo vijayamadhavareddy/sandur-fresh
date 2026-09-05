@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../graphql/generated/address.graphql.dart';
 import '../models/address.dart';
 import '../providers/graphql_provider.dart';
 import '../theme/app_colors.dart';
+import 'auth_controller.dart';
 
 class AddressController extends GetxController {
   static const List<String> labels = ['Home', 'Work', 'Other'];
+  static const String keySavedAddresses = 'user_addresses';
+  static const String keySelectedAddressId = 'selected_address_id';
 
   final GraphQLProvider gqlProvider = Get.find<GraphQLProvider>();
 
-  final RxList<Address> addresses = <Address>[
-    const Address(
-      id: 'addr-1',
-      label: 'Home',
-      line: '42, 2nd Cross, Sandur',
-      city: 'Ballari',
-      pincode: '583119',
-      phone: '9876543210',
-    ),
-  ].obs;
-
+  final RxList<Address> addresses = <Address>[].obs;
   final RxnString selectedId = RxnString();
   final RxBool isLoading = false.obs;
 
@@ -35,8 +29,44 @@ class AddressController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    selectedId.value = addresses.first.id;
+    _loadFromStorage();
     fetchAddresses();
+  }
+
+  void _loadFromStorage() {
+    final box = GetStorage();
+    final rawList = box.read<List>(keySavedAddresses);
+    if (rawList != null && rawList.isNotEmpty) {
+      final loaded = rawList
+          .whereType<Map>()
+          .map((m) => Address.fromJson(Map<String, dynamic>.from(m)))
+          .toList();
+      if (loaded.isNotEmpty) {
+        addresses.assignAll(loaded);
+        final storedSelected = box.read<String>(keySelectedAddressId);
+        if (storedSelected != null && addresses.any((a) => a.id == storedSelected)) {
+          selectedId.value = storedSelected;
+        } else {
+          selectedId.value = addresses.first.id;
+        }
+      }
+    }
+  }
+
+  void _persistToStorage() {
+    final box = GetStorage();
+    if (addresses.isEmpty) {
+      box.remove(keySavedAddresses);
+      box.remove(keySelectedAddressId);
+    } else {
+      box.write(
+        keySavedAddresses,
+        addresses.map((a) => a.toJson()).toList(),
+      );
+      if (selectedId.value != null) {
+        box.write(keySelectedAddressId, selectedId.value);
+      }
+    }
   }
 
   Future<void> fetchAddresses() async {
@@ -70,6 +100,11 @@ class AddressController extends GetxController {
         if (selectedId.value == null || !addresses.any((a) => a.id == selectedId.value)) {
           selectedId.value = addresses.first.id;
         }
+        _persistToStorage();
+      } else {
+        if (addresses.isEmpty) {
+          _persistToStorage();
+        }
       }
     } catch (_) {
       // Offline fallback
@@ -86,7 +121,10 @@ class AddressController extends GetxController {
     return addresses.isNotEmpty ? addresses.first : null;
   }
 
-  void select(String id) => selectedId.value = id;
+  void select(String id) {
+    selectedId.value = id;
+    _persistToStorage();
+  }
 
   void beginAdd() {
     _editingId = null;
@@ -94,7 +132,18 @@ class AddressController extends GetxController {
     lineController.clear();
     cityController.clear();
     pincodeController.clear();
-    phoneController.clear();
+
+    // Auto-fill phone with logged-in user phone number
+    final box = GetStorage();
+    final storedPhone = box.read<String>(AuthController.keyPhone);
+    final auth = Get.isRegistered<AuthController>() ? Get.find<AuthController>() : null;
+    if (storedPhone != null && storedPhone.isNotEmpty) {
+      phoneController.text = storedPhone;
+    } else if (auth != null && auth.phone.value.isNotEmpty) {
+      phoneController.text = auth.phone.value;
+    } else {
+      phoneController.clear();
+    }
   }
 
   void beginEdit(Address address) {
@@ -105,6 +154,8 @@ class AddressController extends GetxController {
     pincodeController.text = address.pincode;
     phoneController.text = address.phone;
   }
+
+  static int _uuidCounter = 0;
 
   bool saveForm() {
     final line = lineController.text.trim();
@@ -136,11 +187,12 @@ class AddressController extends GetxController {
           phone: phone,
         );
         addresses[index] = updated;
+        _persistToStorage();
         _saveUpdateGraphQL(updated);
       }
     } else {
       final address = Address(
-        id: 'addr-${DateTime.now().millisecondsSinceEpoch}',
+        id: 'addr-${DateTime.now().millisecondsSinceEpoch}-${++_uuidCounter}',
         label: formLabel.value,
         line: line,
         city: city,
@@ -149,6 +201,7 @@ class AddressController extends GetxController {
       );
       addresses.add(address);
       selectedId.value ??= address.id;
+      _persistToStorage();
       _saveAddGraphQL(address);
     }
     _editingId = null;
@@ -196,6 +249,7 @@ class AddressController extends GetxController {
         addresses.add(created);
       }
       selectedId.value = created.id;
+      _persistToStorage();
     } catch (_) {}
   }
 
@@ -222,6 +276,7 @@ class AddressController extends GetxController {
     if (selectedId.value == id) {
       selectedId.value = addresses.isNotEmpty ? addresses.first.id : null;
     }
+    _persistToStorage();
 
     if (gqlProvider.authToken != null) {
       try {
@@ -232,6 +287,12 @@ class AddressController extends GetxController {
         );
       } catch (_) {}
     }
+  }
+
+  void clear() {
+    addresses.clear();
+    selectedId.value = null;
+    _persistToStorage();
   }
 
   @override

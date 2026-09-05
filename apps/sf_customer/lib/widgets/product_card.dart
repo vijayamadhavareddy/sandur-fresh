@@ -22,15 +22,15 @@ class ProductCard extends StatelessWidget {
         onTap: () => Get.toNamed('/product/${product.id}'),
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.md),
-          child:  Column(
+          padding: const EdgeInsets.all(AppSpacing.sm + 2),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image
               Stack(
                 children: [
                   Container(
-                    height: 110,
+                    height: 88,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: AppColors.surfaceVariant,
@@ -38,16 +38,16 @@ class ProductCard extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: Text(product.emoji,
-                        style: const TextStyle(fontSize: 44)),
+                        style: const TextStyle(fontSize: 38)),
                   ),
                   if (product.hasDiscount)
                     Positioned(
-                      top: 6,
-                      left: 6,
+                      top: 4,
+                      left: 4,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: AppSpacing.sm,
-                          vertical: AppSpacing.xs,
+                          vertical: 2,
                         ),
                         decoration: BoxDecoration(
                           color: AppColors.discount,
@@ -66,33 +66,65 @@ class ProductCard extends StatelessWidget {
                     ),
                 ],
               ),
-              const SizedBox(height: AppSpacing.sm),
+              const SizedBox(height: 6),
               // Pack size
-              Text(product.unit, style: textTheme.bodySmall),
-              const SizedBox(height: AppSpacing.xs),
-              // Name
               Text(
-                product.name,
-                style: textTheme.titleLarge,
+                product.unit,
+                style: textTheme.bodySmall?.copyWith(fontSize: 11),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: AppSpacing.xs),
+              const SizedBox(height: 2),
+              // Name
+              Text(
+                product.name,
+                style: textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                    ) ??
+                    textTheme.titleLarge,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              if (product.storeName != null && product.storeName!.isNotEmpty) ...[
+                const SizedBox(height: 1),
+                Text(
+                  'by ${product.storeName}',
+                  style: textTheme.bodySmall?.copyWith(
+                    fontSize: 10,
+                    color: AppColors.textSecondary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+              const SizedBox(height: 2),
               // Price row
               Row(
                 children: [
-                  Text(
-                    formatPrice(product.price),
-                    style: textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w800,
+                  Flexible(
+                    child: Text(
+                      formatPrice(product.price),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 14.5,
+                      ),
                     ),
                   ),
                   if (product.hasDiscount) ...[
-                    const SizedBox(width: AppSpacing.sm),
-                    Text(
-                      formatPrice(product.mrp),
-                      style: textTheme.bodySmall?.copyWith(
-                        decoration: TextDecoration.lineThrough,
+                    const SizedBox(width: AppSpacing.xs),
+                    Flexible(
+                      child: Text(
+                        formatPrice(product.mrp),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTheme.bodySmall?.copyWith(
+                          decoration: TextDecoration.lineThrough,
+                          fontSize: 11.5,
+                        ),
                       ),
                     ),
                   ],
@@ -101,7 +133,7 @@ class ProductCard extends StatelessWidget {
               const Spacer(),
               // ADD / stepper
               SizedBox(
-                height: 40,
+                height: 32,
                 child: !product.inStock
                     ? Center(
                         child: Text(
@@ -109,6 +141,7 @@ class ProductCard extends StatelessWidget {
                           style: textTheme.bodySmall?.copyWith(
                             color: AppColors.error,
                             fontWeight: FontWeight.w700,
+                            fontSize: 11,
                           ),
                         ),
                       )
@@ -117,7 +150,10 @@ class ProductCard extends StatelessWidget {
                         if (qty > 0) {
                           return Align(
                             alignment: Alignment.centerRight,
-                            child: QuantityStepper(product: product),
+                            child: QuantityStepper(
+                              product: product,
+                              height: 30,
+                            ),
                           );
                         }
                         return Align(
@@ -130,8 +166,8 @@ class ProductCard extends StatelessWidget {
                                 BorderRadius.circular(AppRadius.pill),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: AppSpacing.lg,
-                                vertical: AppSpacing.sm,
+                                horizontal: AppSpacing.md,
+                                vertical: 6,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.primary,
@@ -140,9 +176,10 @@ class ProductCard extends StatelessWidget {
                               ),
                               child: Text(
                                 'ADD',
-                                style: textTheme.bodyMedium?.copyWith(
+                                style: textTheme.bodySmall?.copyWith(
                                   color: AppColors.primaryDark,
                                   fontWeight: FontWeight.w800,
+                                  fontSize: 12,
                                 ),
                               ),
                             ),

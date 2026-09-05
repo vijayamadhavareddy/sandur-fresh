@@ -35,78 +35,78 @@ const getOtpProvider = (env: CloudflareBindings): OtpProvider =>
   });
 
 export const createContainer = (targetDb: DbOrTx = createDb(), env: CloudflareBindings) => {
-	const otpProvider = getOtpProvider(env);
-	const notificationsService = createNotificationsService({
-		db: targetDb,
-		notificationsRepo,
-		sendPush,
-	});
-	const usersService = createUsersService({
-		db: targetDb,
-		usersRepo,
-		otpProvider,
-	});
-	const productsService = createProductsService({ db: targetDb, productsRepo });
-	const cartService = createCartService({
-		db: targetDb,
-		cartRepo,
-		productsRepo,
-	});
-	const ordersService = createOrdersService({
-		db: targetDb,
-		ordersRepo,
-		cartRepo,
-		productsRepo,
-		usersRepo,
-		notifications: notificationsService,
-	});
-	const deliveryService = createDeliveryService({
-		db: targetDb,
-		deliveryRepo,
-		productsRepo,
-		usersRepo,
-	});
-	const adminService = createAdminService({
-		db: targetDb,
-		adminRepo,
-		ordersService,
-	});
+  const otpProvider = getOtpProvider(env);
+  const notificationsService = createNotificationsService({
+    db: targetDb,
+    notificationsRepo,
+    sendPush,
+  });
+  const usersService = createUsersService({
+    db: targetDb,
+    usersRepo,
+    otpProvider,
+  });
+  const productsService = createProductsService({ db: targetDb, productsRepo });
+  const cartService = createCartService({
+    db: targetDb,
+    cartRepo,
+    productsRepo,
+  });
+  const ordersService = createOrdersService({
+    db: targetDb,
+    ordersRepo,
+    cartRepo,
+    productsRepo,
+    usersRepo,
+    notifications: notificationsService,
+  });
+  const deliveryService = createDeliveryService({
+    db: targetDb,
+    deliveryRepo,
+    productsRepo,
+    usersRepo,
+  });
+  const adminService = createAdminService({
+    db: targetDb,
+    adminRepo,
+    ordersService,
+  });
 
-	const notificationsRouter = createNotificationsRouter(notificationsService);
-	const eventsRouter = createEventsRouter();
-	const usersHandlers = createUsersHandlers(usersService);
-	const productsHandlers = createProductsHandlers(productsService);
-	const cartHandlers = createCartHandlers(cartService);
-	const ordersHandlers = createOrdersHandlers(ordersService);
-	const deliveryHandlers = createDeliveryHandlers(deliveryService);
+  const notificationsRouter = createNotificationsRouter(notificationsService);
+  const eventsRouter = createEventsRouter();
+  const usersHandlers = createUsersHandlers(usersService);
+  const productsHandlers = createProductsHandlers(productsService);
+  const cartHandlers = createCartHandlers(cartService);
+  const ordersHandlers = createOrdersHandlers(ordersService);
+  const deliveryHandlers = createDeliveryHandlers(deliveryService);
 
-	const services = {
-		users: usersService,
-		products: productsService,
-		cart: cartService,
-		orders: ordersService,
-		delivery: deliveryService,
-		admin: adminService,
-		notifications: notificationsService,
-	};
+  const services = {
+    users: usersService,
+    products: productsService,
+    cart: cartService,
+    orders: ordersService,
+    delivery: deliveryService,
+    admin: adminService,
+    notifications: notificationsService,
+  };
 
-	return {
-		services,
-		usersService,
-		productsService,
-		cartService,
-		ordersService,
-		deliveryService,
-		adminService,
-		notificationsService,
-		usersHandlers,
-		productsHandlers,
-		cartHandlers,
-		ordersHandlers,
-		deliveryHandlers,
-		notificationsRouter,
-		eventsRouter,
-	};
+  return {
+    services,
+    usersService,
+    productsService,
+    cartService,
+    ordersService,
+    deliveryService,
+    adminService,
+    notificationsService,
+    usersHandlers,
+    productsHandlers,
+    cartHandlers,
+    ordersHandlers,
+    deliveryHandlers,
+    notificationsRouter,
+    eventsRouter,
+  };
 };
 
 export type Container = ReturnType<typeof createContainer>;

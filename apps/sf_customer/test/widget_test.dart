@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:sandur_fresh/controllers/address_controller.dart';
 import 'package:sandur_fresh/controllers/auth_controller.dart';
 import 'package:sandur_fresh/controllers/cart_controller.dart';
@@ -8,12 +10,31 @@ import 'package:sandur_fresh/controllers/catalog_controller.dart';
 import 'package:sandur_fresh/controllers/checkout_controller.dart';
 import 'package:sandur_fresh/controllers/orders_controller.dart';
 import 'package:sandur_fresh/main.dart';
+import 'package:sandur_fresh/models/address.dart';
 import 'package:sandur_fresh/models/product.dart';
 import 'package:sandur_fresh/providers/graphql_provider.dart';
+import 'package:sandur_fresh/screens/address_form_screen.dart';
+import 'package:sandur_fresh/screens/categories_screen.dart';
+import 'package:sandur_fresh/screens/checkout_screen.dart';
+import 'package:sandur_fresh/screens/home_screen.dart';
+import 'package:sandur_fresh/screens/login_screen.dart';
+import 'package:sandur_fresh/widgets/product_card.dart';
 
 void main() {
-  setUp(() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUpAll(() async {
+    const channel = MethodChannel('plugins.flutter.io/path_provider');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+      return '.';
+    });
+    await GetStorage.init();
+  });
+
+  setUp(() async {
     Get.testMode = true;
+    GetStorage().erase();
     final gql = Get.put(GraphQLProvider());
     gql.mockHandler = (query, variables) async {
       if (query.toLowerCase().contains('checkout')) {
@@ -70,6 +91,18 @@ void main() {
       await tester.pumpAndSettle();
 
       final auth = Get.find<AuthController>();
+      final addresses = Get.find<AddressController>();
+      addresses.addresses.assignAll([
+        const Address(
+          id: 'addr-1',
+          label: 'Home',
+          line: '42, 2nd Cross, Sandur',
+          city: 'Ballari',
+          pincode: '583119',
+          phone: '9876543210',
+        ),
+      ]);
+      addresses.selectedId.value = 'addr-1';
       auth.isLoggedIn.value = true;
       Get.offAllNamed('/');
       await tester.pumpAndSettle();
@@ -171,6 +204,7 @@ void main() {
           getPages: [
             GetPage(name: '/', page: () => const SizedBox()),
             GetPage(name: '/login', page: () => const SizedBox()),
+            GetPage(name: '/addresses/new', page: () => const SizedBox()),
           ],
         );
 
@@ -204,6 +238,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(testApp());
       Get.put(AuthController());
+      Get.put(AddressController());
       final auth = Get.find<AuthController>();
 
       auth.phoneController.text = '9876543210';
@@ -238,16 +273,9 @@ void main() {
       c.phoneController.text = '9123456780';
     }
 
-    test('seeded with one selected Home address', () {
-      final addresses = Get.find<AddressController>();
-      expect(addresses.addresses.length, 1);
-      expect(addresses.selectedId.value, addresses.addresses.first.id);
-      expect(addresses.selected?.label, 'Home');
-    });
-
     test('beginAdd + saveForm adds and selects first address', () {
       final addresses = Get.find<AddressController>();
-      addresses.delete(addresses.addresses.first.id);
+      addresses.clear();
       expect(addresses.selectedId.value, isNull);
 
       addresses.beginAdd();
@@ -259,6 +287,11 @@ void main() {
 
     test('beginEdit + saveForm updates existing address', () {
       final addresses = Get.find<AddressController>();
+      addresses.clear();
+      addresses.beginAdd();
+      fillValidForm(addresses);
+      addresses.saveForm();
+
       final original = addresses.addresses.first;
       addresses.beginEdit(original);
       expect(addresses.lineController.text, original.line);
@@ -273,20 +306,30 @@ void main() {
     testWidgets('saveForm rejects invalid input', (tester) async {
       await tester.pumpWidget(GetMaterialApp(home: Container()));
       final addresses = Get.find<AddressController>();
+      addresses.clear();
       addresses.beginAdd();
       addresses.lineController.text = 'Line';
       // city / pincode / phone left empty
       expect(addresses.saveForm(), isFalse);
-      expect(addresses.addresses.length, 1);
+      expect(addresses.addresses.length, 0);
       await tester.pump(const Duration(seconds: 4));
       await tester.pumpAndSettle();
     });
 
     test('delete re-selects remaining address', () {
       final addresses = Get.find<AddressController>();
-      final firstId = addresses.addresses.first.id;
+      addresses.clear();
       addresses.beginAdd();
       fillValidForm(addresses);
+      addresses.saveForm();
+      final firstId = addresses.addresses.first.id;
+
+      addresses.beginAdd();
+      addresses.formLabel.value = 'Home';
+      addresses.lineController.text = '20 Station Road';
+      addresses.cityController.text = 'Sandur';
+      addresses.pincodeController.text = '583119';
+      addresses.phoneController.text = '9876543210';
       addresses.saveForm();
       final secondId = addresses.addresses.last.id;
 
@@ -311,7 +354,18 @@ void main() {
       Get.put(AuthController());
       Get.put(CartController());
       Get.put(OrdersController());
-      Get.put(AddressController());
+      final addresses = Get.put(AddressController());
+      addresses.addresses.assignAll([
+        const Address(
+          id: 'addr-order-test',
+          label: 'Home',
+          line: '42, 2nd Cross, Sandur',
+          city: 'Ballari',
+          pincode: '583119',
+          phone: '9876543210',
+        ),
+      ]);
+      addresses.selectedId.value = 'addr-order-test';
       Get.put(CheckoutController());
 
       const milk = Product(
@@ -398,6 +452,310 @@ void main() {
       final lunchSection = sections.firstWhere((s) => s.id == 'LUNCH');
       expect(lunchSection.items.map((p) => p.id), contains('p1'));
       expect(lunchSection.items.map((p) => p.id), isNot(contains('p2')));
+    });
+
+    testWidgets('ProductCard displays store name subtitle when present',
+        (tester) async {
+      Get.put(CartController());
+      final productWithStore = const Product(
+        id: 'p-store',
+        name: 'Organic Bananas',
+        category: 'Fruits',
+        price: 45,
+        mrp: 50,
+        unit: '1 kg',
+        emoji: '🍌',
+        storeName: 'Sandur Organic Mart',
+      );
+
+      await tester.pumpWidget(
+        GetMaterialApp(
+          home: Scaffold(
+            body: ProductCard(product: productWithStore),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Organic Bananas'), findsOneWidget);
+      expect(find.text('by Sandur Organic Mart'), findsOneWidget);
+    });
+  });
+
+  group('Checkout phone auto-fill and editing', () {
+    testWidgets('auto-fills phone number from local storage and allows editing',
+        (tester) async {
+      final box = GetStorage();
+      await box.write(AuthController.keyPhone, '9876543210');
+      await box.write(AuthController.keyName, 'Vijay Kumar');
+
+      Get.put(AuthController());
+      Get.put(CartController());
+      Get.put(OrdersController());
+      Get.put(AddressController());
+      final checkout = Get.put(CheckoutController());
+
+      await tester.pumpWidget(GetMaterialApp(
+        initialRoute: '/checkout',
+        getPages: [
+          GetPage(name: '/checkout', page: () => const CheckoutScreen()),
+          GetPage(name: '/addresses', page: () => const SizedBox()),
+        ],
+      ));
+      await tester.pumpAndSettle();
+
+      // Check phone number and name auto-filled
+      expect(find.text('9876543210'), findsOneWidget);
+      expect(find.text('Vijay Kumar'), findsOneWidget);
+
+      // Verify the phone field is editable and accepts user input
+      final phoneField = find.widgetWithText(TextField, '9876543210');
+      expect(phoneField, findsOneWidget);
+      await tester.enterText(phoneField, '9123456789');
+      await tester.pumpAndSettle();
+
+      expect(checkout.phoneController.text, '9123456789');
+      expect(find.text('9123456789'), findsOneWidget);
+    });
+  });
+
+  group('Small screen layout without overflow', () {
+    testWidgets('HomeScreen buy again and deals shelves render without overflow on small screens',
+        (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() => tester.view.resetPhysicalSize());
+
+      Get.put(AuthController());
+      final cart = Get.put(CartController());
+      final catalog = Get.put(CatalogController());
+      Get.put(AddressController());
+
+      const item1 = Product(
+        id: 'p1',
+        name: 'Fresh Farm Milk 500ml',
+        category: 'Dairy',
+        price: 27,
+        mrp: 35,
+        unit: '500 ml',
+        emoji: '🥛',
+      );
+      const item2 = Product(
+        id: 'p2',
+        name: 'Organic Farm Tomatoes Premium',
+        category: 'Vegetables',
+        price: 45,
+        mrp: 60,
+        unit: '1 kg',
+        emoji: '🍅',
+      );
+
+      catalog.fetchedProducts.assignAll([item1, item2]);
+
+      await tester.pumpWidget(const GetMaterialApp(
+        home: Scaffold(body: HomeScreen()),
+      ));
+      await tester.pumpAndSettle();
+
+      // Ensure no exceptions or overflow errors were thrown
+      expect(tester.takeException(), isNull);
+
+      // Add item to cart to activate QuantityStepper
+      await cart.add(item1);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('CategoriesScreen grid renders without overflow on small screens',
+        (tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() => tester.view.resetPhysicalSize());
+
+      Get.put(AuthController());
+      Get.put(CartController());
+      final catalog = Get.put(CatalogController());
+      Get.put(AddressController());
+
+      const item1 = Product(
+        id: 'p1',
+        name: 'Fresh Farm Milk 500ml',
+        category: 'Dairy',
+        price: 27,
+        mrp: 35,
+        unit: '500 ml',
+        emoji: '🥛',
+      );
+      const item2 = Product(
+        id: 'p2',
+        name: 'Organic Farm Tomatoes Premium',
+        category: 'Dairy',
+        price: 45,
+        mrp: 60,
+        unit: '1 kg',
+        emoji: '🍅',
+      );
+
+      catalog.fetchedProducts.assignAll([item1, item2]);
+
+      await tester.pumpWidget(const GetMaterialApp(
+        home: Scaffold(body: CategoriesScreen()),
+      ));
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('Login, Address Sync, and Storage Persistence', () {
+    testWidgets('login without address routes to new address form and auto-fills phone',
+        (tester) async {
+      final box = GetStorage();
+      await box.erase();
+
+      Get.put(AuthController());
+      final addresses = Get.put(AddressController());
+      addresses.clear();
+
+      await tester.pumpWidget(GetMaterialApp(
+        initialRoute: '/login',
+        getPages: [
+          GetPage(name: '/login', page: () => const LoginScreen()),
+          GetPage(name: '/addresses/new', page: () => const AddressFormScreen()),
+          GetPage(name: '/', page: () => const SizedBox()),
+        ],
+      ));
+      await tester.pumpAndSettle();
+
+      final auth = Get.find<AuthController>();
+      auth.phoneController.text = '9876543210';
+      await auth.sendOtp();
+      await tester.pumpAndSettle();
+
+      // Trigger verification
+      if (auth.generatedOtp.value != null) {
+        auth.otpController.text = auth.generatedOtp.value!;
+        await auth.verifyOtp();
+      }
+      await tester.pumpAndSettle();
+
+      // Should have navigated to /addresses/new because addresses was empty
+      expect(find.text('Add delivery address'), findsOneWidget);
+      expect(addresses.phoneController.text, '9876543210');
+      await tester.pump(const Duration(seconds: 5));
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('saving address persists phone and address into local memory and navigates to home',
+        (tester) async {
+      final box = GetStorage();
+      await box.erase();
+      await box.write(AuthController.keyPhone, '9876543210');
+      await box.write(AuthController.keyToken, 'test-token');
+
+      Get.put(AuthController());
+      final addresses = Get.put(AddressController());
+      addresses.clear();
+
+      await tester.pumpWidget(GetMaterialApp(
+        initialRoute: '/initial',
+        getPages: [
+          GetPage(name: '/initial', page: () => const SizedBox()),
+          GetPage(name: '/addresses/new', page: () => const AddressFormScreen()),
+          GetPage(name: '/', page: () => const Scaffold(body: Text('Home Landing Screen'))),
+        ],
+      ));
+      Get.toNamed('/addresses/new', arguments: {'fromLogin': true});
+      await tester.pumpAndSettle();
+
+      addresses.beginAdd();
+      addresses.lineController.text = '123 Station Road';
+      addresses.cityController.text = 'Sandur';
+      addresses.pincodeController.text = '583119';
+      addresses.phoneController.text = '9876543210';
+
+      final saveButton = find.widgetWithText(ElevatedButton, 'Save address');
+      expect(saveButton, findsOneWidget);
+      await tester.tap(saveButton);
+      await tester.pumpAndSettle();
+
+      // Should land on home
+      expect(find.text('Home Landing Screen'), findsOneWidget);
+
+      // Verify persistence in local memory
+      expect(box.read<String>(AuthController.keyPhone), '9876543210');
+      final savedAddresses = box.read<List>(AddressController.keySavedAddresses);
+      expect(savedAddresses, isNotNull);
+      expect(savedAddresses!.length, 1);
+      expect(savedAddresses.first['city'], 'Sandur');
+      expect(savedAddresses.first['pincode'], '583119');
+    });
+
+    testWidgets('persisted login and address are restored across app closures',
+        (tester) async {
+      final box = GetStorage();
+      await box.erase();
+      await box.write(AuthController.keyPhone, '9876543210');
+      await box.write(AuthController.keyName, 'Vijay');
+      await box.write(AuthController.keyToken, 'persistent-token');
+      await box.write(AddressController.keySavedAddresses, [
+        {
+          'id': 'addr-persisted',
+          'label': 'Home',
+          'line': '50 Gandhi Chowk',
+          'city': 'Sandur',
+          'pincode': '583119',
+          'phone': '9876543210',
+          'lat': 15.0821,
+          'lng': 76.5492,
+          'isDefault': true,
+        }
+      ]);
+      await box.write(AddressController.keySelectedAddressId, 'addr-persisted');
+
+      Get.reset();
+      final auth = Get.put(AuthController());
+      final addresses = Get.put(AddressController());
+
+      expect(auth.isLoggedIn.value, isTrue);
+      expect(auth.phone.value, '9876543210');
+      expect(auth.name.value, 'Vijay');
+      expect(addresses.addresses.length, 1);
+      expect(addresses.selected?.line, '50 Gandhi Chowk');
+      expect(addresses.selectedId.value, 'addr-persisted');
+    });
+
+    testWidgets('logout clears persistent memory and redirects to login',
+        (tester) async {
+      final box = GetStorage();
+      await box.write(AuthController.keyPhone, '9876543210');
+      await box.write(AuthController.keyToken, 'token-to-delete');
+      await box.write(AddressController.keySavedAddresses, [{'id': 'a1'}]);
+
+      Get.reset();
+      final auth = Get.put(AuthController());
+      final addresses = Get.put(AddressController());
+      Get.put(CartController());
+
+      await tester.pumpWidget(GetMaterialApp(
+        initialRoute: '/',
+        getPages: [
+          GetPage(name: '/', page: () => const SizedBox()),
+          GetPage(name: '/login', page: () => const Scaffold(body: Text('Login Screen'))),
+        ],
+      ));
+      await tester.pumpAndSettle();
+
+      auth.logout();
+      await tester.pumpAndSettle();
+
+      expect(auth.isLoggedIn.value, isFalse);
+      expect(box.read(AuthController.keyToken), isNull);
+      expect(box.read(AuthController.keyPhone), isNull);
+      expect(box.read(AddressController.keySavedAddresses), isNull);
+      expect(addresses.addresses, isEmpty);
+      expect(find.text('Login Screen'), findsOneWidget);
     });
   });
 }

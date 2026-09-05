@@ -48,6 +48,16 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(product.name, style: textTheme.headlineLarge),
+            if (product.storeName != null && product.storeName!.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                'Sold by ${product.storeName}',
+                style: textTheme.bodyMedium?.copyWith(
+                  color: AppColors.primaryDark,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
             const SizedBox(height: AppSpacing.xs),
             Text(product.unit, style: textTheme.bodySmall),
             const SizedBox(height: AppSpacing.md),

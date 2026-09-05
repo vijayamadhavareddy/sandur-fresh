@@ -4,6 +4,7 @@ import { ref } from "vue";
 import type {
   AdminCategoriesQuery,
   AdminProductQuery,
+  AdminStoresQuery,
   TimeBoundSectionsQuery,
 } from "@/api/generated/graphql";
 import AppButton from "@/components/AppButton.vue";
@@ -14,10 +15,12 @@ import { type ProductFormValues, productSchema } from "./validation";
 type Product = NonNullable<AdminProductQuery["adminProduct"]>;
 type Category = NonNullable<AdminCategoriesQuery["adminCategories"]>[number];
 type TimeBoundSection = TimeBoundSectionsQuery["timeBoundSections"][number];
+type Store = NonNullable<AdminStoresQuery["adminStores"]>[number];
 const props = defineProps<{
   product?: Product;
   categories: Category[];
   sections: TimeBoundSection[];
+  stores?: Store[];
 }>();
 const emit = defineEmits<{ saved: [id: string]; cancel: [] }>();
 const busy = ref(false);
@@ -36,6 +39,8 @@ const { handleSubmit, setFieldValue, values } = useForm<ProductFormValues>({
         markupType: (props.product.markupType as "PERCENTAGE" | "AMOUNT") ?? "PERCENTAGE",
         imageUrl: props.product.imageUrl ?? "",
         timeBoundSections: (props.product.timeBoundSections as ("BREAKFAST" | "LUNCH" | "DINNER")[]) ?? [],
+        trackInventory: props.product.trackInventory ?? false,
+        storeId: props.product.storeId ?? "",
         isActive: props.product.isActive,
         categoryId: props.product.categoryId,
       }
@@ -50,6 +55,8 @@ const { handleSubmit, setFieldValue, values } = useForm<ProductFormValues>({
         markupType: "PERCENTAGE" as "PERCENTAGE" | "AMOUNT",
         imageUrl: "",
         timeBoundSections: [] as ("BREAKFAST" | "LUNCH" | "DINNER")[],
+        trackInventory: false,
+        storeId: "",
         isActive: true,
         categoryId: "",
       },
@@ -188,33 +195,56 @@ async function upload(event: Event) {
         <ErrorMessage name="description" class="text-xs text-red-400 font-medium" />
       </div>
 
-      <!-- Unit -->
-      <div class="flex flex-col gap-1.5">
-        <label for="product-unit" class="text-xs font-semibold text-slate-300">Unit / Pack Size</label>
-        <Field
-          id="product-unit"
-          name="unit"
-          placeholder="e.g. 500 g or 1 kg"
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
-        />
-        <ErrorMessage name="unit" class="text-xs text-red-400 font-medium" />
-      </div>
+      <!-- Unit, Category, Store Assignment -->
+      <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Unit -->
+        <div class="flex flex-col gap-1.5">
+          <label for="product-unit" class="text-xs font-semibold text-slate-300">Unit / Pack Size</label>
+          <Field
+            id="product-unit"
+            name="unit"
+            placeholder="e.g. 500 g or 1 kg"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition font-mono"
+          />
+          <ErrorMessage name="unit" class="text-xs text-red-400 font-medium" />
+        </div>
 
-      <!-- Category -->
-      <div class="flex flex-col gap-1.5">
-        <label for="product-category" class="text-xs font-semibold text-slate-300">Category</label>
-        <Field
-          id="product-category"
-          name="categoryId"
-          as="select"
-          class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
-        >
-          <option value="">Select Category</option>
-          <option v-for="item in categories" :key="item.id" :value="item.id">
-            {{ item.name }}
-          </option>
-        </Field>
-        <ErrorMessage name="categoryId" class="text-xs text-red-400 font-medium" />
+        <!-- Category -->
+        <div class="flex flex-col gap-1.5">
+          <label for="product-category" class="text-xs font-semibold text-slate-300">Category</label>
+          <Field
+            id="product-category"
+            name="categoryId"
+            as="select"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
+          >
+            <option value="">Select Category</option>
+            <option v-for="item in categories" :key="item.id" :value="item.id">
+              {{ item.name }}
+            </option>
+          </Field>
+          <ErrorMessage name="categoryId" class="text-xs text-red-400 font-medium" />
+        </div>
+
+        <!-- Store Assignment (Optional) -->
+        <div class="flex flex-col gap-1.5">
+          <div class="flex items-center justify-between">
+            <label for="product-store" class="text-xs font-semibold text-slate-300">Store</label>
+            <span class="text-[10px] text-slate-500">Optional</span>
+          </div>
+          <Field
+            id="product-store"
+            name="storeId"
+            as="select"
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition cursor-pointer"
+          >
+            <option value="">All Stores (Global)</option>
+            <option v-for="item in stores" :key="item.id" :value="item.id">
+              {{ item.name }} ({{ item.type === 'DARK_STORE' ? 'Dark Store' : '3rd Party' }})
+            </option>
+          </Field>
+          <ErrorMessage name="storeId" class="text-xs text-red-400 font-medium" />
+        </div>
       </div>
 
       <!-- Time-bound sections (Multi-select) -->
@@ -405,18 +435,36 @@ async function upload(event: Event) {
         </div>
       </div>
 
-      <!-- Active Checkbox -->
-      <div class="md:col-span-2">
-        <label for="product-active" class="inline-flex items-center gap-2 cursor-pointer select-none text-xs font-semibold text-slate-300">
+      <!-- Inventory & Status Settings -->
+      <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <label for="product-track-inventory" class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 cursor-pointer select-none hover:border-slate-700 transition">
+          <Field
+            id="product-track-inventory"
+            name="trackInventory"
+            type="checkbox"
+            :value="true"
+            :unchecked-value="false"
+            class="mt-0.5 w-4 h-4 accent-emerald-500 rounded border-slate-700 bg-slate-950 cursor-pointer"
+          />
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold text-slate-200">Track Inventory in Dark Stores</span>
+            <span class="text-[11px] text-slate-400 mt-0.5">If unchecked, product has non-mandatory inventory and is always in-stock.</span>
+          </div>
+        </label>
+
+        <label for="product-active" class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 cursor-pointer select-none hover:border-slate-700 transition">
           <Field
             id="product-active"
             name="isActive"
             type="checkbox"
             :value="true"
             :unchecked-value="false"
-            class="w-4 h-4 accent-emerald-500 rounded border-slate-700 bg-slate-950 cursor-pointer"
+            class="mt-0.5 w-4 h-4 accent-emerald-500 rounded border-slate-700 bg-slate-950 cursor-pointer"
           />
-          <span>Active in catalog</span>
+          <div class="flex flex-col">
+            <span class="text-xs font-semibold text-slate-200">Active in Catalog</span>
+            <span class="text-[11px] text-slate-400 mt-0.5">Make this product visible and purchasable in the customer mobile app.</span>
+          </div>
         </label>
       </div>
     </div>

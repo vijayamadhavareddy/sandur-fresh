@@ -1,6 +1,6 @@
 import type { DbOrTx } from "@sf/db";
 import { categories, inventory, products, stores } from "@sf/db";
-import { and, count, eq, like, sql } from "drizzle-orm";
+import { and, count, eq, isNull, like, or, sql } from "drizzle-orm";
 
 export type ProductRow = typeof products.$inferSelect;
 export type CategoryRow = typeof categories.$inferSelect;
@@ -28,6 +28,9 @@ export const listProducts = async (
   const filters = [eq(products.isActive, true)];
   if (input.categoryId) filters.push(eq(products.categoryId, input.categoryId));
   if (input.q) filters.push(like(products.name, `%${input.q}%`));
+  if (input.storeId) {
+    filters.push(or(isNull(products.storeId), eq(products.storeId, input.storeId))!);
+  }
 
   const where = and(...filters);
   const offset = (input.page - 1) * input.limit;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/address_controller.dart';
+import '../models/address.dart';
 import '../theme/app_colors.dart';
 
 class AddressFormScreen extends GetView<AddressController> {
@@ -10,14 +11,46 @@ class AddressFormScreen extends GetView<AddressController> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final isEditing = Get.arguments != null;
+    final isFromLogin = Get.arguments is Map && Get.arguments['fromLogin'] == true;
+    final isEditing = Get.arguments is Address || (Get.arguments is Map && Get.arguments['isEditing'] == true);
 
     return Scaffold(
       appBar: AppBar(
-          title: Text(isEditing ? 'Edit address' : 'New address')),
+        title: Text(isEditing
+            ? 'Edit address'
+            : isFromLogin
+                ? 'Add delivery address'
+                : 'New address'),
+        automaticallyImplyLeading: !isFromLogin,
+      ),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.lg),
         children: [
+          if (isFromLogin) ...[
+            Container(
+              padding: const EdgeInsets.all(AppSpacing.md),
+              margin: const EdgeInsets.only(bottom: AppSpacing.lg),
+              decoration: BoxDecoration(
+                color: AppColors.primaryContainer,
+                borderRadius: BorderRadius.circular(AppRadius.md),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.location_on, color: AppColors.primaryDark),
+                  const SizedBox(width: AppSpacing.sm),
+                  Expanded(
+                    child: Text(
+                      'Please provide your delivery address to start shopping.',
+                      style: textTheme.bodySmall?.copyWith(
+                        color: AppColors.primaryDark,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
           Text('Address label', style: textTheme.titleLarge),
           const SizedBox(height: AppSpacing.sm),
           Obx(() => Wrap(
@@ -78,7 +111,13 @@ class AddressFormScreen extends GetView<AddressController> {
           padding: const EdgeInsets.all(AppSpacing.lg),
           child: ElevatedButton(
             onPressed: () {
-              if (controller.saveForm()) Get.back();
+              if (controller.saveForm()) {
+                if (isFromLogin) {
+                  Get.offAllNamed('/');
+                } else {
+                  Get.back();
+                }
+              }
             },
             child: const Text('Save address'),
           ),

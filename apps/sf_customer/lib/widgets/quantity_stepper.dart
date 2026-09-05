@@ -14,6 +14,25 @@ class QuantityStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Get.find<CartController>();
+    final isCompact = height < 32;
+    final buttonPadding = isCompact
+        ? const EdgeInsets.symmetric(horizontal: 5, vertical: 3)
+        : const EdgeInsets.symmetric(horizontal: 7, vertical: 6);
+    final iconSize = isCompact ? 13.0 : 15.0;
+    final textPadding = isCompact
+        ? const EdgeInsets.symmetric(horizontal: 4)
+        : const EdgeInsets.symmetric(horizontal: 6);
+    final textStyle = isCompact
+        ? Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: AppColors.primaryDark,
+              fontWeight: FontWeight.w800,
+              fontSize: 12,
+            )
+        : Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AppColors.primaryDark,
+              fontWeight: FontWeight.w800,
+            );
+
     return Container(
       height: height,
       decoration: BoxDecoration(
@@ -27,21 +46,21 @@ class QuantityStepper extends StatelessWidget {
           children: [
             _StepperButton(
               icon: Icons.remove,
+              iconSize: iconSize,
+              padding: buttonPadding,
               onTap: () => cart.decrement(product.id),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+              padding: textPadding,
               child: Text(
                 '$qty',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.primaryDark,
-                      fontWeight: FontWeight.w800,
-                    ),
+                style: textStyle,
               ),
             ),
             _StepperButton(
               icon: Icons.add,
+              iconSize: iconSize,
+              padding: buttonPadding,
               onTap: () => cart.increment(product.id),
             ),
           ],
@@ -53,9 +72,16 @@ class QuantityStepper extends StatelessWidget {
 
 class _StepperButton extends StatelessWidget {
   final IconData icon;
+  final double iconSize;
+  final EdgeInsetsGeometry padding;
   final VoidCallback onTap;
 
-  const _StepperButton({required this.icon, required this.onTap});
+  const _StepperButton({
+    required this.icon,
+    this.iconSize = 16,
+    this.padding = const EdgeInsets.all(AppSpacing.sm),
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +89,8 @@ class _StepperButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppRadius.pill),
       child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.sm),
-        child: Icon(icon, size: 16, color: AppColors.primaryDark),
+        padding: padding,
+        child: Icon(icon, size: iconSize, color: AppColors.primaryDark),
       ),
     );
   }

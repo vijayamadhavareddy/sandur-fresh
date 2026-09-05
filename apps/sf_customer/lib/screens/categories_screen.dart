@@ -93,7 +93,7 @@ class CategoriesScreen extends GetView<CatalogController> {
                   crossAxisCount: 2,
                   mainAxisSpacing: AppSpacing.md,
                   crossAxisSpacing: AppSpacing.md,
-                  childAspectRatio: 0.72,
+                  childAspectRatio: 0.58,
                 ),
                 itemCount: products.length,
                 itemBuilder: (context, i) =>

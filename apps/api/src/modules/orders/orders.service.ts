@@ -93,20 +93,23 @@ export const createOrdersService = (deps: OrdersServiceDeps) => {
           unitPrice: r.product.price,
           mrp: r.product.mrp,
           quantity: r.item.quantity,
+          trackInventory: r.product.trackInventory,
         }));
 
         for (const line of lines) {
-          const updated = await deps.productsRepo.decrementStock(
-            tx,
-            cart.storeId,
-            line.productId,
-            line.quantity,
-          );
-          if (!updated) {
-            throw Object.assign(new Error("OUT_OF_STOCK"), {
-              code: "OUT_OF_STOCK",
-              productId: line.productId,
-            });
+          if (line.trackInventory) {
+            const updated = await deps.productsRepo.decrementStock(
+              tx,
+              cart.storeId,
+              line.productId,
+              line.quantity,
+            );
+            if (!updated) {
+              throw Object.assign(new Error("OUT_OF_STOCK"), {
+                code: "OUT_OF_STOCK",
+                productId: line.productId,
+              });
+            }
           }
         }
 

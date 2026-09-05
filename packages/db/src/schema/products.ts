@@ -45,6 +45,10 @@ export const products = sqliteTable("products", {
     .$type<string[]>()
     .notNull()
     .default(sql`'[]'`),
+  /** Whether inventory is tracked for this product across dark stores (default false / non-mandatory). */
+  trackInventory: integer("track_inventory", { mode: "boolean" }).notNull().default(false),
+  /** Optional assigned store (null = available across all stores). */
+  storeId: text("store_id").references(() => stores.id, { onDelete: "set null" }),
   isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
   createdAt: createdAt(),
   updatedAt: updatedAt(),
@@ -92,11 +96,13 @@ export const categoriesRelations = relations(categories, ({ many }) => ({
 
 export const productsRelations = relations(products, ({ one, many }) => ({
   category: one(categories, { fields: [products.categoryId], references: [categories.id] }),
+  store: one(stores, { fields: [products.storeId], references: [stores.id] }),
   inventory: many(inventory),
 }));
 
 export const storesRelations = relations(stores, ({ many }) => ({
   inventory: many(inventory),
+  products: many(products),
 }));
 
 export const inventoryRelations = relations(inventory, ({ one }) => ({

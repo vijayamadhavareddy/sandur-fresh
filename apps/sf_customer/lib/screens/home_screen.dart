@@ -101,6 +101,8 @@ class _Header extends StatelessWidget {
                       final addr = address.selected;
                       return Text(
                         '${addr?.label ?? 'Home'} — Sandur, Karnataka',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: textTheme.bodyMedium
                             ?.copyWith(color: Colors.white, fontWeight: FontWeight.w700),
                       );
@@ -270,7 +272,7 @@ class _ResultsSection extends GetView<CatalogController> {
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.72,
+            childAspectRatio: 0.58,
             children: results.map((p) => ProductCard(product: p)).toList(),
           ),
       ],
@@ -286,7 +288,7 @@ class _HorizontalShelf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 248,
+      height: 264,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: children.length,
@@ -316,7 +318,7 @@ class _Shelves extends GetView<CatalogController> {
           const SectionHeader(title: 'Buy again'),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
-            height: 136,
+            height: 144,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: buyAgain.length,
@@ -356,7 +358,7 @@ class _Shelves extends GetView<CatalogController> {
           ),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
-            height: 248,
+            height: 264,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: veggies.length,
@@ -376,7 +378,7 @@ class _Shelves extends GetView<CatalogController> {
           const SizedBox(height: AppSpacing.sm),
           _HorizontalShelf(
             children: deals
-                .map((p) => SizedBox(width: 158, child: ProductCard(product: p)))
+                .map((p) => SizedBox(width: 160, child: ProductCard(product: p)))
                 .toList(),
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -419,7 +421,7 @@ class _Shelves extends GetView<CatalogController> {
           const SizedBox(height: AppSpacing.sm),
           _HorizontalShelf(
             children: section.items
-                .map((p) => SizedBox(width: 158, child: ProductCard(product: p)))
+                .map((p) => SizedBox(width: 160, child: ProductCard(product: p)))
                 .toList(),
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -438,7 +440,7 @@ class _Shelves extends GetView<CatalogController> {
             physics: const NeverScrollableScrollPhysics(),
             mainAxisSpacing: AppSpacing.md,
             crossAxisSpacing: AppSpacing.md,
-            childAspectRatio: 0.72,
+            childAspectRatio: 0.58,
             children: snacks.map((p) => ProductCard(product: p)).toList(),
           ),
           const SizedBox(height: AppSpacing.xl),
@@ -478,7 +480,7 @@ class _BuyAgainTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
-      width: 120,
+      width: 136,
       padding: const EdgeInsets.all(AppSpacing.sm + 2),
       decoration: BoxDecoration(
         color: AppColors.surface,
@@ -513,10 +515,16 @@ class _BuyAgainTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  formatPrice(product.price),
-                  style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800),
+                Flexible(
+                  child: Text(
+                    formatPrice(product.price),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w800),
+                  ),
                 ),
+                const SizedBox(width: 4),
                 Obx(() {
                   final qty = cart.quantityOf(product.id);
                   if (qty > 0) {
@@ -527,7 +535,7 @@ class _BuyAgainTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppRadius.pill),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.sm + 2, vertical: 5),
+                          horizontal: AppSpacing.sm + 2, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(AppRadius.pill),

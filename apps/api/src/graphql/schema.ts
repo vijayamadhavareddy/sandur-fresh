@@ -3,13 +3,15 @@ import { buildSchema, type GeneratedEntities } from "drizzle-graphql";
 import {
   type GraphQLFieldConfigMap,
   type GraphQLFieldResolver,
+  GraphQLList,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLSchema,
 } from "graphql";
 import type { GraphQLContext } from "./context";
 import { adminMutations, adminQueries } from "./resolvers/admin";
 import { cartMutations, cartQueries } from "./resolvers/cart";
-import { catalogQueries } from "./resolvers/catalog";
+import { catalogQueries, TimeBoundSectionIdType } from "./resolvers/catalog";
 import { deliveryQueries } from "./resolvers/delivery";
 import { orderMutations, orderQueries } from "./resolvers/orders";
 import { userMutations, userQueries } from "./resolvers/users";
@@ -54,45 +56,14 @@ const catalogQueryKeys = [
   "storesSingle",
 ] as const;
 
-
 const getSafeCatalogQueries = (entities: GeneratedEntities<Db>) => {
-
   const safeCatalogQueries: GraphQLFieldConfigMap<unknown, GraphQLContext> = {};
 
   for (const key of catalogQueryKeys) {
     const field = entities.queries[key as keyof typeof entities.queries];
     if (field) {
       const isList = key === "products" || key === "categories" || key === "stores";
-      const baseField = isList ? withLimitCap(field as never) : field;
-      const origResolve = baseField.resolve;
-      safeCatalogQueries[key] = {
-        ...baseField,
-        resolve: async (
-          source: unknown,
-          args: Record<string, unknown>,
-          context: GraphQLContext,
-          info: unknown,
-        ) => {
-          if (context?.services?.products) {
-            if (key === "categories") {
-              const res = await context.services.products.listCategories();
-              return res.ok ? res.value : [];
-            }
-            if (key === "products") {
-              const limit = typeof args.limit === "number" ? args.limit : 20;
-              const page = typeof args.offset === "number" ? Math.floor(args.offset / limit) + 1 : 1;
-              const res = await context.services.products.listProducts({ page, limit });
-              return res.ok ? res.value.items : [];
-            }
-            if (key === "stores") {
-              const res = await context.services.products.listStores();
-              return res.ok ? res.value : [];
-            }
-          }
-          if (!origResolve) return null;
-          return origResolve(source, args, context, info as never);
-        },
-      } as never;
+      safeCatalogQueries[key] = (isList ? withLimitCap(field as never) : field) as never;
     }
   }
 
@@ -106,6 +77,34 @@ export const getGraphqlSchema = (db: Db) => {
   if (cached) return cached;
 
   const { entities } = buildSchema(db);
+
+  for (const type of Object.values(entities.types)) {
+    if (type instanceof GraphQLObjectType) {
+      const fields = type.getFields();
+      if (fields.timeBoundSections) {
+        fields.timeBoundSections.type = new GraphQLNonNull(
+          new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType)),
+        );
+        fields.timeBoundSections.resolve = (source: { timeBoundSections?: unknown }) => {
+          if (Array.isArray(source.timeBoundSections)) return source.timeBoundSections;
+          if (
+            typeof source.timeBoundSections === "string" &&
+            source.timeBoundSections.trim() !== ""
+          ) {
+            try {
+              const parsed = JSON.parse(source.timeBoundSections);
+              if (Array.isArray(parsed)) return parsed;
+              return [parsed];
+            } catch {
+              return [source.timeBoundSections];
+            }
+          }
+          return [];
+        };
+      }
+    }
+  }
+
   const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: "Query",

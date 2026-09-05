@@ -57,8 +57,11 @@ export const createCartService = (deps: CartServiceDeps) => {
     const items: CartViewItem[] = [];
 
     for (const row of rows) {
-      const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, row.product.id);
-      const stockQty = inv?.stockQty ?? 0;
+      let stockQty = 999;
+      if (row.product.trackInventory) {
+        const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, row.product.id);
+        stockQty = inv?.stockQty ?? 0;
+      }
       const lineTotal = row.product.price * row.item.quantity;
       const lineSavings = Math.max(0, row.product.mrp - row.product.price) * row.item.quantity;
       items.push({
@@ -128,10 +131,12 @@ export const createCartService = (deps: CartServiceDeps) => {
       cart = (await deps.cartRepo.updateCartStore(deps.db, cart.id, storeResult.value)) ?? cart;
     }
 
-    const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, input.productId);
-    const stockQty = inv?.stockQty ?? 0;
-    if (input.quantity > stockQty) {
-      return err(outOfStock("Insufficient stock", { available: stockQty }));
+    if (product.trackInventory) {
+      const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, input.productId);
+      const stockQty = inv?.stockQty ?? 0;
+      if (input.quantity > stockQty) {
+        return err(outOfStock("Insufficient stock", { available: stockQty }));
+      }
     }
 
     await deps.cartRepo.upsertCartItem(deps.db, {
@@ -154,10 +159,13 @@ export const createCartService = (deps: CartServiceDeps) => {
     const item = await deps.cartRepo.findCartItem(deps.db, itemId);
     if (!item || item.cartId !== cart.id) return err(notFound("Cart item not found"));
 
-    const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, item.productId);
-    const stockQty = inv?.stockQty ?? 0;
-    if (input.quantity > stockQty) {
-      return err(outOfStock("Insufficient stock", { available: stockQty }));
+    const product = await deps.productsRepo.findProductById(deps.db, item.productId);
+    if (product?.trackInventory) {
+      const inv = await deps.productsRepo.findInventory(deps.db, cart.storeId, item.productId);
+      const stockQty = inv?.stockQty ?? 0;
+      if (input.quantity > stockQty) {
+        return err(outOfStock("Insufficient stock", { available: stockQty }));
+      }
     }
 
     await deps.cartRepo.updateCartItemQuantity(deps.db, itemId, input.quantity);

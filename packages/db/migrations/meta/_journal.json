@@ -64,6 +64,20 @@
       "when": 1787833149366,
       "tag": "0008_plain_cerebro",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1788178050558,
+      "tag": "0009_add_track_inventory",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1788285865616,
+      "tag": "0010_add_product_store_id",
+      "breakpoints": true
     }
   ]
 }

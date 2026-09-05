@@ -160,9 +160,14 @@ const sectionTitle = (id: string) =>
                   </td>
 
                   <td class="py-3.5 px-4">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
-                      {{ product.category.name }}
-                    </span>
+                    <div class="flex flex-col gap-1 items-start">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+                        {{ product.category.name }}
+                      </span>
+                      <span v-if="product.store" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20">
+                        {{ product.store.name }}
+                      </span>
+                    </div>
                   </td>
 
                   <td class="py-3.5 px-4">
@@ -193,12 +198,20 @@ const sectionTitle = (id: string) =>
                   </td>
 
                   <td class="py-3.5 px-4">
-                    <span
-                      class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold border"
-                      :class="product.isActive ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' : 'bg-slate-800/80 text-slate-400 border-slate-700'"
-                    >
-                      {{ product.isActive ? 'Active' : 'Paused' }}
-                    </span>
+                    <div class="flex flex-col gap-1 items-start">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold border"
+                        :class="product.isActive ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' : 'bg-slate-800/80 text-slate-400 border-slate-700'"
+                      >
+                        {{ product.isActive ? 'Active' : 'Paused' }}
+                      </span>
+                      <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium border"
+                        :class="product.trackInventory ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' : 'bg-slate-800/60 text-slate-400 border-slate-700/50'"
+                      >
+                        {{ product.trackInventory ? 'Stock Tracked' : 'No Stock Limit' }}
+                      </span>
+                    </div>
                   </td>
 
                   <td class="py-3.5 px-4 sm:px-6 text-right">

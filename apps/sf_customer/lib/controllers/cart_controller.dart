@@ -25,11 +25,32 @@ class CartController extends GetxController {
         document: documentNodeQueryMyCart,
         fromJson: Query$MyCart.fromJson,
       );
-      _updateCartFromTypedData(res.myCart);
+      if (res.myCart.items.isNotEmpty) {
+        _updateCartFromTypedData(res.myCart);
+      } else if (items.isNotEmpty) {
+        await syncToServer();
+      }
     } catch (_) {
       // Ignore if offline
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> syncToServer() async {
+    if (gqlProvider.authToken == null) return;
+    for (final item in items.values.toList()) {
+      try {
+        final res = await gqlProvider.execute(
+          document: documentNodeMutationAddToCart,
+          fromJson: Mutation$AddToCart.fromJson,
+          variables: Variables$Mutation$AddToCart(
+            productId: item.product.id,
+            quantity: item.qty.value,
+          ).toJson(),
+        );
+        _updateCartFromAddToCart(res.addToCart);
+      } catch (_) {}
     }
   }
 
@@ -69,12 +90,13 @@ class CartController extends GetxController {
 
     if (gqlProvider.authToken != null) {
       try {
+        final targetQty = existing != null ? existing.qty.value : 1;
         final res = await gqlProvider.execute(
           document: documentNodeMutationAddToCart,
           fromJson: Mutation$AddToCart.fromJson,
           variables: Variables$Mutation$AddToCart(
             productId: product.id,
-            quantity: existing != null ? existing.qty.value : 1,
+            quantity: targetQty,
           ).toJson(),
         );
         _updateCartFromAddToCart(res.addToCart);
@@ -166,7 +188,17 @@ class CartController extends GetxController {
             _updateCartFromUpdateCartItem(res.updateCartItem);
           } catch (_) {}
         } else {
-          add(item.product);
+          try {
+            final res = await gqlProvider.execute(
+              document: documentNodeMutationAddToCart,
+              fromJson: Mutation$AddToCart.fromJson,
+              variables: Variables$Mutation$AddToCart(
+                productId: productId,
+                quantity: item.qty.value,
+              ).toJson(),
+            );
+            _updateCartFromAddToCart(res.addToCart);
+          } catch (_) {}
         }
       }
     }
@@ -179,18 +211,32 @@ class CartController extends GetxController {
       remove(productId);
     } else {
       item.qty.value--;
-      if (gqlProvider.authToken != null && item.id != null) {
-        try {
-          final res = await gqlProvider.execute(
-            document: documentNodeMutationUpdateCartItem,
-            fromJson: Mutation$UpdateCartItem.fromJson,
-            variables: Variables$Mutation$UpdateCartItem(
-              itemId: item.id!,
-              quantity: item.qty.value,
-            ).toJson(),
-          );
-          _updateCartFromUpdateCartItem(res.updateCartItem);
-        } catch (_) {}
+      if (gqlProvider.authToken != null) {
+        if (item.id != null) {
+          try {
+            final res = await gqlProvider.execute(
+              document: documentNodeMutationUpdateCartItem,
+              fromJson: Mutation$UpdateCartItem.fromJson,
+              variables: Variables$Mutation$UpdateCartItem(
+                itemId: item.id!,
+                quantity: item.qty.value,
+              ).toJson(),
+            );
+            _updateCartFromUpdateCartItem(res.updateCartItem);
+          } catch (_) {}
+        } else {
+          try {
+            final res = await gqlProvider.execute(
+              document: documentNodeMutationAddToCart,
+              fromJson: Mutation$AddToCart.fromJson,
+              variables: Variables$Mutation$AddToCart(
+                productId: productId,
+                quantity: item.qty.value,
+              ).toJson(),
+            );
+            _updateCartFromAddToCart(res.addToCart);
+          } catch (_) {}
+        }
       }
     }
   }

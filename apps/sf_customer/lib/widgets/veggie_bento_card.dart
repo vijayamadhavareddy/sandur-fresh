@@ -21,7 +21,7 @@ class VeggieBentoCard extends StatelessWidget {
 
     return Container(
       width: 158,
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.sm + 2),
       decoration: BoxDecoration(
         color: AppColors.surface,
         border: Border.all(color: AppColors.border, width: 0.8),
@@ -38,7 +38,7 @@ class VeggieBentoCard extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 100,
+                  height: 96,
                   decoration: BoxDecoration(
                     color: AppColors.surfaceVariant,
                     borderRadius: BorderRadius.circular(AppRadius.md),
@@ -47,12 +47,12 @@ class VeggieBentoCard extends StatelessWidget {
                   child: Text(product.emoji, style: const TextStyle(fontSize: 40)),
                 ),
                 Positioned(
-                  top: 8,
-                  left: 8,
+                  top: 6,
+                  left: 6,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.sm + 1,
-                      vertical: 3,
+                      horizontal: AppSpacing.sm,
+                      vertical: 2,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.primaryDark,
@@ -78,23 +78,54 @@ class VeggieBentoCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: 6),
             Text(
               product.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: textTheme.titleLarge,
+              style: textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                  ) ??
+                  textTheme.titleLarge,
             ),
+            if (product.storeName != null && product.storeName!.isNotEmpty) ...[
+              const SizedBox(height: 1),
+              Text(
+                'by ${product.storeName}',
+                style: textTheme.bodySmall?.copyWith(
+                  fontSize: 10,
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
             const SizedBox(height: 2),
-            Text(product.unit, style: textTheme.bodySmall),
-            const SizedBox(height: AppSpacing.xs),
+            Text(
+              product.unit,
+              style: textTheme.bodySmall?.copyWith(fontSize: 11),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  formatPrice(product.price),
-                  style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+                Flexible(
+                  child: Text(
+                    formatPrice(product.price),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 14.5,
+                        ) ??
+                        textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+                  ),
                 ),
+                const SizedBox(width: 4),
                 Obx(() {
                   final qty = cart.quantityOf(product.id);
                   if (qty > 0) {
@@ -105,8 +136,8 @@ class VeggieBentoCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppRadius.pill),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.md,
-                        vertical: 6,
+                        horizontal: AppSpacing.sm + 2,
+                        vertical: 5,
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.primary,
@@ -117,6 +148,7 @@ class VeggieBentoCard extends StatelessWidget {
                         style: textTheme.bodySmall?.copyWith(
                           color: AppColors.primaryDark,
                           fontWeight: FontWeight.w800,
+                          fontSize: 11,
                         ),
                       ),
                     ),
