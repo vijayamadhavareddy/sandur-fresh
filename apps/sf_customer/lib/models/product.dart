@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../providers/graphql_provider.dart';
 
 class Product {
   final String id;
@@ -8,6 +9,7 @@ class Product {
   final double mrp;
   final String unit;
   final String emoji;
+  final String? imageUrl;
   final bool inStock;
   final bool trackInventory;
   final String? storeId;
@@ -25,12 +27,24 @@ class Product {
     required this.mrp,
     required this.unit,
     required this.emoji,
+    this.imageUrl,
     this.inStock = true,
     this.trackInventory = false,
     this.storeId,
     this.storeName,
     this.timeBoundSections = const [],
   });
+
+  String? get resolvedImageUrl {
+    final url = imageUrl?.trim();
+    if (url == null || url.isEmpty) return null;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    if (url.startsWith('/')) {
+      final base = Uri.tryParse(GraphQLProvider.endpoint)?.origin ?? '';
+      if (base.isNotEmpty) return '$base$url';
+    }
+    return url;
+  }
 
   factory Product.fromGraphQL(Map<String, dynamic> json, {String? categoryName}) {
     final rawPrice = json['price'];
@@ -55,6 +69,7 @@ class Product {
       mrp: mrpVal,
       unit: json['unit'] as String? ?? '1 unit',
       emoji: json['emoji'] as String? ?? '🛒',
+      imageUrl: json['imageUrl'] as String?,
       inStock: json['isActive'] as bool? ?? json['inStock'] as bool? ?? true,
       trackInventory: json['trackInventory'] as bool? ?? false,
       storeId: storeIdVal,

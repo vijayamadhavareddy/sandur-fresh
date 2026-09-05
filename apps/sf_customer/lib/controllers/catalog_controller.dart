@@ -73,6 +73,7 @@ class CatalogController extends GetxController {
           mrp: mrpVal > 0 ? mrpVal : priceVal,
           unit: p.unit,
           emoji: p.emoji ?? '🛒',
+          imageUrl: p.imageUrl,
           inStock: p.isActive,
           timeBoundSections: (p.timeBoundSections as List?)?.map((e) => e.toString()).toList() ?? const [],
         );

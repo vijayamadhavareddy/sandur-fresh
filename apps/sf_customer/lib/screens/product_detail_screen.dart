@@ -42,9 +42,20 @@ class ProductDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.xl),
                 border: Border.all(color: AppColors.border, width: 0.8),
               ),
+              clipBehavior: Clip.antiAlias,
               alignment: Alignment.center,
-              child:
-                  Text(product.emoji, style: const TextStyle(fontSize: 120)),
+              child: product.resolvedImageUrl != null
+                  ? Image.network(
+                      product.resolvedImageUrl!,
+                      fit: BoxFit.contain,
+                      width: double.infinity,
+                      height: double.infinity,
+                      errorBuilder: (context, error, stackTrace) => Text(
+                        product.emoji,
+                        style: const TextStyle(fontSize: 120),
+                      ),
+                    )
+                  : Text(product.emoji, style: const TextStyle(fontSize: 120)),
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(product.name, style: textTheme.headlineLarge),

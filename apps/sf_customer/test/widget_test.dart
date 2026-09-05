@@ -480,6 +480,88 @@ void main() {
       expect(find.text('Organic Bananas'), findsOneWidget);
       expect(find.text('by Sandur Organic Mart'), findsOneWidget);
     });
+
+    testWidgets('ProductCard displays image when imageUrl is present',
+        (tester) async {
+      Get.put(CartController());
+      const productWithImage = Product(
+        id: 'p-img',
+        name: 'Fresh Apples',
+        category: 'Fruits',
+        price: 120,
+        mrp: 140,
+        unit: '1 kg',
+        emoji: '🍎',
+        imageUrl: 'https://images.example.com/apple.jpg',
+      );
+
+      await tester.pumpWidget(
+        GetMaterialApp(
+          home: Scaffold(
+            body: ProductCard(product: productWithImage),
+          ),
+        ),
+      );
+
+      expect(find.byType(Image), findsOneWidget);
+      final imageWidget = tester.widget<Image>(find.byType(Image));
+      expect((imageWidget.image as NetworkImage).url, 'https://images.example.com/apple.jpg');
+    });
+
+    testWidgets('ProductCard falls back to emoji when imageUrl is null or empty',
+        (tester) async {
+      Get.put(CartController());
+      const productNoImage = Product(
+        id: 'p-no-img',
+        name: 'Fresh Apples',
+        category: 'Fruits',
+        price: 120,
+        mrp: 140,
+        unit: '1 kg',
+        emoji: '🍎',
+        imageUrl: null,
+      );
+
+      await tester.pumpWidget(
+        GetMaterialApp(
+          home: Scaffold(
+            body: ProductCard(product: productNoImage),
+          ),
+        ),
+      );
+
+      expect(find.byType(Image), findsNothing);
+      expect(find.text('🍎'), findsOneWidget);
+    });
+
+    test('Product parses imageUrl from GraphQL and resolves relative URL', () {
+      final pAbsolute = Product.fromGraphQL({
+        'id': 'p1',
+        'name': 'Milk',
+        'price': 60,
+        'imageUrl': 'https://example.com/milk.png',
+      });
+      expect(pAbsolute.imageUrl, 'https://example.com/milk.png');
+      expect(pAbsolute.resolvedImageUrl, 'https://example.com/milk.png');
+
+      final pRelative = Product.fromGraphQL({
+        'id': 'p2',
+        'name': 'Cheese',
+        'price': 150,
+        'imageUrl': '/uploads/cheese.png',
+      });
+      expect(pRelative.imageUrl, '/uploads/cheese.png');
+      expect(pRelative.resolvedImageUrl, isNotNull);
+      expect(pRelative.resolvedImageUrl, endsWith('/uploads/cheese.png'));
+
+      final pNull = Product.fromGraphQL({
+        'id': 'p3',
+        'name': 'Butter',
+        'price': 80,
+      });
+      expect(pNull.imageUrl, isNull);
+      expect(pNull.resolvedImageUrl, isNull);
+    });
   });
 
   group('Checkout phone auto-fill and editing', () {

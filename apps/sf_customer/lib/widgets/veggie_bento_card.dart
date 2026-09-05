@@ -43,8 +43,20 @@ class VeggieBentoCard extends StatelessWidget {
                     color: AppColors.surfaceVariant,
                     borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
+                  clipBehavior: Clip.antiAlias,
                   alignment: Alignment.center,
-                  child: Text(product.emoji, style: const TextStyle(fontSize: 40)),
+                  child: product.resolvedImageUrl != null
+                      ? Image.network(
+                          product.resolvedImageUrl!,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: double.infinity,
+                          errorBuilder: (context, error, stackTrace) => Text(
+                            product.emoji,
+                            style: const TextStyle(fontSize: 40),
+                          ),
+                        )
+                      : Text(product.emoji, style: const TextStyle(fontSize: 40)),
                 ),
                 Positioned(
                   top: 6,
