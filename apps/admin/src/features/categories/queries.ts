@@ -1,1 +1,1 @@
-export { fetchCategories } from "@/features/products/queries";
+export { fetchCategories, fetchCategory } from "@/features/products/queries";

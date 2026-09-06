@@ -21,6 +21,8 @@ const props = defineProps<{
   categories: Category[];
   sections: TimeBoundSection[];
   stores?: Store[];
+  defaultStoreId?: string;
+  defaultCategoryId?: string;
 }>();
 const emit = defineEmits<{ saved: [id: string]; cancel: [] }>();
 const busy = ref(false);
@@ -56,9 +58,9 @@ const { handleSubmit, setFieldValue, values } = useForm<ProductFormValues>({
         imageUrl: "",
         timeBoundSections: [] as ("BREAKFAST" | "LUNCH" | "DINNER")[],
         trackInventory: false,
-        storeId: "",
+        storeId: props.defaultStoreId ?? "",
         isActive: true,
-        categoryId: "",
+        categoryId: props.defaultCategoryId ?? "",
       },
 });
 

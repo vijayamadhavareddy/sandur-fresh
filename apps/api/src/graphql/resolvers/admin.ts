@@ -83,7 +83,7 @@ const MarkupTypeEnum = new GraphQLEnumType({
   },
 });
 
-const ProductType = new GraphQLObjectType({
+const ProductType: GraphQLObjectType = new GraphQLObjectType({
   name: "AdminProduct",
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
@@ -106,6 +106,9 @@ const ProductType = new GraphQLObjectType({
     store: { type: StoreType },
     isActive: { type: new GraphQLNonNull(GraphQLBoolean) },
     category: { type: new GraphQLNonNull(CategoryType) },
+    inventory: {
+      type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(InventoryType))),
+    },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
   }),
@@ -156,17 +159,27 @@ const AdminStoreInputType = new GraphQLInputObjectType({
   },
 });
 
-const InventoryType = new GraphQLObjectType({
-  name: "AdminInventoryItem",
+const AdminCategoryInputType = new GraphQLInputObjectType({
+  name: "AdminCategoryInput",
   fields: {
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    slug: { type: new GraphQLNonNull(GraphQLString) },
+    sortOrder: { type: GraphQLInt },
+  },
+});
+
+const InventoryType: GraphQLObjectType = new GraphQLObjectType({
+  name: "AdminInventoryItem",
+  fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
     storeId: { type: new GraphQLNonNull(GraphQLString) },
+    store: { type: StoreType },
     productId: { type: new GraphQLNonNull(GraphQLString) },
     stockQty: { type: new GraphQLNonNull(GraphQLInt) },
     lowStockThreshold: { type: new GraphQLNonNull(GraphQLInt) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
     product: { type: new GraphQLNonNull(ProductType) },
-  },
+  }),
 });
 
 const AddressType = new GraphQLObjectType({
@@ -291,6 +304,15 @@ const serializeProduct = <
     timeBoundSections?: string[] | null;
     trackInventory?: boolean | null;
     storeId?: string | null;
+    inventory?: Array<{
+      id: string;
+      storeId: string;
+      productId: string;
+      stockQty: number;
+      lowStockThreshold: number;
+      updatedAt: Date;
+      store?: { createdAt: Date; updatedAt: Date } | null;
+    }> | null;
   },
 >(
   value: T,
@@ -307,6 +329,11 @@ const serializeProduct = <
       }
     : null,
   category: { ...value.category, createdAt: iso(value.category.createdAt) },
+  inventory: (value.inventory ?? []).map((item) => ({
+    ...item,
+    store: item.store ? serializeStore(item.store) : null,
+    updatedAt: iso(item.updatedAt),
+  })),
   createdAt: iso(value.createdAt),
   updatedAt: iso(value.updatedAt),
 });
@@ -364,6 +391,10 @@ export const adminQueries = {
       page: { type: GraphQLInt },
       limit: { type: GraphQLInt },
       query: { type: GraphQLString },
+      storeId: { type: GraphQLString },
+      categoryId: { type: GraphQLString },
+      isActive: { type: GraphQLBoolean },
+      trackInventory: { type: GraphQLBoolean },
     },
     resolve: async (_src: unknown, args: object, ctx: GraphQLContext) => {
       requireAdmin(ctx);
@@ -377,6 +408,18 @@ export const adminQueries = {
     resolve: async (_src: unknown, args: { id: string }, ctx: GraphQLContext) => {
       requireAdmin(ctx);
       return serializeProduct(fromServiceResult(await ctx.services.admin.getProduct(args.id)));
+    },
+  },
+  adminCategory: {
+    type: CategoryType,
+    args: { id: { type: new GraphQLNonNull(GraphQLString) } },
+    resolve: async (_src: unknown, args: { id: string }, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      const category = fromServiceResult(await ctx.services.admin.getCategory(args.id));
+      return {
+        ...category,
+        createdAt: iso(category.createdAt),
+      };
     },
   },
   adminCategories: {
@@ -423,6 +466,7 @@ export const adminQueries = {
         ...page,
         items: page.items.map((item) => ({
           ...item,
+          store: item.store ? serializeStore(item.store) : null,
           updatedAt: iso(item.updatedAt),
           product: serializeProduct(item.product),
         })),
@@ -489,9 +533,34 @@ const productArgs = {
     type: new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType)),
   },
   trackInventory: { type: GraphQLBoolean },
+  initialStock: { type: GraphQLInt },
   storeId: { type: GraphQLString },
   isActive: { type: GraphQLBoolean },
 };
+
+const AdminProductInputType = new GraphQLInputObjectType({
+  name: "AdminProductInput",
+  fields: {
+    categoryId: { type: new GraphQLNonNull(GraphQLString) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLString },
+    unit: { type: new GraphQLNonNull(GraphQLString) },
+    mrp: { type: new GraphQLNonNull(GraphQLInt) },
+    price: { type: new GraphQLNonNull(GraphQLInt) },
+    originalPrice: { type: GraphQLInt },
+    markup: { type: GraphQLInt },
+    markupType: { type: MarkupTypeEnum },
+    emoji: { type: GraphQLString },
+    imageUrl: { type: GraphQLString },
+    timeBoundSections: {
+      type: new GraphQLList(new GraphQLNonNull(TimeBoundSectionIdType)),
+    },
+    trackInventory: { type: GraphQLBoolean },
+    initialStock: { type: GraphQLInt },
+    storeId: { type: GraphQLString },
+    isActive: { type: GraphQLBoolean },
+  },
+});
 
 export const adminMutations = {
   adminSetup: {
@@ -588,6 +657,19 @@ export const adminMutations = {
       return serializeProduct(fromServiceResult(await ctx.services.admin.createProduct(args)));
     },
   },
+  bulkCreateAdminProducts: {
+    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(ProductType))),
+    args: {
+      products: {
+        type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(AdminProductInputType))),
+      },
+    },
+    resolve: async (_src: unknown, args: { products: object[] }, ctx: GraphQLContext) => {
+      requireAdmin(ctx);
+      const created = fromServiceResult(await ctx.services.admin.createProductsBulk(args.products));
+      return created.map((p) => serializeProduct(p));
+    },
+  },
   updateAdminProduct: {
     type: new GraphQLNonNull(ProductType),
     args: { id: { type: new GraphQLNonNull(GraphQLString) }, ...productArgs },
@@ -608,6 +690,25 @@ export const adminMutations = {
       requireAdmin(ctx);
       const value = fromServiceResult(await ctx.services.admin.createCategory(args));
       return { ...value, createdAt: iso(value.createdAt) };
+    },
+  },
+  bulkCreateAdminCategories: {
+    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(CategoryType))),
+    args: {
+      categories: {
+        type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(AdminCategoryInputType))),
+      },
+    },
+    resolve: async (
+      _src: unknown,
+      args: { categories: Array<{ name: string; slug: string; sortOrder?: number }> },
+      ctx: GraphQLContext,
+    ) => {
+      requireAdmin(ctx);
+      const created = fromServiceResult(
+        await ctx.services.admin.createCategoriesBulk(args.categories),
+      );
+      return created.map((c) => ({ ...c, createdAt: iso(c.createdAt) }));
     },
   },
   updateAdminCategory: {
@@ -692,6 +793,7 @@ export const adminMutations = {
       const value = fromServiceResult(await ctx.services.admin.adjustInventory(admin.id, args));
       return {
         ...value,
+        store: value.store ? serializeStore(value.store) : null,
         updatedAt: iso(value.updatedAt),
         product: serializeProduct(value.product),
       };

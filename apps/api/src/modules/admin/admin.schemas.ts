@@ -37,6 +37,7 @@ const productFields = {
   /** Empty array or omitted = untagged; otherwise list of time-bound shelf IDs. */
   timeBoundSections: z.array(z.enum(TIME_BOUND_SECTION_IDS)).optional().default([]),
   trackInventory: z.boolean().optional().default(false),
+  initialStock: z.number().int().nonnegative().optional(),
   storeId: z.string().trim().min(1).nullable().optional(),
   isActive: z.boolean().optional(),
 };
@@ -68,6 +69,9 @@ export const adminCategorySchema = z.object({
 export const updateAdminCategorySchema = adminCategorySchema
   .partial()
   .refine((value) => Object.keys(value).length > 0, { message: "At least one field is required" });
+
+export const bulkAdminCategoriesSchema = z.array(adminCategorySchema).min(1).max(100);
+export type BulkAdminCategoriesInput = z.infer<typeof bulkAdminCategoriesSchema>;
 
 export const STORE_TYPES = ["DARK_STORE", "THIRD_PARTY"] as const;
 export type StoreType = (typeof STORE_TYPES)[number];
@@ -137,6 +141,8 @@ export const updateAdminCustomerSchema = z
 
 export type AdminLoginInput = z.infer<typeof adminLoginSchema>;
 export type CreateAdminProductInput = z.infer<typeof createAdminProductSchema>;
+export const bulkAdminProductsSchema = z.array(createAdminProductSchema);
+export type BulkAdminProductsInput = z.infer<typeof bulkAdminProductsSchema>;
 export type UpdateAdminProductInput = z.infer<typeof updateAdminProductSchema>;
 export type AdminCategoryInput = z.infer<typeof adminCategorySchema>;
 export type UpdateAdminCategoryInput = z.infer<typeof updateAdminCategorySchema>;

@@ -20,6 +20,8 @@ import {
   adminPageSchema,
   adminSetupSchema,
   adminStoreSchema,
+  bulkAdminCategoriesSchema,
+  bulkAdminProductsSchema,
   bulkAdminStoresSchema,
   createAdminProductSchema,
   transitionOrderSchema,
@@ -129,10 +131,41 @@ export const createAdminService = (deps: AdminServiceDeps) => {
   const dashboard = async () => ok(await deps.adminRepo.dashboard(deps.db));
 
   const listProducts = async (input: unknown) => {
-    const parsed = parse(adminPageSchema, input);
+    const schema = adminPageSchema.extend({
+      storeId: z.string().trim().min(1).optional(),
+      categoryId: z.string().trim().min(1).optional(),
+      isActive: z.boolean().optional(),
+      trackInventory: z.boolean().optional(),
+    });
+    const parsed = parse(schema, input);
     if (!parsed.ok) return parsed;
     const result = await deps.adminRepo.listProducts(deps.db, parsed.value);
     return ok({ ...result, page: parsed.value.page, limit: parsed.value.limit });
+  };
+
+  const createProductsBulk = async (input: unknown) => {
+    const parsed = parse(bulkAdminProductsSchema, input);
+    if (!parsed.ok) return parsed;
+    for (const item of parsed.value) {
+      if (item.price > item.mrp) {
+        return err(
+          validationError(`Product "${item.name}": price must be less than or equal to mrp`),
+        );
+      }
+    }
+    const created = await deps.db.transaction((tx) =>
+      deps.adminRepo.createProductsBulk(tx, parsed.value),
+    );
+    const fullProducts = await Promise.all(
+      created.map(async (p) => {
+        const found = await deps.adminRepo.findProduct(deps.db, p.id);
+        if (!found) {
+          throw notFound("Product not found");
+        }
+        return found;
+      }),
+    );
+    return ok(fullProducts);
   };
 
   const getProduct = async (id: string) => {
@@ -164,6 +197,15 @@ export const createAdminService = (deps: AdminServiceDeps) => {
   const createCategory = async (input: unknown) => {
     const parsed = parse(adminCategorySchema, input);
     return parsed.ok ? ok(await deps.adminRepo.createCategory(deps.db, parsed.value)) : parsed;
+  };
+
+  const createCategoriesBulk = async (input: unknown) => {
+    const parsed = parse(bulkAdminCategoriesSchema, input);
+    if (!parsed.ok) return parsed;
+    const created = await deps.db.transaction((tx) =>
+      deps.adminRepo.createCategoriesBulk(tx, parsed.value),
+    );
+    return ok(created);
   };
 
   const updateCategory = async (id: string, input: unknown) => {
@@ -284,6 +326,10 @@ export const createAdminService = (deps: AdminServiceDeps) => {
     listProducts,
     getProduct,
     listCategories: async () => ok(await deps.adminRepo.listCategories(deps.db)),
+    getCategory: async (id: string) => {
+      const category = await deps.adminRepo.getCategory(deps.db, id);
+      return category ? ok(category) : err(notFound("Category not found"));
+    },
     listStores: async (filter?: { type?: StoreType }) =>
       ok(await deps.adminRepo.listStores(deps.db, filter)),
     getStore: async (id: string) => {
@@ -297,8 +343,10 @@ export const createAdminService = (deps: AdminServiceDeps) => {
     getCustomer,
     updateCustomer,
     createProduct,
+    createProductsBulk,
     updateProduct,
     createCategory,
+    createCategoriesBulk,
     updateCategory,
     createStore,
     createStoresBulk,

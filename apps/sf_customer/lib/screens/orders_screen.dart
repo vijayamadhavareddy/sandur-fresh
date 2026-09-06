@@ -157,7 +157,7 @@ class _OrderCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(order.id, style: textTheme.headlineMedium),
+              Text('Order details', style: textTheme.headlineMedium),
               const SizedBox(height: AppSpacing.md),
               ...order.items.map((item) => Padding(
                     padding: const EdgeInsets.symmetric(
@@ -195,7 +195,6 @@ class _OrderCard extends StatelessWidget {
               const SizedBox(height: AppSpacing.sm),
               Text('Paid via ${order.paymentMethod}',
                   style: textTheme.bodySmall),
-              Text(order.addressLine, style: textTheme.bodySmall),
             ],
           ),
         ),

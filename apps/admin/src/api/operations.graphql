@@ -56,8 +56,24 @@ query AdminDashboard {
     lowStockItems
   }
 }
-query AdminProducts($page: Int!, $limit: Int!, $query: String) {
-  adminProducts(page: $page, limit: $limit, query: $query) {
+query AdminProducts(
+  $page: Int!
+  $limit: Int!
+  $query: String
+  $storeId: String
+  $categoryId: String
+  $isActive: Boolean
+  $trackInventory: Boolean
+) {
+  adminProducts(
+    page: $page
+    limit: $limit
+    query: $query
+    storeId: $storeId
+    categoryId: $categoryId
+    isActive: $isActive
+    trackInventory: $trackInventory
+  ) {
     page
     total
     items {
@@ -104,6 +120,7 @@ query AdminProduct($id: String!) {
     store {
       id
       name
+      type
     }
     isActive
     categoryId
@@ -111,6 +128,20 @@ query AdminProduct($id: String!) {
       id
       name
     }
+    inventory {
+      id
+      storeId
+      stockQty
+      lowStockThreshold
+      updatedAt
+      store {
+        id
+        name
+        type
+      }
+    }
+    createdAt
+    updatedAt
   }
 }
 query TimeBoundSections {
@@ -129,6 +160,15 @@ query AdminCategories {
     name
     slug
     sortOrder
+  }
+}
+query AdminCategory($id: String!) {
+  adminCategory(id: $id) {
+    id
+    name
+    slug
+    sortOrder
+    createdAt
   }
 }
 mutation CreateAdminProduct(
@@ -164,6 +204,14 @@ mutation CreateAdminProduct(
     isActive: $isActive
   ) {
     id
+  }
+}
+mutation BulkCreateAdminProducts($products: [AdminProductInput!]!) {
+  bulkCreateAdminProducts(products: $products) {
+    id
+    name
+    price
+    storeId
   }
 }
 mutation UpdateAdminProduct(
@@ -214,6 +262,14 @@ mutation CreateAdminCategory($name: String!, $slug: String!, $sortOrder: Int) {
     id
   }
 }
+mutation BulkCreateAdminCategories($categories: [AdminCategoryInput!]!) {
+  bulkCreateAdminCategories(categories: $categories) {
+    id
+    name
+    slug
+    sortOrder
+  }
+}
 mutation UpdateAdminCategory($id: String!, $name: String, $slug: String, $sortOrder: Int) {
   updateAdminCategory(id: $id, name: $name, slug: $slug, sortOrder: $sortOrder) {
     id
@@ -249,6 +305,8 @@ query AdminStore($id: String!) {
     lng
     serviceRadiusM
     isActive
+    createdAt
+    updatedAt
   }
 }
 mutation CreateAdminStore(

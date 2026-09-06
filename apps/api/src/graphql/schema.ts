@@ -8,6 +8,7 @@ import {
   GraphQLObjectType,
   GraphQLSchema,
 } from "graphql";
+import { isProduction } from "../config/env";
 import type { GraphQLContext } from "./context";
 import { adminMutations, adminQueries } from "./resolvers/admin";
 import { cartMutations, cartQueries } from "./resolvers/cart";
@@ -73,8 +74,10 @@ const getSafeCatalogQueries = (entities: GeneratedEntities<Db>) => {
 const schemaCache = new WeakMap<object, GraphQLSchema>();
 
 export const getGraphqlSchema = (db: Db) => {
-  const cached = schemaCache.get(db as object);
-  if (cached) return cached;
+  if (isProduction) {
+    const cached = schemaCache.get(db as object);
+    if (cached) return cached;
+  }
 
   const { entities } = buildSchema(db);
 
@@ -131,6 +134,8 @@ export const getGraphqlSchema = (db: Db) => {
     types: [...Object.values(entities.types), ...Object.values(entities.inputs)],
   });
 
-  schemaCache.set(db as object, schema);
+  if (isProduction) {
+    schemaCache.set(db as object, schema);
+  }
   return schema;
 };

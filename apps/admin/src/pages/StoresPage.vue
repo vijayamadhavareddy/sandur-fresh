@@ -198,9 +198,11 @@ const filteredStores = computed(() => {
                 <!-- Store Info -->
                 <div>
                   <div class="flex items-start justify-between gap-2">
-                    <h2 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
-                      {{ store.name }}
-                    </h2>
+                    <RouterLink :to="`/stores/${store.id}`" class="hover:underline">
+                      <h2 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+                        {{ store.name }}
+                      </h2>
+                    </RouterLink>
                   </div>
                   <p class="text-xs text-slate-400 mt-1 leading-relaxed">{{ store.address }}</p>
                 </div>
@@ -239,7 +241,18 @@ const filteredStores = computed(() => {
               </div>
 
               <!-- Card Action Footer -->
-              <div class="mt-6 pt-4 border-t border-slate-800/80 flex justify-end">
+              <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <RouterLink
+                  :to="`/stores/${store.id}`"
+                  class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span>View Store</span>
+                </RouterLink>
+
                 <RouterLink
                   :to="`/stores/${store.id}/edit`"
                   class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"

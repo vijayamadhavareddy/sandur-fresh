@@ -8,7 +8,11 @@ import { type CategoryFormValues, categorySchema } from "./validation";
 
 type Category = NonNullable<AdminCategoriesQuery["adminCategories"]>[number];
 const props = defineProps<{ category?: Category }>();
-const emit = defineEmits<{ saved: []; cancel: [] }>();
+const emit = defineEmits<{
+  saved: [];
+  cancel: [];
+  importProducts: [category: Category];
+}>();
 const busy = ref(false);
 const serverError = ref("");
 const { handleSubmit } = useForm({
@@ -38,8 +42,26 @@ const submit = handleSubmit(async (values) => {
 <template>
   <form class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col gap-4 mb-6" @submit="submit">
     <div class="flex items-center justify-between pb-3 border-b border-slate-800/80">
-      <h3 class="text-sm font-bold text-white">{{ category ? 'Edit Category' : 'Create New Category' }}</h3>
-      <span class="text-xs text-slate-400">Category Catalog</span>
+      <div class="flex items-center gap-3">
+        <h3 class="text-sm font-bold text-white">{{ category ? 'Edit Category' : 'Create New Category' }}</h3>
+        <span v-if="category" class="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 font-mono">
+          /{{ category.slug }}
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          v-if="category"
+          type="button"
+          @click="$emit('importProducts', category)"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-semibold transition cursor-pointer"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          <span>Import Products</span>
+        </button>
+        <span v-else class="text-xs text-slate-400">Category Catalog</span>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">

@@ -14452,8 +14452,9 @@ type Query {
   adminSetupStatus: AdminSetupStatus!
   adminSession: AdminSession
   adminDashboard: AdminDashboard!
-  adminProducts(page: Int, limit: Int, query: String): AdminProductsPage!
+  adminProducts(page: Int, limit: Int, query: String, storeId: String, categoryId: String, isActive: Boolean, trackInventory: Boolean): AdminProductsPage!
   adminProduct(id: String!): AdminProduct
+  adminCategory(id: String!): AdminCategory
   adminCategories: [AdminCategory!]!
   adminStores(type: AdminStoreType): [AdminStore!]!
   adminStore(id: String!): AdminStore
@@ -14531,6 +14532,7 @@ type AdminProduct {
   store: AdminStore
   isActive: Boolean!
   category: AdminCategory!
+  inventory: [AdminInventoryItem!]!
   createdAt: String!
   updatedAt: String!
 }
@@ -14570,21 +14572,22 @@ type AdminCategory {
   createdAt: String!
 }
 
-type AdminInventoryPage {
-  items: [AdminInventoryItem!]!
-  page: Int!
-  limit: Int!
-  total: Int!
-}
-
 type AdminInventoryItem {
   id: String!
   storeId: String!
+  store: AdminStore
   productId: String!
   stockQty: Int!
   lowStockThreshold: Int!
   updatedAt: String!
   product: AdminProduct!
+}
+
+type AdminInventoryPage {
+  items: [AdminInventoryItem!]!
+  page: Int!
+  limit: Int!
+  total: Int!
 }
 
 type AdminOrdersPage {
@@ -14766,9 +14769,11 @@ type Mutation {
   adminLogout: Boolean!
   registerAdminDevice(fid: String!, userAgent: String): Boolean!
   unregisterAdminDevice(fid: String!): Boolean!
-  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, storeId: String, isActive: Boolean): AdminProduct!
-  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, storeId: String, isActive: Boolean): AdminProduct!
+  createAdminProduct(categoryId: String!, name: String!, description: String, unit: String!, mrp: Int!, price: Int!, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, initialStock: Int, storeId: String, isActive: Boolean): AdminProduct!
+  bulkCreateAdminProducts(products: [AdminProductInput!]!): [AdminProduct!]!
+  updateAdminProduct(id: String!, categoryId: String, name: String, description: String, unit: String, mrp: Int, price: Int, originalPrice: Int, markup: Int, markupType: MarkupType, emoji: String, imageUrl: String, timeBoundSections: [TimeBoundSectionId!], trackInventory: Boolean, initialStock: Int, storeId: String, isActive: Boolean): AdminProduct!
   createAdminCategory(name: String!, slug: String!, sortOrder: Int): AdminCategory!
+  bulkCreateAdminCategories(categories: [AdminCategoryInput!]!): [AdminCategory!]!
   updateAdminCategory(id: String!, name: String, slug: String, sortOrder: Int): AdminCategory!
   createAdminStore(name: String!, type: AdminStoreType, partnerName: String, contactPhone: String, contactEmail: String, commissionPct: Int, address: String!, lat: Float!, lng: Float!, serviceRadiusM: Int, isActive: Boolean): AdminStore!
   bulkCreateAdminStores(stores: [AdminStoreInput!]!): [AdminStore!]!
@@ -14785,6 +14790,31 @@ type Mutation {
   addAddress(label: String!, line1: String!, line2: String, city: String!, pincode: String!, phone: String!, lat: Float!, lng: Float!, isDefault: Boolean): AppAddress!
   updateAddress(id: String!, label: String, line1: String, line2: String, city: String, pincode: String, phone: String, lat: Float, lng: Float, isDefault: Boolean): AppAddress!
   deleteAddress(id: String!): Boolean!
+}
+
+input AdminProductInput {
+  categoryId: String!
+  name: String!
+  description: String
+  unit: String!
+  mrp: Int!
+  price: Int!
+  originalPrice: Int
+  markup: Int
+  markupType: MarkupType
+  emoji: String
+  imageUrl: String
+  timeBoundSections: [TimeBoundSectionId!]
+  trackInventory: Boolean
+  initialStock: Int
+  storeId: String
+  isActive: Boolean
+}
+
+input AdminCategoryInput {
+  name: String!
+  slug: String!
+  sortOrder: Int
 }
 
 input AdminStoreInput {

@@ -14,7 +14,7 @@ import {
   stores,
   users,
 } from "@sf/db";
-import { and, count, desc, eq, gte, like, lte, or, sql } from "drizzle-orm";
+import { and, count, desc, eq, gte, isNull, like, lte, or, sql } from "drizzle-orm";
 import type { OrderStatus } from "../orders/order-status";
 import type {
   AdminCategoryInput,
@@ -112,11 +112,39 @@ export const dashboard = async (db: DbOrTx) => {
 
 export const listProducts = async (
   db: DbOrTx,
-  input: { page: number; limit: number; query?: string },
+  input: {
+    page: number;
+    limit: number;
+    query?: string;
+    storeId?: string;
+    categoryId?: string;
+    isActive?: boolean;
+    trackInventory?: boolean;
+  },
 ) => {
-  const where = input.query
-    ? or(like(products.name, `%${input.query}%`), like(products.description, `%${input.query}%`))
-    : undefined;
+  const filters = [];
+  if (input.query) {
+    filters.push(
+      or(like(products.name, `%${input.query}%`), like(products.description, `%${input.query}%`)),
+    );
+  }
+  if (input.storeId) {
+    if (input.storeId === "global") {
+      filters.push(isNull(products.storeId));
+    } else {
+      filters.push(eq(products.storeId, input.storeId));
+    }
+  }
+  if (input.categoryId) {
+    filters.push(eq(products.categoryId, input.categoryId));
+  }
+  if (input.isActive !== undefined) {
+    filters.push(eq(products.isActive, input.isActive));
+  }
+  if (input.trackInventory !== undefined) {
+    filters.push(eq(products.trackInventory, input.trackInventory));
+  }
+  const where = filters.length > 0 ? and(...filters) : undefined;
   const total = (await db.select({ value: count() }).from(products).where(where))[0]?.value ?? 0;
   const items = await db
     .select({ product: products, category: categories, store: stores })
@@ -141,8 +169,46 @@ export const findProduct = async (db: DbOrTx, id: string) => {
     .leftJoin(stores, eq(products.storeId, stores.id))
     .where(eq(products.id, id))
     .limit(1);
-  return rows[0] ? { ...rows[0].product, category: rows[0].category, store: rows[0].store } : null;
+  if (!rows[0]) return null;
+
+  const product = rows[0].product;
+  if (product.trackInventory) {
+    if (product.storeId) {
+      await db
+        .insert(inventory)
+        .values({ storeId: product.storeId, productId: product.id })
+        .onConflictDoNothing();
+    } else {
+      const storeRows = await db.select({ id: stores.id }).from(stores);
+      if (storeRows.length > 0) {
+        await db
+          .insert(inventory)
+          .values(storeRows.map((store) => ({ storeId: store.id, productId: product.id })))
+          .onConflictDoNothing();
+      }
+    }
+  }
+
+  const inventoryRows = await db
+    .select({ inventory, store: stores })
+    .from(inventory)
+    .innerJoin(stores, eq(inventory.storeId, stores.id))
+    .where(eq(inventory.productId, id))
+    .orderBy(stores.name);
+
+  return {
+    ...product,
+    category: rows[0].category,
+    store: rows[0].store,
+    inventory: inventoryRows.map((r) => ({
+      ...r.inventory,
+      store: r.store,
+    })),
+  };
 };
+
+export const getCategory = async (db: DbOrTx, id: string) =>
+  (await db.select().from(categories).where(eq(categories.id, id)).limit(1))[0] ?? null;
 
 export const listCategories = (db: DbOrTx) =>
   db.select().from(categories).orderBy(categories.sortOrder, categories.name);
@@ -170,10 +236,11 @@ export const listInventory = async (
         .where(where)
     )[0]?.value ?? 0;
   const rows = await db
-    .select({ inventory, product: products, category: categories })
+    .select({ inventory, product: products, category: categories, store: stores })
     .from(inventory)
     .innerJoin(products, eq(inventory.productId, products.id))
     .innerJoin(categories, eq(products.categoryId, categories.id))
+    .innerJoin(stores, eq(inventory.storeId, stores.id))
     .where(where)
     .orderBy(products.name)
     .limit(input.limit)
@@ -181,6 +248,7 @@ export const listInventory = async (
   return {
     items: rows.map((row) => ({
       ...row.inventory,
+      store: row.store,
       product: { ...row.product, category: row.category },
     })),
     total,
@@ -188,24 +256,40 @@ export const listInventory = async (
 };
 
 export const createProduct = async (db: DbOrTx, input: CreateAdminProductInput) => {
-  const product = (await db.insert(products).values(input).returning())[0]!;
-  if (product.trackInventory) {
+  const { initialStock, ...productValues } = input;
+  const product = (await db.insert(products).values(productValues).returning())[0]!;
+  if (
+    product.trackInventory ||
+    (initialStock !== undefined && initialStock !== null && initialStock > 0)
+  ) {
+    const stockQty = initialStock ?? 0;
     if (product.storeId) {
       await db
         .insert(inventory)
-        .values({ storeId: product.storeId, productId: product.id })
+        .values({ storeId: product.storeId, productId: product.id, stockQty })
         .onConflictDoNothing();
     } else {
       const storeRows = await db.select({ id: stores.id }).from(stores);
       if (storeRows.length > 0) {
         await db
           .insert(inventory)
-          .values(storeRows.map((store) => ({ storeId: store.id, productId: product.id })))
+          .values(
+            storeRows.map((store) => ({ storeId: store.id, productId: product.id, stockQty })),
+          )
           .onConflictDoNothing();
       }
     }
   }
   return product;
+};
+
+export const createProductsBulk = async (db: DbOrTx, inputs: CreateAdminProductInput[]) => {
+  const created = [];
+  for (const input of inputs) {
+    const product = await createProduct(db, input);
+    created.push(product);
+  }
+  return created;
 };
 export const updateProduct = async (db: DbOrTx, id: string, patch: UpdateAdminProductInput) => {
   const updated =
@@ -238,6 +322,14 @@ export const updateProduct = async (db: DbOrTx, id: string, patch: UpdateAdminPr
 };
 export const createCategory = async (db: DbOrTx, input: AdminCategoryInput) =>
   (await db.insert(categories).values(input).returning())[0]!;
+export const createCategoriesBulk = async (db: DbOrTx, inputs: AdminCategoryInput[]) => {
+  const created = [];
+  for (const input of inputs) {
+    const row = (await db.insert(categories).values(input).returning())[0]!;
+    created.push(row);
+  }
+  return created;
+};
 export const updateCategory = async (db: DbOrTx, id: string, patch: UpdateAdminCategoryInput) =>
   (await db.update(categories).set(patch).where(eq(categories.id, id)).returning())[0] ?? null;
 export const createStore = async (db: DbOrTx, input: AdminStoreInput) => {
@@ -301,14 +393,21 @@ export const adjustInventory = async (
 
 export const findInventory = async (db: DbOrTx, id: string) => {
   const rows = await db
-    .select({ inventory, product: products, category: categories })
+    .select({ inventory, product: products, category: categories, store: stores })
     .from(inventory)
     .innerJoin(products, eq(inventory.productId, products.id))
     .innerJoin(categories, eq(products.categoryId, categories.id))
+    .innerJoin(stores, eq(inventory.storeId, stores.id))
     .where(eq(inventory.id, id))
     .limit(1);
   const row = rows[0];
-  return row ? { ...row.inventory, product: { ...row.product, category: row.category } } : null;
+  return row
+    ? {
+        ...row.inventory,
+        store: row.store,
+        product: { ...row.product, category: row.category },
+      }
+    : null;
 };
 
 const hydrateOrder = async (db: DbOrTx, order: typeof orders.$inferSelect) => {
@@ -407,13 +506,16 @@ export const adminRepo = {
   dashboard,
   listProducts,
   findProduct,
+  getCategory,
   listCategories,
   listStores,
   findStore,
   listInventory,
   createProduct,
+  createProductsBulk,
   updateProduct,
   createCategory,
+  createCategoriesBulk,
   updateCategory,
   createStore,
   createStoresBulk,

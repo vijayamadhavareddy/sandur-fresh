@@ -6,20 +6,107 @@ import PageHeader from "@/components/PageHeader.vue";
 import PaginationBar from "@/components/PaginationBar.vue";
 import QueryError from "@/components/QueryError.vue";
 import { usePagination } from "@/composables/usePagination";
-import { fetchProducts, fetchTimeBoundSections } from "@/features/products/queries";
+import { fetchCategories, fetchProducts, fetchTimeBoundSections } from "@/features/products/queries";
+import { fetchStores } from "@/features/stores/queries";
 import { formatCurrency } from "@/shared/formatting/currency";
 
 const query = ref("");
+const debouncedQuery = ref("");
+let searchTimer: ReturnType<typeof setTimeout> | null = null;
+
+const selectedCategoryId = ref("");
+const selectedStoreId = ref("");
+const statusFilter = ref<"all" | "active" | "paused">("all");
+const inventoryFilter = ref<"all" | "tracked" | "unlimited">("all");
+
 const { page, limit, reset } = usePagination();
-watch(query, reset);
-const key = computed(() => ["products", page.value, limit.value, query.value]);
+
+watch(query, (newVal) => {
+  if (searchTimer) clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    debouncedQuery.value = newVal.trim();
+    reset();
+  }, 300);
+});
+
+watch([selectedCategoryId, selectedStoreId, statusFilter, inventoryFilter], () => {
+  reset();
+});
+
+const activeStatusBool = computed(() => {
+  if (statusFilter.value === "active") return true;
+  if (statusFilter.value === "paused") return false;
+  return undefined;
+});
+
+const trackInventoryBool = computed(() => {
+  if (inventoryFilter.value === "tracked") return true;
+  if (inventoryFilter.value === "unlimited") return false;
+  return undefined;
+});
+
+const key = computed(() => [
+  "products",
+  page.value,
+  limit.value,
+  debouncedQuery.value,
+  selectedStoreId.value,
+  selectedCategoryId.value,
+  statusFilter.value,
+  inventoryFilter.value,
+]);
+
 const { data, isError, isPending } = useQuery({
   queryKey: key,
-  queryFn: () => fetchProducts(page.value, limit.value, query.value),
+  queryFn: () =>
+    fetchProducts(
+      page.value,
+      limit.value,
+      debouncedQuery.value || undefined,
+      selectedStoreId.value || undefined,
+      selectedCategoryId.value || undefined,
+      activeStatusBool.value,
+      trackInventoryBool.value,
+    ),
 });
+
+const categoriesQuery = useQuery({ queryKey: ["categories"], queryFn: fetchCategories });
+const categories = computed(() => categoriesQuery.data.value?.adminCategories ?? []);
+
+const storesQuery = useQuery({ queryKey: ["stores"], queryFn: () => fetchStores() });
+const stores = computed(() => storesQuery.data.value?.adminStores ?? []);
+
 const sections = useQuery({ queryKey: ["timeBoundSections"], queryFn: fetchTimeBoundSections });
 const sectionTitle = (id: string) =>
   sections.data.value?.timeBoundSections.find((section) => section.id === id)?.title ?? id;
+
+const selectedCategoryName = computed(
+  () => categories.value.find((c) => c.id === selectedCategoryId.value)?.name ?? "",
+);
+
+const selectedStoreName = computed(() => {
+  if (selectedStoreId.value === "global") return "Global Products Only";
+  return stores.value.find((s) => s.id === selectedStoreId.value)?.name ?? "";
+});
+
+const hasActiveFilters = computed(
+  () =>
+    Boolean(debouncedQuery.value) ||
+    Boolean(selectedCategoryId.value) ||
+    Boolean(selectedStoreId.value) ||
+    statusFilter.value !== "all" ||
+    inventoryFilter.value !== "all",
+);
+
+function clearFilters() {
+  query.value = "";
+  debouncedQuery.value = "";
+  selectedCategoryId.value = "";
+  selectedStoreId.value = "";
+  statusFilter.value = "all";
+  inventoryFilter.value = "all";
+  reset();
+}
 </script>
 
 <template>
@@ -51,25 +138,156 @@ const sectionTitle = (id: string) =>
         </div>
 
         <!-- Search & Filter Toolbar -->
-        <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
-          <div class="relative w-full sm:w-80">
-            <svg class="absolute left-3.5 top-3 w-4 h-4 text-slate-500 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <label class="sr-only" for="product-search">Search products</label>
-            <input
-              id="product-search"
-              v-model="query"
-              type="search"
-              placeholder="Search products by name..."
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
-            />
+        <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-4 sm:p-5 shadow-xl flex flex-col gap-4">
+          <!-- Primary Filter Controls Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <!-- Search Input -->
+            <div class="relative w-full">
+              <svg class="absolute left-3 top-2.5 w-4 h-4 text-slate-500 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <label class="sr-only" for="product-search">Search products</label>
+              <input
+                id="product-search"
+                v-model="query"
+                type="search"
+                placeholder="Search products..."
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-7 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              />
+              <button
+                v-if="query"
+                type="button"
+                @click="query = ''"
+                class="absolute right-2.5 top-2.5 text-slate-500 hover:text-slate-300"
+              >
+                ✕
+              </button>
+            </div>
+
+            <!-- Category Filter Dropdown -->
+            <div>
+              <label class="sr-only" for="product-category-filter">Filter by category</label>
+              <select
+                id="product-category-filter"
+                v-model="selectedCategoryId"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              >
+                <option value="">🏷️ All Categories</option>
+                <option v-for="cat in categories" :key="cat.id" :value="cat.id">
+                  {{ cat.name }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Store Filter Dropdown -->
+            <div>
+              <label class="sr-only" for="product-store-filter">Filter by store</label>
+              <select
+                id="product-store-filter"
+                v-model="selectedStoreId"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              >
+                <option value="">🏬 All Stores</option>
+                <option value="global">🌐 Global Products Only</option>
+                <option v-for="store in stores" :key="store.id" :value="store.id">
+                  {{ store.name }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Status Filter Dropdown -->
+            <div>
+              <label class="sr-only" for="product-status-filter">Filter by status</label>
+              <select
+                id="product-status-filter"
+                v-model="statusFilter"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              >
+                <option value="all">⚡ All Statuses</option>
+                <option value="active">Active Only</option>
+                <option value="paused">Paused Only</option>
+              </select>
+            </div>
+
+            <!-- Inventory Tracking Dropdown -->
+            <div>
+              <label class="sr-only" for="product-inventory-filter">Filter by stock tracking</label>
+              <select
+                id="product-inventory-filter"
+                v-model="inventoryFilter"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              >
+                <option value="all">📦 All Inventory</option>
+                <option value="tracked">Stock Tracked</option>
+                <option value="unlimited">No Stock Limit</option>
+              </select>
+            </div>
           </div>
 
-          <div class="text-xs text-slate-400 font-medium">
-            <span v-if="data?.adminProducts">Total: <strong class="text-emerald-400 font-semibold">{{ data.adminProducts.total }}</strong> items</span>
-            <span v-else-if="isPending">Loading catalog...</span>
+          <!-- Active Filter Badges & Summary -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-800/60 text-xs">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-slate-400 font-medium">Filters:</span>
+
+              <span
+                v-if="debouncedQuery"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[11px]"
+              >
+                <span>Search: "{{ debouncedQuery }}"</span>
+                <button type="button" @click="query = ''" class="hover:text-white">✕</button>
+              </span>
+
+              <span
+                v-if="selectedCategoryId"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[11px]"
+              >
+                <span>🏷️ {{ selectedCategoryName }}</span>
+                <button type="button" @click="selectedCategoryId = ''" class="hover:text-white">✕</button>
+              </span>
+
+              <span
+                v-if="selectedStoreId"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-teal-500/15 text-teal-300 border border-teal-500/30 text-[11px]"
+              >
+                <span>🏬 {{ selectedStoreName }}</span>
+                <button type="button" @click="selectedStoreId = ''" class="hover:text-white">✕</button>
+              </span>
+
+              <span
+                v-if="statusFilter !== 'all'"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30 text-[11px]"
+              >
+                <span>Status: {{ statusFilter === 'active' ? 'Active' : 'Paused' }}</span>
+                <button type="button" @click="statusFilter = 'all'" class="hover:text-white">✕</button>
+              </span>
+
+              <span
+                v-if="inventoryFilter !== 'all'"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 text-[11px]"
+              >
+                <span>Stock: {{ inventoryFilter === 'tracked' ? 'Tracked' : 'Unlimited' }}</span>
+                <button type="button" @click="inventoryFilter = 'all'" class="hover:text-white">✕</button>
+              </span>
+
+              <button
+                v-if="hasActiveFilters"
+                type="button"
+                @click="clearFilters"
+                class="text-xs text-slate-400 hover:text-white underline ml-1 cursor-pointer transition"
+              >
+                Clear all filters
+              </button>
+
+              <span v-if="!hasActiveFilters" class="text-slate-500 italic">None active (showing all)</span>
+            </div>
+
+            <div class="text-xs text-slate-400 font-medium">
+              <span v-if="data?.adminProducts">
+                Total: <strong class="text-emerald-400 font-semibold">{{ data.adminProducts.total }}</strong> items
+              </span>
+              <span v-else-if="isPending">Loading catalog...</span>
+            </div>
           </div>
         </div>
 
@@ -125,7 +343,17 @@ const sectionTitle = (id: string) =>
                         </svg>
                       </div>
                       <p class="text-sm font-semibold text-slate-300">No products found</p>
-                      <p class="text-xs text-slate-500 max-w-sm">No items match your search criteria. Try adjusting your query or add a new product.</p>
+                      <p class="text-xs text-slate-500 max-w-sm">
+                        {{ hasActiveFilters ? "No items match your filter criteria. Try adjusting or resetting filters." : "No items in catalog yet. Add a new product to get started." }}
+                      </p>
+                      <button
+                        v-if="hasActiveFilters"
+                        type="button"
+                        @click="clearFilters"
+                        class="mt-2 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition cursor-pointer"
+                      >
+                        Clear Filters
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -153,7 +381,9 @@ const sectionTitle = (id: string) =>
                       </div>
 
                       <div class="overflow-hidden">
-                        <strong class="text-slate-100 font-semibold block truncate group-hover:text-emerald-400 transition-colors">{{ product.name }}</strong>
+                        <RouterLink :to="`/catalog/products/${product.id}`" class="block">
+                          <strong class="text-slate-100 font-semibold block truncate group-hover:text-emerald-400 transition-colors">{{ product.name }}</strong>
+                        </RouterLink>
                         <span v-if="product.description" class="text-[11px] text-slate-400 truncate block max-w-xs">{{ product.description }}</span>
                       </div>
                     </div>
@@ -161,11 +391,26 @@ const sectionTitle = (id: string) =>
 
                   <td class="py-3.5 px-4">
                     <div class="flex flex-col gap-1 items-start">
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+                      <RouterLink
+                        :to="`/catalog/categories/${product.category.id}`"
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-emerald-400 border border-slate-700/60 transition-colors"
+                        :title="`View ${product.category.name} category`"
+                      >
                         {{ product.category.name }}
-                      </span>
-                      <span v-if="product.store" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 text-teal-300 border border-teal-500/20">
-                        {{ product.store.name }}
+                      </RouterLink>
+                      <RouterLink
+                        v-if="product.store"
+                        :to="`/stores/${product.store.id}`"
+                        class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 border border-teal-500/20 transition-colors"
+                        :title="`View ${product.store.name}`"
+                      >
+                        🏬 {{ product.store.name }}
+                      </RouterLink>
+                      <span
+                        v-else
+                        class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800/60 text-slate-400 border border-slate-700/40"
+                      >
+                        🌐 Global
                       </span>
                     </div>
                   </td>
@@ -215,15 +460,27 @@ const sectionTitle = (id: string) =>
                   </td>
 
                   <td class="py-3.5 px-4 sm:px-6 text-right">
-                    <RouterLink
-                      :to="`/catalog/products/${product.id}/edit`"
-                      class="inline-flex items-center gap-1 text-slate-400 hover:text-emerald-400 font-semibold transition-colors"
-                    >
-                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                      </svg>
-                      <span>Edit</span>
-                    </RouterLink>
+                    <div class="inline-flex items-center gap-3 justify-end">
+                      <RouterLink
+                        :to="`/catalog/products/${product.id}`"
+                        class="inline-flex items-center gap-1 text-slate-400 hover:text-emerald-400 font-semibold transition-colors"
+                      >
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span>View</span>
+                      </RouterLink>
+                      <RouterLink
+                        :to="`/catalog/products/${product.id}/edit`"
+                        class="inline-flex items-center gap-1 text-slate-400 hover:text-emerald-400 font-semibold transition-colors"
+                      >
+                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                        <span>Edit</span>
+                      </RouterLink>
+                    </div>
                   </td>
                 </tr>
               </tbody>

@@ -19,7 +19,7 @@ export const createAppYoga = (
   db: Db,
 ) =>
   createYoga<YogaServerContext, GraphQLContext>({
-    schema: getGraphqlSchema(db),
+    schema: () => getGraphqlSchema(db),
     graphqlEndpoint: "/graphql",
     graphiql: introspectionEnabled,
     landingPage: false,

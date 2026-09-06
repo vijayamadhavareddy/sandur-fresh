@@ -78,6 +78,30 @@ function loadSample(format: "csv" | "json") {
   activeInputTab.value = "paste";
 }
 
+function downloadTemplate(format: "csv" | "json", isBlank = false) {
+  const content =
+    format === "csv"
+      ? isBlank
+        ? "name,type,partner_name,contact_phone,contact_email,commission_pct,address,lat,lng,service_radius_m,is_active\n"
+        : SAMPLE_CSV
+      : isBlank
+      ? `[\n  {\n    "name": "Indiranagar Dark Hub",\n    "type": "DARK_STORE",\n    "address": "100ft Rd, Indiranagar, Bengaluru",\n    "lat": 12.9716,\n    "lng": 77.5946,\n    "serviceRadiusM": 5000,\n    "isActive": true\n  }\n]`
+      : SAMPLE_JSON;
+  const mimeType =
+    format === "csv" ? "text/csv;charset=utf-8;" : "application/json;charset=utf-8;";
+  const filename = `sandur_fresh_stores_${isBlank ? "blank_template" : "sample_template"}.${format}`;
+
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 function handleFileUpload(event: Event) {
   const target = event.target as HTMLInputElement;
   const file = target.files?.[0];
@@ -377,18 +401,60 @@ async function executeImport() {
         </div>
 
         <!-- Input Mode 2: File Upload -->
-        <div v-else-if="activeInputTab === 'upload'" class="border-2 border-dashed border-slate-800 rounded-2xl p-8 text-center bg-slate-950/50 hover:border-emerald-500/40 transition flex flex-col items-center justify-center gap-3">
-          <span class="text-3xl">📁</span>
-          <div>
-            <p class="text-sm font-semibold text-white">Select a CSV or JSON file to upload</p>
-            <p class="text-xs text-slate-400 mt-1">Supports standard CSV with column headers or JSON arrays.</p>
+        <div v-else-if="activeInputTab === 'upload'" class="space-y-4">
+          <div class="border-2 border-dashed border-slate-800 rounded-2xl p-8 text-center bg-slate-950/50 hover:border-emerald-500/40 transition flex flex-col items-center justify-center gap-3">
+            <span class="text-3xl">📁</span>
+            <div>
+              <p class="text-sm font-semibold text-white">Select a CSV or JSON file to upload</p>
+              <p class="text-xs text-slate-400 mt-1">Supports standard CSV with column headers or JSON arrays.</p>
+            </div>
+            <input
+              type="file"
+              accept=".csv, .json, text/csv, application/json"
+              @change="handleFileUpload"
+              class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/20 file:text-emerald-300 hover:file:bg-emerald-500/30 cursor-pointer"
+            />
           </div>
-          <input
-            type="file"
-            accept=".csv, .json, text/csv, application/json"
-            @change="handleFileUpload"
-            class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/20 file:text-emerald-300 hover:file:bg-emerald-500/30 cursor-pointer"
-          />
+
+          <!-- Download Template Callout -->
+          <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div>
+              <span class="font-semibold text-white">Need a spreadsheet template to fill in?</span>
+              <p class="text-[11px] text-slate-400 mt-0.5">Download a blank or sample template, populate your stores, and upload here.</p>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                @click="downloadTemplate('csv', false)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 border border-emerald-500/30 text-xs font-semibold transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download Sample CSV</span>
+              </button>
+              <button
+                type="button"
+                @click="downloadTemplate('csv', true)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Blank CSV</span>
+              </button>
+              <button
+                type="button"
+                @click="downloadTemplate('json', false)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/15 text-sky-300 hover:bg-sky-500/25 border border-sky-500/30 text-xs font-semibold transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>JSON Template</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Input Mode 3: Sample Templates -->
@@ -397,11 +463,33 @@ async function executeImport() {
             <div>
               <div class="flex items-center justify-between pb-2 border-b border-slate-800">
                 <span class="text-xs font-bold text-emerald-400">CSV Template</span>
-                <span class="text-[10px] text-slate-500 font-mono">Mixed Hubs & Partners</span>
+                <span class="text-[10px] text-slate-500 font-mono">Spreadsheet (Excel / Sheets)</span>
               </div>
               <pre class="text-[11px] font-mono text-slate-400 mt-2 overflow-x-auto p-2 bg-slate-900/80 rounded-lg max-h-32">{{ SAMPLE_CSV }}</pre>
             </div>
-            <AppButton variant="quiet" @click="loadSample('csv')">Load CSV Sample</AppButton>
+            <div class="pt-3 border-t border-slate-800 flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                @click="downloadTemplate('csv', false)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-semibold hover:bg-emerald-500/25 transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download Sample</span>
+              </button>
+              <button
+                type="button"
+                @click="downloadTemplate('csv', true)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-700 transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Blank CSV</span>
+              </button>
+              <AppButton variant="quiet" @click="loadSample('csv')">Paste in Editor →</AppButton>
+            </div>
           </div>
 
           <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between gap-3">
@@ -412,7 +500,29 @@ async function executeImport() {
               </div>
               <pre class="text-[11px] font-mono text-slate-400 mt-2 overflow-x-auto p-2 bg-slate-900/80 rounded-lg max-h-32">{{ SAMPLE_JSON }}</pre>
             </div>
-            <AppButton variant="quiet" @click="loadSample('json')">Load JSON Sample</AppButton>
+            <div class="pt-3 border-t border-slate-800 flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                @click="downloadTemplate('json', false)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sky-500/15 text-sky-300 border border-sky-500/30 rounded-lg text-xs font-semibold hover:bg-sky-500/25 transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download Sample</span>
+              </button>
+              <button
+                type="button"
+                @click="downloadTemplate('json', true)"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg text-xs font-semibold hover:bg-slate-700 transition cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Blank JSON</span>
+              </button>
+              <AppButton variant="quiet" @click="loadSample('json')">Paste in Editor →</AppButton>
+            </div>
           </div>
         </div>
 

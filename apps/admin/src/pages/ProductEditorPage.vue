@@ -14,6 +14,12 @@ import { fetchStores } from "@/features/stores/queries";
 const route = useRoute();
 const router = useRouter();
 const id = computed(() => (typeof route.params.id === "string" ? route.params.id : ""));
+const defaultStoreId = computed(() =>
+  typeof route.query.storeId === "string" ? route.query.storeId : undefined,
+);
+const defaultCategoryId = computed(() =>
+  typeof route.query.categoryId === "string" ? route.query.categoryId : undefined,
+);
 const editing = computed(() => Boolean(id.value));
 const categories = useQuery({ queryKey: ["categories"], queryFn: fetchCategories });
 const sections = useQuery({ queryKey: ["timeBoundSections"], queryFn: fetchTimeBoundSections });
@@ -23,6 +29,16 @@ const product = useQuery({
   queryFn: () => fetchProduct(id.value),
   enabled: editing,
 });
+
+function handleDone() {
+  if (defaultCategoryId.value) {
+    router.push(`/catalog/categories/${defaultCategoryId.value}`);
+  } else if (defaultStoreId.value) {
+    router.push(`/stores/${defaultStoreId.value}`);
+  } else {
+    router.push("/catalog/products");
+  }
+}
 </script>
 
 <template>
@@ -58,8 +74,10 @@ const product = useQuery({
         :categories="categories.data.value?.adminCategories ?? []"
         :sections="sections.data.value?.timeBoundSections ?? []"
         :stores="stores.data.value?.adminStores ?? []"
-        @saved="router.push('/catalog/products')"
-        @cancel="router.push('/catalog/products')"
+        :default-store-id="defaultStoreId"
+        :default-category-id="defaultCategoryId"
+        @saved="handleDone"
+        @cancel="handleDone"
       />
     </div>
   </div>
